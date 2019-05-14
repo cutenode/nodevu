@@ -1,0 +1,18 @@
+{
+  "name": "nvu",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "bin": "./bin/cli.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Tierney Cyren <hello@bnb.im>",
+  "license": "MIT",
+  "dependencies": {
+    "log-symbols": "^3.0.0",
+    "request": "^2.88.0",
+    "yargs": "^13.2.4"
+  }
+}
