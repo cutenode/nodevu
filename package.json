@@ -20,15 +20,14 @@
     "yargs": "^13.2.4"
   },
   "directories": {
-    "bin": "bin",
     "lib": "lib"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cutenode/nvu.git"
+    "url": "git+https://github.com/cutenode/nanoprobe.git"
   },
   "bugs": {
-    "url": "https://github.com/cutenode/nvu/issues"
+    "url": "https://github.com/cutenode/nanoprobe/issues"
   },
-  "homepage": "https://github.com/cutenode/nvu#readme"
+  "homepage": "https://github.com/cutenode/nanoprobe#readme"
 }
