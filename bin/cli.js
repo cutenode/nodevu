@@ -2,8 +2,8 @@
 const chalk = require('chalk')
 
 const yargs = require('yargs') // eslint-disable-line no-unused-vars
-  .scriptName('nvu')
-  .usage('nvu [command] [args]')
+  .scriptName('nanoprobe')
+  .usage('nanoprobe [command] [args]')
   .commandDir('../lib/commands/')
   .help('h')
   .alias('h', 'help')
@@ -13,7 +13,7 @@ const yargs = require('yargs') // eslint-disable-line no-unused-vars
     alias: 'version',
     global: false,
     type: 'boolean',
-    describe: 'Show the current version of nvu',
+    describe: 'Show the current version of nanoprobe',
     skipValidation: true
   })
   .fail(function (msg, err, yargs) {
