@@ -1,6 +1,6 @@
 {
   "name": "nanoprobe",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "A CLI to help better understand the massive amount of information that surrounds Node.js versions.",
   "main": "./bin/cli.js",
   "bin": {
@@ -9,7 +9,15 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["nodejs", "node", "utility", "security", "cli", "ci", "borg"],
+  "keywords": [
+    "nodejs",
+    "node",
+    "utility",
+    "security",
+    "cli",
+    "ci",
+    "borg"
+  ],
   "author": "Tierney Cyren <hello@bnb.im>",
   "license": "MIT",
   "dependencies": {
