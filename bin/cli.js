@@ -26,4 +26,3 @@ const yargs = require('yargs') // eslint-disable-line no-unused-vars
     process.exit(1)
   })
   .argv
-
