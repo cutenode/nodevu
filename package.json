@@ -1,6 +1,6 @@
 {
   "name": "nanoprobe",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "A CLI to help better understand the massive amount of information that surrounds Node.js versions.",
   "main": "./bin/cli.js",
   "bin": {
