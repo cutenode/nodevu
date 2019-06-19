@@ -20,5 +20,5 @@ steps:
   displayName: 'npm install'
 
 - script: |
-    npm run link
+    npm run lint
   displayName: 'standard'
