@@ -74,5 +74,7 @@ nanoprobe safe --plain # plain (rather than formatted) human-readable output
   - could also parse keywords like `latest`, `current`, and possibly `lts`
 - [x] Improve consistency
   - [x] Make version passing consistent (currently `latest` and `safe` have different requirements for version arguments)
+- [ ] Find a way test every command and every flag by _running_ them as a part of our tests
+- [ ] Add `// @ts-check` to all code files and resolve problems if they exist.
 - [ ] Tests
 - [ ] Better README.md
