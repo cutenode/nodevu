@@ -55,12 +55,24 @@ nanoprobe safe --plain # plain (rather than formatted) human-readable output
 ## TODOs
 
 - [x] `nanoprobe safe`
-  - [x] tells you if your current Node.js version is secure.
-  - [x] ci flag that will `process.exit(0)` if you're not secure.
+  - [x] tell you if your current Node.js version is secure.
+  - [x] add ci flag that will `process.exit(0)` if you're not secure.
+  - [ ] add flag that allows you to pass a version or array of security releases to ignore
+    - [ ] should only change the exit code, and should still warn that you are running insecure versions.
+- [ ] make all data exposed by commands consumable if the module is `require()`'d
+  - we will likely want to split out an underlying module and then make the CLI consume the module
 - [ ] `nanoprobe lts`
   - [ ] expose LTS data
   - [ ] expose LTS EOL if possible?
-- [ ] Improve consistency
-  - [ ] Make version passing consistent (currently `latest` and `safe` have different requirements for version arguments)
+- [ ] `nanoprobe update`
+  - [ ] print all ways to update to the latest version of the Node.js release line you're using
+  - [ ] pass a flag that allows you to filter output
+    - for example, `nanoprobe update --type=docker`/`nanoprobe update --type=nvm` or `nanoprobe update --docker`/`nanoprobe update --nvm`
+- [ ] crerate helper that parses the version we're checking in various commands
+  - returns an object that includes various acceptable inputs (`v12.1.0`, `12.1.0`) as well as all semver ranges that apply and their varients (`v12.1`, `12.1`, `v12`, `12`)
+    - this would allow us to remove our `require` of `semver` in both deps and safe, in addition to future commands.
+  - could also parse keywords like `latest`, `current`, and possibly `lts`
+- [x] Improve consistency
+  - [x] Make version passing consistent (currently `latest` and `safe` have different requirements for version arguments)
 - [ ] Tests
 - [ ] Better README.md
