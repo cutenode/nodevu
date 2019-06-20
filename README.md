@@ -34,8 +34,8 @@ nanoprobe deps 6.12.0 --plain # see a very plain, human-readable output rather t
 ### nanoprobe latest
 
 ```bash
-nanoprobe latest
-nanoprobe latest 9
+nanoprobe latest # will return the most recent Currrent release
+nanoprobe latest 10 # will return the latest release in the Node.js v10.x release line
 nanoprobe latest --json # see the information as JSON
 nanoprobe latest --ci # exits as a 1 or a 0
 ```
@@ -43,10 +43,10 @@ nanoprobe latest --ci # exits as a 1 or a 0
 ### nanoprobe safe
 
 ```bash
-nanoprobe safe
+nanoprobe safe # will tell you if you're currently running a safe version of Node.js or not
 nanoprobe safe v9
 nanoprobe safe v10.14
-nanoprobe safe 12.14.0
+nanoprobe safe 10.14.0 ## will tell you if node@10.14.0 is safe
 nanoprobe safe --json # JSON output of the vulnerability data, if any
 nanoprobe safe --ci # exits 0 or 1 depending on if there are or are not vulnerabilities, respectively
 nanoprobe safe --plain # plain (rather than formatted) human-readable output
