@@ -35,7 +35,7 @@ nanoprobe deps 6.12.0 --plain # see a very plain, human-readable output rather t
 
 ```bash
 nanoprobe latest # will return the most recent Currrent release
-nanoprobe latest 10 # will return the latest release in the Node.js v10.x release line
+nanoprobe latest v10 # will return the latest release in the Node.js v10.x release line
 nanoprobe latest --json # see the information as JSON
 nanoprobe latest --ci # exits as a 1 or a 0
 ```
