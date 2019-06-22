@@ -8,17 +8,29 @@ A CLI to help better understand the massive amount of information that surrounds
 nanoprobe [command] [args]
 
 Commands:
-  nanoprobe deps <version>        Expose the versions of Node.js's dependencies
-                                  at a specific version. Defaults to the latest
-                                  version in an incomplete semver string.
-  nanoprobe latest [releaseLine]  List the latest versions of Node.js
-  nanoprobe safe [version]        Lets  you know whether or not you are running
-                                  a version of Node.js with zero known
-                                  vulnerabilities
+  nanoprobe deps [version]    Expose the versions of Node.js's dependencies at a
+                              specific version. Defaults to the latest version
+                              in an incomplete semver string.
+  nanoprobe latest [version]  List the latest versions of Node.js
+  nanoprobe safe [version]    Lets  you know whether or not you are running a
+                              version of Node.js with zero known vulnerabilities
 
 Options:
   -h, --help     Show help                                             [boolean]
   -v, --version  Show version number                                   [boolean]
+```
+
+### via npx (reccomended)
+
+```bash
+npx nanoprobe [command] [args]
+```
+
+### via npm
+
+```bash
+npm i -g nanoprobe # globally install nanoprobe at the currently published version
+nanoprobe [command] [args] # use nanoprobe
 ```
 
 ## Examples
@@ -76,5 +88,6 @@ nanoprobe safe --plain # plain (rather than formatted) human-readable output
   - [x] Make version passing consistent (currently `latest` and `safe` have different requirements for version arguments)
 - [ ] Find a way test every command and every flag by _running_ them as a part of our tests
 - [ ] Add `// @ts-check` to all code files and resolve problems if they exist.
+- [ ] Add `locales` directory and migrate all user-facinig strings to that
 - [ ] Tests
 - [ ] Better README.md
