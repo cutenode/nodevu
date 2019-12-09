@@ -1,5 +1,7 @@
 # nanoprobe: A nice Node.js Version Utility
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/cutenode/nanoprobe.svg)](https://greenkeeper.io/)
+
 A CLI to help better understand the massive amount of information that surrounds Node.js versions.
 
 ## Usage
