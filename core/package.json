@@ -1,0 +1,16 @@
+{
+  "name": "@inver/core",
+  "version": "0.0.1",
+  "description": "inver core API: comprehensive node.js version tooling",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tierney Cyren <hello@bnb.im> (https://bnb.im/)",
+  "license": "MIT",
+  "dependencies": {
+    "luxon": "^2.3.0",
+    "semver": "^7.3.5",
+    "undici": "^4.13.0"
+  }
+}

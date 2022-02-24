@@ -1,0 +1,27 @@
+{
+  "name": "inver",
+  "version": "0.0.1",
+  "description": "comprehensive node.js version tooling",
+  "main": "index.js",
+  "scripts": {
+    "lint": "standard",
+    "lint:fix": "standard --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cutenode/inver.git"
+  },
+  "keywords": [
+    "node.js",
+    "version"
+  ],
+  "author": "Tierney Cyren <hello@bnb.im> (https://bnb.im/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cutenode/inver/issues"
+  },
+  "homepage": "https://github.com/cutenode/inver#readme",
+  "workspaces": [
+    "core"
+  ]
+}
