@@ -1,0 +1,25 @@
+{
+  "name": "static",
+  "version": "0.0.1",
+  "description": "static outputs from @nvu/core",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cutenode/nvu.git"
+  },
+  "keywords": [
+    "node.js",
+    "version",
+    "versions"
+  ],
+  "author": "Tierney Cyren <hello@bnb.im>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cutenode/nvu/issues"
+  },
+  "homepage": "https://github.com/cutenode/nvu#readme"
+}

@@ -1,8 +1,8 @@
 const { fetch } = require('undici')
-const { DateTime, Interval } = require('luxon')
+const { DateTime, Interval, __esModule } = require('luxon')
 const semver = require('semver')
 
-async function inver() {
+async function core() {
   const rawVersions = await fetch('https://nodejs.org/dist/index.json')
   const rawSchedule = await fetch('https://raw.githubusercontent.com/nodejs/Release/master/schedule.json')
   const versions = await rawVersions.json()
@@ -47,29 +47,28 @@ async function inver() {
     
     // # LTS
     // ## define the release-line specific support object
-    if (!data[name].support) { // check to see if we've already written it. if we have, we don't need to waste time on it.
-      data[name].support = {}
-      data[name].support.codename = schedule[name]?.codename ?? undefined
-      data[name].support.lts = schedule[name]?.lts ? {} : undefined
+     if(schedule[name]?.start !== undefined) { // hack-y way to skip this logic on releases that don't have a listed start
+      if (!data[name].support) { // check to see if we've already written it. if we have, we don't need to waste time on it.
+        data[name].support = {}
+        data[name].support.codename = schedule[name]?.codename ?? undefined
+        data[name].support.lts = schedule[name]?.lts ? {} : undefined
 
-      // run this the first time we start working on the support object,
-      // since that will be the newest version
-      if(versions[version].lts) {
-        data[name].support.lts.newest = versionSemver.version
+        // run this the first time we start working on the support object,
+        // since that will be the newest version
+        if(versions[version].lts) {
+          data[name].support.lts.newest = versionSemver.version
+        }
+
+        data[name].support.phases = {}
+        data[name].support.phases.dates = {}
+        data[name].support.phases.dates.start = schedule[name]?.start ?? undefined
+        data[name].support.phases.dates.lts = schedule[name]?.lts ?? undefined
+        data[name].support.phases.dates.maintenance = schedule[name]?.maintenance ?? undefined
+        data[name].support.phases.dates.end = schedule[name]?.end ?? undefined
       }
-
-      data[name].support.phases = {}
-      data[name].support.phases.start = schedule[name]?.start ?? undefined
-      data[name].support.phases.lts = schedule[name]?.lts ?? undefined
-      data[name].support.phases.maintenance = schedule[name]?.maintenance ?? undefined
-      data[name].support.phases.end = schedule[name]?.end ?? undefined
-      data[name].support.phases.current = ''
+      data[name].support.phases.current = await determineCurrentReleasePhase(now, data[name].support.phases.dates) ?? {}
     }
-
-    if(schedule[name]?.start !== undefined) { // hack-y way to skip this logic on releases that don't have a listed start
-      console.log(versions[version].version, await determineCurrentReleasePhase(now, data[name].support.phases))
-    }
-
+    
     // this is a slightly inefficient way to do this but it's also easy
     //
     // tl;dr we're just assigning this every single iteration and the last
@@ -88,20 +87,19 @@ async function inver() {
     // ## define the release-line specific security object
     if (!data[name].security) { // check to see if we've already written it. if we have, we don't need to waste time on it.
       data[name].security = {}
-      if(!data[name].security.newest) {
-        // the newest security release, which can be populated on the first run
+      data[name].security.all = []
+    }
+
+    // the newest security release, which can be populated on the first run
+    if(!data[name].security.newest) {
+      if(versions[version].security === true) {
         data[name].security.newest = versionSemver.version
       }
+    }
 
-      if(!data[name].security.all) {
-        // the newest security release, which can be populated on the first run
-        data[name].security.all = []
-      }
-
-      data[name].security.all.push(versionSemver.version)
-    } else {
-      // add every other sevurity release to the 'all' array after the first time we encoutner one
-      data[name].security.all.push(versionSemver.version)
+    // throw the current loop's iteration into the security.all array if it's a security release
+    if(versions[version].security === true) {
+        data[name].security.all.push(versionSemver.version)
     }
 
     // ## define the security object in each specfic version
@@ -111,7 +109,7 @@ async function inver() {
     data[name].releases[`v${versionSemver.version}`].security.isLatestSecurityReleaseInLine
   })
 
-  console.log(JSON.stringify(data, null, 2))
+  return data
 }
 
 async function determineCurrentReleasePhase(now, dates = {}) {
@@ -119,23 +117,24 @@ async function determineCurrentReleasePhase(now, dates = {}) {
   // `true` is in the past
   // `false` is in the future
   const isoified = {
-    start: await isInPast(DateTime.fromISO(dates.start).diffNow().toMillis()) ?? undefined,
-    lts: await isInPast(DateTime.fromISO(dates.lts).diffNow().toMillis()) ?? undefined,
-    maintenance: await isInPast(DateTime.fromISO(dates.maintenance).diffNow().toMillis()) ?? undefined,
-    end: await isInPast(DateTime.fromISO(dates.end).diffNow().toMillis()) ?? undefined,
+    start: isInPast(DateTime.fromISO(dates.start).diffNow().toMillis()) ?? undefined,
+    lts: isInPast(DateTime.fromISO(dates.lts).diffNow().toMillis()) ?? undefined,
+    maintenance: isInPast(DateTime.fromISO(dates.maintenance).diffNow().toMillis()) ?? undefined,
+    end: isInPast(DateTime.fromISO(dates.end).diffNow().toMillis()) ?? undefined,
   }
 
   // set up our result to return
   let result = undefined
   
   // iterate over the past/future object and set the above variable to whatever the first date is in the future.
-  Object.keys(isoified).forEach(phase => {
+  Object.keys(isoified).forEach(async (phase) => {
     // since we're looping, the last true is the current phase
     // since the start date will always be in the past
     if(isoified[phase] === true) {
         result = phase
     }
   })
+
   return result
 }
 
@@ -145,7 +144,7 @@ async function determineCurrentReleasePhase(now, dates = {}) {
 // DateTime.fromISO(DATE).diffNow().toMillis()
 //
 // where DATE is your date value
-async function isInPast(number) {
+function isInPast(number) {
   const sign = Math.sign(number)
   if(sign === -1 || sign === 0) {
     return true
@@ -156,4 +155,4 @@ async function isInPast(number) {
   }
 }
 
-inver()
+module.exports = core
