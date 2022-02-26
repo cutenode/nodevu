@@ -1,0 +1,18 @@
+{
+  "semver": {
+    "raw": "0.1.33",
+    "major": 0,
+    "minor": 1,
+    "patch": 33,
+    "line": "v0.1"
+  },
+  "dependencies": {
+    "v8": "2.1.6.0"
+  },
+  "lts": {
+    "isLts": false
+  },
+  "security": {
+    "isSecurity": false
+  }
+}

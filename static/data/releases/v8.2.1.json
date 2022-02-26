@@ -1,0 +1,22 @@
+{
+  "semver": {
+    "raw": "8.2.1",
+    "major": 8,
+    "minor": 2,
+    "patch": 1,
+    "line": "v8"
+  },
+  "dependencies": {
+    "npm": "5.3.0",
+    "v8": "5.8.283.41",
+    "uv": "1.13.1",
+    "zlib": "1.2.11",
+    "openssl": "1.0.2l"
+  },
+  "lts": {
+    "isLts": false
+  },
+  "security": {
+    "isSecurity": false
+  }
+}
