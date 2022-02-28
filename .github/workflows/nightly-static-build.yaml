@@ -1,0 +1,42 @@
+on:
+  schedule:
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+name: Nightly Static Build
+jobs:
+  run-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run build:default
+        uses: actions/setup-node@v1
+        with:
+          node-version: 17
+        run: npm run build:default
+      - uses: actions/checkout@v2
+      - name: Run build:releases
+        uses: actions/setup-node@v1
+        with:
+          node-version: 17
+        run: npm run build:releases
+      - name: Run build:security
+        uses: actions/setup-node@v1
+        with:
+          node-version: 17
+        run: npm run build:security
+      - name: Run build:support
+        uses: actions/setup-node@v1
+        with:
+          node-version: 17
+        run: npm run build:support -w static
+      - name: Create or Update Pull Request
+        uses: gr2m/create-or-update-pull-request-action@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          with:
+        title: "Update Static Data"
+        body: "Updates the static data based on a nightly (or manual) run of the build step in GitHub Actions. Unless the data is invalid, this should be good to go."
+        branch: "nightly"
+        commit-message: "feat: add new data"
+        assignees: bnb
+        auto-merge: squash
