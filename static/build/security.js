@@ -8,7 +8,7 @@ async function writeSecurity(filename) {
   Object.keys(data).forEach(async (version) => {
       security[version] = data[version].security
   })
-  write('./static/data/default.json', security)
+  write('./static/data/security.json', security)
 }
 
 writeSecurity()
