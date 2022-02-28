@@ -5,7 +5,11 @@
   "main": "index.js",
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "npm run build:default && npm run build:releases && npm run build:security && npm run build:support", 
+    "build:default": "node build/default.js",
+    "build:releases": "node build/releases.js",
+    "build:security": "node build/security.js",
+    "build:support": "node build/support.js"
   },
   "repository": {
     "type": "git",
