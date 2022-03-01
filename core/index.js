@@ -1,7 +1,7 @@
 const { fetch } = require('undici')
 const { DateTime } = require('luxon')
 const semver = require('semver')
-const parsefiles = require('./util/parseFilename')
+const parsefiles = require('@nvu/parsefiles')
 
 async function core() {
   const rawVersions = await fetch('https://nodejs.org/dist/index.json')
@@ -63,6 +63,7 @@ async function core() {
       if(!linksShorthand[parsedFile.type]) {
         linksShorthand[parsedFile.type] = []
       }
+      linksShorthand[parsedFile.type].push({parsedFile})
     })
 
     // # LTS
