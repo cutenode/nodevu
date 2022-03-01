@@ -1,6 +1,7 @@
 const { fetch } = require('undici')
-const { DateTime, Interval, __esModule } = require('luxon')
+const { DateTime } = require('luxon')
 const semver = require('semver')
+const parsefiles = require('./util/parseFilename')
 
 async function core() {
   const rawVersions = await fetch('https://nodejs.org/dist/index.json')
@@ -44,9 +45,28 @@ async function core() {
     data[name].releases[`v${versionSemver.version}`].dependencies.uv = versions[version].uv ?? undefined
     data[name].releases[`v${versionSemver.version}`].dependencies.zlib = versions[version].zlib ?? undefined
     data[name].releases[`v${versionSemver.version}`].dependencies.openssl = versions[version].openssl ?? undefined
-    
+
+    // surface file information
+    data[name].releases[`v${versionSemver.version}`].files = {}
+
+    // TODO: parse versions[version].files and convert them to URLs that can be directly accessed
+    data[name].releases[`v${versionSemver.version}`].files.available = versions[version].files ?? undefined
+    const availableShorthand = data[name].releases[`v${versionSemver.version}`].files.available  // since we're going to be writing this a lot for assignments, it's nice to have shorthand for readability
+  
+    data[name].releases[`v${versionSemver.version}`].files.links = {}
+    const linksShorthand = data[name].releases[`v${versionSemver.version}`].files.links // since we're going to be writing this a lot for assignments, it's nice to have shorthand for readability
+
+    Object.keys(availableShorthand).map(filename => {
+      let id = data[name].releases[`v${versionSemver.version}`].files.available[filename]
+      const parsedFile = parsefiles(id, versionSemver.version)
+
+      if(!linksShorthand[parsedFile.type]) {
+        linksShorthand[parsedFile.type] = []
+      }
+    })
+
     // # LTS
-    // ## define the release-line specific support object
+    // ## define the release-line specific support objec`t
      if(schedule[name]?.start !== undefined) { // hack-y way to skip this logic on releases that don't have a listed start
       if (!data[name].support) { // check to see if we've already written it. if we have, we don't need to waste time on it.
         data[name].support = {}
