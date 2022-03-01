@@ -23,6 +23,7 @@
   "homepage": "https://github.com/cutenode/inver#readme",
   "workspaces": [
     "core",
-    "static"
+    "static",
+    "parsefiles"
   ]
 }
