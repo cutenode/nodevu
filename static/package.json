@@ -1,5 +1,5 @@
 {
-  "name": "static",
+  "name": "@nvu/static",
   "version": "0.0.1",
   "description": "static outputs from @nvu/core",
   "main": "index.js",
