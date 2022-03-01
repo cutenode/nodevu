@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cutenode/inver.git"
+    "url": "git+https://github.com/cutenode/nvu.git"
   },
   "keywords": [
     "node.js",
@@ -18,9 +18,9 @@
   "author": "Tierney Cyren <hello@bnb.im> (https://bnb.im/)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/cutenode/inver/issues"
+    "url": "https://github.com/cutenode/nvu/issues"
   },
-  "homepage": "https://github.com/cutenode/inver#readme",
+  "homepage": "https://github.com/cutenode/nvu#readme",
   "workspaces": [
     "core",
     "static",

@@ -3,7 +3,6 @@
   "version": "0.0.1",
   "description": "static outputs from @nvu/core",
   "main": "index.js",
-  "devDependencies": {},
   "scripts": {
     "build": "npm run build:default && npm run build:releases && npm run build:security && npm run build:support", 
     "build:default": "node build/default.js",

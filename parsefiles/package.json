@@ -7,10 +7,6 @@
     "lint": "standard",
     "lint:fix": "standard --fix"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/cutenode/nvu.git"
-  },
   "keywords": [
     "node.js",
     "versions",
@@ -18,9 +14,5 @@
     "files"
   ],
   "author": "Tierney Cyren <hello@bnb.im>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/cutenode/nvu/issues"
-  },
-  "homepage": "https://github.com/cutenode/nvu#readme"
+  "license": "MIT"
 }
