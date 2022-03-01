@@ -13,5 +13,8 @@
     "luxon": "^2.3.0",
     "semver": "^7.3.5",
     "undici": "^4.13.0"
+  },
+  "devDependencies": {
+    "standard": "^16.0.4"
   }
 }

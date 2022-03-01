@@ -14,5 +14,8 @@
     "files"
   ],
   "author": "Tierney Cyren <hello@bnb.im>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "standard": "^16.0.4"
+  }
 }

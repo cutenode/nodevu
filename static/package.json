@@ -4,7 +4,7 @@
   "description": "static outputs from @nvu/core",
   "main": "index.js",
   "scripts": {
-    "build": "npm run build:default && npm run build:releases && npm run build:security && npm run build:support", 
+    "build": "npm run build:default && npm run build:releases && npm run build:security && npm run build:support",
     "build:default": "node build/default.js",
     "build:releases": "node build/releases.js",
     "build:security": "node build/security.js",
@@ -19,10 +19,18 @@
     "version",
     "versions"
   ],
+  "files": [
+    "./data",
+    "index.js",
+    "package.json"
+  ],
   "author": "Tierney Cyren <hello@bnb.im>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/cutenode/nvu/issues"
   },
-  "homepage": "https://github.com/cutenode/nvu#readme"
+  "homepage": "https://github.com/cutenode/nvu#readme",
+  "devDependencies": {
+    "standard": "^16.0.4"
+  }
 }
