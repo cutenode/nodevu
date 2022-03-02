@@ -3,7 +3,7 @@ const write = require('../util/writeFile')
 
 async function writeReleases (filename) {
   const data = await nvu()
-  releases = {}
+  const releases = {}
 
   Object.keys(data).forEach(async (version) => {
     releases[version] = data[version].releases
