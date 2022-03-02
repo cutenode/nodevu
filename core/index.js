@@ -56,14 +56,15 @@ async function core () {
     data[name].releases[`v${versionSemver.version}`].files.links = {}
     const linksShorthand = data[name].releases[`v${versionSemver.version}`].files.links // since we're going to be writing this a lot for assignments, it's nice to have shorthand for readability
 
-    Object.keys(availableShorthand).map(filename => {
+    Object.keys(availableShorthand).forEach(filename => {
       const id = data[name].releases[`v${versionSemver.version}`].files.available[filename]
       const parsedFile = parsefiles(id, versionSemver.version)
 
       if (!linksShorthand[parsedFile.type]) {
         linksShorthand[parsedFile.type] = []
       }
-      linksShorthand[parsedFile.type].push({ parsedFile })
+
+      linksShorthand[parsedFile.type].push({ id: parsedFile.id, files: parsedFile.files, architecture: parsedFile.architecture })
     })
 
     // # LTS
@@ -127,7 +128,6 @@ async function core () {
     data[name].releases[`v${versionSemver.version}`].security = {}
 
     data[name].releases[`v${versionSemver.version}`].security.isSecurity = versions[version].security ?? false
-    data[name].releases[`v${versionSemver.version}`].security.isLatestSecurityReleaseInLine
   })
 
   return data
