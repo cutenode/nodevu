@@ -25,13 +25,5 @@
     "core",
     "static",
     "parsefiles"
-  ],
-  "dependencies": {
-    "semver": "^7.3.5",
-    "lru-cache": "^6.0.0",
-    "luxon": "^2.3.0",
-    "undici": "^4.13.0",
-    "yallist": "^4.0.0"
-  },
-  "devDependencies": {}
+  ]
 }
