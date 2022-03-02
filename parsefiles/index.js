@@ -69,6 +69,27 @@ function parseFilename (file, version) {
     info.type = 'sunos'
   }
 
+  // some of this is probably wrong but also I'm not familiar enough with
+  // architectures and their names to know what's right/wrong.
+  //
+  // fixes are welcome. I just ask that you keep it relatively nice looking...
+  // ugly names are bad dx.
+  if (info.id.includes('x86')) {
+    info.architecture = 'x86'
+  } else if (info.id.includes('x64')) {
+    info.architecture = 'x64'
+  } else if (info.id.includes('arm64')) {
+    info.architecture = 'arm64'
+  } else if (info.id.includes('armv7l')) {
+    info.architecture = 'armv7l'
+  } else if (info.id.includes('armv6l')) {
+    info.architecture = 'armv6l'
+  } else if (info.id.includes('aix-ppc64') || info.files[0].includes('ppc64le')) {
+    info.architecture = 'power'
+  } else if (info.id.includes('s390x')) {
+    info.architecture = 'z'
+  }
+
   return info
 }
 
