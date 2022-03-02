@@ -1,8 +1,8 @@
-const nvu = require('@nvu/core')
+const nodevu = require('@nodevu/core')
 const write = require('../util/writeFile')
 
 async function writeDefault (filename) {
-  const data = await nvu()
+  const data = await nodevu()
   write('./static/data/default.json', data)
 }
 

@@ -1,7 +1,7 @@
 {
-  "name": "@nvu/static",
+  "name": "@nodevu/static",
   "version": "0.0.1",
-  "description": "static outputs from @nvu/core",
+  "description": "static outputs from @nodevu/core",
   "main": "index.js",
   "scripts": {
     "build": "npm run build:default && npm run build:releases && npm run build:security && npm run build:support",
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cutenode/nvu.git"
+    "url": "git+https://github.com/cutenode/nodevu.git"
   },
   "keywords": [
     "node.js",
@@ -27,9 +27,9 @@
   "author": "Tierney Cyren <hello@bnb.im>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/cutenode/nvu/issues"
+    "url": "https://github.com/cutenode/nodevu/issues"
   },
-  "homepage": "https://github.com/cutenode/nvu#readme",
+  "homepage": "https://github.com/cutenode/nodevu#readme",
   "devDependencies": {
     "standard": "^16.0.4"
   }

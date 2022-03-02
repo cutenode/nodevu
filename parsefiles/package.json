@@ -1,5 +1,5 @@
 {
-  "name": "@nvu/parsefiles",
+  "name": "@nodevu/parsefiles",
   "version": "0.0.1",
   "description": "parse the files identifiers from Node.js",
   "main": "index.js",

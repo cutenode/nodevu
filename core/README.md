@@ -1,14 +1,14 @@
-# @nvu/core
+# @nodevu/core
 
-The core, online-only utility of nvu.
+The core, online-only utility of nodevu.
 
 ## Usage
 
 ```js
-const nvu = require('@nvu/core')
+const nodevu = require('@nodevu/core')
 
 async function getData() {
-    const data = await nvu() // returns a lot of data!
+    const data = await nodevu() // returns a lot of data!
 }
 ```
 

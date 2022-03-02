@@ -1,4 +1,4 @@
-# @nvu/parsefiles
+# @nodevu/parsefiles
 
 a utility to parse Node.js's files information from distribution metadata into something more useful.
 
@@ -18,7 +18,7 @@ files.forEach(file => {
 
 ## The Data
 
-When run, `@nvu/parsefiles` will return an object with the following properties:
+When run, `@nodevu/parsefiles` will return an object with the following properties:
 
 - `id` (String) - the identifier (file) that was passed in. Examples: `aix-ppc64`, `linux-x64`, `osx-x64-pkg`, `osx-arm64-tar`, `win-x64-zip`, `src`, `headers`.
 - `files` (Array) - an array of filenames that _should_ exist for the release. There are often more than one.

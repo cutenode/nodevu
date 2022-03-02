@@ -1,5 +1,5 @@
 {
-  "name": "@nvu/core",
+  "name": "@nodevu/core",
   "version": "0.0.1",
   "description": "inver core API: comprehensive node.js version tooling",
   "main": "index.js",
@@ -13,7 +13,7 @@
     "luxon": "^2.3.0",
     "semver": "^7.3.5",
     "undici": "^4.13.0",
-    "@nvu/parsefiles": "^0.0.1"
+    "@nodevu/parsefiles": "^0.0.1"
   },
   "devDependencies": {
     "standard": "^16.0.4"

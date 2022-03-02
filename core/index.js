@@ -1,7 +1,7 @@
 const { fetch } = require('undici')
 const { DateTime } = require('luxon')
 const semver = require('semver')
-const parsefiles = require('@nvu/parsefiles')
+const parsefiles = require('@nodevu/parsefiles')
 
 async function core () {
   const rawVersions = await fetch('https://nodejs.org/dist/index.json')

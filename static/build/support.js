@@ -1,8 +1,8 @@
-const nvu = require('@nvu/core')
+const nodevu = require('@nodevu/core')
 const write = require('../util/writeFile')
 
 async function writeSupport (filename) {
-  const data = await nvu()
+  const data = await nodevu()
   const support = {}
 
   Object.keys(data).forEach(async (version) => {
