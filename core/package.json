@@ -12,7 +12,8 @@
   "dependencies": {
     "luxon": "^2.3.0",
     "semver": "^7.3.5",
-    "undici": "^4.13.0"
+    "undici": "^4.13.0",
+    "@nvu/parsefiles": "^0.0.1"
   },
   "devDependencies": {
     "standard": "^16.0.4"
