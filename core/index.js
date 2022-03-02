@@ -64,7 +64,11 @@ async function core () {
         linksShorthand[parsedFile.type] = []
       }
 
-      linksShorthand[parsedFile.type].push({ id: parsedFile.id, files: parsedFile.files, architecture: parsedFile.architecture })
+      linksShorthand[parsedFile.type].push({
+        id: parsedFile.id,
+        files: parsedFile.files,
+        architecture: parsedFile.architecture
+      })
     })
 
     // # LTS
