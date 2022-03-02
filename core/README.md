@@ -76,3 +76,7 @@ The data returned by this module follows a pretty specific structure. Here's a d
     - `security` (Object):
       - `all` (Array) - an array of _all_ security releases in the release line.
       - `newest` (String) - the newest (most recent) security release. Example: `17.3.1`.
+
+### Example output
+
+You can find an example of the output [here](https://gist.github.com/bnb/df2cd4329e9f402bbf8dc9bf8364aa34). It's big. Like, really big. GitHub will struggle to render it. It's probably worth viewing [raw](https://gist.githubusercontent.com/bnb/df2cd4329e9f402bbf8dc9bf8364aa34/raw/2602ad0738bb9b8d0f41c3ad110e8f8a58f12197/data.json) or curl'ing the raw output.
