@@ -8,7 +8,9 @@
     "build:default": "node build/default.js",
     "build:releases": "node build/releases.js",
     "build:security": "node build/security.js",
-    "build:support": "node build/support.js"
+    "build:support": "node build/support.js",
+    "lint": "standard",
+    "lint:fix": "standard --fix"
   },
   "repository": {
     "type": "git",
