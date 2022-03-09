@@ -16,6 +16,7 @@
   "author": "Tierney Cyren <hello@bnb.im>",
   "license": "MIT",
   "devDependencies": {
-    "standard": "^16.0.4"
+    "standard": "^16.0.4",
+    "tape": "^5.5.2"
   }
 }

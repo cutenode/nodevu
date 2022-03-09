@@ -10,12 +10,13 @@
   "author": "Tierney Cyren <hello@bnb.im> (https://bnb.im/)",
   "license": "MIT",
   "dependencies": {
+    "@nodevu/parsefiles": "^0.0.1",
     "luxon": "^2.3.0",
     "semver": "^7.3.5",
-    "undici": "^4.13.0",
-    "@nodevu/parsefiles": "^0.0.1"
+    "undici": "^4.13.0"
   },
   "devDependencies": {
-    "standard": "^16.0.4"
+    "standard": "^16.0.4",
+    "tape": "^5.5.2"
   }
 }
