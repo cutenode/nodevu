@@ -123,6 +123,11 @@ async function core () {
       }
     }
 
+    // same inefficient hack as we do in the LTS 'oldest' logic. ineffecient but gets the job done.
+    if (versions[version].security === true) {
+      data[name].security.oldest = versionSemver.version
+    }
+
     // throw the current loop's iteration into the security.all array if it's a security release
     if (versions[version].security === true) {
       data[name].security.all.push(versionSemver.version)

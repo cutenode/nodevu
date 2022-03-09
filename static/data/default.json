@@ -1,6 +1,217 @@
 {
   "v17": {
     "releases": {
+      "v17.7.0": {
+        "semver": {
+          "raw": "17.7.0",
+          "major": 17,
+          "minor": 7,
+          "patch": 0,
+          "line": "v17"
+        },
+        "dependencies": {
+          "npm": "8.5.2",
+          "v8": "9.6.180.15",
+          "uv": "1.43.0",
+          "zlib": "1.2.11",
+          "openssl": "3.0.1+quic"
+        },
+        "files": {
+          "available": [
+            "aix-ppc64",
+            "headers",
+            "linux-arm64",
+            "linux-armv7l",
+            "linux-ppc64le",
+            "linux-s390x",
+            "linux-x64",
+            "osx-arm64-tar",
+            "osx-x64-pkg",
+            "osx-x64-tar",
+            "src",
+            "win-x64-7z",
+            "win-x64-exe",
+            "win-x64-msi",
+            "win-x64-zip",
+            "win-x86-7z",
+            "win-x86-exe",
+            "win-x86-msi",
+            "win-x86-zip"
+          ],
+          "links": {
+            "aix": [
+              {
+                "id": "aix-ppc64",
+                "files": [
+                  "node-v17.7.0-aix-ppc64.tar.gz",
+                  "node-v17.7.0-aix-ppc64.tar.xz"
+                ],
+                "architecture": "power"
+              }
+            ],
+            "headers": [
+              {
+                "id": "headers",
+                "files": [
+                  "node-v17.7.0-headers.tar.gz",
+                  "node-v17.7.0-headers.tar.xz"
+                ]
+              }
+            ],
+            "linux": [
+              {
+                "id": "linux-arm64",
+                "files": [
+                  "node-v17.7.0-linux-arm64.tar.gz",
+                  "node-v17.7.0-linux-arm64.tar.xz"
+                ],
+                "architecture": "arm64"
+              },
+              {
+                "id": "linux-armv7l",
+                "files": [
+                  "node-v17.7.0-linux-armv7l.tar.gz",
+                  "node-v17.7.0-linux-armv7l.tar.xz"
+                ],
+                "architecture": "armv7l"
+              },
+              {
+                "id": "linux-ppc64le",
+                "files": [
+                  "node-v17.7.0-linux-ppc64le.tar.gz",
+                  "node-v17.7.0-linux-ppc64le.tar.xz"
+                ],
+                "architecture": "power"
+              },
+              {
+                "id": "linux-s390x",
+                "files": [
+                  "node-v17.7.0-linux-s390x.tar.gz",
+                  "node-v17.7.0-linux-s390x.tar.xz"
+                ],
+                "architecture": "z"
+              },
+              {
+                "id": "linux-x64",
+                "files": [
+                  "node-v17.7.0-linux-x64.tar.gz",
+                  "node-v17.7.0-linux-x64.tar.xz"
+                ],
+                "architecture": "x64"
+              }
+            ],
+            "macos": [
+              {
+                "id": "osx-arm64-tar",
+                "files": [
+                  "node-v17.7.0-darwin-arm64.tar.gz"
+                ],
+                "architecture": "arm64"
+              },
+              {
+                "id": "osx-x64-pkg",
+                "files": [
+                  "node-v17.7.0.pkg"
+                ],
+                "architecture": "x64"
+              },
+              {
+                "id": "osx-x64-tar",
+                "files": [
+                  "node-v17.7.0-darwin-x64.tar.gz"
+                ],
+                "architecture": "x64"
+              }
+            ],
+            "source": [
+              {
+                "id": "src",
+                "files": [
+                  "node-v17.7.0.tar.xz"
+                ]
+              }
+            ],
+            "windows": [
+              {
+                "id": "win-x64-7z",
+                "files": [
+                  "node-v17.7.0-win-x64.7z"
+                ],
+                "architecture": "x64"
+              },
+              {
+                "id": "win-x64-exe",
+                "files": [
+                  "win-x64/node.exe",
+                  "win-x64/node.lib",
+                  "win-x64/node_pdb.7z",
+                  "win-x64/node_pdb.zip",
+                  "win-x86/node.exe",
+                  "win-x86/node.lib",
+                  "win-x86/node_pdb.7z",
+                  "win-x86/node_pdb.zip"
+                ],
+                "architecture": "x64"
+              },
+              {
+                "id": "win-x64-msi",
+                "files": [
+                  "node-v17.7.0-x64.msi"
+                ],
+                "architecture": "x64"
+              },
+              {
+                "id": "win-x64-zip",
+                "files": [
+                  "node-v17.7.0-win-x64.zip"
+                ],
+                "architecture": "x64"
+              },
+              {
+                "id": "win-x86-7z",
+                "files": [
+                  "node-v17.7.0-win-x86.7z"
+                ],
+                "architecture": "x86"
+              },
+              {
+                "id": "win-x86-exe",
+                "files": [
+                  "win-x64/node.exe",
+                  "win-x64/node.lib",
+                  "win-x64/node_pdb.7z",
+                  "win-x64/node_pdb.zip",
+                  "win-x86/node.exe",
+                  "win-x86/node.lib",
+                  "win-x86/node_pdb.7z",
+                  "win-x86/node_pdb.zip"
+                ],
+                "architecture": "x86"
+              },
+              {
+                "id": "win-x86-msi",
+                "files": [
+                  "node-v17.7.0-x86.msi"
+                ],
+                "architecture": "x86"
+              },
+              {
+                "id": "win-x86-zip",
+                "files": [
+                  "node-v17.7.0-win-x86.zip"
+                ],
+                "architecture": "x86"
+              }
+            ]
+          }
+        },
+        "lts": {
+          "isLts": false
+        },
+        "security": {
+          "isSecurity": false
+        }
+      },
       "v17.6.0": {
         "semver": {
           "raw": "17.6.0",
@@ -1915,7 +2126,8 @@
       "all": [
         "17.3.1"
       ],
-      "newest": "17.3.1"
+      "newest": "17.3.1",
+      "oldest": "17.3.1"
     }
   },
   "v16": {
@@ -6798,7 +7010,8 @@
         "16.6.0",
         "16.4.1"
       ],
-      "newest": "16.13.2"
+      "newest": "16.13.2",
+      "oldest": "16.4.1"
     }
   },
   "v15": {
@@ -10474,7 +10687,8 @@
         "15.5.1",
         "15.2.1"
       ],
-      "newest": "15.10.0"
+      "newest": "15.10.0",
+      "oldest": "15.2.1"
     }
   },
   "v14": {
@@ -18023,7 +18237,8 @@
         "14.11.0",
         "14.4.0"
       ],
-      "newest": "14.18.3"
+      "newest": "14.18.3",
+      "oldest": "14.4.0"
     }
   },
   "v13": {
@@ -21665,7 +21880,8 @@
         "13.8.0",
         "13.4.0"
       ],
-      "newest": "13.8.0"
+      "newest": "13.8.0",
+      "oldest": "13.4.0"
     }
   },
   "v12": {
@@ -32141,7 +32357,8 @@
         "12.14.0",
         "12.8.1"
       ],
-      "newest": "12.22.9"
+      "newest": "12.22.9",
+      "oldest": "12.8.1"
     }
   },
   "v11": {
@@ -35936,7 +36153,8 @@
         "11.10.1",
         "11.3.0"
       ],
-      "newest": "11.10.1"
+      "newest": "11.10.1",
+      "oldest": "11.3.0"
     }
   },
   "v10": {
@@ -45294,7 +45512,8 @@
         "10.15.2",
         "10.14.0"
       ],
-      "newest": "10.24.1"
+      "newest": "10.24.1",
+      "oldest": "10.14.0"
     }
   },
   "v9": {
@@ -49616,7 +49835,8 @@
       "all": [
         "9.10.0"
       ],
-      "newest": "9.10.0"
+      "newest": "9.10.0",
+      "oldest": "9.10.0"
     }
   },
   "v8": {
@@ -58226,7 +58446,8 @@
         "8.9.3",
         "8.1.4"
       ],
-      "newest": "8.17.0"
+      "newest": "8.17.0",
+      "oldest": "8.1.4"
     }
   },
   "v7": {
@@ -62261,7 +62482,8 @@
       "all": [
         "7.10.1"
       ],
-      "newest": "7.10.1"
+      "newest": "7.10.1",
+      "oldest": "7.10.1"
     }
   },
   "v6": {
@@ -72762,7 +72984,8 @@
         "6.11.1",
         "6.7.0"
       ],
-      "newest": "6.17.0"
+      "newest": "6.17.0",
+      "oldest": "6.7.0"
     }
   },
   "v5": {
@@ -84221,7 +84444,8 @@
         "4.6.1",
         "4.6.0"
       ],
-      "newest": "4.9.0"
+      "newest": "4.9.0",
+      "oldest": "4.6.0"
     }
   },
   "v0.12": {
@@ -87023,7 +87247,8 @@
         "0.12.16",
         "0.12.15"
       ],
-      "newest": "0.12.17"
+      "newest": "0.12.17",
+      "oldest": "0.12.15"
     }
   },
   "v0.11": {
@@ -96377,7 +96602,8 @@
         "0.10.47",
         "0.10.46"
       ],
-      "newest": "0.10.48"
+      "newest": "0.10.48",
+      "oldest": "0.10.46"
     }
   },
   "v0.9": {
