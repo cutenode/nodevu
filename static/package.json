@@ -20,7 +20,7 @@
     "versions"
   ],
   "files": [
-    "./data",
+    "/data",
     "index.js",
     "package.json"
   ],
