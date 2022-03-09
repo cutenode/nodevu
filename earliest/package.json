@@ -1,11 +1,13 @@
 {
-  "name": "nodevu",
+  "name": "earliest",
   "version": "0.0.1",
-  "description": "comprehensive node.js version tooling",
+  "description": "a module that returns the earliest lts or security release of the release line passed.",
   "main": "index.js",
+  "devDependencies": {
+    "standard": "^16.0.4"
+  },
   "scripts": {
-    "lint": "standard",
-    "lint:fix": "standard --fix"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -13,18 +15,12 @@
   },
   "keywords": [
     "node.js",
-    "version"
+    "versions"
   ],
   "author": "Tierney Cyren <hello@bnb.im> (https://bnb.im/)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/cutenode/nodevu/issues"
   },
-  "homepage": "https://github.com/cutenode/nodevu#readme",
-  "workspaces": [
-    "core",
-    "static",
-    "parsefiles",
-    "earliest"
-  ]
+  "homepage": "https://github.com/cutenode/nodevu#readme"
 }
