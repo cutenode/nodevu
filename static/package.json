@@ -10,7 +10,8 @@
     "build:security": "node build/security.js",
     "build:support": "node build/support.js",
     "lint": "standard",
-    "lint:fix": "standard --fix"
+    "lint:fix": "standard --fix",
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -33,7 +34,7 @@
   },
   "homepage": "https://github.com/cutenode/nodevu#readme",
   "devDependencies": {
-    "standard": "^16.0.4",
-    "tape": "^5.5.2"
+    "mocha": "^9.2.1",
+    "standard": "^16.0.4"
   }
 }

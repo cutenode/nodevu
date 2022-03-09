@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "lint": "standard",
-    "lint:fix": "standard --fix"
+    "lint:fix": "standard --fix",
+    "test": "mocha"
   },
   "author": "Tierney Cyren <hello@bnb.im> (https://bnb.im/)",
   "license": "MIT",
@@ -16,7 +17,7 @@
     "undici": "^4.13.0"
   },
   "devDependencies": {
-    "standard": "^16.0.4",
-    "tape": "^5.5.2"
+    "mocha": "^9.2.1",
+    "standard": "^16.0.4"
   }
 }
