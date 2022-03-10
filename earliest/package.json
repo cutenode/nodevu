@@ -1,5 +1,5 @@
 {
-  "name": "earliest",
+  "name": "@nodevu/earliest",
   "version": "0.0.1",
   "description": "a module that returns the earliest lts or security release of the release line passed.",
   "main": "index.js",
@@ -8,6 +8,9 @@
     "nyc": "^15.1.0",
     "standard": "^16.0.4"
   },
+  "files": [
+    "index.js"
+  ],
   "scripts": {
     "lint": "standard",
     "lint:fix": "standard --fix",
