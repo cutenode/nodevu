@@ -24,6 +24,7 @@
   },
   "devDependencies": {
     "mocha": "^9.2.1",
+    "nock": "^13.2.4",
     "nyc": "^15.1.0",
     "standard": "^16.0.4"
   }
