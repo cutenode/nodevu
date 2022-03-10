@@ -5,7 +5,7 @@ a utility to parse Node.js's files information from distribution metadata into s
 ## Usage
 
 ```js
-const parsefiles = require('./index')
+const parsefiles = require('@nodevu/parsefiles')
 
 const version = '17.6.0'
 const files = ["aix-ppc64","headers","linux-arm64","linux-armv7l","linux-ppc64le","linux-s390x","linux-x64","osx-arm64-tar","osx-x64-pkg","osx-x64-tar","src","win-x64-7z","win-x64-exe","win-x64-msi","win-x64-zip","win-x86-7z","win-x86-exe","win-x86-msi","win-x86-zip"]
