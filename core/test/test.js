@@ -23,10 +23,10 @@ describe('attempt to fetch data', async () => {
     assert.deepStrictEqual(data.v17.releases['v17.0.0'].dependencies.openssl, '3.0.0+quic')
   })
 
+  it('should have some correct static values for support in a release line', async () => {
     const data = await nodevu()
     assert.deepStrictEqual(data.v14.support.codename, 'Fermium')
-    assert.deepStrictEqual(data.v14.support.lts.newest, '14.19.0')  it('should have some correct static values for support in a release line', async () => {
-
+    assert.deepStrictEqual(data.v14.support.lts.newest, '14.19.0')
     assert.deepStrictEqual(data.v14.support.lts.oldest, '14.15.0')
     assert.deepStrictEqual(data.v14.support.phases.dates.start, '2020-04-21')
     assert.deepStrictEqual(data.v14.support.phases.dates.lts, '2020-10-27')
