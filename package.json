@@ -26,5 +26,11 @@
     "static",
     "parsefiles",
     "earliest"
-  ]
+  ],
+  "standard": {
+    "globals": [
+      "describe",
+      "it"
+    ]
+  }
 }
