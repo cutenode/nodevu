@@ -11,7 +11,8 @@
     "build:support": "node build/support.js",
     "lint": "standard",
     "lint:fix": "standard --fix",
-    "test": "mocha"
+    "test": "mocha",
+    "coverage": "nyc mocha"
   },
   "repository": {
     "type": "git",
@@ -35,6 +36,7 @@
   "homepage": "https://github.com/cutenode/nodevu#readme",
   "devDependencies": {
     "mocha": "^9.2.1",
+    "nyc": "^15.1.0",
     "standard": "^16.0.4"
   }
 }
