@@ -1,0 +1,173 @@
+[
+  {
+    "id": "aix-ppc64",
+    "files": [
+      "node-v17.7.0-aix-ppc64.tar.gz",
+      "node-v17.7.0-aix-ppc64.tar.xz"
+    ],
+    "type": "aix",
+    "architecture": "power"
+  },
+  {
+    "id": "headers",
+    "files": [
+      "node-v17.7.0-headers.tar.gz",
+      "node-v17.7.0-headers.tar.xz"
+    ],
+    "type": "headers"
+  },
+  {
+    "id": "linux-arm64",
+    "files": [
+      "node-v17.7.0-linux-arm64.tar.gz",
+      "node-v17.7.0-linux-arm64.tar.xz"
+    ],
+    "type": "linux",
+    "architecture": "arm64"
+  },
+  {
+    "id": "linux-armv7l",
+    "files": [
+      "node-v17.7.0-linux-armv7l.tar.gz",
+      "node-v17.7.0-linux-armv7l.tar.xz"
+    ],
+    "type": "linux",
+    "architecture": "armv7l"
+  },
+  {
+    "id": "linux-ppc64le",
+    "files": [
+      "node-v17.7.0-linux-ppc64le.tar.gz",
+      "node-v17.7.0-linux-ppc64le.tar.xz"
+    ],
+    "type": "linux",
+    "architecture": "power"
+  },
+  {
+    "id": "linux-s390x",
+    "files": [
+      "node-v17.7.0-linux-s390x.tar.gz",
+      "node-v17.7.0-linux-s390x.tar.xz"
+    ],
+    "type": "linux",
+    "architecture": "z"
+  },
+  {
+    "id": "linux-x64",
+    "files": [
+      "node-v17.7.0-linux-x64.tar.gz",
+      "node-v17.7.0-linux-x64.tar.xz"
+    ],
+    "type": "linux",
+    "architecture": "x64"
+  },
+  {
+    "id": "osx-arm64-tar",
+    "files": [
+      "node-v17.7.0-darwin-arm64.tar.gz"
+    ],
+    "type": "macos",
+    "architecture": "arm64"
+  },
+  {
+    "id": "osx-x64-pkg",
+    "files": [
+      "node-v17.7.0.pkg"
+    ],
+    "type": "macos",
+    "architecture": "x64"
+  },
+  {
+    "id": "osx-x64-tar",
+    "files": [
+      "node-v17.7.0-darwin-x64.tar.gz"
+    ],
+    "type": "macos",
+    "architecture": "x64"
+  },
+  {
+    "id": "src",
+    "files": [
+      "node-v17.7.0.tar.xz"
+    ],
+    "type": "source"
+  },
+  {
+    "id": "win-x64-7z",
+    "files": [
+      "node-v17.7.0-win-x64.7z"
+    ],
+    "type": "windows",
+    "architecture": "x64"
+  },
+  {
+    "id": "win-x64-exe",
+    "files": [
+      "win-x64/node.exe",
+      "win-x64/node.lib",
+      "win-x64/node_pdb.7z",
+      "win-x64/node_pdb.zip",
+      "win-x86/node.exe",
+      "win-x86/node.lib",
+      "win-x86/node_pdb.7z",
+      "win-x86/node_pdb.zip"
+    ],
+    "type": "windows",
+    "architecture": "x64"
+  },
+  {
+    "id": "win-x64-msi",
+    "files": [
+      "node-v17.7.0-x64.msi"
+    ],
+    "type": "windows",
+    "architecture": "x64"
+  },
+  {
+    "id": "win-x64-zip",
+    "files": [
+      "node-v17.7.0-win-x64.zip"
+    ],
+    "type": "windows",
+    "architecture": "x64"
+  },
+  {
+    "id": "win-x86-7z",
+    "files": [
+      "node-v17.7.0-win-x86.7z"
+    ],
+    "type": "windows",
+    "architecture": "x86"
+  },
+  {
+    "id": "win-x86-exe",
+    "files": [
+      "win-x64/node.exe",
+      "win-x64/node.lib",
+      "win-x64/node_pdb.7z",
+      "win-x64/node_pdb.zip",
+      "win-x86/node.exe",
+      "win-x86/node.lib",
+      "win-x86/node_pdb.7z",
+      "win-x86/node_pdb.zip"
+    ],
+    "type": "windows",
+    "architecture": "x86"
+  },
+  {
+    "id": "win-x86-msi",
+    "files": [
+      "node-v17.7.0-x86.msi"
+    ],
+    "type": "windows",
+    "architecture": "x86"
+  },
+  {
+    "id": "win-x86-zip",
+    "files": [
+      "node-v17.7.0-win-x86.zip"
+    ],
+    "type": "windows",
+    "architecture": "x86"
+  }
+]
