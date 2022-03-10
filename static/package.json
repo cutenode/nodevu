@@ -26,7 +26,7 @@
   "files": [
     "/data",
     "index.js",
-    "package.json"
+    "LICENSE"
   ],
   "author": "Tierney Cyren <hello@bnb.im>",
   "license": "MIT",

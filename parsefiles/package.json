@@ -16,7 +16,8 @@
     "files"
   ],
   "files": [
-    "index.js"
+    "index.js",
+    "LICENSE"
   ],
   "author": "Tierney Cyren <hello@bnb.im>",
   "license": "MIT",

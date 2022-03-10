@@ -9,7 +9,8 @@
     "standard": "^16.0.4"
   },
   "files": [
-    "index.js"
+    "index.js",
+    "LICENSE"
   ],
   "scripts": {
     "lint": "standard",
