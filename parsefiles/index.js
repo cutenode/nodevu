@@ -45,11 +45,9 @@ function parseFilename (file, version) {
   } else if (info.files[0] === ('src')) { // source filenames.
     info.files[0] = `node-v${version}.tar.gz`
     info.files[0] = `node-v${version}.tar.xz`
-  } else if (info.files[0].includes('linux-') || info.files[0] === ('headers') || info.files[0] === ('aix-ppc64')) { // linux, headers, and aix
+  } else if (info.files[0].includes('linux-') || info.files[0] === ('headers') || info.files[0] === ('aix-ppc64') || info.files[0].includes('sunos')) { // linux, headers, and aix
     info.files[0] = `node-v${version}-${info.files[0]}.tar.gz`
     info.files.push(info.files[0].replace('.tar.gz', '.tar.xz'))
-  } else {
-    info.files[0] = info.files[0].concat('.tar.gz')
   }
 
   // handle the types appropriately.
