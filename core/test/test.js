@@ -1,6 +1,6 @@
 const assert = require('assert')
-const nodevu = require('../index')
 const nock = require('nock')
+const nodevu = require('../index')
 
 const index = require('./data/index.json')
 const schedule = require('./data/schedule.json')
