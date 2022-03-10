@@ -7,6 +7,7 @@
     "lint": "standard",
     "lint:fix": "standard --fix",
     "test": "mocha",
+    "test:update": "node ./test/util/updateData.js",
     "coverage": "nyc mocha"
   },
   "author": "Tierney Cyren <hello@bnb.im> (https://bnb.im/)",
