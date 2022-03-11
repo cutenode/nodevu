@@ -1,0 +1,27 @@
+{
+  "name": "@nodevu/ranges",
+  "version": "0.0.1",
+  "description": "support node's unofficial alias namespace",
+  "main": "index.js",
+  "devDependencies": {
+    "mocha": "^9.2.1",
+    "nyc": "^15.1.0",
+    "standard": "^16.0.4"
+  },
+  "scripts": {
+    "lint": "standard",
+    "lint:fix": "standard --fix",
+    "test": "mocha",
+    "coverage": "nyc mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cutenode/nodevu.git"
+  },
+  "author": "Tierney Cyren <hello@bnb.im> (https://bnb.im/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cutenode/nodevu/issues"
+  },
+  "homepage": "https://github.com/cutenode/nodevu#readme"
+}

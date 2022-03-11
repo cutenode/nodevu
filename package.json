@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "lint": "standard",
-    "lint:fix": "standard --fix"
+    "lint:fix": "standard --fix",
+    "coverage:ws": "npm run coverage --ws",
+    "test:ws": "npm run test --ws"
   },
   "repository": {
     "type": "git",
@@ -25,7 +27,8 @@
     "core",
     "static",
     "parsefiles",
-    "earliest"
+    "earliest",
+    "ranges"
   ],
   "standard": {
     "globals": [
