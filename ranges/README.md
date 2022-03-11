@@ -24,7 +24,7 @@ This module will return a medium-sized object with the following structure, with
   - newestSecurity (String): The newest possible security release.
   - newest (String): The newest version.
   - oldest (String): The oldest version.
-- current: {
+- current:
   - versions (Array): An array of versions.
   - oldestSecurity (String): The oldest security release.
   - newestSecurity (String): The newest possible security release.
