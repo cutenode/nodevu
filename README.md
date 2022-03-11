@@ -10,3 +10,4 @@ nodevu is composed of a set of modules:
 - Helper Modules
   * [parsefiles](./parsefiles/): this is a utility for parsing the `files` property of the [Node.js distributions JSON](https://nodejs.org/dist/index.json) file to understand the available files for any given set of identifiers from that list. It also provides additional, potentially useful information.
   * [earliest](./earliest/): this is a utility for finding the earliest LTS or Security release in a Node.js release line.
+  * [ranges](./ranges/): a module that provides information about ranges of Node.js versions.
