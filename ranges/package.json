@@ -8,6 +8,10 @@
     "nyc": "^15.1.0",
     "standard": "^16.0.4"
   },
+  "files": [
+    "index.js",
+    "LICENSE"
+  ],
   "scripts": {
     "lint": "standard",
     "lint:fix": "standard --fix",
