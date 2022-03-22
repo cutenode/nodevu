@@ -1,6 +1,6 @@
 {
   "name": "@nodevu/earliest",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "a module that returns the earliest lts or security release of the release line passed.",
   "main": "index.js",
   "devDependencies": {
@@ -31,5 +31,8 @@
   "bugs": {
     "url": "https://github.com/cutenode/nodevu/issues"
   },
-  "homepage": "https://github.com/cutenode/nodevu#readme"
+  "homepage": "https://github.com/cutenode/nodevu#readme",
+  "dependencies": {
+    "@nodevu/core": "^0.0.2"
+  }
 }
