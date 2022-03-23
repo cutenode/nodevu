@@ -28,7 +28,8 @@
     "static",
     "parsefiles",
     "earliest",
-    "ranges"
+    "ranges",
+    "aliases"
   ],
   "standard": {
     "globals": [

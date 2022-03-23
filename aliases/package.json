@@ -1,0 +1,20 @@
+{
+  "name": "@nodevu/aliases",
+  "version": "0.0.1",
+  "description": "available aliases for sets of Node.js versions",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cutenode/nodevu.git"
+  },
+  "keywords": [
+    "node.js",
+    "version"
+  ],
+  "author": "Tierney Cyren <hello@bnb.im> (https://bnb.im/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cutenode/nodevu/issues"
+  },
+  "homepage": "https://github.com/cutenode/nodevu#readme"
+}
