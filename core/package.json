@@ -20,7 +20,7 @@
     "@nodevu/parsefiles": "^0.0.1",
     "luxon": "^2.3.0",
     "semver": "^7.3.5",
-    "undici": "^4.16.0"
+    "undici": "^5.5.1"
   },
   "devDependencies": {
     "mocha": "^9.2.1",
