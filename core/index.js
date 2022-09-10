@@ -3,9 +3,19 @@ const { DateTime } = require('luxon')
 const semver = require('semver')
 const parsefiles = require('@nodevu/parsefiles')
 
-async function core () {
-  const rawVersions = await fetch('https://nodejs.org/dist/index.json')
-  const rawSchedule = await fetch('https://raw.githubusercontent.com/nodejs/Release/master/schedule.json')
+async function core (options) {
+  let coreFetch
+
+  // this lets us replace the fetch we're using here with a different instance
+  // of fetch, which is potentially useful for testing.
+  if (options.fetch) {
+    coreFetch = options.fetch
+  } else {
+    coreFetch = fetch
+  }
+
+  const rawVersions = await coreFetch('https://nodejs.org/dist/index.json')
+  const rawSchedule = await coreFetch('https://raw.githubusercontent.com/nodejs/Release/master/schedule.json')
   const versions = await rawVersions.json()
   const schedule = await rawSchedule.json()
   const now = DateTime.now()
