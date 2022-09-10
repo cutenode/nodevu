@@ -1,6 +1,6 @@
 {
   "name": "@nodevu/core",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "inver core API: comprehensive node.js version tooling",
   "main": "index.js",
   "scripts": {
