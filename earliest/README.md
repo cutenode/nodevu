@@ -20,7 +20,7 @@ const earliestSecurity = earliest('v16', 'security')
 
 ## API
 
-this module exports three functions
+This module exports three functions:
 
 - `earliest(name, type)`
   - `name` (string): Node.js release line name. Examples: `v16`, `v11`, `v8`, `v0.10`.
