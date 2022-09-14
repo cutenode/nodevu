@@ -17,12 +17,6 @@ getData()
 
 ## API
 
-assuming you're requiring this module as `nodevu`:
-
-- `nodevu(options)` - returns a promise that resolves to a giant JSON blob of data. This is the default export.
-  - `options` (`Object`, optional) - an`Object`of options to pass to the module.
-    - `fetch` (`Object`, optional): - your chosen fetch implementation, if you _don't_ want to use the Undici Fetch that the package uses by default.
-
 The data returned by this module follows a pretty specific structure. Here's a detailing of that structure:
 
 - Everything is within a top level `Object`.
