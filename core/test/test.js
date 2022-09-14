@@ -4,7 +4,6 @@ const { MockAgent, setGlobalDispatcher } = require('undici')
 const index = require('./data/index.json')
 const schedule = require('./data/schedule.json')
 
-
 describe('attempt to fetch data', async () => {
   beforeEach(() => {
     // this mock agent stuff isn't actually working for... some unkown reason
@@ -13,7 +12,7 @@ describe('attempt to fetch data', async () => {
     setGlobalDispatcher(mockAgent)
     
     const nodejsMock = mockAgent.get('https://nodejs.org')
-    nodejsMock.intercept({ path: '/dist/index.json' }).reply(200, index)
+    nodejsMock.intercept({ path: '/dist/index.json', headers: { "Content-Type": "application/json" } }).reply(200, index)
 
     const githubMock = mockAgent.get('https://raw.githubusercontent.com')
     githubMock.intercept({ path: '/nodejs/Release/master/schedule.json', headers: { "Content-Type": "application/json" } }).reply(200, schedule)
