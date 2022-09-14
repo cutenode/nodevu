@@ -29,7 +29,7 @@ describe('attempt to fetch data', async () => {
   })
 
   it('should have some correct static values for support in a release line', async () => {
-    const data = await nodevu({})
+    const data = await nodevu()
     assert.deepStrictEqual(data.v14.support.codename, 'Fermium')
     assert.deepStrictEqual(data.v14.support.lts.newest, '14.19.0')
     assert.deepStrictEqual(data.v14.support.lts.oldest, '14.15.0')
@@ -40,7 +40,7 @@ describe('attempt to fetch data', async () => {
   })
 
   it('should have some correct dynamic values for support in a release line', async () => {
-    const data = await nodevu({ fetch: fetch })
+    const data = await nodevu()
     assert.deepStrictEqual(data.v8.support.phases.current, 'end')
     assert.deepStrictEqual(data.v14.support.phases.current, 'maintenance')
     assert.deepStrictEqual(data.v16.support.phases.current, 'lts')
