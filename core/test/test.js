@@ -1,22 +1,26 @@
 const assert = require('assert')
 const nodevu = require('../index')
-const { MockAgent, setGlobalDispatcher, fetch } = require('undici')
+const { MockAgent, setGlobalDispatcher } = require('undici')
 const index = require('./data/index.json')
 const schedule = require('./data/schedule.json')
 
-// this mock agent stuff isn't actually working for... some unkown reason
-const mock = new MockAgent()
-setGlobalDispatcher(mock)
-
-const nodejsMock = mock.get('http://nodejs.org')
-nodejsMock.intercept({ path: '/dist/index.json', method: 'GET' }).reply(200, index)
-
-const githubMock = mock.get('https://raw.githubusercontent.com')
-githubMock.intercept({ path: '/nodejs/Release/master/schedule.json', method: 'GET' }).reply(200, schedule)
 
 describe('attempt to fetch data', async () => {
+  beforeEach(() => {
+    // this mock agent stuff isn't actually working for... some unkown reason
+    const mockAgent = new MockAgent()
+    mockAgent.disableNetConnect()
+    setGlobalDispatcher(mockAgent)
+    
+    const nodejsMock = mockAgent.get('https://nodejs.org')
+    nodejsMock.intercept({ path: '/dist/index.json' }).reply(200, index)
+
+    const githubMock = mockAgent.get('https://raw.githubusercontent.com')
+    githubMock.intercept({ path: '/nodejs/Release/master/schedule.json', headers: { "Content-Type": "application/json" } }).reply(200, schedule)
+  })
+
   it('should have some correct values for Node.js dependencies', async () => {
-    const data = await nodevu({ fetch: fetch })
+    const data = await nodevu()
     assert.deepStrictEqual(data.v17.releases['v17.0.0'].dependencies.npm, '8.1.0')
     assert.deepStrictEqual(data.v17.releases['v17.0.0'].dependencies.v8, '9.5.172.21')
     assert.deepStrictEqual(data.v17.releases['v17.0.0'].dependencies.uv, '1.42.0')
@@ -25,7 +29,7 @@ describe('attempt to fetch data', async () => {
   })
 
   it('should have some correct static values for support in a release line', async () => {
-    const data = await nodevu({ fetch: fetch })
+    const data = await nodevu({})
     assert.deepStrictEqual(data.v14.support.codename, 'Fermium')
     assert.deepStrictEqual(data.v14.support.lts.newest, '14.19.0')
     assert.deepStrictEqual(data.v14.support.lts.oldest, '14.15.0')
