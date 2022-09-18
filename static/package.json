@@ -9,8 +9,8 @@
     "build:releases": "node build/releases.js",
     "build:security": "node build/security.js",
     "build:support": "node build/support.js",
-    "lint": "standard",
-    "lint:fix": "standard --fix",
+    "lint": "standard --env mocha",
+    "lint:fix": "standard --fix --env mocha",
     "test": "mocha",
     "coverage": "nyc mocha"
   },

@@ -4,8 +4,8 @@
   "description": "nodevu core API: comprehensive node.js version tooling",
   "main": "index.js",
   "scripts": {
-    "lint": "standard",
-    "lint:fix": "standard --fix",
+    "lint": "standard --env mocha",
+    "lint:fix": "standard --fix --env mocha",
     "test": "mocha",
     "test:update": "npm run test:update:static && npm run test:update:now",
     "test:update:static": "node ./test/util/updateStaticData.js",

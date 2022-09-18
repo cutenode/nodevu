@@ -17,6 +17,10 @@
     "url": "https://github.com/cutenode/nodevu/issues"
   },
   "homepage": "https://github.com/cutenode/nodevu#readme",
+  "scripts": {
+    "lint": "standard --env mocha",
+    "lint:fix": "standard --fix --env mocha"
+  },
   "devDependencies": {
     "standard": "^17.0.0"
   }

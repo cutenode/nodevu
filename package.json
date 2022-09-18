@@ -4,8 +4,8 @@
   "description": "comprehensive node.js version tooling",
   "main": "index.js",
   "scripts": {
-    "lint": "standard",
-    "lint:fix": "standard --fix",
+    "lint": "npm run lint --ws",
+    "lint:fix": "npm run lint:fix --ws",
     "coverage:ws": "npm run coverage --ws",
     "test:ws": "npm run test --ws"
   },

@@ -8,8 +8,8 @@
     "LICENSE"
   ],
   "scripts": {
-    "lint": "standard",
-    "lint:fix": "standard --fix",
+    "lint": "standard --env mocha",
+    "lint:fix": "standard --fix --env mocha",
     "test": "mocha",
     "coverage": "nyc mocha"
   },
