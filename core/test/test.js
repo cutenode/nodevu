@@ -69,7 +69,7 @@ describe('statically check that we get dynamic values correctly', async () => {
   })
 
   it('should have some correct dynamic values for support in multiple release lines', async () => {
-    const staticData = await nodevu({ now: now })
+    const staticData = await nodevu({ now })
     assert.deepStrictEqual(staticData.v8.support.phases.current, 'end')
     assert.deepStrictEqual(staticData.v14.support.phases.current, 'maintenance')
     assert.deepStrictEqual(staticData.v16.support.phases.current, 'lts')
@@ -102,7 +102,7 @@ describe('check to make sure that changing sources works as expected', async () 
     const urls = {
       index: 'https://bnb.im/dist/index.json'
     }
-    const staticData = await nodevu({ urls: urls })
+    const staticData = await nodevu({ urls })
     assert.deepStrictEqual(staticData.v17.releases['v17.0.0'].dependencies.npm, '8.1.0')
     assert.deepStrictEqual(staticData.v14.support.codename, 'Fermium')
     assert.deepStrictEqual(staticData.v8.support.phases.current, 'end')
@@ -113,12 +113,11 @@ describe('check to make sure that changing sources works as expected', async () 
     const urls = {
       schedule: 'https://bnb.im/dist/schedule.json'
     }
-    const staticData = await nodevu({ urls: urls })
+    const staticData = await nodevu({ urls })
     assert.deepStrictEqual(staticData.v17.releases['v17.0.0'].dependencies.v8, '9.5.172.21')
     assert.deepStrictEqual(staticData.v14.support.lts.newest, '14.19.0')
     assert.deepStrictEqual(staticData.v9.support.phases.current, 'end')
   })
-
 })
 
 describe('check to make sure that combining options works as expected', async () => {
@@ -146,7 +145,7 @@ describe('check to make sure that combining options works as expected', async ()
     const urls = {
       index: 'https://bnb.im/dist/index.json'
     }
-    const staticData = await nodevu({ now: now, urls: urls })
+    const staticData = await nodevu({ now, urls })
     assert.deepStrictEqual(staticData.v17.releases['v17.0.0'].dependencies.npm, '8.1.0')
     assert.deepStrictEqual(staticData.v14.support.codename, 'Fermium')
     assert.deepStrictEqual(staticData.v8.support.phases.current, 'end')
@@ -157,7 +156,7 @@ describe('check to make sure that combining options works as expected', async ()
     const urls = {
       schedule: 'https://bnb.im/dist/schedule.json'
     }
-    const staticData = await nodevu({ now: now, urls: urls })
+    const staticData = await nodevu({ now, urls })
     assert.deepStrictEqual(staticData.v17.releases['v17.0.0'].dependencies.v8, '9.5.172.21')
     assert.deepStrictEqual(staticData.v14.support.lts.newest, '14.19.0')
     assert.deepStrictEqual(staticData.v9.support.phases.current, 'end')
@@ -168,7 +167,7 @@ describe('check to make sure that combining options works as expected', async ()
       index: 'https://bnb.im/dist/index.json',
       schedule: 'https://bnb.im/dist/schedule.json'
     }
-    const staticData = await nodevu({ now: now, urls: urls })
+    const staticData = await nodevu({ now, urls })
     assert.deepStrictEqual(staticData.v17.releases['v17.0.0'].dependencies.v8, '9.5.172.21')
     assert.deepStrictEqual(staticData.v14.support.lts.newest, '14.19.0')
     assert.deepStrictEqual(staticData.v9.support.phases.current, 'end')
