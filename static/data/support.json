@@ -1,4 +1,17 @@
 {
+  "v18": {
+    "codename": "",
+    "lts": {},
+    "phases": {
+      "dates": {
+        "start": "2022-04-19",
+        "lts": "2022-10-25",
+        "maintenance": "2023-10-18",
+        "end": "2025-04-30"
+      },
+      "current": "start"
+    }
+  },
   "v17": {
     "phases": {
       "dates": {
@@ -6,13 +19,13 @@
         "maintenance": "2022-04-01",
         "end": "2022-06-01"
       },
-      "current": "start"
+      "current": "end"
     }
   },
   "v16": {
     "codename": "Gallium",
     "lts": {
-      "newest": "16.14.0",
+      "newest": "16.17.0",
       "oldest": "16.13.0"
     },
     "phases": {
@@ -20,7 +33,7 @@
         "start": "2021-04-20",
         "lts": "2021-10-26",
         "maintenance": "2022-10-18",
-        "end": "2024-04-30"
+        "end": "2023-09-11"
       },
       "current": "lts"
     }
@@ -38,7 +51,7 @@
   "v14": {
     "codename": "Fermium",
     "lts": {
-      "newest": "14.19.0",
+      "newest": "14.20.0",
       "oldest": "14.15.0"
     },
     "phases": {
@@ -64,7 +77,7 @@
   "v12": {
     "codename": "Erbium",
     "lts": {
-      "newest": "12.22.10",
+      "newest": "12.22.12",
       "oldest": "12.13.0"
     },
     "phases": {
@@ -74,7 +87,7 @@
         "maintenance": "2020-11-30",
         "end": "2022-04-30"
       },
-      "current": "maintenance"
+      "current": "end"
     }
   },
   "v11": {
