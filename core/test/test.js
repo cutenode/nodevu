@@ -9,7 +9,7 @@ dns.setDefaultResultOrder('ipv4first')
 const staticIndex = require('./data/static/index.json')
 const staticSchedule = require('./data/static/schedule.json')
 const staticNow = require('./data/static/now.json')
-const usableStaticNow = JSON.parse(staticNow)
+const now = JSON.parse(staticNow)
 
 // these are tests that run with static data but do not need to be frozen in time.
 describe('check that we get the values we expect from values that should not ever change', async () => {
@@ -68,11 +68,109 @@ describe('statically check that we get dynamic values correctly', async () => {
     githubMock.intercept({ path: '/nodejs/Release/master/schedule.json' }).reply(200, staticSchedule)
   })
 
-  it('should have some correct dynamic values for support in a release line', async () => {
-    const staticData = await nodevu({ now: usableStaticNow })
+  it('should have some correct dynamic values for support in multiple release lines', async () => {
+    const staticData = await nodevu({ now: now })
     assert.deepStrictEqual(staticData.v8.support.phases.current, 'end')
     assert.deepStrictEqual(staticData.v14.support.phases.current, 'maintenance')
     assert.deepStrictEqual(staticData.v16.support.phases.current, 'lts')
     assert.deepStrictEqual(staticData.v17.support.phases.current, 'start')
+  })
+})
+
+describe('check to make sure that changing sources works as expected', async () => {
+  beforeEach(() => {
+    // this mock agent stuff isn't actually working for... some unkown reason
+    const mockAgent = new MockAgent()
+    mockAgent.disableNetConnect()
+    setGlobalDispatcher(mockAgent)
+
+    const nodejsMock = mockAgent.get('https://nodejs.org')
+    nodejsMock.intercept({ path: '/dist/index.json' }).reply(200, staticIndex)
+
+    const githubMock = mockAgent.get('https://raw.githubusercontent.com')
+    githubMock.intercept({ path: '/nodejs/Release/master/schedule.json' }).reply(200, staticSchedule)
+
+    const customIndexMock = mockAgent.get('https://bnb.im')
+    customIndexMock.intercept({ path: '/dist/index.json' }).reply(200, staticIndex)
+
+    const customScheduleMock = mockAgent.get('https://bnb.im')
+    customScheduleMock.intercept({ path: '/dist/schedule.json' }).reply(200, staticSchedule)
+  })
+
+  // failing
+  it('should still return valid data when the index is a different URL from the default', async () => {
+    const urls = {
+      index: 'https://bnb.im/dist/index.json'
+    }
+    const staticData = await nodevu({ urls: urls })
+    assert.deepStrictEqual(staticData.v17.releases['v17.0.0'].dependencies.npm, '8.1.0')
+    assert.deepStrictEqual(staticData.v14.support.codename, 'Fermium')
+    assert.deepStrictEqual(staticData.v8.support.phases.current, 'end')
+  })
+
+  // failing
+  it('should still return valid data when the schedule is a different URL from the default', async () => {
+    const urls = {
+      schedule: 'https://bnb.im/dist/schedule.json'
+    }
+    const staticData = await nodevu({ urls: urls })
+    assert.deepStrictEqual(staticData.v17.releases['v17.0.0'].dependencies.v8, '9.5.172.21')
+    assert.deepStrictEqual(staticData.v14.support.lts.newest, '14.19.0')
+    assert.deepStrictEqual(staticData.v9.support.phases.current, 'end')
+  })
+
+})
+
+describe('check to make sure that combining options works as expected', async () => {
+  beforeEach(() => {
+    // this mock agent stuff isn't actually working for... some unkown reason
+    const mockAgent = new MockAgent()
+    mockAgent.disableNetConnect()
+    setGlobalDispatcher(mockAgent)
+
+    const defaultIndexMock = mockAgent.get('https://nodejs.org')
+    defaultIndexMock.intercept({ path: '/dist/index.json' }).reply(200, staticIndex)
+
+    const defaultScheduleMock = mockAgent.get('https://raw.githubusercontent.com')
+    defaultScheduleMock.intercept({ path: '/nodejs/Release/master/schedule.json' }).reply(200, staticSchedule)
+
+    const customIndexMock = mockAgent.get('https://bnb.im')
+    customIndexMock.intercept({ path: '/dist/index.json' }).reply(200, staticIndex)
+
+    const customScheduleMock = mockAgent.get('https://bnb.im')
+    customScheduleMock.intercept({ path: '/dist/schedule.json' }).reply(200, staticSchedule)
+  })
+
+  // failing
+  it('should still return valid data when the index is a different URL from the default while also using static now', async () => {
+    const urls = {
+      index: 'https://bnb.im/dist/index.json'
+    }
+    const staticData = await nodevu({ now: now, urls: urls })
+    assert.deepStrictEqual(staticData.v17.releases['v17.0.0'].dependencies.npm, '8.1.0')
+    assert.deepStrictEqual(staticData.v14.support.codename, 'Fermium')
+    assert.deepStrictEqual(staticData.v8.support.phases.current, 'end')
+  })
+
+  // failing
+  it('should still return valid data when the schedule is a different URL from the default while also using static now', async () => {
+    const urls = {
+      schedule: 'https://bnb.im/dist/schedule.json'
+    }
+    const staticData = await nodevu({ now: now, urls: urls })
+    assert.deepStrictEqual(staticData.v17.releases['v17.0.0'].dependencies.v8, '9.5.172.21')
+    assert.deepStrictEqual(staticData.v14.support.lts.newest, '14.19.0')
+    assert.deepStrictEqual(staticData.v9.support.phases.current, 'end')
+  })
+
+  it('should still return valid data when the index and the schedule are a different URL from the default while also using static now', async () => {
+    const urls = {
+      index: 'https://bnb.im/dist/index.json',
+      schedule: 'https://bnb.im/dist/schedule.json'
+    }
+    const staticData = await nodevu({ now: now, urls: urls })
+    assert.deepStrictEqual(staticData.v17.releases['v17.0.0'].dependencies.v8, '9.5.172.21')
+    assert.deepStrictEqual(staticData.v14.support.lts.newest, '14.19.0')
+    assert.deepStrictEqual(staticData.v9.support.phases.current, 'end')
   })
 })
