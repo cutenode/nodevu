@@ -11,20 +11,28 @@ const staticSchedule = require('./data/static/schedule.json')
 const staticNow = require('./data/static/now.json')
 const now = JSON.parse(staticNow)
 
+function beforeEachTemplate () {
+  // this mock agent stuff isn't actually working for... some unkown reason
+  const mockAgent = new MockAgent()
+  mockAgent.disableNetConnect()
+  setGlobalDispatcher(mockAgent)
+
+  const defaultIndexMock = mockAgent.get('https://nodejs.org')
+  defaultIndexMock.intercept({ path: '/dist/index.json' }).reply(200, staticIndex)
+
+  const defaultScheduleMock = mockAgent.get('https://raw.githubusercontent.com')
+  defaultScheduleMock.intercept({ path: '/nodejs/Release/master/schedule.json' }).reply(200, staticSchedule)
+
+  const customIndexMock = mockAgent.get('https://bnb.im')
+  customIndexMock.intercept({ path: '/dist/index.json' }).reply(200, staticIndex)
+
+  const customScheduleMock = mockAgent.get('https://bnb.im')
+  customScheduleMock.intercept({ path: '/dist/schedule.json' }).reply(200, staticSchedule)
+}
+
 // these are tests that run with static data but do not need to be frozen in time.
 describe('check that we get the values we expect from values that should not ever change', async () => {
-  beforeEach(() => {
-    // this mock agent stuff isn't actually working for... some unkown reason
-    const mockAgent = new MockAgent()
-    mockAgent.disableNetConnect()
-    setGlobalDispatcher(mockAgent)
-
-    const nodejsMock = mockAgent.get('https://nodejs.org')
-    nodejsMock.intercept({ path: '/dist/index.json' }).reply(200, staticIndex)
-
-    const githubMock = mockAgent.get('https://raw.githubusercontent.com')
-    githubMock.intercept({ path: '/nodejs/Release/master/schedule.json' }).reply(200, staticSchedule)
-  })
+  beforeEach(beforeEachTemplate)
 
   it('should have some correct values for Node.js dependencies', async () => {
     const staticData = await nodevu()
@@ -55,18 +63,7 @@ describe('check that we get the values we expect from values that should not eve
 //
 // only tests that *require* the `now` option shoulod be in this set of tests.
 describe('statically check that we get dynamic values correctly', async () => {
-  beforeEach(() => {
-    // this mock agent stuff isn't actually working for... some unkown reason
-    const mockAgent = new MockAgent()
-    mockAgent.disableNetConnect()
-    setGlobalDispatcher(mockAgent)
-
-    const nodejsMock = mockAgent.get('https://nodejs.org')
-    nodejsMock.intercept({ path: '/dist/index.json' }).reply(200, staticIndex)
-
-    const githubMock = mockAgent.get('https://raw.githubusercontent.com')
-    githubMock.intercept({ path: '/nodejs/Release/master/schedule.json' }).reply(200, staticSchedule)
-  })
+  beforeEach(beforeEachTemplate)
 
   it('should have some correct dynamic values for support in multiple release lines', async () => {
     const staticData = await nodevu({ now })
@@ -78,24 +75,7 @@ describe('statically check that we get dynamic values correctly', async () => {
 })
 
 describe('check to make sure that changing sources works as expected', async () => {
-  beforeEach(() => {
-    // this mock agent stuff isn't actually working for... some unkown reason
-    const mockAgent = new MockAgent()
-    mockAgent.disableNetConnect()
-    setGlobalDispatcher(mockAgent)
-
-    const nodejsMock = mockAgent.get('https://nodejs.org')
-    nodejsMock.intercept({ path: '/dist/index.json' }).reply(200, staticIndex)
-
-    const githubMock = mockAgent.get('https://raw.githubusercontent.com')
-    githubMock.intercept({ path: '/nodejs/Release/master/schedule.json' }).reply(200, staticSchedule)
-
-    const customIndexMock = mockAgent.get('https://bnb.im')
-    customIndexMock.intercept({ path: '/dist/index.json' }).reply(200, staticIndex)
-
-    const customScheduleMock = mockAgent.get('https://bnb.im')
-    customScheduleMock.intercept({ path: '/dist/schedule.json' }).reply(200, staticSchedule)
-  })
+  beforeEach(beforeEachTemplate)
 
   // failing
   it('should still return valid data when the index is a different URL from the default', async () => {
@@ -121,24 +101,7 @@ describe('check to make sure that changing sources works as expected', async () 
 })
 
 describe('check to make sure that combining options works as expected', async () => {
-  beforeEach(() => {
-    // this mock agent stuff isn't actually working for... some unkown reason
-    const mockAgent = new MockAgent()
-    mockAgent.disableNetConnect()
-    setGlobalDispatcher(mockAgent)
-
-    const defaultIndexMock = mockAgent.get('https://nodejs.org')
-    defaultIndexMock.intercept({ path: '/dist/index.json' }).reply(200, staticIndex)
-
-    const defaultScheduleMock = mockAgent.get('https://raw.githubusercontent.com')
-    defaultScheduleMock.intercept({ path: '/nodejs/Release/master/schedule.json' }).reply(200, staticSchedule)
-
-    const customIndexMock = mockAgent.get('https://bnb.im')
-    customIndexMock.intercept({ path: '/dist/index.json' }).reply(200, staticIndex)
-
-    const customScheduleMock = mockAgent.get('https://bnb.im')
-    customScheduleMock.intercept({ path: '/dist/schedule.json' }).reply(200, staticSchedule)
-  })
+  beforeEach(beforeEachTemplate)
 
   // failing
   it('should still return valid data when the index is a different URL from the default while also using static now', async () => {
