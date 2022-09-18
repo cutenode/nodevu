@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/cutenode/nodevu/issues"
   },
-  "homepage": "https://github.com/cutenode/nodevu#readme"
+  "homepage": "https://github.com/cutenode/nodevu#readme",
+  "devDependencies": {
+    "standard": "^17.0.0"
+  }
 }

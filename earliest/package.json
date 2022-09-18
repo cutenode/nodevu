@@ -3,11 +3,6 @@
   "version": "0.0.2",
   "description": "a module that returns the earliest lts or security release of the release line passed.",
   "main": "index.js",
-  "devDependencies": {
-    "mocha": "^9.2.1",
-    "nyc": "^15.1.0",
-    "standard": "^16.0.4"
-  },
   "files": [
     "index.js",
     "LICENSE"
@@ -34,5 +29,10 @@
   "homepage": "https://github.com/cutenode/nodevu#readme",
   "dependencies": {
     "@nodevu/core": "^0.0.2"
+  },
+  "devDependencies": {
+    "mocha": "^9.2.1",
+    "nyc": "^15.1.0",
+    "standard": "^17.0.0"
   }
 }
