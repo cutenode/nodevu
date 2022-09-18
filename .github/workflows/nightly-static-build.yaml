@@ -28,9 +28,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          title: "Update Static Data"
+          title: "feat: update data"
           body: "Updates the static data based on a nightly (or manual) run of the build step in GitHub Actions. Unless the data is invalid, this should be good to go."
           branch: "nightly"
-          commit-message: "feat: add new data"
+          commit-message: "feat: update data"
           assignees: bnb
           auto-merge: squash
