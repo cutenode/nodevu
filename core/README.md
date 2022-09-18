@@ -17,6 +17,16 @@ getData()
 
 ## API
 
+assuming you're requiring this module as `nodevu`:
+
+- `nodevu(options)` - returns a promise that resolves to a giant JSON blob of data. This is the default export.
+  - `options` (`Object`, optional): an `Object` of options to pass to the module.
+    - `fetch` (`Object`, optional): your chosen fetch implementation. Default: [Undici](https://github.com/nodejs/undici)'s fetch impelmentation.
+    - `now` (`String`, optional): a custom date `String` (ISO 8601) to do relative checks against. _Most likely_ only useful for internal testing. Default: `DateTime.now()` from [Luxon](https://moment.github.io/luxon/).
+    - `urls` (`Object`, optional): an `Object` that enables you to set custom values for the Node.js `index.json` file and `schedule.json` file.
+      - `index` (`String`, optional): a `String` that, if set, changes the URL that this module looks for the version index file at. This should be a _full_ URL that points to a JSON file. Default: `https://nodejs.org/dist/index.json`.
+      - `schedule` (`String`, optional): a `String` that, if set, changes the URL that this module looks for the Node.js release schedule file at. This should be a _full_ URL that points to a JSON file. Default: `https://raw.githubusercontent.com/nodejs/Release/master/schedule.json` .
+
 The data returned by this module follows a pretty specific structure. Here's a detailing of that structure:
 
 - Everything is within a top level `Object`.

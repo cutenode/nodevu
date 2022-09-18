@@ -9,10 +9,12 @@ async function core (options) {
 
   const fetch = parsedOptions.fetch
   const now = DateTime.fromISO(parsedOptions.now)
+  const nodejsIndexURL = parsedOptions.urls.index
+  const nodejsScheduleURL = parsedOptions.urls.schedule
 
   // collect and configure our data sources
-  const rawVersions = await fetch('https://nodejs.org/dist/index.json')
-  const rawSchedule = await fetch('https://raw.githubusercontent.com/nodejs/Release/master/schedule.json')
+  const rawVersions = await fetch(nodejsIndexURL)
+  const rawSchedule = await fetch(nodejsScheduleURL)
   const versions = await rawVersions.json()
   const schedule = await rawSchedule.json()
   const data = {}
@@ -185,7 +187,11 @@ async function parseOptions (options) {
   // set up our defaults
   const parsedOptions = {
     fetch: await defaultFetch,
-    now: DateTime.now()
+    now: DateTime.now(),
+    urls: {
+      index: 'https://nodejs.org/dist/index.json',
+      schedule: 'https://raw.githubusercontent.com/nodejs/Release/master/schedule.json'
+    }
   }
 
   // allow the end-user to replace our fetch implementation with another one of their precernece.
@@ -196,6 +202,16 @@ async function parseOptions (options) {
   // allow the end-user to provide a custom DateTime. This is particularly useful for tests.
   if (options?.now) {
     parsedOptions.now = options.now
+  }
+
+  if(options?.urls?.index) {
+    console.log('custom index')
+    parsedOptions.urls.index = options.urls.index
+  }
+
+  if(options?.urls?.schedule) {
+    console.log('custom schedule')
+    parsedOptions.urls.schedule = options.urls.schedule
   }
 
   return parsedOptions
