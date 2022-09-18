@@ -7,8 +7,7 @@
     "lint": "standard",
     "lint:fix": "standard --fix",
     "test": "mocha",
-    "test:update": "npm run test:update:dynamic && npm run test:update:static && npm run test:update:now",
-    "test:update:dynamic": "node ./test/util/updateDynamicData.js",
+    "test:update": "npm run test:update:static && npm run test:update:now",
     "test:update:static": "node ./test/util/updateStaticData.js",
     "test:update:now": "node ./test/util/updateStaticNow.js",
     "coverage": "nyc mocha"

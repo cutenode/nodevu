@@ -11,7 +11,8 @@ const staticSchedule = require('./data/static/schedule.json')
 const staticNow = require('./data/static/now.json')
 const usableStaticNow = JSON.parse(staticNow)
 
-describe('use static data to test', async () => {
+// these are tests that run with static data but do not need to be frozen in time.
+describe('check that we get the values we expect from values that should not ever change', async () => {
   beforeEach(() => {
     // this mock agent stuff isn't actually working for... some unkown reason
     const mockAgent = new MockAgent()
@@ -26,7 +27,7 @@ describe('use static data to test', async () => {
   })
 
   it('should have some correct values for Node.js dependencies', async () => {
-    const staticData = await nodevu({ now: usableStaticNow })
+    const staticData = await nodevu()
     assert.deepStrictEqual(staticData.v17.releases['v17.0.0'].dependencies.npm, '8.1.0')
     assert.deepStrictEqual(staticData.v17.releases['v17.0.0'].dependencies.v8, '9.5.172.21')
     assert.deepStrictEqual(staticData.v17.releases['v17.0.0'].dependencies.uv, '1.42.0')
@@ -35,7 +36,7 @@ describe('use static data to test', async () => {
   })
 
   it('should have some correct static values for support in a release line', async () => {
-    const staticData = await nodevu({ now: usableStaticNow })
+    const staticData = await nodevu()
     assert.deepStrictEqual(staticData.v14.support.codename, 'Fermium')
     assert.deepStrictEqual(staticData.v14.support.lts.newest, '14.19.0')
     assert.deepStrictEqual(staticData.v14.support.lts.oldest, '14.15.0')
@@ -43,6 +44,28 @@ describe('use static data to test', async () => {
     assert.deepStrictEqual(staticData.v14.support.phases.dates.lts, '2020-10-27')
     assert.deepStrictEqual(staticData.v14.support.phases.dates.maintenance, '2021-10-19')
     assert.deepStrictEqual(staticData.v14.support.phases.dates.end, '2023-04-30')
+  })
+})
+
+// this is a set of tests that only test against static data effectively frozen at a point in time.
+// these tests should *probably* be updated sometimes. see the npm scripts for update scripts.
+//
+// of particular note about them, they use the `now` option in core to allow us to freeze the
+// time that we're doing relative checks against.
+//
+// only tests that *require* the `now` option shoulod be in this set of tests.
+describe('statically check that we get dynamic values correctly', async () => {
+  beforeEach(() => {
+    // this mock agent stuff isn't actually working for... some unkown reason
+    const mockAgent = new MockAgent()
+    mockAgent.disableNetConnect()
+    setGlobalDispatcher(mockAgent)
+
+    const nodejsMock = mockAgent.get('https://nodejs.org')
+    nodejsMock.intercept({ path: '/dist/index.json' }).reply(200, staticIndex)
+
+    const githubMock = mockAgent.get('https://raw.githubusercontent.com')
+    githubMock.intercept({ path: '/nodejs/Release/master/schedule.json' }).reply(200, staticSchedule)
   })
 
   it('should have some correct dynamic values for support in a release line', async () => {

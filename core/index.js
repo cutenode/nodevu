@@ -11,8 +11,8 @@ async function core (options) {
   const now = DateTime.fromISO(parsedOptions.now)
 
   // collect and configure our data sources
-  const rawVersions = await fetch("https://nodejs.org/dist/index.json")
-  const rawSchedule = await fetch("https://raw.githubusercontent.com/nodejs/Release/master/schedule.json")
+  const rawVersions = await fetch('https://nodejs.org/dist/index.json')
+  const rawSchedule = await fetch('https://raw.githubusercontent.com/nodejs/Release/master/schedule.json')
   const versions = await rawVersions.json()
   const schedule = await rawSchedule.json()
   const data = {}
@@ -149,7 +149,7 @@ async function core (options) {
 }
 
 async function determineCurrentReleasePhase (now, dates = {}) {
-  // we set set this up to enable custom `now` passing, since passing an ISO 
+  // we set set this up to enable custom `now` passing, since passing an ISO
   // const usableNow = DateTime.fromISO(now)
 
   // here we figure out if the dates for each release line passed is in the past or future
@@ -178,7 +178,7 @@ async function determineCurrentReleasePhase (now, dates = {}) {
 }
 
 // this function allows us to parse user-passed options.
-// 
+//
 // this is particularly useful for tests so we can reduce variables
 // and ensure that our test suite is able to be consistent.
 async function parseOptions (options) {
@@ -189,12 +189,12 @@ async function parseOptions (options) {
   }
 
   // allow the end-user to replace our fetch implementation with another one of their precernece.
-  if(options?.fetch) {
+  if (options?.fetch) {
     parsedOptions.fetch === options.fetch
   }
 
   // allow the end-user to provide a custom DateTime. This is particularly useful for tests.
-  if(options?.now) {
+  if (options?.now) {
     parsedOptions.now = options.now
   }
 
