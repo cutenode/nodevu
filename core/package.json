@@ -1,13 +1,16 @@
 {
   "name": "@nodevu/core",
   "version": "0.0.3",
-  "description": "inver core API: comprehensive node.js version tooling",
+  "description": "nodevu core API: comprehensive node.js version tooling",
   "main": "index.js",
   "scripts": {
     "lint": "standard",
     "lint:fix": "standard --fix",
     "test": "mocha",
-    "test:update": "node ./test/util/updateData.js",
+    "test:update": "npm run test:update:dynamic && npm run test:update:static && npm run test:update:now",
+    "test:update:dynamic": "node ./test/util/updateDynamicData.js",
+    "test:update:static": "node ./test/util/updateStaticData.js",
+    "test:update:now": "node ./test/util/updateStaticNow.js",
     "coverage": "nyc mocha"
   },
   "author": "Tierney Cyren <hello@bnb.im> (https://bnb.im/)",

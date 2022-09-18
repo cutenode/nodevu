@@ -1,14 +1,20 @@
-const { fetch } = require('undici')
+const { fetch: defaultFetch } = require('undici')
 const { DateTime } = require('luxon')
 const semver = require('semver')
 const parsefiles = require('@nodevu/parsefiles')
 
 async function core (options) {
+  // parse our user's options and set up our fetch/DateTime implementations
+  const parsedOptions = await parseOptions(options)
+
+  const fetch = parsedOptions.fetch
+  const now = DateTime.fromISO(parsedOptions.now)
+
+  // collect and configure our data sources
   const rawVersions = await fetch("https://nodejs.org/dist/index.json")
   const rawSchedule = await fetch("https://raw.githubusercontent.com/nodejs/Release/master/schedule.json")
   const versions = await rawVersions.json()
   const schedule = await rawSchedule.json()
-  const now = DateTime.now()
   const data = {}
 
   Object.keys(versions).map(async (version) => {
@@ -143,14 +149,17 @@ async function core (options) {
 }
 
 async function determineCurrentReleasePhase (now, dates = {}) {
+  // we set set this up to enable custom `now` passing, since passing an ISO 
+  // const usableNow = DateTime.fromISO(now)
+
   // here we figure out if the dates for each release line passed is in the past or future
   // `true` is in the past
   // `false` is in the future
   const isoified = {
-    start: isInPast(DateTime.fromISO(dates.start).diffNow().toMillis()) ?? undefined,
-    lts: isInPast(DateTime.fromISO(dates.lts).diffNow().toMillis()) ?? undefined,
-    maintenance: isInPast(DateTime.fromISO(dates.maintenance).diffNow().toMillis()) ?? undefined,
-    end: isInPast(DateTime.fromISO(dates.end).diffNow().toMillis()) ?? undefined
+    start: isInPast(DateTime.fromISO(dates.start).diff(now).toMillis()) ?? undefined,
+    lts: isInPast(DateTime.fromISO(dates.lts).diff(now).toMillis()) ?? undefined,
+    maintenance: isInPast(DateTime.fromISO(dates.maintenance).diff(now).toMillis()) ?? undefined,
+    end: isInPast(DateTime.fromISO(dates.end).diff(now).toMillis()) ?? undefined
   }
 
   // set up our result to return
@@ -166,6 +175,30 @@ async function determineCurrentReleasePhase (now, dates = {}) {
   })
 
   return result
+}
+
+// this function allows us to parse user-passed options.
+// 
+// this is particularly useful for tests so we can reduce variables
+// and ensure that our test suite is able to be consistent.
+async function parseOptions (options) {
+  // set up our defaults
+  const parsedOptions = {
+    fetch: await defaultFetch,
+    now: DateTime.now()
+  }
+
+  // allow the end-user to replace our fetch implementation with another one of their precernece.
+  if(options?.fetch) {
+    parsedOptions.fetch === options.fetch
+  }
+
+  // allow the end-user to provide a custom DateTime. This is particularly useful for tests.
+  if(options?.now) {
+    parsedOptions.now = options.now
+  }
+
+  return parsedOptions
 }
 
 // super hacky tool to convert our weird DateTime tooling into a boolean
