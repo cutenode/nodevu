@@ -1,34 +1,11 @@
-const dns = require('node:dns')
 const assert = require('node:assert')
 const nodevu = require('../index')
-const { MockAgent, setGlobalDispatcher } = require('undici')
+const { describe, it, beforeEach } = require('test')
 
-// this fixes a bug in Node.js - it should be fixed _eventually_ and can be removed: https://github.com/nodejs/undici/issues/1248
-dns.setDefaultResultOrder('ipv4first')
+const beforeEachTemplate = require('../util/dev/beforeEachTemplate')
 
-const staticIndex = require('./data/static/index.json')
-const staticSchedule = require('./data/static/schedule.json')
 const staticNow = require('./data/static/now.json')
 const now = JSON.parse(staticNow)
-
-function beforeEachTemplate () {
-  // this mock agent stuff isn't actually working for... some unkown reason
-  const mockAgent = new MockAgent()
-  mockAgent.disableNetConnect()
-  setGlobalDispatcher(mockAgent)
-
-  const defaultIndexMock = mockAgent.get('https://nodejs.org')
-  defaultIndexMock.intercept({ path: '/dist/index.json' }).reply(200, staticIndex)
-
-  const defaultScheduleMock = mockAgent.get('https://raw.githubusercontent.com')
-  defaultScheduleMock.intercept({ path: '/nodejs/Release/master/schedule.json' }).reply(200, staticSchedule)
-
-  const customIndexMock = mockAgent.get('https://bnb.im')
-  customIndexMock.intercept({ path: '/dist/index.json' }).reply(200, staticIndex)
-
-  const customScheduleMock = mockAgent.get('https://bnb.im')
-  customScheduleMock.intercept({ path: '/dist/schedule.json' }).reply(200, staticSchedule)
-}
 
 // these are tests that run with static data but do not need to be frozen in time.
 describe('check that we get the values we expect from values that should not ever change', async () => {
@@ -103,7 +80,6 @@ describe('check to make sure that changing sources works as expected', async () 
 describe('check to make sure that combining options works as expected', async () => {
   beforeEach(beforeEachTemplate)
 
-  // failing
   it('should still return valid data when the index is a different URL from the default while also using static now', async () => {
     const urls = {
       index: 'https://bnb.im/dist/index.json'
@@ -114,7 +90,6 @@ describe('check to make sure that combining options works as expected', async ()
     assert.deepStrictEqual(staticData.v8.support.phases.current, 'end')
   })
 
-  // failing
   it('should still return valid data when the schedule is a different URL from the default while also using static now', async () => {
     const urls = {
       schedule: 'https://bnb.im/dist/schedule.json'
