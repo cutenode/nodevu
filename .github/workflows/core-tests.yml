@@ -1,10 +1,10 @@
-name: "@nodevu/core test suite"
+name: "Test Suite: @nodevu/core"
 
 on:
   pull_request:
     branches:
       - main
-  workflow_trigger:
+  workflow_dispatch:
 
 jobs:
   tests:
