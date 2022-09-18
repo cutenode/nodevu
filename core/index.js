@@ -196,7 +196,7 @@ async function parseOptions (options) {
 
   // allow the end-user to replace our fetch implementation with another one of their precernece.
   if (options?.fetch) {
-    parsedOptions.fetch === options.fetch
+    parsedOptions.fetch = options.fetch
   }
 
   // allow the end-user to provide a custom DateTime. This is particularly useful for tests.
@@ -204,13 +204,11 @@ async function parseOptions (options) {
     parsedOptions.now = options.now
   }
 
-  if(options?.urls?.index) {
-    console.log('custom index')
+  if (options?.urls?.index) {
     parsedOptions.urls.index = options.urls.index
   }
 
-  if(options?.urls?.schedule) {
-    console.log('custom schedule')
+  if (options?.urls?.schedule) {
     parsedOptions.urls.schedule = options.urls.schedule
   }
 
