@@ -6,11 +6,11 @@
   "scripts": {
     "lint": "standard --env mocha",
     "lint:fix": "standard --fix --env mocha",
-    "test": "mocha",
+    "test": "node--test",
     "test:update": "npm run test:update:static && npm run test:update:now",
     "test:update:static": "node ./test/util/updateStaticData.js",
     "test:update:now": "node ./test/util/updateStaticNow.js",
-    "coverage": "nyc mocha"
+    "coverage": "nyc node--test"
   },
   "author": "Tierney Cyren <hello@bnb.im> (https://bnb.im/)",
   "license": "MIT",
@@ -25,9 +25,8 @@
     "undici": "^5.10.0"
   },
   "devDependencies": {
-    "mocha": "^10.0.0",
-    "nock": "^13.2.9",
     "nyc": "^15.1.0",
-    "standard": "^17.0.0"
+    "standard": "^17.0.0",
+    "test": "^3.2.1"
   }
 }

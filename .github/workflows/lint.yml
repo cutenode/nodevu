@@ -21,4 +21,4 @@ jobs:
     - name: Run npm install
       run: npm install -ws
     - name: Run npm lint
-      run: npm lint -ws
+      run: npm run lint
