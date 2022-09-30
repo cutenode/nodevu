@@ -1,13 +1,14 @@
 {
   "name": "@nodevu/parsefiles",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "parse the files identifiers from Node.js",
   "main": "index.js",
   "scripts": {
     "lint": "standard --env mocha",
     "lint:fix": "standard --fix --env mocha",
-    "test": "mocha",
-    "coverage": "nyc mocha"
+    "test": "node--test",
+    "coverage": "nyc mocha",
+    "updates": "npx npm-check-updates"
   },
   "keywords": [
     "node.js",
@@ -22,8 +23,8 @@
   "author": "Tierney Cyren <hello@bnb.im>",
   "license": "MIT",
   "devDependencies": {
-    "mocha": "^9.2.1",
     "nyc": "^15.1.0",
-    "standard": "^17.0.0"
+    "standard": "^17.0.0",
+    "test": "^3.2.1"
   }
 }

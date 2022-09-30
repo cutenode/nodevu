@@ -1,6 +1,6 @@
 {
   "name": "@nodevu/aliases",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "available aliases for sets of Node.js versions",
   "main": "index.js",
   "repository": {
@@ -19,7 +19,8 @@
   "homepage": "https://github.com/cutenode/nodevu#readme",
   "scripts": {
     "lint": "standard --env mocha",
-    "lint:fix": "standard --fix --env mocha"
+    "lint:fix": "standard --fix --env mocha",
+    "updates": "npx npm-check-updates"
   },
   "devDependencies": {
     "standard": "^17.0.0"

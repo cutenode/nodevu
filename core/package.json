@@ -1,6 +1,6 @@
 {
   "name": "@nodevu/core",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "nodevu core API: comprehensive node.js version tooling",
   "main": "index.js",
   "scripts": {
@@ -10,7 +10,8 @@
     "test:update": "npm run test:update:static && npm run test:update:now",
     "test:update:static": "node ./test/util/updateStaticData.js",
     "test:update:now": "node ./test/util/updateStaticNow.js",
-    "coverage": "nyc node--test"
+    "coverage": "nyc node--test",
+    "updates": "npx npm-check-updates"
   },
   "author": "Tierney Cyren <hello@bnb.im> (https://bnb.im/)",
   "license": "MIT",
@@ -20,7 +21,7 @@
   ],
   "dependencies": {
     "@nodevu/parsefiles": "^0.0.2",
-    "luxon": "^3.0.3",
+    "luxon": "^3.0.4",
     "semver": "^7.3.7",
     "undici": "^5.10.0"
   },
