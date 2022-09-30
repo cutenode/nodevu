@@ -19,7 +19,8 @@
   "homepage": "https://github.com/cutenode/nodevu#readme",
   "scripts": {
     "lint": "standard --env mocha",
-    "lint:fix": "standard --fix --env mocha"
+    "lint:fix": "standard --fix --env mocha",
+    "updates": "npx npm-check-updates"
   },
   "devDependencies": {
     "standard": "^17.0.0"

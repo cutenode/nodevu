@@ -10,8 +10,9 @@
   "scripts": {
     "lint": "standard --env mocha",
     "lint:fix": "standard --fix --env mocha",
-    "test": "mocha",
-    "coverage": "nyc mocha"
+    "test": "node--test",
+    "coverage": "nyc node--test",
+    "updates": "npx npm-check-updates"
   },
   "repository": {
     "type": "git",
@@ -28,11 +29,11 @@
   },
   "homepage": "https://github.com/cutenode/nodevu#readme",
   "dependencies": {
-    "@nodevu/core": "^0.0.2"
+    "@nodevu/core": "^0.0.4"
   },
   "devDependencies": {
-    "mocha": "^9.2.1",
     "nyc": "^15.1.0",
-    "standard": "^17.0.0"
+    "standard": "^17.0.0",
+    "test": "^3.2.1"
   }
 }
