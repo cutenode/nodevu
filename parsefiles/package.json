@@ -1,6 +1,6 @@
 {
   "name": "@nodevu/parsefiles",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "parse the files identifiers from Node.js",
   "main": "index.js",
   "scripts": {
