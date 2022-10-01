@@ -147,6 +147,17 @@ async function core (options) {
     data[name].releases[`v${versionSemver.version}`].security.isSecurity = versions[version].security ?? false
   })
 
+  // # Newest and Oldest
+  // ## define the newest and oldest versions.
+
+  // just set the newest version
+  if (!data[name].newest) {
+      data[name].security.newest = versionSemver.version
+  }
+
+  // same inefficient hack as we do in the LTS 'oldest' logic. ineffecient but gets the job done.
+  data[name].oldest = versionSemver.version
+
   return data
 }
 
