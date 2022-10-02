@@ -27,4 +27,34 @@ describe('check that we get the values we expect from values that should not eve
     assert.deepStrictEqual(staticData.v14.support.phases.dates.maintenance, '2021-10-19')
     assert.deepStrictEqual(staticData.v14.support.phases.dates.end, '2023-04-30')
   })
+
+  it('should have correct support values for an odd release line', async () => {
+    const staticData = await nodevu()
+    assert.deepStrictEqual(staticData.v13.support.phases.dates.start, '2019-10-22')
+    assert.deepStrictEqual(staticData.v13.support.phases.dates.maintenance, '2020-04-01')
+    assert.deepStrictEqual(staticData.v13.support.phases.dates.end, '2020-06-01')
+  })
+
+  it('should have correct support values for a security ', async () => {
+    const staticData = await nodevu()
+    const v12AllSecurityReleases = [
+      '12.22.9',
+      '12.22.7',
+      '12.22.6',
+      '12.22.5',
+      '12.22.4',
+      '12.22.2',
+      '12.22.1',
+      '12.21.0',
+      '12.19.1',
+      '12.18.4',
+      '12.18.0',
+      '12.15.0',
+      '12.14.0',
+      '12.8.1'
+    ]
+    assert.deepStrictEqual(staticData.v12.security.all, v12AllSecurityReleases)
+    assert.deepStrictEqual(staticData.v12.security.newest, '12.22.9')
+    assert.deepStrictEqual(staticData.v12.security.oldest, '12.8.1')
+  })
 })
