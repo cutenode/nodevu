@@ -1,5 +1,216 @@
 {
   "v18": {
+    "v18.11.0": {
+      "semver": {
+        "raw": "18.11.0",
+        "major": 18,
+        "minor": 11,
+        "patch": 0,
+        "line": "v18"
+      },
+      "dependencies": {
+        "npm": "8.19.2",
+        "v8": "10.2.154.15",
+        "uv": "1.43.0",
+        "zlib": "1.2.11",
+        "openssl": "3.0.5+quic"
+      },
+      "files": {
+        "available": [
+          "aix-ppc64",
+          "headers",
+          "linux-arm64",
+          "linux-armv7l",
+          "linux-ppc64le",
+          "linux-s390x",
+          "linux-x64",
+          "osx-arm64-tar",
+          "osx-x64-pkg",
+          "osx-x64-tar",
+          "src",
+          "win-x64-7z",
+          "win-x64-exe",
+          "win-x64-msi",
+          "win-x64-zip",
+          "win-x86-7z",
+          "win-x86-exe",
+          "win-x86-msi",
+          "win-x86-zip"
+        ],
+        "links": {
+          "aix": [
+            {
+              "id": "aix-ppc64",
+              "files": [
+                "node-v18.11.0-aix-ppc64.tar.gz",
+                "node-v18.11.0-aix-ppc64.tar.xz"
+              ],
+              "architecture": "power"
+            }
+          ],
+          "headers": [
+            {
+              "id": "headers",
+              "files": [
+                "node-v18.11.0-headers.tar.gz",
+                "node-v18.11.0-headers.tar.xz"
+              ]
+            }
+          ],
+          "linux": [
+            {
+              "id": "linux-arm64",
+              "files": [
+                "node-v18.11.0-linux-arm64.tar.gz",
+                "node-v18.11.0-linux-arm64.tar.xz"
+              ],
+              "architecture": "arm64"
+            },
+            {
+              "id": "linux-armv7l",
+              "files": [
+                "node-v18.11.0-linux-armv7l.tar.gz",
+                "node-v18.11.0-linux-armv7l.tar.xz"
+              ],
+              "architecture": "armv7l"
+            },
+            {
+              "id": "linux-ppc64le",
+              "files": [
+                "node-v18.11.0-linux-ppc64le.tar.gz",
+                "node-v18.11.0-linux-ppc64le.tar.xz"
+              ],
+              "architecture": "power"
+            },
+            {
+              "id": "linux-s390x",
+              "files": [
+                "node-v18.11.0-linux-s390x.tar.gz",
+                "node-v18.11.0-linux-s390x.tar.xz"
+              ],
+              "architecture": "z"
+            },
+            {
+              "id": "linux-x64",
+              "files": [
+                "node-v18.11.0-linux-x64.tar.gz",
+                "node-v18.11.0-linux-x64.tar.xz"
+              ],
+              "architecture": "x64"
+            }
+          ],
+          "macos": [
+            {
+              "id": "osx-arm64-tar",
+              "files": [
+                "node-v18.11.0-darwin-arm64.tar.gz"
+              ],
+              "architecture": "arm64"
+            },
+            {
+              "id": "osx-x64-pkg",
+              "files": [
+                "node-v18.11.0.pkg"
+              ],
+              "architecture": "x64"
+            },
+            {
+              "id": "osx-x64-tar",
+              "files": [
+                "node-v18.11.0-darwin-x64.tar.gz"
+              ],
+              "architecture": "x64"
+            }
+          ],
+          "source": [
+            {
+              "id": "src",
+              "files": [
+                "node-v18.11.0.tar.xz"
+              ]
+            }
+          ],
+          "windows": [
+            {
+              "id": "win-x64-7z",
+              "files": [
+                "node-v18.11.0-win-x64.7z"
+              ],
+              "architecture": "x64"
+            },
+            {
+              "id": "win-x64-exe",
+              "files": [
+                "win-x64/node.exe",
+                "win-x64/node.lib",
+                "win-x64/node_pdb.7z",
+                "win-x64/node_pdb.zip",
+                "win-x86/node.exe",
+                "win-x86/node.lib",
+                "win-x86/node_pdb.7z",
+                "win-x86/node_pdb.zip"
+              ],
+              "architecture": "x64"
+            },
+            {
+              "id": "win-x64-msi",
+              "files": [
+                "node-v18.11.0-x64.msi"
+              ],
+              "architecture": "x64"
+            },
+            {
+              "id": "win-x64-zip",
+              "files": [
+                "node-v18.11.0-win-x64.zip"
+              ],
+              "architecture": "x64"
+            },
+            {
+              "id": "win-x86-7z",
+              "files": [
+                "node-v18.11.0-win-x86.7z"
+              ],
+              "architecture": "x86"
+            },
+            {
+              "id": "win-x86-exe",
+              "files": [
+                "win-x64/node.exe",
+                "win-x64/node.lib",
+                "win-x64/node_pdb.7z",
+                "win-x64/node_pdb.zip",
+                "win-x86/node.exe",
+                "win-x86/node.lib",
+                "win-x86/node_pdb.7z",
+                "win-x86/node_pdb.zip"
+              ],
+              "architecture": "x86"
+            },
+            {
+              "id": "win-x86-msi",
+              "files": [
+                "node-v18.11.0-x86.msi"
+              ],
+              "architecture": "x86"
+            },
+            {
+              "id": "win-x86-zip",
+              "files": [
+                "node-v18.11.0-win-x86.zip"
+              ],
+              "architecture": "x86"
+            }
+          ]
+        }
+      },
+      "lts": {
+        "isLts": false
+      },
+      "security": {
+        "isSecurity": false
+      }
+    },
     "v18.10.0": {
       "semver": {
         "raw": "18.10.0",
