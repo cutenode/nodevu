@@ -10,8 +10,11 @@
     }
   },
   "v18": {
-    "codename": "",
-    "lts": {},
+    "codename": "Hydrogen",
+    "lts": {
+      "newest": "18.12.0",
+      "oldest": "18.12.0"
+    },
     "phases": {
       "dates": {
         "start": "2022-04-19",
