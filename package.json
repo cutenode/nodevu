@@ -6,8 +6,8 @@
   "scripts": {
     "lint": "npm run lint --ws",
     "lint:fix": "npm run lint:fix --ws",
-    "coverage:ws": "npm run coverage --ws",
-    "test:ws": "npm run test --ws",
+    "coverage": "npm run coverage --ws",
+    "test": "npm run test --ws",
     "updates": "npm run updates --ws"
   },
   "repository": {
