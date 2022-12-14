@@ -38,7 +38,7 @@
   "v16": {
     "codename": "Gallium",
     "lts": {
-      "newest": "16.18.1",
+      "newest": "16.19.0",
       "oldest": "16.13.0"
     },
     "phases": {
@@ -64,7 +64,7 @@
   "v14": {
     "codename": "Fermium",
     "lts": {
-      "newest": "14.21.1",
+      "newest": "14.21.2",
       "oldest": "14.15.0"
     },
     "phases": {
