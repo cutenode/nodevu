@@ -12,7 +12,7 @@
   "v18": {
     "codename": "Hydrogen",
     "lts": {
-      "newest": "18.12.0",
+      "newest": "18.12.1",
       "oldest": "18.12.0"
     },
     "phases": {
@@ -38,7 +38,7 @@
   "v16": {
     "codename": "Gallium",
     "lts": {
-      "newest": "16.18.0",
+      "newest": "16.19.0",
       "oldest": "16.13.0"
     },
     "phases": {
@@ -64,7 +64,7 @@
   "v14": {
     "codename": "Fermium",
     "lts": {
-      "newest": "14.20.1",
+      "newest": "14.21.2",
       "oldest": "14.15.0"
     },
     "phases": {
