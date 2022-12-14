@@ -11,6 +11,7 @@
     "build:support": "node build/support.js",
     "lint": "standard --env mocha",
     "lint:fix": "standard --fix --env mocha",
+    "prepublish": "npm run build",
     "test": "node--test",
     "coverage": "nyc node--test",
     "updates": "npx npm-check-updates"
