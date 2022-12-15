@@ -1,5 +1,5 @@
 const assert = require('node:assert')
-const static = require('../index')
+const staticData = require('../index')
 const { support } = require('../index')
 const { describe, it } = require('test')
 
@@ -19,7 +19,7 @@ function check(data) {
 
 describe("test known data in support.json export, being called from the default require", async () => {
     it('should return the correct data for all types', () => {
-        check(static.support)
+        check(staticData.support)
     })
 })
 

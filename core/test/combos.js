@@ -4,19 +4,19 @@ const { describe, it, beforeEach } = require('test')
 
 const beforeEachTemplate = require('../util/dev/beforeEachTemplate')
 
-function check(data) {
-    // releases checks
-    assert.deepStrictEqual(data.v17.releases['v17.0.0'].dependencies.npm, '8.1.0')
-    assert.deepStrictEqual(data.v17.releases['v17.0.0'].dependencies.v8, '9.5.172.21')
-    // support checks
-    assert.deepStrictEqual(data.v14.support.codename, 'Fermium')
-    assert.deepStrictEqual(data.v14.support.lts.newest, '14.19.0')
-    assert.deepStrictEqual(data.v9.support.phases.current, 'end')
-    assert.deepStrictEqual(data.v8.support.phases.current, 'end')
-    // security checks
-    assert.deepStrictEqual(data.v12.security.all.length, 14)
-    assert.deepStrictEqual(data.v12.security.newest, '12.22.9')
-    assert.deepStrictEqual(data.v12.security.oldest, '12.8.1')
+function check (data) {
+  // releases checks
+  assert.deepStrictEqual(data.v17.releases['v17.0.0'].dependencies.npm, '8.1.0')
+  assert.deepStrictEqual(data.v17.releases['v17.0.0'].dependencies.v8, '9.5.172.21')
+  // support checks
+  assert.deepStrictEqual(data.v14.support.codename, 'Fermium')
+  assert.deepStrictEqual(data.v14.support.lts.newest, '14.19.0')
+  assert.deepStrictEqual(data.v9.support.phases.current, 'end')
+  assert.deepStrictEqual(data.v8.support.phases.current, 'end')
+  // security checks
+  assert.deepStrictEqual(data.v12.security.all.length, 14)
+  assert.deepStrictEqual(data.v12.security.newest, '12.22.9')
+  assert.deepStrictEqual(data.v12.security.oldest, '12.8.1')
 }
 
 const staticNow = require('./data/static/now.json')
