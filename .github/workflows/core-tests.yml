@@ -3,7 +3,7 @@ name: "Test Suite: @nodevu/core"
 on:
   pull_request:
     paths:
-      - 'core/*'
+      - 'core/**'
     branches:
       - main
   workflow_dispatch:
