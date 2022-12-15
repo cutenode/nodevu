@@ -12,6 +12,10 @@ function check (data) {
   // releases checks
   assert.deepStrictEqual(data.v17.releases['v17.0.0'].dependencies.npm, '8.1.0')
   assert.deepStrictEqual(data.v17.releases['v17.0.0'].dependencies.v8, '9.5.172.21')
+  assert.deepStrictEqual(data.v16['v16.19.0'].dependencies.npm, '8.19.3')
+  assert.deepStrictEqual(data.v16['v16.19.0'].files.available.length, 19)
+  assert.deepStrictEqual(data.v16['v16.19.0'].files.links.macos[0].files[0], 'node-v16.19.0-darwin-arm64.tar.gz')
+
   // support checks
   assert.deepStrictEqual(data.v14.support.codename, 'Fermium')
   assert.deepStrictEqual(data.v12.support.lts.newest, '12.22.12')
