@@ -1,4 +1,4 @@
-name: "Test Suite: @nodevu/core"
+name: "Test Suite: Linter"
 
 on:
   push:
@@ -22,3 +22,4 @@ jobs:
       run: npm install -ws
     - name: Run npm lint
       run: npm run lint
+      
