@@ -1,5 +1,5 @@
 const nodevu = require('@nodevu/core')
-const write = require('../util/writeFile')
+const write = require('../util/dev/write')
 
 async function writeSupport (filename) {
   const data = await nodevu()
