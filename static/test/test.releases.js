@@ -16,7 +16,6 @@ function check (data) {
   assert.deepStrictEqual(data.v16['v16.19.0'].dependencies.npm, '8.19.3')
   assert.deepStrictEqual(data.v16['v16.19.0'].files.available.length, 19)
   assert.deepStrictEqual(data.v16['v16.19.0'].files.links.macos[0].files[0], 'node-v16.19.0-darwin-arm64.tar.gz')
-
 }
 
 describe('test some known data in releases.json export, being called from the default require', async () => {
