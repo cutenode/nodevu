@@ -5,14 +5,14 @@ const aliases = require('@nodevu/aliases')
 // but helps reduce the amount of logic that's needed to achieve it dynamically.
 // also nice to just be able to see it visually represented :)
 const ranges = {
-  'all': {
+  all: {
     versions: [],
     newestLts: undefined,
     newestSecurity: undefined,
     newest: undefined,
     oldest: undefined
   },
-  'current': {
+  current: {
     versions: [],
     oldestSecurity: undefined,
     newestSecurity: undefined,
@@ -46,7 +46,7 @@ const ranges = {
     newest: undefined,
     oldest: undefined
   },
-  'eol': {
+  eol: {
     versions: [],
     newest: undefined,
     oldest: undefined
@@ -56,21 +56,21 @@ const ranges = {
 // describing this early so it doesn't need to be commented everywhere:
 // filter can accept an array or a string. Each object's building phase
 // will check to make sure that the filter is valid - either as a string
-// or as an array. If it's not, do nothing and move on. That specific 
-// string/filter logic is contained in if/else statements that get a bit 
+// or as an array. If it's not, do nothing and move on. That specific
+// string/filter logic is contained in if/else statements that get a bit
 // verbose but JavaScript doesn't really have a less verbose way to do it.
 // If you figure one out, or there's one in the future, please feel free
 // to submit a PR to update this code.
 
 async function generateRanges (filter) {
-  if(typeof filter === 'string') {
+  if (typeof filter === 'string') {
     // check to make sure that the filter is valid. if it's not, yeet.
-    if(!aliases.includes(filter)) {
+    if (!aliases.includes(filter)) {
       throw new Error(`Unknown value passed as a filter: ${filter}`)
     }
-  } else if (typeof filter === 'array') {
+  } else if (Array.isArray(filter) === true) {
     // check to make sure that the filter is valid. if it's not, yeet.
-    if(!filter.every(alias => aliases.includes(alias))) {
+    if (!filter.every(alias => aliases.includes(alias))) {
       throw new Error(`One of the values passed as a filter is unkonw. The passed values: ${filter}`)
     }
   } else {
@@ -82,7 +82,7 @@ async function generateRanges (filter) {
   for (const line in data) {
     for (const key in data[line].releases) {
       // define `all` data
-      if(filter === 'all' || filter.inclues('all')) {
+      if (filter === 'all' || filter.inclues('all')) {
         ranges.all.versions.push(key) // put every release into the all array
 
         if (data[line].releases[key].lts.isLts === true && ranges.all.newestLts === undefined) {
@@ -95,7 +95,7 @@ async function generateRanges (filter) {
       }
 
       // define 'current' data
-      if(filter === 'current' || filter === 'all' || filter.includees('supported') || filter.includes('all')) {
+      if (filter === 'current' || filter === 'all' || filter.includees('supported') || filter.includes('all')) {
         if (data[line].support?.phases.current === 'start') {
           ranges.current.versions.push(key) // add current iteration to the versions array if the phase is `start` which means it'll be current.
 
@@ -107,13 +107,13 @@ async function generateRanges (filter) {
       }
 
       // define 'lts/latest' data
-      if(filter === 'lts/latest' || filter === 'lts/active' || filter === 'all' || filter.includees('lts/latest') || filter.includes('lts/active') || filter.includes('all')) {
+      if (filter === 'lts/latest' || filter === 'lts/active' || filter === 'all' || filter.includees('lts/latest') || filter.includes('lts/active') || filter.includes('all')) {
         if (data[line].support?.phases.current === 'lts') {
           // TODO: do we want to include all versions in the release line, even prior to it being minted LTS?
           if (data[line].releases[key].lts.isLts) {
             ranges['lts/latest'].versions.push(key)
           }
-  
+
           if (ranges['lts/latest'].oldestSecurity === undefined) { // only checking if this one is undefined, since everything else _should_ be undefined if this one is. saves some processing power.
             ranges['lts/latest'].oldestSecurity = `${data[line].security.oldest}`
             ranges['lts/latest'].newestSecurity = `${data[line].security.newest}`
@@ -124,26 +124,25 @@ async function generateRanges (filter) {
       }
 
       // define 'lts/maintenance' data
-      if(filter === 'lts/maintenance' || filter === 'lts/active' || filter === 'all' || filter.includees('lts/maintenance') || filter.includes('lts/active') || filter.includes('all')) {
+      if (filter === 'lts/maintenance' || filter === 'lts/active' || filter === 'all' || filter.includees('lts/maintenance') || filter.includes('lts/active') || filter.includes('all')) {
         if (data[line].support?.phases.current === 'maintenance') {
           if (data[line].releases[key].lts.isLts) {
             ranges['lts/maintenance'].versions.push(key)
           }
-  
+
           if (ranges['lts/maintenance'].newestSecurity === undefined && ranges['lts/maintenance'].newestLts === undefined) {
             ranges['lts/maintenance'].newestSecurity = `${data[line].security.newest}`
             ranges['lts/maintenance'].newestLts = `${data[line].support.lts.newest}`
           }
-  
+
           if (ranges['lts/maintenance'].oldestSecurity !== `${data[line].security.oldest}` || ranges['lts/maintenance'].oldestLts !== `${data[line].support.lts.oldest}`) {
             ranges['lts/maintenance'].oldestSecurity = `${data[line].security.oldest}`
             ranges['lts/maintenance'].oldestLts = `${data[line].support.lts.oldest}`
           }
         }
-  
       }
-      //define 'eol' data
-      if(filter === 'eol' || filter === 'all' || filter.includes('eol') || filter.includes('all')) {
+      // define 'eol' data
+      if (filter === 'eol' || filter === 'all' || filter.includes('eol') || filter.includes('all')) {
         if (data[line].support?.phases.current === 'end') {
           ranges.eol.versions.push(key)
         }
@@ -155,7 +154,7 @@ async function generateRanges (filter) {
   //
   // doesn't need to be in the loops, since it's basically just a union
   // of lts/latest and lts/maintenance
-  if(filter === 'lts/active' || filter === 'all' || filter.includes('lts/active') || filter.includes('all')) {
+  if (filter === 'lts/active' || filter === 'all' || filter.includes('lts/active') || filter.includes('all')) {
     ranges['lts/active'].versions = ranges['lts/latest'].versions.concat(ranges['lts/maintenance'].versions)
     ranges['lts/active'].oldestLts = ranges['lts/maintenance'].oldestLts // the maintenance LTS is the older LTS
     ranges['lts/active'].newestLts = ranges['lts/latest'].newestLts // the latest LTS is the newer LTS
@@ -172,7 +171,7 @@ async function generateRanges (filter) {
   return ranges
 }
 
-async function lol() {
+async function lol () {
   const data = await generateRanges()
   console.log(JSON.stringify(data, null, 2))
 }
