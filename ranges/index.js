@@ -4,7 +4,7 @@ const aliases = require('@nodevu/aliases')
 // building out the model of what we want to see. not totally necessary,
 // but helps reduce the amount of logic that's needed to achieve it dynamically.
 // also nice to just be able to see it visually represented :)
-const ranges = {
+const defaultRangesObject = {
   all: {
     versions: [],
     newestLts: undefined,
@@ -71,18 +71,25 @@ async function generateRanges (filter) {
   } else if (Array.isArray(filter) === true) {
     // check to make sure that the filter is valid. if it's not, yeet.
     if (!filter.every(alias => aliases.includes(alias))) {
-      throw new Error(`One of the values passed as a filter is unkonw. The passed values: ${filter}`)
+      throw new Error(`One of the values passed as a filter is unknown. The passed values: ${filter}`)
     }
   } else {
     filter = 'all'
   }
 
+  // set up the data from @nodevu/core
   const data = await nodevu()
+
+  // deep clone the default object so we don't modify it.
+  //
+  // modifying the default object has some super wonky side effects
+  // on subsequent calls to this function that we don't want.
+  const ranges = JSON.parse(JSON.stringify(defaultRangesObject)) 
 
   for (const line in data) {
     for (const key in data[line].releases) {
       // define `all` data
-      if (filter === 'all' || filter.inclues('all')) {
+      if (filter === 'all' || filter.includes('all')) {
         ranges.all.versions.push(key) // put every release into the all array
 
         if (data[line].releases[key].lts.isLts === true && ranges.all.newestLts === undefined) {
@@ -95,7 +102,7 @@ async function generateRanges (filter) {
       }
 
       // define 'current' data
-      if (filter === 'current' || filter === 'all' || filter.includees('supported') || filter.includes('all')) {
+      if (filter === 'current' || filter === 'all' || filter.includes('current') || filter.includes('all')) {
         if (data[line].support?.phases.current === 'start') {
           ranges.current.versions.push(key) // add current iteration to the versions array if the phase is `start` which means it'll be current.
 
@@ -107,7 +114,7 @@ async function generateRanges (filter) {
       }
 
       // define 'lts/latest' data
-      if (filter === 'lts/latest' || filter === 'lts/active' || filter === 'all' || filter.includees('lts/latest') || filter.includes('lts/active') || filter.includes('all')) {
+      if (filter === 'lts/latest' || filter === 'lts/active' || filter === 'all' || filter.includes('lts/latest') || filter.includes('lts/active') || filter.includes('all')) {
         if (data[line].support?.phases.current === 'lts') {
           // TODO: do we want to include all versions in the release line, even prior to it being minted LTS?
           if (data[line].releases[key].lts.isLts) {
@@ -124,7 +131,7 @@ async function generateRanges (filter) {
       }
 
       // define 'lts/maintenance' data
-      if (filter === 'lts/maintenance' || filter === 'lts/active' || filter === 'all' || filter.includees('lts/maintenance') || filter.includes('lts/active') || filter.includes('all')) {
+      if (filter === 'lts/maintenance' || filter === 'lts/active' || filter === 'all' || filter.includes('lts/maintenance') || filter.includes('lts/active') || filter.includes('all')) {
         if (data[line].support?.phases.current === 'maintenance') {
           if (data[line].releases[key].lts.isLts) {
             ranges['lts/maintenance'].versions.push(key)
@@ -168,13 +175,25 @@ async function generateRanges (filter) {
     ranges[alias].oldest = ranges[alias].versions[ranges[alias].versions.length - 1] // set the oldest version to the last version in the array
   }
 
+  // delete what we don't need
+  for (const property in ranges) {
+    if (ranges[property].versions.length === 0) {
+      delete ranges[property]
+    }
+  }
+
+  // make sure we remove any unrequested remnants from lts/active construction
+  if (Array.isArray(filter) && filter.includes('lts/active')) {
+    if (!filter.includes('lts/latest')) {
+      delete ranges['lts/latest']
+    }
+
+    if (!filter.includes('lts/maintenance')) {
+      delete ranges['lts/maintenance']
+    }
+  }
+
   return ranges
 }
-
-async function lol () {
-  const data = await generateRanges()
-  console.log(JSON.stringify(data, null, 2))
-}
-lol()
 
 module.exports = generateRanges
