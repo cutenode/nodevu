@@ -24,7 +24,9 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - name: Install latest npm
       run: npm i -g npm
-    - name: Run npm install
+    - name: Run npm install at the monorepo level
+      run: npm install
+    - name: Run npm install at the package level
       run: npm install -w ranges
     - name: Run npm test
       run: npm test -w ranges
