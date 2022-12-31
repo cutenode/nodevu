@@ -1,0 +1,30 @@
+name: "Test Suite: @nodevu/ranges"
+
+on:
+  pull_request:
+    paths:
+      - 'ranges/*'
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  tests:
+    if: github.repository == 'cutenode/nodevu'
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [current, lts/*, lts/-1, lts/-2]
+    steps:
+    - name: Checkout the repository
+      uses: actions/checkout@v3
+    - name: Setup Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Install latest npm
+      run: npm i -g npm
+    - name: Run npm install
+      run: npm install -w ranges
+    - name: Run npm test
+      run: npm test -w ranges
