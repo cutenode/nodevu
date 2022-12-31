@@ -66,7 +66,7 @@ async function generateRanges (filter) {
   if (typeof filter === 'string') {
     // check to make sure that the filter is valid. if it's not, yeet.
     if (!aliases.includes(filter)) {
-      throw new Error(`Unknown value passed as a filter. The passed value: \'${filter}\'.`)
+      throw new Error(`Unknown value passed as a filter. The passed value: '${filter}'.`)
     }
   } else if (Array.isArray(filter) === true) {
     // check to make sure that the filter is valid. if it's not, yeet.
@@ -74,7 +74,7 @@ async function generateRanges (filter) {
       throw new Error(`At least one of the values passed as a filter is unknown. The passed value(s): '${filter.join('\', \'')}'`)
     }
   } else if (filter) {
-    throw new Error(`Unknown value passed as a filter. The passed value: \'${filter}\', with a type of '${typeof filter}'. Make sure you are passing a string (or an Array of strings) with valid value(s).`)
+    throw new Error(`Unknown value passed as a filter. The passed value: '${filter}', with a type of '${typeof filter}'. Make sure you are passing a string (or an Array of strings) with valid value(s).`)
   } else {
     filter = 'all'
   }
@@ -86,7 +86,7 @@ async function generateRanges (filter) {
   //
   // modifying the default object has some super wonky side effects
   // on subsequent calls to this function that we don't want.
-  const ranges = JSON.parse(JSON.stringify(defaultRangesObject)) 
+  const ranges = JSON.parse(JSON.stringify(defaultRangesObject))
 
   for (const line in data) {
     for (const key in data[line].releases) {

@@ -1,7 +1,6 @@
 const assert = require('assert')
 const ranges = require('../index')
 const { describe, it } = require('test')
-const { versions } = require('process')
 
 describe('data should exist as it is defined when calling a single alias', async () => {
   it('versions should have correct types on every property if an array with "all" is passed', async () => {
@@ -53,8 +52,8 @@ describe('data should exist as it is defined when calling a single alias', async
 
   it('versions should have correct types on every property if an array with "eol" is passed', async () => {
     const data = await ranges(['eol'])
-    assert.deepStrictEqual(Array.isArray(data['eol'].versions), true)
-    assert.deepStrictEqual(data['eol'].versions.length > 0, true)
-    assert.deepStrictEqual(data['eol'].versions.every(version => typeof version === 'string'), true)
+    assert.deepStrictEqual(Array.isArray(data.eol.versions), true)
+    assert.deepStrictEqual(data.eol.versions.length > 0, true)
+    assert.deepStrictEqual(data.eol.versions.every(version => typeof version === 'string'), true)
   })
 })
