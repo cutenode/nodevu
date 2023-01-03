@@ -24,7 +24,9 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - name: Install latest npm
       run: npm i -g npm
-    - name: Run npm install
+    - name: Run npm install (project)
+      run: npm install
+    - name: Run npm install (package)
       run: npm install -w translate
     - name: Run npm test
       run: npm test -w translate
