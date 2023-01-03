@@ -1,4 +1,4 @@
-name: "Test Suite: @nodevu/static"
+name: "Test Suite: @nodevu/translate"
 
 on:
   pull_request:
@@ -25,6 +25,6 @@ jobs:
     - name: Install latest npm
       run: npm i -g npm
     - name: Run npm install
-      run: npm install -w static
+      run: npm install -w translate
     - name: Run npm test
-      run: npm test -w static
+      run: npm test -w translate
