@@ -25,7 +25,8 @@
   },
   "homepage": "https://github.com/cutenode/nodevu#readme",
   "dependencies": {
-    "@nodevu/core": "^0.0.4"
+    "@nodevu/core": "^0.0.4",
+    "@nodevu/aliases": "^0.0.2"
   },
   "devDependencies": {
     "nyc": "^15.1.0",
