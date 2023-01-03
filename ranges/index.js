@@ -118,7 +118,6 @@ async function generateRanges (filter) {
 
       // define 'lts/latest' data
       if (filter === 'lts/latest' || filter === 'lts/active' || filter === 'all' || filter.includes('lts/latest') || filter.includes('lts/active') || filter.includes('all')) {
-
         if (data[line].support?.phases.current === 'lts') {
           // TODO: do we want to include all versions in the release line, even prior to it being minted LTS?
           if (data[line].releases[key].lts.isLts) {
@@ -136,7 +135,6 @@ async function generateRanges (filter) {
 
       // define 'lts/maintenance' data
       if (filter === 'lts/maintenance' || filter === 'lts/active' || filter === 'all' || filter.includes('lts/maintenance') || filter.includes('lts/active') || filter.includes('all')) {
-
         if (data[line].support?.phases.current === 'maintenance') {
           if (data[line].releases[key].lts.isLts) {
             ranges['lts/maintenance'].versions.push(key)
