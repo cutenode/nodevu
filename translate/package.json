@@ -2,24 +2,6 @@
   "name": "translate",
   "version": "0.0.1",
   "description": "a translation layer between the nodevu naming mechanism and the Node.js supported mechanism. Neceessary for legacy interop.",
-  "main": "index.js",
-  "devDependencies": {
-    "nyc": "^15.1.0",
-    "standard": "^17.0.0",
-    "test": "^3.2.1",
-    "@nodevu/ranges": "^0.0.1"
-  },
-  "scripts": {
-    "lint": "standard --env mocha",
-    "lint:fix": "standard --fix --env mocha",
-    "test": "node--test",
-    "coverage": "nyc node--test",
-    "updates": "npx npm-check-updates"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/cutenode/nodevu.git"
-  },
   "keywords": [
     "nodevu",
     "node",
@@ -27,12 +9,31 @@
     "versions",
     "supported"
   ],
-  "author": "Tierney Cyren",
-  "license": "MIT",
+  "homepage": "https://github.com/cutenode/nodevu#readme",
   "bugs": {
     "url": "https://github.com/cutenode/nodevu/issues"
   },
-  "homepage": "https://github.com/cutenode/nodevu#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cutenode/nodevu.git"
+  },
+  "license": "MIT",
+  "author": "Tierney Cyren",
+  "main": "index.js",
+  "scripts": {
+    "coverage": "nyc node--test",
+    "lint": "standard --env mocha",
+    "lint:fix": "standard --fix --env mocha",
+    "lint:packagejson": "npx sort-package-json",
+    "test": "node--test",
+    "updates": "npx npm-check-updates"
+  },
+  "devDependencies": {
+    "@nodevu/ranges": "^0.0.1",
+    "nyc": "^15.1.0",
+    "standard": "^17.0.0",
+    "test": "^3.2.1"
+  },
   "engines": {
     "node": ">=16.0.0"
   }
