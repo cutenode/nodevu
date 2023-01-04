@@ -18,7 +18,7 @@ describe('test that each alias works with @nodevu/ranges', async () => {
     assert.deepStrictEqual(untranslated, translated)
   })
 
-  it('should return the same result when "lts/active" and "lts/maintenance" and the translated "lts_latest" are passed to @nodevu/ranges', async () => {
+  it('should return the same result when "lts/active" and "lts/maintenance" and the translated "lts" are passed to @nodevu/ranges', async () => {
     const untranslated = await ranges(['lts/active', 'lts/maintenance'])
     const translated = await ranges(await translate('lts'))
 
