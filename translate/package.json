@@ -1,5 +1,5 @@
 {
-  "name": "translate",
+  "name": "@nodevu/translate",
   "version": "0.0.1",
   "description": "a translation layer between the nodevu naming mechanism and the Node.js supported mechanism. Neceessary for legacy interop.",
   "keywords": [
