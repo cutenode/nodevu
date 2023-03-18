@@ -209,7 +209,7 @@
           "isLts": false
         },
         "security": {
-          "isSecurity": true
+          "isSecurity": false
         }
       },
       "v19.8.0": {
@@ -420,7 +420,7 @@
           "isLts": false
         },
         "security": {
-          "isSecurity": true
+          "isSecurity": false
         }
       },
       "v19.7.0": {
@@ -631,7 +631,7 @@
           "isLts": false
         },
         "security": {
-          "isSecurity": true
+          "isSecurity": false
         }
       },
       "v19.6.1": {
