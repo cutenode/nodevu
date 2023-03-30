@@ -38,7 +38,7 @@
   "v16": {
     "codename": "Gallium",
     "lts": {
-      "newest": "16.19.1",
+      "newest": "16.20.0",
       "oldest": "16.13.0"
     },
     "phases": {
