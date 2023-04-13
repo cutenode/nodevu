@@ -12,7 +12,7 @@
   "v18": {
     "codename": "Hydrogen",
     "lts": {
-      "newest": "18.15.0",
+      "newest": "18.16.0",
       "oldest": "18.12.0"
     },
     "phases": {
