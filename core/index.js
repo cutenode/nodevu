@@ -45,6 +45,14 @@ async function core (options) {
 
     data[name].releases[`v${versionSemver.version}`].semver = semverToReturn
 
+    data[name].releases[`v${versionSemver.version}`].releaseDate = versions[version].date ?? undefined
+
+    const modules = {
+      version: versions[version].modules ?? undefined
+    }
+
+    data[name].releases[`v${versionSemver.version}`].modules = modules
+
     // define the dependencies object
     data[name].releases[`v${versionSemver.version}`].dependencies = {}
 
