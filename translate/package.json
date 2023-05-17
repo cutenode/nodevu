@@ -26,13 +26,14 @@
     "lint:fix": "standard --fix --env mocha",
     "lint:packagejson": "npx sort-package-json",
     "test": "node--test",
-    "updates": "npx npm-check-updates"
+    "updates:check": "npx npm-check-updates",
+    "updates:update": "npx npm-check-updates -u"
   },
   "devDependencies": {
-    "@nodevu/ranges": "^0.0.1",
+    "@nodevu/ranges": "^0.0.3",
     "nyc": "^15.1.0",
     "standard": "^17.0.0",
-    "test": "^3.2.1"
+    "test": "^3.3.0"
   },
   "engines": {
     "node": ">=16.0.0"
