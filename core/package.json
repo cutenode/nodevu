@@ -11,7 +11,8 @@
     "test:update:static": "node ./util/dev/updateStaticData.js",
     "test:update:now": "node ./util/dev/updateStaticNow.js",
     "coverage": "nyc node--test",
-    "updates": "npx npm-check-updates"
+    "updates:check": "npx npm-check-updates",
+    "updates:update": "npx npm-check-updates -u"
   },
   "author": "Tierney Cyren <hello@bnb.im> (https://bnb.im/)",
   "license": "MIT",
@@ -20,14 +21,14 @@
     "LICENSE"
   ],
   "dependencies": {
-    "@nodevu/parsefiles": "^0.0.2",
-    "luxon": "^3.0.4",
-    "semver": "^7.3.7",
-    "undici": "^5.10.0"
+    "@nodevu/parsefiles": "^0.0.3",
+    "luxon": "^3.3.0",
+    "semver": "^7.5.1",
+    "undici": "^5.22.1"
   },
   "devDependencies": {
     "nyc": "^15.1.0",
     "standard": "^17.0.0",
-    "test": "^3.2.1"
+    "test": "^3.3.0"
   }
 }
