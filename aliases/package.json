@@ -20,7 +20,8 @@
   "scripts": {
     "lint": "standard --env mocha",
     "lint:fix": "standard --fix --env mocha",
-    "updates": "npx npm-check-updates"
+    "updates:check": "npx npm-check-updates",
+    "updates:update": "npx npm-check-updates -u"
   },
   "devDependencies": {
     "standard": "^17.0.0"
