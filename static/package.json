@@ -40,6 +40,6 @@
   "devDependencies": {
     "nyc": "^15.1.0",
     "standard": "^17.0.0",
-    "test": "^3.2.1"
+    "test": "^3.3.0"
   }
 }
