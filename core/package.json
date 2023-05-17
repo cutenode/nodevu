@@ -8,8 +8,8 @@
     "lint:fix": "standard --fix --env mocha",
     "test": "node--test",
     "test:update": "npm run test:update:static && npm run test:update:now",
-    "test:update:static": "node ./test/util/updateStaticData.js",
-    "test:update:now": "node ./test/util/updateStaticNow.js",
+    "test:update:static": "node ./util/dev/updateStaticData.js",
+    "test:update:now": "node ./util/dev/updateStaticNow.js",
     "coverage": "nyc node--test",
     "updates": "npx npm-check-updates"
   },

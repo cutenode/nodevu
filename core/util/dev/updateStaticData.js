@@ -1,5 +1,5 @@
 const { fetch } = require('undici')
-const { write } = require('./write')
+const write = require('./write')
 
 async function update () {
   const rawIndex = await fetch('https://nodejs.org/dist/index.json')
@@ -7,8 +7,8 @@ async function update () {
   const index = await rawIndex.json()
   const schedule = await rawSchedule.json()
 
-  write('../../test/data/static/index.json', index)
-  write('../../test/data/static/schedule.json', schedule)
+  await write('./test/data/static/index.json', index)
+  await write('./test/data/static/schedule.json', schedule)
 }
 
 update()
