@@ -1,8 +1,10 @@
 const assert = require('assert')
-const parseFiles = require('../index')
+const { describe, it } = require('test')
 
+const parseFiles = require('../index')
 const input = require('./data/input.json')
 const expected = require('./data/expected.json')
+
 
 const mockverson = '420.420.420'
 
