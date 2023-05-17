@@ -30,6 +30,7 @@
     "parsefiles",
     "earliest",
     "ranges",
-    "aliases"
+    "aliases",
+    "translate"
   ]
 }
