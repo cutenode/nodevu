@@ -20,7 +20,7 @@ describe('check that we get the values we expect from values that should not eve
   it('should have some correct static values for support in a release line', async () => {
     const staticData = await nodevu()
     assert.deepStrictEqual(staticData.v14.support.codename, 'Fermium')
-    assert.deepStrictEqual(staticData.v14.support.lts.newest, '14.19.0')
+    assert.deepStrictEqual(staticData.v14.support.lts.newest, '14.21.3')
     assert.deepStrictEqual(staticData.v14.support.lts.oldest, '14.15.0')
     assert.deepStrictEqual(staticData.v14.support.phases.dates.start, '2020-04-21')
     assert.deepStrictEqual(staticData.v14.support.phases.dates.lts, '2020-10-27')
@@ -38,6 +38,7 @@ describe('check that we get the values we expect from values that should not eve
   it('should have correct support values for a security ', async () => {
     const staticData = await nodevu()
     const v12AllSecurityReleases = [
+      '12.22.11',
       '12.22.9',
       '12.22.7',
       '12.22.6',
@@ -54,7 +55,7 @@ describe('check that we get the values we expect from values that should not eve
       '12.8.1'
     ]
     assert.deepStrictEqual(staticData.v12.security.all, v12AllSecurityReleases)
-    assert.deepStrictEqual(staticData.v12.security.newest, '12.22.9')
+    assert.deepStrictEqual(staticData.v12.security.newest, '12.22.11')
     assert.deepStrictEqual(staticData.v12.security.oldest, '12.8.1')
   })
 })

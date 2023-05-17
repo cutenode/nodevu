@@ -25,7 +25,7 @@ describe('check to make sure that changing sources works as expected', async () 
     }
     const staticData = await nodevu({ urls })
     assert.deepStrictEqual(staticData.v17.releases['v17.0.0'].dependencies.v8, '9.5.172.21')
-    assert.deepStrictEqual(staticData.v14.support.lts.newest, '14.19.0')
+    assert.deepStrictEqual(staticData.v14.support.lts.newest, '14.21.3')
     assert.deepStrictEqual(staticData.v9.support.phases.current, 'end')
   })
 })
