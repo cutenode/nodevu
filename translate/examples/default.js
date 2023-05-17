@@ -3,27 +3,27 @@ const translate = require('../index') // would normally be "const translate = re
 
 async function getTranslatedData () {
   // translation for the 'current' Package Support term
-  const current = await ranges('current')
-  
+  const translatedCurrent = await ranges('current')
+
   // translation for the 'lts_latest' Package Support term
-  const lts_latest = await ranges(await translate('lts_latest'))
-  
+  const translatedLtsLatest = await ranges(await translate('lts_latest'))
+
   // translation for the 'lts' Package Support term
-  const lts = await ranges(await translate('lts'))
-  
+  const translatedLts = await ranges(await translate('lts'))
+
   // translation for the 'supported' Package Support term
-  const supported = await ranges(await translate('supported'))
+  const translatedSupported = await ranges(await translate('supported'))
 
   // translation for the 'all' Package Support term
-  const all = await ranges(await translate('all'))
+  const translatedAll = await ranges(await translate('all'))
 
   // return the data in a single object
   return {
-    current,
-    lts_latest,
-    lts,
-    supported,
-    all
+    "current": translatedCurrent,
+    "lts_latest": translatedLtsLatest,
+    "lts": translatedLts,
+    "supported": translatedSupported,
+    "all": translatedAll
   }
 }
 
