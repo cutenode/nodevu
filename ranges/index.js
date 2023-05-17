@@ -118,11 +118,9 @@ async function generateRanges (filter) {
 
       // define 'lts/latest' data
       if (filter === 'lts/latest' || filter === 'lts/active' || filter === 'all' || filter.includes('lts/latest') || filter.includes('lts/active') || filter.includes('all')) {
-        if (data[line].support?.phases.current === 'lts') {
+        if (data[line].support?.phases.current === 'lts' && data[line].releases[key].lts.isLts) {
           // TODO: do we want to include all versions in the release line, even prior to it being minted LTS?
-          if (data[line].releases[key].lts.isLts) {
-            ranges['lts/latest'].versions.push(key)
-          }
+          ranges['lts/latest'].versions.push(key)
 
           if (ranges['lts/latest'].oldestSecurity === undefined) { // only checking if this one is undefined, since everything else _should_ be undefined if this one is. saves some processing power.
             ranges['lts/latest'].oldestSecurity = `${data[line].security.oldest}`
@@ -135,10 +133,8 @@ async function generateRanges (filter) {
 
       // define 'lts/maintenance' data
       if (filter === 'lts/maintenance' || filter === 'lts/active' || filter === 'all' || filter.includes('lts/maintenance') || filter.includes('lts/active') || filter.includes('all')) {
-        if (data[line].support?.phases.current === 'maintenance') {
-          if (data[line].releases[key].lts.isLts) {
-            ranges['lts/maintenance'].versions.push(key)
-          }
+        if (data[line].support?.phases.current === 'maintenance' && data[line].releases[key].lts.isLts) {
+          ranges['lts/maintenance'].versions.push(key)
 
           if (ranges['lts/maintenance'].newestSecurity === undefined && ranges['lts/maintenance'].newestLts === undefined) {
             ranges['lts/maintenance'].newestSecurity = `${data[line].security.newest}`
@@ -198,11 +194,5 @@ async function generateRanges (filter) {
 
   return ranges
 }
-
-async function lol () {
-  const data = await generateRanges()
-  console.log(JSON.stringify(data, null, 2))
-}
-lol()
 
 module.exports = generateRanges
