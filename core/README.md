@@ -39,6 +39,9 @@ The data returned by this module follows a pretty specific structure. Here's a d
           - `minor` (`String`) - the semver minor number.
           - `patch` (`String`) - the semver patch number.
           - `line` (`String`) - the "name" of the release line.
+        - `releaseDate` (`String`) - the version's release date.
+        - `modules` (`Object`)
+          - `version` (`String`) - the ABI (Application Binary Interface) version number of Node.js, used to determine which version of Node.js compiled C++ add-on binaries can be loaded in to without needing to be re-compiled.
         - `dependencies` (`Object`) - the bundled dependencies in this version of Node.js:
           - `npm` (`String`) - version of the bundled npm. 
           - `v8` (`String`) - version of the bundled v8.

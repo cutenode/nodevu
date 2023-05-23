@@ -8,6 +8,21 @@ const beforeEachTemplate = require('../util/dev/beforeEachTemplate')
 describe('check that we get the values we expect from values that should not ever change', async () => {
   beforeEach(beforeEachTemplate)
 
+  it('should have some correct values for release date', async () => {
+    const staticData = await nodevu()
+    assert.deepStrictEqual(staticData.v20.releases['v20.2.0'].releaseDate, '2023-05-16')
+    assert.deepStrictEqual(staticData.v9.releases['v9.5.0'].releaseDate, '2018-01-31')
+    assert.deepStrictEqual(staticData['v0.1'].releases['v0.1.14'].releaseDate, '2011-08-26')
+  })
+
+  it('should have some correct values for modules', async () => {
+    const staticData = await nodevu()
+    assert.deepStrictEqual(staticData.v20.releases['v20.2.0'].modules.version, '115')
+    assert.deepStrictEqual(staticData.v10.releases['v10.20.1'].modules.version, '64')
+    assert.deepStrictEqual(staticData['v0.2'].releases['v0.2.0'].modules.version, '1')
+    assert.deepStrictEqual(staticData['v0.1'].releases['v0.1.14'].modules.version, undefined)
+  })
+
   it('should have some correct values for Node.js dependencies', async () => {
     const staticData = await nodevu()
     assert.deepStrictEqual(staticData.v17.releases['v17.0.0'].dependencies.npm, '8.1.0')
