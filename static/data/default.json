@@ -1423,10 +1423,6 @@
         "modules": {
           "version": "111"
         },
-        "releaseDate": "2023-04-17",
-        "modules": {
-          "version": "115"
-        },
         "dependencies": {
           "npm": "9.5.1",
           "v8": "10.8.168.25",
@@ -4028,10 +4024,6 @@
         "releaseDate": "2023-06-20",
         "modules": {
           "version": "108"
-        },
-        "releaseDate": "2022-11-04",
-        "modules": {
-          "version": "111"
         },
         "dependencies": {
           "npm": "9.5.1",

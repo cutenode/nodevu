@@ -3982,10 +3982,6 @@
       "modules": {
         "version": "108"
       },
-      "releaseDate": "2022-10-17",
-      "modules": {
-        "version": "111"
-      },
       "dependencies": {
         "npm": "9.5.1",
         "v8": "10.2.154.26",
