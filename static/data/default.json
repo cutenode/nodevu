@@ -33,8 +33,6 @@
             "osx-x64-pkg",
             "osx-x64-tar",
             "src",
-            "win-arm64-7z",
-            "win-arm64-zip",
             "win-x64-7z",
             "win-x64-exe",
             "win-x64-msi",
