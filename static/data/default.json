@@ -493,6 +493,8 @@
             "osx-x64-pkg",
             "osx-x64-tar",
             "src",
+            "win-arm64-7z",
+            "win-arm64-zip",
             "win-x64-7z",
             "win-x64-exe",
             "win-x64-msi",
@@ -702,7 +704,7 @@
         "modules": {
           "version": "115"
         },
-        "releaseDate": "2023-03-14",
+        "releaseDate": "2023-04-10",
         "modules": {
           "version": "111"
         },
@@ -726,6 +728,8 @@
             "osx-x64-pkg",
             "osx-x64-tar",
             "src",
+            "win-arm64-7z",
+            "win-arm64-zip",
             "win-x64-7z",
             "win-x64-exe",
             "win-x64-msi",
@@ -935,7 +939,7 @@
         "modules": {
           "version": "115"
         },
-        "releaseDate": "2023-02-21",
+        "releaseDate": "2023-03-15",
         "modules": {
           "version": "111"
         },
@@ -2517,7 +2521,7 @@
           "version": "111"
         },
         "dependencies": {
-          "npm": "9.3.1",
+          "npm": "9.4.0",
           "v8": "10.8.168.25",
           "uv": "1.44.2",
           "zlib": "1.2.13",
@@ -3380,7 +3384,7 @@
           "npm": "8.19.3",
           "v8": "10.8.168.20",
           "uv": "1.44.2",
-          "zlib": "1.2.11",
+          "zlib": "1.2.13",
           "openssl": "3.0.7+quic"
         },
         "files": {

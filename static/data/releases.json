@@ -939,9 +939,9 @@
       "dependencies": {
         "npm": "9.6.4",
         "v8": "11.3.244.8",
-        "uv": "1.44.2",
-        "zlib": "1.2.13",
-        "openssl": "3.0.8+quic"
+        "uv": "1.46.0",
+        "zlib": "1.2.13.1-motley",
+        "openssl": "3.0.9+quic"
       },
       "files": {
         "available": [
@@ -1631,7 +1631,7 @@
       "modules": {
         "version": "111"
       },
-      "releaseDate": "2023-05-03",
+      "releaseDate": "2023-06-08",
       "modules": {
         "version": "115"
       },
@@ -1850,7 +1850,7 @@
       "modules": {
         "version": "111"
       },
-      "releaseDate": "2023-04-17",
+      "releaseDate": "2023-05-16",
       "modules": {
         "version": "115"
       },
@@ -2063,7 +2063,11 @@
         "major": 19,
         "minor": 7,
         "patch": 0,
-        "line": "v19"
+        "line": "v20"
+      },
+      "releaseDate": "2023-05-03",
+      "modules": {
+        "version": "115"
       },
       "releaseDate": "2023-02-21",
       "modules": {
@@ -2914,7 +2918,7 @@
         "isLts": false
       },
       "security": {
-        "isSecurity": true
+        "isSecurity": false
       }
     },
     "v19.4.0": {
@@ -4204,7 +4208,7 @@
         "isLts": false
       },
       "security": {
-        "isSecurity": false
+        "isSecurity": true
       }
     }
   },
@@ -4221,7 +4225,7 @@
       "modules": {
         "version": "108"
       },
-      "releaseDate": "2022-11-04",
+      "releaseDate": "2022-10-17",
       "modules": {
         "version": "111"
       },
@@ -4425,7 +4429,7 @@
         "isLts": true
       },
       "security": {
-        "isSecurity": true
+        "isSecurity": false
       }
     },
     "v18.16.1": {
@@ -4439,10 +4443,6 @@
       "releaseDate": "2023-06-20",
       "modules": {
         "version": "108"
-      },
-      "releaseDate": "2022-10-17",
-      "modules": {
-        "version": "111"
       },
       "dependencies": {
         "npm": "9.5.1",
@@ -4644,7 +4644,7 @@
         "isLts": true
       },
       "security": {
-        "isSecurity": false
+        "isSecurity": true
       }
     },
     "v18.16.0": {
