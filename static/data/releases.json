@@ -1170,9 +1170,9 @@
       "dependencies": {
         "npm": "9.6.4",
         "v8": "11.3.244.8",
-        "uv": "1.46.0",
-        "zlib": "1.2.13.1-motley",
-        "openssl": "3.0.9+quic"
+        "uv": "1.44.2",
+        "zlib": "1.2.13",
+        "openssl": "3.0.8+quic"
       },
       "files": {
         "available": [
@@ -1862,7 +1862,7 @@
       "modules": {
         "version": "111"
       },
-      "releaseDate": "2023-06-08",
+      "releaseDate": "2023-05-03",
       "modules": {
         "version": "115"
       },
@@ -2081,10 +2081,6 @@
       "modules": {
         "version": "111"
       },
-      "releaseDate": "2023-05-16",
-      "modules": {
-        "version": "115"
-      },
       "dependencies": {
         "npm": "9.5.1",
         "v8": "10.8.168.25",
@@ -2294,11 +2290,7 @@
         "major": 19,
         "minor": 7,
         "patch": 0,
-        "line": "v20"
-      },
-      "releaseDate": "2023-05-03",
-      "modules": {
-        "version": "115"
+        "line": "v19"
       },
       "releaseDate": "2023-02-21",
       "modules": {
@@ -2728,7 +2720,15 @@
         "major": 19,
         "minor": 6,
         "patch": 0,
-        "line": "v19"
+        "line": "v20"
+      },
+      "releaseDate": "2023-05-03",
+      "modules": {
+        "version": "115"
+      },
+      "releaseDate": "2023-02-21",
+      "modules": {
+        "version": "111"
       },
       "releaseDate": "2023-02-01",
       "modules": {
@@ -2943,15 +2943,7 @@
         "major": 19,
         "minor": 5,
         "patch": 0,
-        "line": "v20"
-      },
-      "releaseDate": "2023-05-03",
-      "modules": {
-        "version": "115"
-      },
-      "releaseDate": "2023-02-21",
-      "modules": {
-        "version": "111"
+        "line": "v19"
       },
       "releaseDate": "2023-01-24",
       "modules": {
@@ -3157,7 +3149,7 @@
         "isLts": false
       },
       "security": {
-        "isSecurity": false
+        "isSecurity": true
       }
     },
     "v19.4.0": {
@@ -3381,7 +3373,19 @@
         "major": 19,
         "minor": 3,
         "patch": 0,
-        "line": "v19"
+        "line": "v20"
+      },
+      "releaseDate": "2023-05-03",
+      "modules": {
+        "version": "115"
+      },
+      "releaseDate": "2023-02-21",
+      "modules": {
+        "version": "111"
+      },
+      "releaseDate": "2023-01-24",
+      "modules": {
+        "version": "111"
       },
       "releaseDate": "2022-12-14",
       "modules": {
@@ -4447,7 +4451,7 @@
         "isLts": false
       },
       "security": {
-        "isSecurity": true
+        "isSecurity": false
       }
     }
   },
@@ -4464,7 +4468,7 @@
       "modules": {
         "version": "108"
       },
-      "releaseDate": "2022-10-17",
+      "releaseDate": "2022-11-04",
       "modules": {
         "version": "111"
       },
@@ -4683,6 +4687,10 @@
       "modules": {
         "version": "108"
       },
+      "releaseDate": "2022-10-17",
+      "modules": {
+        "version": "111"
+      },
       "dependencies": {
         "npm": "9.5.1",
         "v8": "10.2.154.26",
@@ -4883,7 +4891,7 @@
         "isLts": true
       },
       "security": {
-        "isSecurity": false
+        "isSecurity": true
       }
     },
     "v18.16.0": {
