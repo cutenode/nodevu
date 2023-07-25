@@ -2996,8 +2996,6 @@
             "osx-x64-pkg",
             "osx-x64-tar",
             "src",
-            "win-arm64-7z",
-            "win-arm64-zip",
             "win-x64-7z",
             "win-x64-exe",
             "win-x64-msi",
@@ -3101,20 +3099,6 @@
               }
             ],
             "windows": [
-              {
-                "id": "win-arm64-7z",
-                "files": [
-                  "node-v20.1.0-win-arm64.7z"
-                ],
-                "architecture": "arm64"
-              },
-              {
-                "id": "win-arm64-zip",
-                "files": [
-                  "node-v20.1.0-win-arm64.zip"
-                ],
-                "architecture": "arm64"
-              },
               {
                 "id": "win-x64-7z",
                 "files": [
@@ -3227,6 +3211,8 @@
             "osx-x64-pkg",
             "osx-x64-tar",
             "src",
+            "win-arm64-7z",
+            "win-arm64-zip",
             "win-x64-7z",
             "win-x64-exe",
             "win-x64-msi",
@@ -3330,6 +3316,20 @@
               }
             ],
             "windows": [
+              {
+                "id": "win-arm64-7z",
+                "files": [
+                  "node-v20.1.0-win-arm64.7z"
+                ],
+                "architecture": "arm64"
+              },
+              {
+                "id": "win-arm64-zip",
+                "files": [
+                  "node-v20.1.0-win-arm64.zip"
+                ],
+                "architecture": "arm64"
+              },
               {
                 "id": "win-x64-7z",
                 "files": [

@@ -3866,7 +3866,7 @@
         "isLts": false
       },
       "security": {
-        "isSecurity": false
+        "isSecurity": true
       }
     },
     "v19.1.0": {
@@ -3875,7 +3875,15 @@
         "major": 19,
         "minor": 1,
         "patch": 0,
-        "line": "v19"
+        "line": "v20"
+      },
+      "releaseDate": "2023-06-08",
+      "modules": {
+        "version": "115"
+      },
+      "releaseDate": "2023-02-21",
+      "modules": {
+        "version": "111"
       },
       "releaseDate": "2022-11-14",
       "modules": {
@@ -4004,6 +4012,20 @@
             }
           ],
           "windows": [
+            {
+              "id": "win-arm64-7z",
+              "files": [
+                "node-v19.9.0-win-arm64.7z"
+              ],
+              "architecture": "arm64"
+            },
+            {
+              "id": "win-arm64-zip",
+              "files": [
+                "node-v19.9.0-win-arm64.zip"
+              ],
+              "architecture": "arm64"
+            },
             {
               "id": "win-x64-7z",
               "files": [
@@ -4528,7 +4550,7 @@
       "modules": {
         "version": "108"
       },
-      "releaseDate": "2023-01-05",
+      "releaseDate": "2022-10-17",
       "modules": {
         "version": "111"
       },
@@ -4732,7 +4754,7 @@
         "isLts": true
       },
       "security": {
-        "isSecurity": false
+        "isSecurity": true
       }
     },
     "v18.16.1": {
@@ -4947,7 +4969,7 @@
         "isLts": true
       },
       "security": {
-        "isSecurity": true
+        "isSecurity": false
       }
     },
     "v18.16.0": {
