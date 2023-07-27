@@ -3342,14 +3342,14 @@
             {
               "id": "win-arm64-7z",
               "files": [
-                "node-v20.2.0-win-arm64.7z"
+                "node-v20.1.0-win-arm64.7z"
               ],
               "architecture": "arm64"
             },
             {
               "id": "win-arm64-zip",
               "files": [
-                "node-v20.2.0-win-arm64.zip"
+                "node-v20.1.0-win-arm64.zip"
               ],
               "architecture": "arm64"
             },
@@ -3441,7 +3441,7 @@
         "patch": 0,
         "line": "v20"
       },
-      "releaseDate": "2023-05-03",
+      "releaseDate": "2023-04-17",
       "modules": {
         "version": "115"
       },
@@ -3581,14 +3581,14 @@
             {
               "id": "win-arm64-7z",
               "files": [
-                "node-v20.1.0-win-arm64.7z"
+                "node-v20.0.0-win-arm64.7z"
               ],
               "architecture": "arm64"
             },
             {
               "id": "win-arm64-zip",
               "files": [
-                "node-v20.1.0-win-arm64.zip"
+                "node-v20.0.0-win-arm64.zip"
               ],
               "architecture": "arm64"
             },
@@ -3678,15 +3678,7 @@
         "major": 19,
         "minor": 2,
         "patch": 0,
-        "line": "v20"
-      },
-      "releaseDate": "2023-04-17",
-      "modules": {
-        "version": "115"
-      },
-      "releaseDate": "2023-01-24",
-      "modules": {
-        "version": "111"
+        "line": "v19"
       },
       "releaseDate": "2022-11-29",
       "modules": {
@@ -3820,14 +3812,14 @@
             {
               "id": "win-arm64-7z",
               "files": [
-                "node-v20.0.0-win-arm64.7z"
+                "node-v19.9.0-win-arm64.7z"
               ],
               "architecture": "arm64"
             },
             {
               "id": "win-arm64-zip",
               "files": [
-                "node-v20.0.0-win-arm64.zip"
+                "node-v19.9.0-win-arm64.zip"
               ],
               "architecture": "arm64"
             },
@@ -3943,8 +3935,6 @@
           "osx-x64-pkg",
           "osx-x64-tar",
           "src",
-          "win-arm64-7z",
-          "win-arm64-zip",
           "win-x64-7z",
           "win-x64-exe",
           "win-x64-msi",
@@ -4051,14 +4041,14 @@
             {
               "id": "win-arm64-7z",
               "files": [
-                "node-v19.9.0-win-arm64.7z"
+                "node-v20.2.0-win-arm64.7z"
               ],
               "architecture": "arm64"
             },
             {
               "id": "win-arm64-zip",
               "files": [
-                "node-v19.9.0-win-arm64.zip"
+                "node-v20.2.0-win-arm64.zip"
               ],
               "architecture": "arm64"
             },
@@ -4174,6 +4164,8 @@
           "osx-x64-pkg",
           "osx-x64-tar",
           "src",
+          "win-arm64-7z",
+          "win-arm64-zip",
           "win-x64-7z",
           "win-x64-exe",
           "win-x64-msi",
@@ -4278,6 +4270,20 @@
           ],
           "windows": [
             {
+              "id": "win-arm64-7z",
+              "files": [
+                "node-v20.1.0-win-arm64.7z"
+              ],
+              "architecture": "arm64"
+            },
+            {
+              "id": "win-arm64-zip",
+              "files": [
+                "node-v20.1.0-win-arm64.zip"
+              ],
+              "architecture": "arm64"
+            },
+            {
               "id": "win-x64-7z",
               "files": [
                 "node-v19.0.1-win-x64.7z"
@@ -4363,7 +4369,19 @@
         "major": 19,
         "minor": 0,
         "patch": 0,
-        "line": "v19"
+        "line": "v20"
+      },
+      "releaseDate": "2023-04-17",
+      "modules": {
+        "version": "115"
+      },
+      "releaseDate": "2023-01-24",
+      "modules": {
+        "version": "111"
+      },
+      "releaseDate": "2022-11-29",
+      "modules": {
+        "version": "111"
       },
       "releaseDate": "2022-10-17",
       "modules": {
@@ -4389,6 +4407,8 @@
           "osx-x64-pkg",
           "osx-x64-tar",
           "src",
+          "win-arm64-7z",
+          "win-arm64-zip",
           "win-x64-7z",
           "win-x64-exe",
           "win-x64-msi",
@@ -4493,6 +4513,20 @@
           ],
           "windows": [
             {
+              "id": "win-arm64-7z",
+              "files": [
+                "node-v20.0.0-win-arm64.7z"
+              ],
+              "architecture": "arm64"
+            },
+            {
+              "id": "win-arm64-zip",
+              "files": [
+                "node-v20.0.0-win-arm64.zip"
+              ],
+              "architecture": "arm64"
+            },
+            {
               "id": "win-x64-7z",
               "files": [
                 "node-v19.0.0-win-x64.7z"
@@ -4569,7 +4603,7 @@
         "isLts": false
       },
       "security": {
-        "isSecurity": true
+        "isSecurity": false
       }
     }
   },
@@ -4585,6 +4619,10 @@
       "releaseDate": "2023-07-18",
       "modules": {
         "version": "108"
+      },
+      "releaseDate": "2022-11-14",
+      "modules": {
+        "version": "111"
       },
       "dependencies": {
         "npm": "9.6.7",
@@ -4606,6 +4644,8 @@
           "osx-x64-pkg",
           "osx-x64-tar",
           "src",
+          "win-arm64-7z",
+          "win-arm64-zip",
           "win-x64-7z",
           "win-x64-exe",
           "win-x64-msi",
