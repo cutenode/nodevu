@@ -2504,7 +2504,7 @@
         "isLts": false
       },
       "security": {
-        "isSecurity": true
+        "isSecurity": false
       }
     },
     "v19.6.1": {
@@ -2524,7 +2524,7 @@
         "v8": "10.8.168.25",
         "uv": "1.44.2",
         "zlib": "1.2.13",
-        "openssl": "3.0.7+quic"
+        "openssl": "3.0.8+quic"
       },
       "files": {
         "available": [
@@ -3887,6 +3887,10 @@
       "modules": {
         "version": "111"
       },
+      "releaseDate": "2022-11-14",
+      "modules": {
+        "version": "111"
+      },
       "dependencies": {
         "npm": "8.19.3",
         "v8": "10.7.193.20",
@@ -4352,6 +4356,10 @@
         "version": "111"
       },
       "releaseDate": "2022-11-29",
+      "modules": {
+        "version": "111"
+      },
+      "releaseDate": "2022-10-17",
       "modules": {
         "version": "111"
       },
