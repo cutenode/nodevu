@@ -3638,10 +3638,6 @@
         "modules": {
           "version": "111"
         },
-        "releaseDate": "2023-07-18",
-        "modules": {
-          "version": "108"
-        },
         "dependencies": {
           "npm": "9.2.0",
           "v8": "10.8.168.21",

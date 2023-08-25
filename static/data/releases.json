@@ -2535,6 +2535,10 @@
       "modules": {
         "version": "111"
       },
+      "releaseDate": "2023-02-21",
+      "modules": {
+        "version": "111"
+      },
       "dependencies": {
         "npm": "9.5.0",
         "v8": "10.8.168.25",
@@ -9777,10 +9781,6 @@
       "releaseDate": "2022-06-01",
       "modules": {
         "version": "102"
-      },
-      "releaseDate": "2022-05-03",
-      "modules": {
-        "version": "108"
       },
       "dependencies": {
         "npm": "8.11.0",
