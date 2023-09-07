@@ -922,7 +922,7 @@
           "isLts": false
         },
         "security": {
-          "isSecurity": false
+          "isSecurity": true
         }
       },
       "v20.3.1": {
@@ -5266,7 +5266,7 @@
           "isLts": true
         },
         "security": {
-          "isSecurity": true
+          "isSecurity": false
         }
       },
       "v18.17.0": {
@@ -5280,10 +5280,6 @@
         "releaseDate": "2023-07-18",
         "modules": {
           "version": "108"
-        },
-        "releaseDate": "2023-02-16",
-        "modules": {
-          "version": "111"
         },
         "dependencies": {
           "npm": "9.6.7",
@@ -5706,7 +5702,7 @@
           "isLts": true
         },
         "security": {
-          "isSecurity": false
+          "isSecurity": true
         }
       },
       "v18.16.0": {
