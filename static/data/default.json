@@ -2978,7 +2978,7 @@
           "isLts": false
         },
         "security": {
-          "isSecurity": false
+          "isSecurity": true
         }
       },
       "v19.6.1": {
@@ -4276,7 +4276,7 @@
               {
                 "id": "win-arm64-7z",
                 "files": [
-                  "node-v20.0.0-win-arm64.7z"
+                  "node-v19.2.0-win-x64.7z"
                 ],
                 "architecture": "arm64"
               },
@@ -4290,7 +4290,7 @@
               {
                 "id": "win-x64-7z",
                 "files": [
-                  "node-v19.2.0-win-x64.7z"
+                  "node-v20.0.0-win-x64.7z"
                 ],
                 "architecture": "x64"
               },
@@ -5301,8 +5301,6 @@
             "osx-x64-pkg",
             "osx-x64-tar",
             "src",
-            "win-arm64-7z",
-            "win-arm64-zip",
             "win-x64-7z",
             "win-x64-exe",
             "win-x64-msi",
@@ -5483,7 +5481,7 @@
           "isLts": true
         },
         "security": {
-          "isSecurity": true
+          "isSecurity": false
         }
       },
       "v18.16.1": {
@@ -5497,10 +5495,6 @@
         "releaseDate": "2023-06-20",
         "modules": {
           "version": "108"
-        },
-        "releaseDate": "2023-02-01",
-        "modules": {
-          "version": "111"
         },
         "dependencies": {
           "npm": "9.5.1",
@@ -5522,6 +5516,8 @@
             "osx-x64-pkg",
             "osx-x64-tar",
             "src",
+            "win-arm64-7z",
+            "win-arm64-zip",
             "win-x64-7z",
             "win-x64-exe",
             "win-x64-msi",
