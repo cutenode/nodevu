@@ -937,7 +937,7 @@
         "modules": {
           "version": "115"
         },
-        "releaseDate": "2023-04-10",
+        "releaseDate": "2023-02-16",
         "modules": {
           "version": "111"
         },
@@ -2372,8 +2372,6 @@
             "osx-x64-pkg",
             "osx-x64-tar",
             "src",
-            "win-arm64-7z",
-            "win-arm64-zip",
             "win-x64-7z",
             "win-x64-exe",
             "win-x64-msi",
@@ -2388,8 +2386,8 @@
               {
                 "id": "aix-ppc64",
                 "files": [
-                  "node-v20.4.0-aix-ppc64.tar.gz",
-                  "node-v20.4.0-aix-ppc64.tar.xz"
+                  "node-v19.6.1-aix-ppc64.tar.gz",
+                  "node-v19.6.1-aix-ppc64.tar.xz"
                 ],
                 "architecture": "power"
               }
@@ -3213,7 +3211,7 @@
           "isLts": false
         },
         "security": {
-          "isSecurity": false
+          "isSecurity": true
         }
       },
       "v19.6.1": {
@@ -3233,7 +3231,7 @@
           "v8": "10.8.168.25",
           "uv": "1.44.2",
           "zlib": "1.2.13",
-          "openssl": "3.0.8+quic"
+          "openssl": "3.0.7+quic"
         },
         "files": {
           "available": [
@@ -4542,6 +4540,10 @@
         "modules": {
           "version": "111"
         },
+        "releaseDate": "2022-11-14",
+        "modules": {
+          "version": "111"
+        },
         "dependencies": {
           "npm": "8.19.3",
           "v8": "10.7.193.20",
@@ -5399,7 +5401,7 @@
               {
                 "id": "win-x64-7z",
                 "files": [
-                  "node-v20.0.0-win-x64.7z"
+                  "node-v18.17.1-win-x64.7z"
                 ],
                 "architecture": "x64"
               },
@@ -5487,10 +5489,6 @@
         "releaseDate": "2023-07-18",
         "modules": {
           "version": "108"
-        },
-        "releaseDate": "2022-11-14",
-        "modules": {
-          "version": "111"
         },
         "dependencies": {
           "npm": "9.6.7",
@@ -5722,10 +5720,6 @@
         "releaseDate": "2023-06-20",
         "modules": {
           "version": "108"
-        },
-        "releaseDate": "2022-11-04",
-        "modules": {
-          "version": "111"
         },
         "dependencies": {
           "npm": "9.5.1",
@@ -21575,7 +21569,7 @@
           "maintenance": "2022-10-18",
           "end": "2023-09-11"
         },
-        "current": "maintenance"
+        "current": "end"
       }
     },
     "security": {
