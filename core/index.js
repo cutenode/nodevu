@@ -160,7 +160,7 @@ async function core (options) {
   if (options?.includeUpcomingReleases) {
     const now = DateTime.now()
     const upcomingReleases = {}
-    for (const [key ,value] of Object.entries(schedule)) {
+    for (const [key, value] of Object.entries(schedule)) {
       if (now < new Date(value.start)) {
         // return same style of object as above but withou the semver and binaries info
         upcomingReleases[key] = {
@@ -176,7 +176,7 @@ async function core (options) {
         }
       }
     }
-    Object.assign(data, upcomingReleases);
+    Object.assign(data, upcomingReleases)
   }
 
   return data
