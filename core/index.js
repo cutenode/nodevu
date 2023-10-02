@@ -155,6 +155,30 @@ async function core (options) {
     data[name].releases[`v${versionSemver.version}`].security.isSecurity = versions[version].security ?? false
   })
 
+  // upcoming releases
+  // adding upcoming releases to start of array
+  if (options?.includeUpcomingReleases) {
+    const now = DateTime.now()
+    const upcomingReleases = {}
+    for (const [key ,value] of Object.entries(schedule)) {
+      if (now < new Date(value.start)) {
+        // return same style of object as above but withou the semver and binaries info
+        upcomingReleases[key] = {
+          codename: value.codename,
+          phases: {
+            dates: {
+              start: value.start,
+              lts: value.lts,
+              maintenance: value.maintenance,
+              end: value.end
+            }
+          }
+        }
+      }
+    }
+    Object.assign(data, upcomingReleases);
+  }
+
   return data
 }
 
@@ -199,7 +223,8 @@ async function parseOptions (options) {
     urls: {
       index: 'https://nodejs.org/dist/index.json',
       schedule: 'https://raw.githubusercontent.com/nodejs/Release/master/schedule.json'
-    }
+    },
+    includeUpcomingReleases: false
   }
 
   // allow the end-user to replace our fetch implementation with another one of their precernece.
@@ -218,6 +243,11 @@ async function parseOptions (options) {
 
   if (options?.urls?.schedule) {
     parsedOptions.urls.schedule = options.urls.schedule
+  }
+
+  // allow the end-user to include upcoming releases in the data
+  if (options?.includeUpcomingReleases) {
+    parsedOptions.includeUpcomingReleases = options.includeUpcomingReleases
   }
 
   return parsedOptions
