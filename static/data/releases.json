@@ -10,7 +10,7 @@
       },
       "releaseDate": "2023-10-13",
       "modules": {
-        "version": "NODE_EMBEDDER_MODULE_VERSION"
+        "version": "115"
       },
       "dependencies": {
         "npm": "10.1.0",
@@ -241,7 +241,7 @@
       },
       "releaseDate": "2023-09-28",
       "modules": {
-        "version": "NODE_EMBEDDER_MODULE_VERSION"
+        "version": "115"
       },
       "dependencies": {
         "npm": "10.1.0",
