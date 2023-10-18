@@ -1,4 +1,14 @@
 {
+  "v21": {
+    "phases": {
+      "dates": {
+        "start": "2023-10-17",
+        "maintenance": "2024-04-01",
+        "end": "2024-06-01"
+      },
+      "current": "start"
+    }
+  },
   "v20": {
     "codename": "",
     "lts": {},
@@ -35,7 +45,7 @@
         "maintenance": "2023-10-18",
         "end": "2025-04-30"
       },
-      "current": "lts"
+      "current": "maintenance"
     }
   },
   "v17": {
