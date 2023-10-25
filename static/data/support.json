@@ -10,8 +10,11 @@
     }
   },
   "v20": {
-    "codename": "",
-    "lts": {},
+    "codename": "Iron",
+    "lts": {
+      "newest": "20.9.0",
+      "oldest": "20.9.0"
+    },
     "phases": {
       "dates": {
         "start": "2023-04-18",
