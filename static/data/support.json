@@ -12,7 +12,7 @@
   "v20": {
     "codename": "Iron",
     "lts": {
-      "newest": "20.9.0",
+      "newest": "20.10.0",
       "oldest": "20.9.0"
     },
     "phases": {
