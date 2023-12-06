@@ -1,6 +1,237 @@
 {
   "v21": {
     "releases": {
+      "v21.4.0": {
+        "semver": {
+          "raw": "21.4.0",
+          "major": 21,
+          "minor": 4,
+          "patch": 0,
+          "line": "v21"
+        },
+        "releaseDate": "2023-12-05",
+        "modules": {
+          "version": "120"
+        },
+        "dependencies": {
+          "npm": "10.2.4",
+          "v8": "11.8.172.17",
+          "uv": "1.46.0",
+          "zlib": "1.2.13.1-motley",
+          "openssl": "3.0.12+quic"
+        },
+        "files": {
+          "available": [
+            "aix-ppc64",
+            "headers",
+            "linux-arm64",
+            "linux-armv7l",
+            "linux-ppc64le",
+            "linux-s390x",
+            "linux-x64",
+            "osx-arm64-tar",
+            "osx-x64-pkg",
+            "osx-x64-tar",
+            "src",
+            "win-arm64-7z",
+            "win-arm64-zip",
+            "win-x64-7z",
+            "win-x64-exe",
+            "win-x64-msi",
+            "win-x64-zip",
+            "win-x86-7z",
+            "win-x86-exe",
+            "win-x86-msi",
+            "win-x86-zip"
+          ],
+          "links": {
+            "aix": [
+              {
+                "id": "aix-ppc64",
+                "files": [
+                  "node-v21.4.0-aix-ppc64.tar.gz",
+                  "node-v21.4.0-aix-ppc64.tar.xz"
+                ],
+                "architecture": "power"
+              }
+            ],
+            "headers": [
+              {
+                "id": "headers",
+                "files": [
+                  "node-v21.4.0-headers.tar.gz",
+                  "node-v21.4.0-headers.tar.xz"
+                ]
+              }
+            ],
+            "linux": [
+              {
+                "id": "linux-arm64",
+                "files": [
+                  "node-v21.4.0-linux-arm64.tar.gz",
+                  "node-v21.4.0-linux-arm64.tar.xz"
+                ],
+                "architecture": "arm64"
+              },
+              {
+                "id": "linux-armv7l",
+                "files": [
+                  "node-v21.4.0-linux-armv7l.tar.gz",
+                  "node-v21.4.0-linux-armv7l.tar.xz"
+                ],
+                "architecture": "armv7l"
+              },
+              {
+                "id": "linux-ppc64le",
+                "files": [
+                  "node-v21.4.0-linux-ppc64le.tar.gz",
+                  "node-v21.4.0-linux-ppc64le.tar.xz"
+                ],
+                "architecture": "power"
+              },
+              {
+                "id": "linux-s390x",
+                "files": [
+                  "node-v21.4.0-linux-s390x.tar.gz",
+                  "node-v21.4.0-linux-s390x.tar.xz"
+                ],
+                "architecture": "z"
+              },
+              {
+                "id": "linux-x64",
+                "files": [
+                  "node-v21.4.0-linux-x64.tar.gz",
+                  "node-v21.4.0-linux-x64.tar.xz"
+                ],
+                "architecture": "x64"
+              }
+            ],
+            "macos": [
+              {
+                "id": "osx-arm64-tar",
+                "files": [
+                  "node-v21.4.0-darwin-arm64.tar.gz"
+                ],
+                "architecture": "arm64"
+              },
+              {
+                "id": "osx-x64-pkg",
+                "files": [
+                  "node-v21.4.0.pkg"
+                ],
+                "architecture": "x64"
+              },
+              {
+                "id": "osx-x64-tar",
+                "files": [
+                  "node-v21.4.0-darwin-x64.tar.gz"
+                ],
+                "architecture": "x64"
+              }
+            ],
+            "source": [
+              {
+                "id": "src",
+                "files": [
+                  "node-v21.4.0.tar.xz"
+                ]
+              }
+            ],
+            "windows": [
+              {
+                "id": "win-arm64-7z",
+                "files": [
+                  "node-v21.4.0-win-arm64.7z"
+                ],
+                "architecture": "arm64"
+              },
+              {
+                "id": "win-arm64-zip",
+                "files": [
+                  "node-v21.4.0-win-arm64.zip"
+                ],
+                "architecture": "arm64"
+              },
+              {
+                "id": "win-x64-7z",
+                "files": [
+                  "node-v21.4.0-win-x64.7z"
+                ],
+                "architecture": "x64"
+              },
+              {
+                "id": "win-x64-exe",
+                "files": [
+                  "win-x64/node.exe",
+                  "win-x64/node.lib",
+                  "win-x64/node_pdb.7z",
+                  "win-x64/node_pdb.zip",
+                  "win-x86/node.exe",
+                  "win-x86/node.lib",
+                  "win-x86/node_pdb.7z",
+                  "win-x86/node_pdb.zip"
+                ],
+                "architecture": "x64"
+              },
+              {
+                "id": "win-x64-msi",
+                "files": [
+                  "node-v21.4.0-x64.msi"
+                ],
+                "architecture": "x64"
+              },
+              {
+                "id": "win-x64-zip",
+                "files": [
+                  "node-v21.4.0-win-x64.zip"
+                ],
+                "architecture": "x64"
+              },
+              {
+                "id": "win-x86-7z",
+                "files": [
+                  "node-v21.4.0-win-x86.7z"
+                ],
+                "architecture": "x86"
+              },
+              {
+                "id": "win-x86-exe",
+                "files": [
+                  "win-x64/node.exe",
+                  "win-x64/node.lib",
+                  "win-x64/node_pdb.7z",
+                  "win-x64/node_pdb.zip",
+                  "win-x86/node.exe",
+                  "win-x86/node.lib",
+                  "win-x86/node_pdb.7z",
+                  "win-x86/node_pdb.zip"
+                ],
+                "architecture": "x86"
+              },
+              {
+                "id": "win-x86-msi",
+                "files": [
+                  "node-v21.4.0-x86.msi"
+                ],
+                "architecture": "x86"
+              },
+              {
+                "id": "win-x86-zip",
+                "files": [
+                  "node-v21.4.0-win-x86.zip"
+                ],
+                "architecture": "x86"
+              }
+            ]
+          }
+        },
+        "lts": {
+          "isLts": false
+        },
+        "security": {
+          "isSecurity": false
+        }
+      },
       "v21.3.0": {
         "semver": {
           "raw": "21.3.0",
@@ -229,7 +460,7 @@
           "isLts": false
         },
         "security": {
-          "isSecurity": false
+          "isSecurity": true
         }
       },
       "v21.2.0": {
@@ -457,10 +688,10 @@
           }
         },
         "lts": {
-          "isLts": false
+          "isLts": true
         },
         "security": {
-          "isSecurity": true
+          "isSecurity": false
         }
       },
       "v21.1.0": {
@@ -480,7 +711,7 @@
           "v8": "11.8.172.15",
           "uv": "1.46.0",
           "zlib": "1.2.13.1-motley",
-          "openssl": "3.0.10+quic"
+          "openssl": "3.0.12+quic"
         },
         "files": {
           "available": [
@@ -691,7 +922,7 @@
           "isLts": true
         },
         "security": {
-          "isSecurity": false
+          "isSecurity": true
         }
       },
       "v21.0.0": {
@@ -922,7 +1153,7 @@
           "isLts": true
         },
         "security": {
-          "isSecurity": true
+          "isSecurity": false
         }
       }
     },
@@ -1170,7 +1401,7 @@
           "isLts": true
         },
         "security": {
-          "isSecurity": false
+          "isSecurity": true
         }
       },
       "v20.9.0": {
@@ -1632,7 +1863,7 @@
           "isLts": false
         },
         "security": {
-          "isSecurity": true
+          "isSecurity": false
         }
       },
       "v20.8.0": {
@@ -1863,7 +2094,7 @@
           "isLts": false
         },
         "security": {
-          "isSecurity": false
+          "isSecurity": true
         }
       },
       "v20.7.0": {
