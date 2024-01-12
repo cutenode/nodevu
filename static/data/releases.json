@@ -4985,7 +4985,7 @@
             {
               "id": "src",
               "files": [
-                "node-v20.6.1.tar.xz"
+                "node-v20.7.0.tar.xz"
               ]
             }
           ],
@@ -5744,7 +5744,7 @@
         "isLts": false
       },
       "security": {
-        "isSecurity": true
+        "isSecurity": false
       }
     },
     "v19.7.0": {
@@ -5753,7 +5753,7 @@
         "major": 19,
         "minor": 7,
         "patch": 0,
-        "line": "v20"
+        "line": "v19"
       },
       "releaseDate": "2023-02-21",
       "modules": {
