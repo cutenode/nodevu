@@ -2681,19 +2681,43 @@
           ],
           "windows": [
             {
-              "id": "win-arm64-7z",
+              "id": "win-x64-7z",
               "files": [
                 "node-v20.8.0-win-arm64.7z"
               ],
               "architecture": "arm64"
             },
             {
-              "id": "win-arm64-zip",
+              "id": "linux-armv7l",
               "files": [
                 "node-v20.8.0-win-arm64.zip"
               ],
               "architecture": "arm64"
             },
+            {
+              "id": "osx-x64-pkg",
+              "files": [
+                "node-v19.8.0.pkg"
+              ],
+              "architecture": "x64"
+            },
+            {
+              "id": "osx-x64-tar",
+              "files": [
+                "node-v19.8.0-darwin-x64.tar.gz"
+              ],
+              "architecture": "x64"
+            }
+          ],
+          "source": [
+            {
+              "id": "src",
+              "files": [
+                "node-v19.8.0.tar.xz"
+              ]
+            }
+          ],
+          "windows": [
             {
               "id": "win-x64-7z",
               "files": [
@@ -5773,7 +5797,7 @@
       },
       "releaseDate": "2023-03-14",
       "modules": {
-        "version": "115"
+        "version": "111"
       },
       "dependencies": {
         "npm": "9.5.1",
