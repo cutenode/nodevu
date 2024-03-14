@@ -26,10 +26,11 @@
   },
   "homepage": "https://github.com/cutenode/nodevu#readme",
   "dependencies": {
-    "@nodevu/core": "^0.0.4",
-    "@nodevu/aliases": "^0.0.2"
+    "@nodevu/aliases": "^0.0.2",
+    "@nodevu/core": "^0.0.4"
   },
   "devDependencies": {
+    "@biomejs/biome": "1.6.1",
     "nyc": "^15.1.0",
     "standard": "^17.0.0",
     "test": "^3.3.0"

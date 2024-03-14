@@ -30,6 +30,7 @@
     "updates:update": "npx npm-check-updates -u"
   },
   "devDependencies": {
+    "@biomejs/biome": "1.6.1",
     "@nodevu/ranges": "^0.1.0",
     "nyc": "^15.1.0",
     "standard": "^17.0.0",

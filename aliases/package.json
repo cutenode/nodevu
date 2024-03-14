@@ -24,6 +24,7 @@
     "updates:update": "npx npm-check-updates -u"
   },
   "devDependencies": {
+    "@biomejs/biome": "1.6.1",
     "standard": "^17.0.0"
   }
 }
