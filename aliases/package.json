@@ -17,6 +17,7 @@
 	"scripts": {
 		"lint": "biome check ./",
 		"lint:apply": "biome check ./ --apply",
+		"test": "",
 		"updates:check": "npx npm-check-updates",
 		"updates:update": "npx npm-check-updates -u"
 	},
