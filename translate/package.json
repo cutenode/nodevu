@@ -1,42 +1,36 @@
 {
-  "name": "@nodevu/translate",
-  "version": "0.0.1",
-  "description": "a translation layer between the nodevu naming mechanism and the Node.js supported mechanism. Neceessary for legacy interop.",
-  "keywords": [
-    "nodevu",
-    "node",
-    "nodejs",
-    "versions",
-    "supported"
-  ],
-  "homepage": "https://github.com/cutenode/nodevu#readme",
-  "bugs": {
-    "url": "https://github.com/cutenode/nodevu/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/cutenode/nodevu.git"
-  },
-  "license": "MIT",
-  "author": "Tierney Cyren",
-  "main": "index.js",
-  "scripts": {
-    "coverage": "nyc node--test",
-    "lint": "standard --env mocha",
-    "lint:fix": "standard --fix --env mocha",
-    "lint:packagejson": "npx sort-package-json",
-    "test": "node--test",
-    "updates:check": "npx npm-check-updates",
-    "updates:update": "npx npm-check-updates -u"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "1.6.1",
-    "@nodevu/ranges": "^0.1.0",
-    "nyc": "^15.1.0",
-    "standard": "^17.0.0",
-    "test": "^3.3.0"
-  },
-  "engines": {
-    "node": ">=16.0.0"
-  }
+	"name": "@nodevu/translate",
+	"version": "0.0.1",
+	"description": "a translation layer between the nodevu naming mechanism and the Node.js supported mechanism. Neceessary for legacy interop.",
+	"keywords": ["nodevu", "node", "nodejs", "versions", "supported"],
+	"homepage": "https://github.com/cutenode/nodevu#readme",
+	"bugs": {
+		"url": "https://github.com/cutenode/nodevu/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/cutenode/nodevu.git"
+	},
+	"license": "MIT",
+	"author": "Tierney Cyren",
+	"main": "index.js",
+	"scripts": {
+		"coverage": "nyc node--test",
+		"lint": "biome check ./",
+		"lint:apply": "biome check ./ --apply",
+		"lint:packagejson": "npx sort-package-json",
+		"test": "node--test",
+		"updates:check": "npx npm-check-updates",
+		"updates:update": "npx npm-check-updates -u"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "1.6.1",
+		"@nodevu/ranges": "^0.1.0",
+		"nyc": "^15.1.0",
+		"standard": "^17.0.0",
+		"test": "^3.3.0"
+	},
+	"engines": {
+		"node": ">=16.0.0"
+	}
 }
