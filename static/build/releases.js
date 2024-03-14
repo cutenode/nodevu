@@ -1,14 +1,16 @@
-const nodevu = require('@nodevu/core')
-const write = require('../util/dev/write')
+const nodevu = require('@nodevu/core');
+const write = require('../util/dev/write');
 
-async function writeReleases (filename) {
-  const data = await nodevu()
-  const releases = {}
+async function writeReleases(filename) {
+	const data = await nodevu();
+	const releases = {};
 
-  Object.keys(data).forEach(async (version) => {
-    releases[version] = data[version].releases
-  })
-  write('./static/data/releases.json', releases)
+	async () => {
+		for await (const verison of Object.keys(data)) {
+			releases[version] = data[version].releases;
+		}
+	};
+	write('./static/data/releases.json', releases);
 }
 
-writeReleases()
+writeReleases();
