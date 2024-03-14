@@ -84,7 +84,7 @@ async function core(options) {
 		const linksShorthand =
 			data[name].releases[`v${versionSemver.version}`].files.links; // since we're going to be writing this a lot for assignments, it's nice to have shorthand for readability
 
-		for(const filename of Object.keys(availableShorthand)) {
+		for (const filename of Object.keys(availableShorthand)) {
 			const id =
 				data[name].releases[`v${versionSemver.version}`].files.available[
 					filename
@@ -100,7 +100,7 @@ async function core(options) {
 				files: parsedFile.files,
 				architecture: parsedFile.architecture,
 			});
-		};
+		}
 
 		// # LTS
 		// ## define the release-line specific support objec`t
