@@ -1,0 +1,30 @@
+name: "Test Suite: @nodevu/core"
+
+on:
+  pull_request:
+    paths:
+      - 'parsefiles/**'
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  tests:
+    if: github.repository == 'cutenode/nodevu'
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [current, lts/*, lts/-1]
+    steps:
+    - name: Checkout the repository
+      uses: actions/checkout@v4
+    - name: Setup Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Install most recent npm
+      run: npm install -g npm
+    - name: Run npm install -w parsefiles
+      run: npm install -w parsefiles
+    - name: Run npm test -w parsefiles
+      run: npm test -w parsefiles

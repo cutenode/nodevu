@@ -1,9 +1,9 @@
-name: "Test Suite: @nodevu/core"
+name: "Test Suite: @nodevu/translate"
 
 on:
   pull_request:
     paths:
-      - 'core/**'
+      - 'translate/**'
     branches:
       - main
   workflow_dispatch:
@@ -14,15 +14,17 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [current, lts/*, lts/-1, lts/-2]
+        node-version: [current, lts/*, lts/-1]
     steps:
     - name: Checkout the repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
     - name: Setup Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
-    - name: Run npm install
-      run: npm install -w core
-    - name: Run npm test
-      run: npm test -w core
+    - name: Install most recent npm
+      run: npm install -g npm
+    - name: Run npm install -w translate
+      run: npm install -w translate
+    - name: Run npm test -w translate
+      run: npm test -w translate

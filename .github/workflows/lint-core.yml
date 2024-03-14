@@ -1,8 +1,10 @@
-name: "Test Suite: Linter"
+name: "Test Suite: Linter (core)"
 
 on:
   push:
   pull_request:
+    paths:
+        - 'core/**'
     branches:
       - main
   workflow_dispatch:
@@ -18,8 +20,7 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: current
-    - name: Run npm install
-      run: npm install -ws
-    - name: Run npm lint
-      run: npm run lint
-      
+    - name: Run npm install -w core
+      run: npm install -w core
+    - name: Run npm run lint -w core
+      run: npm run lint -w core

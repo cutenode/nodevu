@@ -5,7 +5,6 @@ const parseFiles = require('../index')
 const input = require('./data/input.json')
 const expected = require('./data/expected.json')
 
-
 const mockverson = '420.420.420'
 
 // this will cover most cases!
