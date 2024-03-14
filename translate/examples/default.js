@@ -19,11 +19,11 @@ async function getTranslatedData () {
 
   // return the data in a single object
   return {
-    "current": translatedCurrent,
-    "lts_latest": translatedLtsLatest,
-    "lts": translatedLts,
-    "supported": translatedSupported,
-    "all": translatedAll
+    current: translatedCurrent,
+    lts_latest: translatedLtsLatest,
+    lts: translatedLts,
+    supported: translatedSupported,
+    all: translatedAll
   }
 }
 
