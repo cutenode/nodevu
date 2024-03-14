@@ -17,14 +17,14 @@ jobs:
         node-version: [current, lts/*, lts/-1, lts/-2]
     steps:
     - name: Checkout the repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
     - name: Setup Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
-    - name: Install latest npm
-      run: npm i -g npm
-    - name: Run npm install
+    - name: Install most recent npm
+      run: npm install -g npm
+    - name: Run npm install -w static
       run: npm install -w static
-    - name: Run npm test
+    - name: Run npm test -w static
       run: npm test -w static

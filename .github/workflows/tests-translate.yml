@@ -1,9 +1,9 @@
-name: "Test Suite: @nodevu/ranges"
+name: "Test Suite: @nodevu/translate"
 
 on:
   pull_request:
     paths:
-      - 'ranges/*'
+      - 'translate/**'
     branches:
       - main
   workflow_dispatch:
@@ -17,16 +17,14 @@ jobs:
         node-version: [current, lts/*, lts/-1]
     steps:
     - name: Checkout the repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
     - name: Setup Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
-    - name: Install latest npm
-      run: npm i -g npm
-    - name: Run npm install at the monorepo level
-      run: npm install
-    - name: Run npm install at the package level
-      run: npm install -w ranges
-    - name: Run npm test
-      run: npm test -w ranges
+    - name: Install most recent npm
+      run: npm install -g npm
+    - name: Run npm install -w translate
+      run: npm install -w translate
+    - name: Run npm test -w translate
+      run: npm test -w translate

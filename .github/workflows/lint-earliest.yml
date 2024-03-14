@@ -1,8 +1,10 @@
-name: "Test Suite: Linter"
+name: "Test Suite: Linter (earliest)"
 
 on:
   push:
   pull_request:
+    paths:
+        - 'earliest/**'
     branches:
       - main
   workflow_dispatch:
@@ -18,8 +20,7 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: current
-    - name: Run npm install
-      run: npm install -ws
-    - name: Run npm lint
-      run: npm run lint
-      
+    - name: Run npm install -w earliest
+      run: npm install -w earliest
+    - name: Run npm run lint -w earliest
+      run: npm run lint -w earliest
