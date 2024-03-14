@@ -1,10 +1,10 @@
 const aliases = [
-  'current',
-  'lts/latest',
-  'lts/active',
-  'lts/maintenance',
-  'eol',
-  'all'
-]
+	'current',
+	'lts/latest',
+	'lts/active',
+	'lts/maintenance',
+	'eol',
+	'all',
+];
 
-module.exports = aliases
+module.exports = aliases;

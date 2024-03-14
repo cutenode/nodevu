@@ -1,30 +1,27 @@
 {
-  "name": "@nodevu/aliases",
-  "version": "0.0.2",
-  "description": "available aliases for sets of Node.js versions",
-  "main": "index.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/cutenode/nodevu.git"
-  },
-  "keywords": [
-    "node.js",
-    "version"
-  ],
-  "author": "Tierney Cyren <hello@bnb.im> (https://bnb.im/)",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/cutenode/nodevu/issues"
-  },
-  "homepage": "https://github.com/cutenode/nodevu#readme",
-  "scripts": {
-    "lint": "standard --env mocha",
-    "lint:fix": "standard --fix --env mocha",
-    "updates:check": "npx npm-check-updates",
-    "updates:update": "npx npm-check-updates -u"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "1.6.1",
-    "standard": "^17.0.0"
-  }
+	"name": "@nodevu/aliases",
+	"version": "0.0.2",
+	"description": "available aliases for sets of Node.js versions",
+	"main": "index.js",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/cutenode/nodevu.git"
+	},
+	"keywords": ["node.js", "version"],
+	"author": "Tierney Cyren <hello@bnb.im> (https://bnb.im/)",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/cutenode/nodevu/issues"
+	},
+	"homepage": "https://github.com/cutenode/nodevu#readme",
+	"scripts": {
+		"lint": "biome check ./",
+		"lint:apply": "biome check ./ --apply",
+		"updates:check": "npx npm-check-updates",
+		"updates:update": "npx npm-check-updates -u"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "1.6.1",
+		"standard": "^17.0.0"
+	}
 }
