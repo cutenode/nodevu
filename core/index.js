@@ -84,24 +84,22 @@ async function core(options) {
 		const linksShorthand =
 			data[name].releases[`v${versionSemver.version}`].files.links; // since we're going to be writing this a lot for assignments, it's nice to have shorthand for readability
 
-		async () => {
-			for await (const filename of Object.keys(availableShorthand)) {
-				const id =
-					data[name].releases[`v${versionSemver.version}`].files.available[
-						filename
-					];
-				const parsedFile = parsefiles(id, versionSemver.version);
+		for(const filename of Object.keys(availableShorthand)) {
+			const id =
+				data[name].releases[`v${versionSemver.version}`].files.available[
+					filename
+				];
+			const parsedFile = parsefiles(id, versionSemver.version);
 
-				if (!linksShorthand[parsedFile.type]) {
-					linksShorthand[parsedFile.type] = [];
-				}
-
-				linksShorthand[parsedFile.type].push({
-					id: parsedFile.id,
-					files: parsedFile.files,
-					architecture: parsedFile.architecture,
-				});
+			if (!linksShorthand[parsedFile.type]) {
+				linksShorthand[parsedFile.type] = [];
 			}
+
+			linksShorthand[parsedFile.type].push({
+				id: parsedFile.id,
+				files: parsedFile.files,
+				architecture: parsedFile.architecture,
+			});
 		};
 
 		// # LTS
@@ -209,15 +207,13 @@ async function determineCurrentReleasePhase(now, dates = {}) {
 	let result;
 
 	// iterate over the past/future object and set the above variable to whatever the first date is in the future.
-	async () => {
-		for await (const phase of Object.keys(isoified)) {
-			// since we're looping, the last true is the current phase
-			// since the start date will always be in the past
-			if (isoified[phase] === true) {
-				result = phase;
-			}
+	for (const phase of Object.keys(isoified)) {
+		// since we're looping, the last true is the current phase
+		// since the start date will always be in the past
+		if (isoified[phase] === true) {
+			result = phase;
 		}
-	};
+	}
 
 	return result;
 }
