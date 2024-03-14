@@ -1,32 +1,24 @@
 {
-  "name": "@nodevu/parsefiles",
-  "version": "0.0.3",
-  "description": "parse the files identifiers from Node.js",
-  "main": "index.js",
-  "scripts": {
-    "lint": "standard --env mocha",
-    "lint:fix": "standard --fix --env mocha",
-    "test": "node--test",
-    "coverage": "nyc mocha",
-    "updates:check": "npx npm-check-updates",
-    "updates:update": "npx npm-check-updates -u"
-  },
-  "keywords": [
-    "node.js",
-    "versions",
-    "parse",
-    "files"
-  ],
-  "files": [
-    "index.js",
-    "LICENSE"
-  ],
-  "author": "Tierney Cyren <hello@bnb.im>",
-  "license": "MIT",
-  "devDependencies": {
-    "@biomejs/biome": "1.6.1",
-    "nyc": "^15.1.0",
-    "standard": "^17.0.0",
-    "test": "^3.3.0"
-  }
+	"name": "@nodevu/parsefiles",
+	"version": "0.0.3",
+	"description": "parse the files identifiers from Node.js",
+	"main": "index.js",
+	"scripts": {
+		"lint": "biome check ./",
+		"lint:apply": "biome check ./ --apply",
+		"test": "node--test",
+		"coverage": "nyc mocha",
+		"updates:check": "npx npm-check-updates",
+		"updates:update": "npx npm-check-updates -u"
+	},
+	"keywords": ["node.js", "versions", "parse", "files"],
+	"files": ["index.js", "LICENSE"],
+	"author": "Tierney Cyren <hello@bnb.im>",
+	"license": "MIT",
+	"devDependencies": {
+		"@biomejs/biome": "1.6.1",
+		"nyc": "^15.1.0",
+		"standard": "^17.0.0",
+		"test": "^3.3.0"
+	}
 }
