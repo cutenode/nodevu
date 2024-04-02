@@ -3022,7 +3022,7 @@
           "isLts": true
         },
         "security": {
-          "isSecurity": false
+          "isSecurity": true
         }
       },
       "v20.11.0": {
