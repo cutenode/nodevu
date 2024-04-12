@@ -2321,7 +2321,7 @@
         },
         "releaseDate": "2023-11-14",
         "modules": {
-          "version": "115"
+          "version": "120"
         },
         "dependencies": {
           "npm": "10.2.3",
@@ -2536,10 +2536,10 @@
           }
         },
         "lts": {
-          "isLts": true
+          "isLts": false
         },
         "security": {
-          "isSecurity": true
+          "isSecurity": false
         }
       },
       "v21.1.0": {
@@ -3001,7 +3001,7 @@
           "isLts": false
         },
         "security": {
-          "isSecurity": true
+          "isSecurity": false
         }
       }
     },
