@@ -1417,7 +1417,7 @@
         },
         "releaseDate": "2024-03-06",
         "modules": {
-          "version": "120"
+          "version": "115"
         },
         "dependencies": {
           "npm": "10.5.0",
@@ -1632,7 +1632,7 @@
           }
         },
         "lts": {
-          "isLts": false
+          "isLts": true
         },
         "security": {
           "isSecurity": false
@@ -1648,7 +1648,7 @@
         },
         "releaseDate": "2024-02-13",
         "modules": {
-          "version": "120"
+          "version": "115"
         },
         "dependencies": {
           "npm": "10.2.4",
@@ -1863,7 +1863,7 @@
           }
         },
         "lts": {
-          "isLts": false
+          "isLts": true
         },
         "security": {
           "isSecurity": true
