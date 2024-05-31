@@ -3249,7 +3249,7 @@
           }
         },
         "lts": {
-          "isLts": true
+          "isLts": false
         },
         "security": {
           "isSecurity": true
