@@ -3725,7 +3725,7 @@
           "maintenance": "2024-04-01",
           "end": "2024-06-01"
         },
-        "current": "maintenance"
+        "current": "end"
       }
     },
     "security": {
