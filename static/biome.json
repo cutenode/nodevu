@@ -3,6 +3,9 @@
 	"organizeImports": {
 		"enabled": true
 	},
+	"files": {
+		"maxSize": 20971520
+	},
 	"javascript": {
 		"formatter": {
 			"quoteStyle": "single"
