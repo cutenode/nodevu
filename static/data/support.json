@@ -1,4 +1,17 @@
 {
+	"v22": {
+		"codename": "",
+		"lts": {},
+		"phases": {
+			"dates": {
+				"start": "2024-04-24",
+				"lts": "2024-10-29",
+				"maintenance": "2025-10-21",
+				"end": "2027-04-30"
+			},
+			"current": "start"
+		}
+	},
 	"v21": {
 		"phases": {
 			"dates": {
@@ -6,13 +19,13 @@
 				"maintenance": "2024-04-01",
 				"end": "2024-06-01"
 			},
-			"current": "start"
+			"current": "end"
 		}
 	},
 	"v20": {
 		"codename": "Iron",
 		"lts": {
-			"newest": "20.11.1",
+			"newest": "20.15.0",
 			"oldest": "20.9.0"
 		},
 		"phases": {
@@ -38,7 +51,7 @@
 	"v18": {
 		"codename": "Hydrogen",
 		"lts": {
-			"newest": "18.19.1",
+			"newest": "18.20.3",
 			"oldest": "18.12.0"
 		},
 		"phases": {
