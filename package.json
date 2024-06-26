@@ -1,36 +1,33 @@
 {
-  "name": "nodevu",
-  "version": "0.0.1",
-  "description": "comprehensive node.js version tooling",
-  "main": "index.js",
-  "scripts": {
-    "lint": "npm run lint --ws",
-    "lint:fix": "npm run lint:fix --ws",
-    "coverage": "npm run coverage --ws",
-    "test": "npm run test --ws",
-    "updates": "npm run updates --ws"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/cutenode/nodevu.git"
-  },
-  "keywords": [
-    "node.js",
-    "version"
-  ],
-  "author": "Tierney Cyren <hello@bnb.im> (https://bnb.im/)",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/cutenode/nodevu/issues"
-  },
-  "homepage": "https://github.com/cutenode/nodevu#readme",
-  "workspaces": [
-    "core",
-    "static",
-    "parsefiles",
-    "earliest",
-    "ranges",
-    "aliases",
-    "translate"
-  ]
+	"name": "nodevu",
+	"version": "0.0.1",
+	"description": "comprehensive node.js version tooling",
+	"main": "index.js",
+	"scripts": {
+		"lint": "npm run lint --ws",
+		"lint:apply": "npm run lint:apply --ws",
+		"coverage": "npm run coverage --ws",
+		"test": "npm run test --ws",
+		"updates": "npm run updates --ws"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/cutenode/nodevu.git"
+	},
+	"keywords": ["node.js", "version"],
+	"author": "Tierney Cyren <hello@bnb.im> (https://bnb.im/)",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/cutenode/nodevu/issues"
+	},
+	"homepage": "https://github.com/cutenode/nodevu#readme",
+	"workspaces": [
+		"core",
+		"static",
+		"parsefiles",
+		"earliest",
+		"ranges",
+		"aliases",
+		"translate"
+	]
 }

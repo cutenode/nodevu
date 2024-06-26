@@ -1,45 +1,37 @@
 {
-  "name": "@nodevu/static",
-  "version": "0.0.4",
-  "description": "static outputs from @nodevu/core",
-  "main": "index.js",
-  "scripts": {
-    "build": "npm run build:default && npm run build:releases && npm run build:security && npm run build:support",
-    "build:default": "node build/default.js",
-    "build:releases": "node build/releases.js",
-    "build:security": "node build/security.js",
-    "build:support": "node build/support.js",
-    "lint": "standard --env mocha",
-    "lint:fix": "standard --fix --env mocha",
-    "prepublish": "npm run build",
-    "test": "node--test",
-    "coverage": "nyc node--test",
-    "updates:check": "npx npm-check-updates",
-    "updates:update": "npx npm-check-updates -u"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/cutenode/nodevu.git"
-  },
-  "keywords": [
-    "node.js",
-    "version",
-    "versions"
-  ],
-  "files": [
-    "/data",
-    "index.js",
-    "LICENSE"
-  ],
-  "author": "Tierney Cyren <hello@bnb.im>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/cutenode/nodevu/issues"
-  },
-  "homepage": "https://github.com/cutenode/nodevu#readme",
-  "devDependencies": {
-    "nyc": "^15.1.0",
-    "standard": "^17.0.0",
-    "test": "^3.3.0"
-  }
+	"name": "@nodevu/static",
+	"version": "0.0.4",
+	"description": "static outputs from @nodevu/core",
+	"main": "index.js",
+	"scripts": {
+		"build": "npm run build:default && npm run build:releases && npm run build:security && npm run build:support",
+		"build:default": "node build/default.js",
+		"build:releases": "node build/releases.js",
+		"build:security": "node build/security.js",
+		"build:support": "node build/support.js",
+		"lint": "biome check ./",
+		"lint:apply": "biome check ./ --apply",
+		"prepublish": "npm run build",
+		"test": "node--test",
+		"coverage": "nyc node--test",
+		"updates:check": "npx npm-check-updates",
+		"updates:update": "npx npm-check-updates -u"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/cutenode/nodevu.git"
+	},
+	"keywords": ["node.js", "version", "versions"],
+	"files": ["/data", "index.js", "LICENSE"],
+	"author": "Tierney Cyren <hello@bnb.im>",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/cutenode/nodevu/issues"
+	},
+	"homepage": "https://github.com/cutenode/nodevu#readme",
+	"devDependencies": {
+		"@biomejs/biome": "1.6.1",
+		"nyc": "^15.1.0",
+		"test": "^3.3.0"
+	}
 }

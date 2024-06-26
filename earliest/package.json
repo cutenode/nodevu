@@ -1,40 +1,34 @@
 {
-  "name": "@nodevu/earliest",
-  "version": "0.0.3",
-  "description": "a module that returns the earliest lts or security release of the release line passed.",
-  "main": "index.js",
-  "files": [
-    "index.js",
-    "LICENSE"
-  ],
-  "scripts": {
-    "lint": "standard --env mocha",
-    "lint:fix": "standard --fix --env mocha",
-    "test": "node--test",
-    "coverage": "nyc node--test",
-    "updates:check": "npx npm-check-updates",
-    "updates:update": "npx npm-check-updates -u"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/cutenode/nodevu.git"
-  },
-  "keywords": [
-    "node.js",
-    "versions"
-  ],
-  "author": "Tierney Cyren <hello@bnb.im> (https://bnb.im/)",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/cutenode/nodevu/issues"
-  },
-  "homepage": "https://github.com/cutenode/nodevu#readme",
-  "dependencies": {
-    "@nodevu/core": "^0.0.4"
-  },
-  "devDependencies": {
-    "nyc": "^15.1.0",
-    "standard": "^17.0.0",
-    "test": "^3.3.0"
-  }
+	"name": "@nodevu/earliest",
+	"version": "0.0.3",
+	"description": "a module that returns the earliest lts or security release of the release line passed.",
+	"main": "index.js",
+	"files": ["index.js", "LICENSE"],
+	"scripts": {
+		"lint": "biome check ./",
+		"lint:apply": "biome check ./ --apply",
+		"test": "node--test",
+		"coverage": "nyc node--test",
+		"updates:check": "npx npm-check-updates",
+		"updates:update": "npx npm-check-updates -u"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/cutenode/nodevu.git"
+	},
+	"keywords": ["node.js", "versions"],
+	"author": "Tierney Cyren <hello@bnb.im> (https://bnb.im/)",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/cutenode/nodevu/issues"
+	},
+	"homepage": "https://github.com/cutenode/nodevu#readme",
+	"dependencies": {
+		"@nodevu/core": "^0.0.4"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "1.6.1",
+		"nyc": "^15.1.0",
+		"test": "^3.3.0"
+	}
 }
