@@ -691,7 +691,7 @@
           "isLts": false
         },
         "security": {
-          "isSecurity": true
+          "isSecurity": false
         }
       },
       "v22.0.0": {
@@ -922,7 +922,7 @@
           "isLts": false
         },
         "security": {
-          "isSecurity": true
+          "isSecurity": false
         }
       }
     },
@@ -3714,7 +3714,7 @@
           "isLts": false
         },
         "security": {
-          "isSecurity": true
+          "isSecurity": false
         }
       },
       "v21.0.0": {
@@ -4212,7 +4212,7 @@
         },
         "releaseDate": "2024-05-28",
         "modules": {
-          "version": "120"
+          "version": "115"
         },
         "dependencies": {
           "npm": "10.7.0",
@@ -4427,7 +4427,7 @@
           }
         },
         "lts": {
-          "isLts": false
+          "isLts": true
         },
         "security": {
           "isSecurity": false
