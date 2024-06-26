@@ -23,6 +23,8 @@ jobs:
         run: npm run build:security -w static
       - name: Run build:support
         run: npm run build:support -w static
+      - name: Format Output
+        run: npm run lint:apply -w static
       - name: Create or Update Pull Request
         uses: gr2m/create-or-update-pull-request-action@v1
         env:
