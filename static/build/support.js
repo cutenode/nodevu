@@ -5,11 +5,10 @@ async function writeSupport(filename) {
 	const data = await nodevu();
 	const support = {};
 
-	async () => {
-		for await (const version of Object.keys(data)) {
-			support[version] = data[version].support;
-		}
-	};
+	for await (const version of Object.keys(data)) {
+		support[version] = data[version].support;
+	}
+
 	write('./static/data/support.json', support);
 }
 

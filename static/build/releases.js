@@ -5,11 +5,10 @@ async function writeReleases(filename) {
 	const data = await nodevu();
 	const releases = {};
 
-	async () => {
-		for await (const verison of Object.keys(data)) {
-			releases[version] = data[version].releases;
-		}
-	};
+	for await (const version of Object.keys(data)) {
+		releases[version] = data[version].releases;
+	}
+
 	write('./static/data/releases.json', releases);
 }
 
