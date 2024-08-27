@@ -618,7 +618,7 @@
 				"isLts": false
 			},
 			"security": {
-				"isSecurity": true
+				"isSecurity": false
 			}
 		},
 		"v22.5.0": {
@@ -825,7 +825,7 @@
 				"isLts": false
 			},
 			"security": {
-				"isSecurity": true
+				"isSecurity": false
 			}
 		},
 		"v22.4.1": {
@@ -1032,7 +1032,7 @@
 				"isLts": false
 			},
 			"security": {
-				"isSecurity": false
+				"isSecurity": true
 			}
 		},
 		"v22.4.0": {
@@ -1259,7 +1259,7 @@
 				"v8": "12.4.254.20",
 				"uv": "1.48.0",
 				"zlib": "1.3.0.1-motley",
-				"openssl": "3.0.12+quic"
+				"openssl": "3.0.13+quic"
 			},
 			"files": {
 				"available": [
@@ -2561,8 +2561,8 @@
 						{
 							"id": "linux-armv7l",
 							"files": [
-								"node-v21.6.1-linux-armv7l.tar.gz",
-								"node-v21.6.1-linux-armv7l.tar.xz"
+								"node-v21.7.1-linux-armv7l.tar.gz",
+								"node-v21.7.1-linux-armv7l.tar.xz"
 							],
 							"architecture": "armv7l"
 						},
@@ -3311,7 +3311,7 @@
 				"isLts": false
 			},
 			"security": {
-				"isSecurity": true
+				"isSecurity": false
 			}
 		},
 		"v21.6.0": {

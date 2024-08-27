@@ -619,7 +619,7 @@
 					"isLts": false
 				},
 				"security": {
-					"isSecurity": true
+					"isSecurity": false
 				}
 			},
 			"v22.5.0": {
@@ -826,7 +826,7 @@
 					"isLts": false
 				},
 				"security": {
-					"isSecurity": true
+					"isSecurity": false
 				}
 			},
 			"v22.4.1": {
@@ -1033,7 +1033,7 @@
 					"isLts": false
 				},
 				"security": {
-					"isSecurity": false
+					"isSecurity": true
 				}
 			},
 			"v22.4.0": {
@@ -3332,7 +3332,7 @@
 					"isLts": false
 				},
 				"security": {
-					"isSecurity": true
+					"isSecurity": false
 				}
 			},
 			"v21.6.0": {
