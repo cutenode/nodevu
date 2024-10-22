@@ -11425,7 +11425,7 @@
 					"maintenance": "2024-10-22",
 					"end": "2026-04-30"
 				},
-				"current": "lts"
+				"current": "maintenance"
 			}
 		},
 		"security": {
