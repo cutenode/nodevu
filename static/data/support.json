@@ -19,7 +19,7 @@
 				"maintenance": "2025-10-21",
 				"end": "2027-04-30"
 			},
-			"current": "start"
+			"current": "lts"
 		}
 	},
 	"v21": {
