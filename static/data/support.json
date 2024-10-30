@@ -10,8 +10,11 @@
 		}
 	},
 	"v22": {
-		"codename": "",
-		"lts": {},
+		"codename": "Jod",
+		"lts": {
+			"newest": "22.11.0",
+			"oldest": "22.11.0"
+		},
 		"phases": {
 			"dates": {
 				"start": "2024-04-24",
