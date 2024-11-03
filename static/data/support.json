@@ -1,7 +1,20 @@
 {
+	"v23": {
+		"phases": {
+			"dates": {
+				"start": "2024-10-16",
+				"maintenance": "2025-04-01",
+				"end": "2025-06-01"
+			},
+			"current": "start"
+		}
+	},
 	"v22": {
-		"codename": "",
-		"lts": {},
+		"codename": "Jod",
+		"lts": {
+			"newest": "22.11.0",
+			"oldest": "22.11.0"
+		},
 		"phases": {
 			"dates": {
 				"start": "2024-04-24",
@@ -9,7 +22,7 @@
 				"maintenance": "2025-10-21",
 				"end": "2027-04-30"
 			},
-			"current": "start"
+			"current": "lts"
 		}
 	},
 	"v21": {
@@ -25,7 +38,7 @@
 	"v20": {
 		"codename": "Iron",
 		"lts": {
-			"newest": "20.17.0",
+			"newest": "20.18.0",
 			"oldest": "20.9.0"
 		},
 		"phases": {
@@ -35,7 +48,7 @@
 				"maintenance": "2024-10-22",
 				"end": "2026-04-30"
 			},
-			"current": "lts"
+			"current": "maintenance"
 		}
 	},
 	"v19": {

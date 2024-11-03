@@ -1,6 +1,1199 @@
 {
+	"v23": {
+		"releases": {
+			"v23.1.0": {
+				"semver": {
+					"raw": "23.1.0",
+					"major": 23,
+					"minor": 1,
+					"patch": 0,
+					"line": "v23"
+				},
+				"releaseDate": "2024-10-24",
+				"modules": {
+					"version": "131"
+				},
+				"dependencies": {
+					"npm": "10.9.0",
+					"v8": "12.9.202.28",
+					"uv": "1.49.1",
+					"zlib": "1.3.0.1-motley",
+					"openssl": "3.0.15+quic"
+				},
+				"files": {
+					"available": [
+						"aix-ppc64",
+						"headers",
+						"linux-arm64",
+						"linux-armv7l",
+						"linux-ppc64le",
+						"linux-s390x",
+						"linux-x64",
+						"osx-arm64-tar",
+						"osx-x64-pkg",
+						"osx-x64-tar",
+						"src",
+						"win-arm64-7z",
+						"win-arm64-zip",
+						"win-x64-7z",
+						"win-x64-exe",
+						"win-x64-msi",
+						"win-x64-zip"
+					],
+					"links": {
+						"aix": [
+							{
+								"id": "aix-ppc64",
+								"files": [
+									"node-v23.1.0-aix-ppc64.tar.gz",
+									"node-v23.1.0-aix-ppc64.tar.xz"
+								],
+								"architecture": "power"
+							}
+						],
+						"headers": [
+							{
+								"id": "headers",
+								"files": [
+									"node-v23.1.0-headers.tar.gz",
+									"node-v23.1.0-headers.tar.xz"
+								]
+							}
+						],
+						"linux": [
+							{
+								"id": "linux-arm64",
+								"files": [
+									"node-v23.1.0-linux-arm64.tar.gz",
+									"node-v23.1.0-linux-arm64.tar.xz"
+								],
+								"architecture": "arm64"
+							},
+							{
+								"id": "linux-armv7l",
+								"files": [
+									"node-v23.1.0-linux-armv7l.tar.gz",
+									"node-v23.1.0-linux-armv7l.tar.xz"
+								],
+								"architecture": "armv7l"
+							},
+							{
+								"id": "linux-ppc64le",
+								"files": [
+									"node-v23.1.0-linux-ppc64le.tar.gz",
+									"node-v23.1.0-linux-ppc64le.tar.xz"
+								],
+								"architecture": "power"
+							},
+							{
+								"id": "linux-s390x",
+								"files": [
+									"node-v23.1.0-linux-s390x.tar.gz",
+									"node-v23.1.0-linux-s390x.tar.xz"
+								],
+								"architecture": "z"
+							},
+							{
+								"id": "linux-x64",
+								"files": [
+									"node-v23.1.0-linux-x64.tar.gz",
+									"node-v23.1.0-linux-x64.tar.xz"
+								],
+								"architecture": "x64"
+							}
+						],
+						"macos": [
+							{
+								"id": "osx-arm64-tar",
+								"files": ["node-v23.1.0-darwin-arm64.tar.gz"],
+								"architecture": "arm64"
+							},
+							{
+								"id": "osx-x64-pkg",
+								"files": ["node-v23.1.0.pkg"],
+								"architecture": "x64"
+							},
+							{
+								"id": "osx-x64-tar",
+								"files": ["node-v23.1.0-darwin-x64.tar.gz"],
+								"architecture": "x64"
+							}
+						],
+						"source": [
+							{
+								"id": "src",
+								"files": ["node-v23.1.0.tar.xz"]
+							}
+						],
+						"windows": [
+							{
+								"id": "win-arm64-7z",
+								"files": ["node-v23.1.0-win-arm64.7z"],
+								"architecture": "arm64"
+							},
+							{
+								"id": "win-arm64-zip",
+								"files": ["node-v23.1.0-win-arm64.zip"],
+								"architecture": "arm64"
+							},
+							{
+								"id": "win-x64-7z",
+								"files": ["node-v23.1.0-win-x64.7z"],
+								"architecture": "x64"
+							},
+							{
+								"id": "win-x64-exe",
+								"files": [
+									"win-x64/node.exe",
+									"win-x64/node.lib",
+									"win-x64/node_pdb.7z",
+									"win-x64/node_pdb.zip",
+									"win-x86/node.exe",
+									"win-x86/node.lib",
+									"win-x86/node_pdb.7z",
+									"win-x86/node_pdb.zip"
+								],
+								"architecture": "x64"
+							},
+							{
+								"id": "win-x64-msi",
+								"files": ["node-v23.1.0-x64.msi"],
+								"architecture": "x64"
+							},
+							{
+								"id": "win-x64-zip",
+								"files": ["node-v23.1.0-win-x64.zip"],
+								"architecture": "x64"
+							}
+						]
+					}
+				},
+				"lts": {
+					"isLts": false
+				},
+				"security": {
+					"isSecurity": false
+				}
+			},
+			"v23.0.0": {
+				"semver": {
+					"raw": "23.0.0",
+					"major": 23,
+					"minor": 0,
+					"patch": 0,
+					"line": "v23"
+				},
+				"releaseDate": "2024-10-16",
+				"modules": {
+					"version": "131"
+				},
+				"dependencies": {
+					"npm": "10.9.0",
+					"v8": "12.9.202.26",
+					"uv": "1.48.0",
+					"zlib": "1.3.0.1-motley",
+					"openssl": "3.0.15+quic"
+				},
+				"files": {
+					"available": [
+						"aix-ppc64",
+						"headers",
+						"linux-arm64",
+						"linux-armv7l",
+						"linux-ppc64le",
+						"linux-s390x",
+						"linux-x64",
+						"osx-arm64-tar",
+						"osx-x64-pkg",
+						"osx-x64-tar",
+						"src",
+						"win-arm64-7z",
+						"win-arm64-zip",
+						"win-x64-7z",
+						"win-x64-exe",
+						"win-x64-msi",
+						"win-x64-zip"
+					],
+					"links": {
+						"aix": [
+							{
+								"id": "aix-ppc64",
+								"files": [
+									"node-v23.0.0-aix-ppc64.tar.gz",
+									"node-v23.0.0-aix-ppc64.tar.xz"
+								],
+								"architecture": "power"
+							}
+						],
+						"headers": [
+							{
+								"id": "headers",
+								"files": [
+									"node-v23.0.0-headers.tar.gz",
+									"node-v23.0.0-headers.tar.xz"
+								]
+							}
+						],
+						"linux": [
+							{
+								"id": "linux-arm64",
+								"files": [
+									"node-v23.0.0-linux-arm64.tar.gz",
+									"node-v23.0.0-linux-arm64.tar.xz"
+								],
+								"architecture": "arm64"
+							},
+							{
+								"id": "linux-armv7l",
+								"files": [
+									"node-v23.0.0-linux-armv7l.tar.gz",
+									"node-v23.0.0-linux-armv7l.tar.xz"
+								],
+								"architecture": "armv7l"
+							},
+							{
+								"id": "linux-ppc64le",
+								"files": [
+									"node-v23.0.0-linux-ppc64le.tar.gz",
+									"node-v23.0.0-linux-ppc64le.tar.xz"
+								],
+								"architecture": "power"
+							},
+							{
+								"id": "linux-s390x",
+								"files": [
+									"node-v23.0.0-linux-s390x.tar.gz",
+									"node-v23.0.0-linux-s390x.tar.xz"
+								],
+								"architecture": "z"
+							},
+							{
+								"id": "linux-x64",
+								"files": [
+									"node-v23.0.0-linux-x64.tar.gz",
+									"node-v23.0.0-linux-x64.tar.xz"
+								],
+								"architecture": "x64"
+							}
+						],
+						"macos": [
+							{
+								"id": "osx-arm64-tar",
+								"files": ["node-v23.0.0-darwin-arm64.tar.gz"],
+								"architecture": "arm64"
+							},
+							{
+								"id": "osx-x64-pkg",
+								"files": ["node-v23.0.0.pkg"],
+								"architecture": "x64"
+							},
+							{
+								"id": "osx-x64-tar",
+								"files": ["node-v23.0.0-darwin-x64.tar.gz"],
+								"architecture": "x64"
+							}
+						],
+						"source": [
+							{
+								"id": "src",
+								"files": ["node-v23.0.0.tar.xz"]
+							}
+						],
+						"windows": [
+							{
+								"id": "win-arm64-7z",
+								"files": ["node-v23.0.0-win-arm64.7z"],
+								"architecture": "arm64"
+							},
+							{
+								"id": "win-arm64-zip",
+								"files": ["node-v23.0.0-win-arm64.zip"],
+								"architecture": "arm64"
+							},
+							{
+								"id": "win-x64-7z",
+								"files": ["node-v23.0.0-win-x64.7z"],
+								"architecture": "x64"
+							},
+							{
+								"id": "win-x64-exe",
+								"files": [
+									"win-x64/node.exe",
+									"win-x64/node.lib",
+									"win-x64/node_pdb.7z",
+									"win-x64/node_pdb.zip",
+									"win-x86/node.exe",
+									"win-x86/node.lib",
+									"win-x86/node_pdb.7z",
+									"win-x86/node_pdb.zip"
+								],
+								"architecture": "x64"
+							},
+							{
+								"id": "win-x64-msi",
+								"files": ["node-v23.0.0-x64.msi"],
+								"architecture": "x64"
+							},
+							{
+								"id": "win-x64-zip",
+								"files": ["node-v23.0.0-win-x64.zip"],
+								"architecture": "x64"
+							}
+						]
+					}
+				},
+				"lts": {
+					"isLts": false
+				},
+				"security": {
+					"isSecurity": false
+				}
+			}
+		},
+		"support": {
+			"phases": {
+				"dates": {
+					"start": "2024-10-16",
+					"maintenance": "2025-04-01",
+					"end": "2025-06-01"
+				},
+				"current": "start"
+			}
+		},
+		"security": {
+			"all": []
+		}
+	},
 	"v22": {
 		"releases": {
+			"v22.11.0": {
+				"semver": {
+					"raw": "22.11.0",
+					"major": 22,
+					"minor": 11,
+					"patch": 0,
+					"line": "v22"
+				},
+				"releaseDate": "2024-10-29",
+				"modules": {
+					"version": "127"
+				},
+				"dependencies": {
+					"npm": "10.9.0",
+					"v8": "12.4.254.21",
+					"uv": "1.48.0",
+					"zlib": "1.3.0.1-motley",
+					"openssl": "3.0.15+quic"
+				},
+				"files": {
+					"available": [
+						"aix-ppc64",
+						"headers",
+						"linux-arm64",
+						"linux-armv7l",
+						"linux-ppc64le",
+						"linux-s390x",
+						"linux-x64",
+						"osx-arm64-tar",
+						"osx-x64-pkg",
+						"osx-x64-tar",
+						"src",
+						"win-arm64-7z",
+						"win-arm64-zip",
+						"win-x64-7z",
+						"win-x64-exe",
+						"win-x64-msi",
+						"win-x64-zip",
+						"win-x86-7z",
+						"win-x86-exe",
+						"win-x86-msi",
+						"win-x86-zip"
+					],
+					"links": {
+						"aix": [
+							{
+								"id": "aix-ppc64",
+								"files": [
+									"node-v22.11.0-aix-ppc64.tar.gz",
+									"node-v22.11.0-aix-ppc64.tar.xz"
+								],
+								"architecture": "power"
+							}
+						],
+						"headers": [
+							{
+								"id": "headers",
+								"files": [
+									"node-v22.11.0-headers.tar.gz",
+									"node-v22.11.0-headers.tar.xz"
+								]
+							}
+						],
+						"linux": [
+							{
+								"id": "linux-arm64",
+								"files": [
+									"node-v22.11.0-linux-arm64.tar.gz",
+									"node-v22.11.0-linux-arm64.tar.xz"
+								],
+								"architecture": "arm64"
+							},
+							{
+								"id": "linux-armv7l",
+								"files": [
+									"node-v22.11.0-linux-armv7l.tar.gz",
+									"node-v22.11.0-linux-armv7l.tar.xz"
+								],
+								"architecture": "armv7l"
+							},
+							{
+								"id": "linux-ppc64le",
+								"files": [
+									"node-v22.11.0-linux-ppc64le.tar.gz",
+									"node-v22.11.0-linux-ppc64le.tar.xz"
+								],
+								"architecture": "power"
+							},
+							{
+								"id": "linux-s390x",
+								"files": [
+									"node-v22.11.0-linux-s390x.tar.gz",
+									"node-v22.11.0-linux-s390x.tar.xz"
+								],
+								"architecture": "z"
+							},
+							{
+								"id": "linux-x64",
+								"files": [
+									"node-v22.11.0-linux-x64.tar.gz",
+									"node-v22.11.0-linux-x64.tar.xz"
+								],
+								"architecture": "x64"
+							}
+						],
+						"macos": [
+							{
+								"id": "osx-arm64-tar",
+								"files": ["node-v22.11.0-darwin-arm64.tar.gz"],
+								"architecture": "arm64"
+							},
+							{
+								"id": "osx-x64-pkg",
+								"files": ["node-v22.11.0.pkg"],
+								"architecture": "x64"
+							},
+							{
+								"id": "osx-x64-tar",
+								"files": ["node-v22.11.0-darwin-x64.tar.gz"],
+								"architecture": "x64"
+							}
+						],
+						"source": [
+							{
+								"id": "src",
+								"files": ["node-v22.11.0.tar.xz"]
+							}
+						],
+						"windows": [
+							{
+								"id": "win-arm64-7z",
+								"files": ["node-v22.11.0-win-arm64.7z"],
+								"architecture": "arm64"
+							},
+							{
+								"id": "win-arm64-zip",
+								"files": ["node-v22.11.0-win-arm64.zip"],
+								"architecture": "arm64"
+							},
+							{
+								"id": "win-x64-7z",
+								"files": ["node-v22.11.0-win-x64.7z"],
+								"architecture": "x64"
+							},
+							{
+								"id": "win-x64-exe",
+								"files": [
+									"win-x64/node.exe",
+									"win-x64/node.lib",
+									"win-x64/node_pdb.7z",
+									"win-x64/node_pdb.zip",
+									"win-x86/node.exe",
+									"win-x86/node.lib",
+									"win-x86/node_pdb.7z",
+									"win-x86/node_pdb.zip"
+								],
+								"architecture": "x64"
+							},
+							{
+								"id": "win-x64-msi",
+								"files": ["node-v22.11.0-x64.msi"],
+								"architecture": "x64"
+							},
+							{
+								"id": "win-x64-zip",
+								"files": ["node-v22.11.0-win-x64.zip"],
+								"architecture": "x64"
+							},
+							{
+								"id": "win-x86-7z",
+								"files": ["node-v22.11.0-win-x86.7z"],
+								"architecture": "x86"
+							},
+							{
+								"id": "win-x86-exe",
+								"files": [
+									"win-x64/node.exe",
+									"win-x64/node.lib",
+									"win-x64/node_pdb.7z",
+									"win-x64/node_pdb.zip",
+									"win-x86/node.exe",
+									"win-x86/node.lib",
+									"win-x86/node_pdb.7z",
+									"win-x86/node_pdb.zip"
+								],
+								"architecture": "x86"
+							},
+							{
+								"id": "win-x86-msi",
+								"files": ["node-v22.11.0-x86.msi"],
+								"architecture": "x86"
+							},
+							{
+								"id": "win-x86-zip",
+								"files": ["node-v22.11.0-win-x86.zip"],
+								"architecture": "x86"
+							}
+						]
+					}
+				},
+				"lts": {
+					"isLts": true
+				},
+				"security": {
+					"isSecurity": false
+				}
+			},
+			"v22.10.0": {
+				"semver": {
+					"raw": "22.10.0",
+					"major": 22,
+					"minor": 10,
+					"patch": 0,
+					"line": "v22"
+				},
+				"releaseDate": "2024-10-16",
+				"modules": {
+					"version": "127"
+				},
+				"dependencies": {
+					"npm": "10.9.0",
+					"v8": "12.4.254.21",
+					"uv": "1.48.0",
+					"zlib": "1.3.0.1-motley",
+					"openssl": "3.0.15+quic"
+				},
+				"files": {
+					"available": [
+						"aix-ppc64",
+						"headers",
+						"linux-arm64",
+						"linux-armv7l",
+						"linux-ppc64le",
+						"linux-s390x",
+						"linux-x64",
+						"osx-arm64-tar",
+						"osx-x64-pkg",
+						"osx-x64-tar",
+						"src",
+						"win-arm64-7z",
+						"win-arm64-zip",
+						"win-x64-7z",
+						"win-x64-exe",
+						"win-x64-msi",
+						"win-x64-zip",
+						"win-x86-7z",
+						"win-x86-exe",
+						"win-x86-msi",
+						"win-x86-zip"
+					],
+					"links": {
+						"aix": [
+							{
+								"id": "aix-ppc64",
+								"files": [
+									"node-v22.10.0-aix-ppc64.tar.gz",
+									"node-v22.10.0-aix-ppc64.tar.xz"
+								],
+								"architecture": "power"
+							}
+						],
+						"headers": [
+							{
+								"id": "headers",
+								"files": [
+									"node-v22.10.0-headers.tar.gz",
+									"node-v22.10.0-headers.tar.xz"
+								]
+							}
+						],
+						"linux": [
+							{
+								"id": "linux-arm64",
+								"files": [
+									"node-v22.10.0-linux-arm64.tar.gz",
+									"node-v22.10.0-linux-arm64.tar.xz"
+								],
+								"architecture": "arm64"
+							},
+							{
+								"id": "linux-armv7l",
+								"files": [
+									"node-v22.10.0-linux-armv7l.tar.gz",
+									"node-v22.10.0-linux-armv7l.tar.xz"
+								],
+								"architecture": "armv7l"
+							},
+							{
+								"id": "linux-ppc64le",
+								"files": [
+									"node-v22.10.0-linux-ppc64le.tar.gz",
+									"node-v22.10.0-linux-ppc64le.tar.xz"
+								],
+								"architecture": "power"
+							},
+							{
+								"id": "linux-s390x",
+								"files": [
+									"node-v22.10.0-linux-s390x.tar.gz",
+									"node-v22.10.0-linux-s390x.tar.xz"
+								],
+								"architecture": "z"
+							},
+							{
+								"id": "linux-x64",
+								"files": [
+									"node-v22.10.0-linux-x64.tar.gz",
+									"node-v22.10.0-linux-x64.tar.xz"
+								],
+								"architecture": "x64"
+							}
+						],
+						"macos": [
+							{
+								"id": "osx-arm64-tar",
+								"files": ["node-v22.10.0-darwin-arm64.tar.gz"],
+								"architecture": "arm64"
+							},
+							{
+								"id": "osx-x64-pkg",
+								"files": ["node-v22.10.0.pkg"],
+								"architecture": "x64"
+							},
+							{
+								"id": "osx-x64-tar",
+								"files": ["node-v22.10.0-darwin-x64.tar.gz"],
+								"architecture": "x64"
+							}
+						],
+						"source": [
+							{
+								"id": "src",
+								"files": ["node-v22.10.0.tar.xz"]
+							}
+						],
+						"windows": [
+							{
+								"id": "win-arm64-7z",
+								"files": ["node-v22.10.0-win-arm64.7z"],
+								"architecture": "arm64"
+							},
+							{
+								"id": "win-arm64-zip",
+								"files": ["node-v22.10.0-win-arm64.zip"],
+								"architecture": "arm64"
+							},
+							{
+								"id": "win-x64-7z",
+								"files": ["node-v22.10.0-win-x64.7z"],
+								"architecture": "x64"
+							},
+							{
+								"id": "win-x64-exe",
+								"files": [
+									"win-x64/node.exe",
+									"win-x64/node.lib",
+									"win-x64/node_pdb.7z",
+									"win-x64/node_pdb.zip",
+									"win-x86/node.exe",
+									"win-x86/node.lib",
+									"win-x86/node_pdb.7z",
+									"win-x86/node_pdb.zip"
+								],
+								"architecture": "x64"
+							},
+							{
+								"id": "win-x64-msi",
+								"files": ["node-v22.10.0-x64.msi"],
+								"architecture": "x64"
+							},
+							{
+								"id": "win-x64-zip",
+								"files": ["node-v22.10.0-win-x64.zip"],
+								"architecture": "x64"
+							},
+							{
+								"id": "win-x86-7z",
+								"files": ["node-v22.10.0-win-x86.7z"],
+								"architecture": "x86"
+							},
+							{
+								"id": "win-x86-exe",
+								"files": [
+									"win-x64/node.exe",
+									"win-x64/node.lib",
+									"win-x64/node_pdb.7z",
+									"win-x64/node_pdb.zip",
+									"win-x86/node.exe",
+									"win-x86/node.lib",
+									"win-x86/node_pdb.7z",
+									"win-x86/node_pdb.zip"
+								],
+								"architecture": "x86"
+							},
+							{
+								"id": "win-x86-msi",
+								"files": ["node-v22.10.0-x86.msi"],
+								"architecture": "x86"
+							},
+							{
+								"id": "win-x86-zip",
+								"files": ["node-v22.10.0-win-x86.zip"],
+								"architecture": "x86"
+							}
+						]
+					}
+				},
+				"lts": {
+					"isLts": false
+				},
+				"security": {
+					"isSecurity": false
+				}
+			},
+			"v22.9.0": {
+				"semver": {
+					"raw": "22.9.0",
+					"major": 22,
+					"minor": 9,
+					"patch": 0,
+					"line": "v22"
+				},
+				"releaseDate": "2024-09-17",
+				"modules": {
+					"version": "127"
+				},
+				"dependencies": {
+					"npm": "10.8.3",
+					"v8": "12.4.254.21",
+					"uv": "1.48.0",
+					"zlib": "1.3.0.1-motley",
+					"openssl": "3.0.13+quic"
+				},
+				"files": {
+					"available": [
+						"aix-ppc64",
+						"headers",
+						"linux-arm64",
+						"linux-armv7l",
+						"linux-ppc64le",
+						"linux-s390x",
+						"linux-x64",
+						"osx-arm64-tar",
+						"osx-x64-pkg",
+						"osx-x64-tar",
+						"src",
+						"win-arm64-7z",
+						"win-arm64-zip",
+						"win-x64-7z",
+						"win-x64-exe",
+						"win-x64-msi",
+						"win-x64-zip",
+						"win-x86-7z",
+						"win-x86-exe",
+						"win-x86-msi",
+						"win-x86-zip"
+					],
+					"links": {
+						"aix": [
+							{
+								"id": "aix-ppc64",
+								"files": [
+									"node-v22.9.0-aix-ppc64.tar.gz",
+									"node-v22.9.0-aix-ppc64.tar.xz"
+								],
+								"architecture": "power"
+							}
+						],
+						"headers": [
+							{
+								"id": "headers",
+								"files": [
+									"node-v22.9.0-headers.tar.gz",
+									"node-v22.9.0-headers.tar.xz"
+								]
+							}
+						],
+						"linux": [
+							{
+								"id": "linux-arm64",
+								"files": [
+									"node-v22.9.0-linux-arm64.tar.gz",
+									"node-v22.9.0-linux-arm64.tar.xz"
+								],
+								"architecture": "arm64"
+							},
+							{
+								"id": "linux-armv7l",
+								"files": [
+									"node-v22.9.0-linux-armv7l.tar.gz",
+									"node-v22.9.0-linux-armv7l.tar.xz"
+								],
+								"architecture": "armv7l"
+							},
+							{
+								"id": "linux-ppc64le",
+								"files": [
+									"node-v22.9.0-linux-ppc64le.tar.gz",
+									"node-v22.9.0-linux-ppc64le.tar.xz"
+								],
+								"architecture": "power"
+							},
+							{
+								"id": "linux-s390x",
+								"files": [
+									"node-v22.9.0-linux-s390x.tar.gz",
+									"node-v22.9.0-linux-s390x.tar.xz"
+								],
+								"architecture": "z"
+							},
+							{
+								"id": "linux-x64",
+								"files": [
+									"node-v22.9.0-linux-x64.tar.gz",
+									"node-v22.9.0-linux-x64.tar.xz"
+								],
+								"architecture": "x64"
+							}
+						],
+						"macos": [
+							{
+								"id": "osx-arm64-tar",
+								"files": ["node-v22.9.0-darwin-arm64.tar.gz"],
+								"architecture": "arm64"
+							},
+							{
+								"id": "osx-x64-pkg",
+								"files": ["node-v22.9.0.pkg"],
+								"architecture": "x64"
+							},
+							{
+								"id": "osx-x64-tar",
+								"files": ["node-v22.9.0-darwin-x64.tar.gz"],
+								"architecture": "x64"
+							}
+						],
+						"source": [
+							{
+								"id": "src",
+								"files": ["node-v22.9.0.tar.xz"]
+							}
+						],
+						"windows": [
+							{
+								"id": "win-arm64-7z",
+								"files": ["node-v22.9.0-win-arm64.7z"],
+								"architecture": "arm64"
+							},
+							{
+								"id": "win-arm64-zip",
+								"files": ["node-v22.9.0-win-arm64.zip"],
+								"architecture": "arm64"
+							},
+							{
+								"id": "win-x64-7z",
+								"files": ["node-v22.9.0-win-x64.7z"],
+								"architecture": "x64"
+							},
+							{
+								"id": "win-x64-exe",
+								"files": [
+									"win-x64/node.exe",
+									"win-x64/node.lib",
+									"win-x64/node_pdb.7z",
+									"win-x64/node_pdb.zip",
+									"win-x86/node.exe",
+									"win-x86/node.lib",
+									"win-x86/node_pdb.7z",
+									"win-x86/node_pdb.zip"
+								],
+								"architecture": "x64"
+							},
+							{
+								"id": "win-x64-msi",
+								"files": ["node-v22.9.0-x64.msi"],
+								"architecture": "x64"
+							},
+							{
+								"id": "win-x64-zip",
+								"files": ["node-v22.9.0-win-x64.zip"],
+								"architecture": "x64"
+							},
+							{
+								"id": "win-x86-7z",
+								"files": ["node-v22.9.0-win-x86.7z"],
+								"architecture": "x86"
+							},
+							{
+								"id": "win-x86-exe",
+								"files": [
+									"win-x64/node.exe",
+									"win-x64/node.lib",
+									"win-x64/node_pdb.7z",
+									"win-x64/node_pdb.zip",
+									"win-x86/node.exe",
+									"win-x86/node.lib",
+									"win-x86/node_pdb.7z",
+									"win-x86/node_pdb.zip"
+								],
+								"architecture": "x86"
+							},
+							{
+								"id": "win-x86-msi",
+								"files": ["node-v22.9.0-x86.msi"],
+								"architecture": "x86"
+							},
+							{
+								"id": "win-x86-zip",
+								"files": ["node-v22.9.0-win-x86.zip"],
+								"architecture": "x86"
+							}
+						]
+					}
+				},
+				"lts": {
+					"isLts": false
+				},
+				"security": {
+					"isSecurity": false
+				}
+			},
+			"v22.8.0": {
+				"semver": {
+					"raw": "22.8.0",
+					"major": 22,
+					"minor": 8,
+					"patch": 0,
+					"line": "v22"
+				},
+				"releaseDate": "2024-09-03",
+				"modules": {
+					"version": "127"
+				},
+				"dependencies": {
+					"npm": "10.8.2",
+					"v8": "12.4.254.21",
+					"uv": "1.48.0",
+					"zlib": "1.3.0.1-motley",
+					"openssl": "3.0.13+quic"
+				},
+				"files": {
+					"available": [
+						"aix-ppc64",
+						"headers",
+						"linux-arm64",
+						"linux-armv7l",
+						"linux-ppc64le",
+						"linux-s390x",
+						"linux-x64",
+						"osx-arm64-tar",
+						"osx-x64-pkg",
+						"osx-x64-tar",
+						"src",
+						"win-arm64-7z",
+						"win-arm64-zip",
+						"win-x64-7z",
+						"win-x64-exe",
+						"win-x64-msi",
+						"win-x64-zip",
+						"win-x86-7z",
+						"win-x86-exe",
+						"win-x86-msi",
+						"win-x86-zip"
+					],
+					"links": {
+						"aix": [
+							{
+								"id": "aix-ppc64",
+								"files": [
+									"node-v22.8.0-aix-ppc64.tar.gz",
+									"node-v22.8.0-aix-ppc64.tar.xz"
+								],
+								"architecture": "power"
+							}
+						],
+						"headers": [
+							{
+								"id": "headers",
+								"files": [
+									"node-v22.8.0-headers.tar.gz",
+									"node-v22.8.0-headers.tar.xz"
+								]
+							}
+						],
+						"linux": [
+							{
+								"id": "linux-arm64",
+								"files": [
+									"node-v22.8.0-linux-arm64.tar.gz",
+									"node-v22.8.0-linux-arm64.tar.xz"
+								],
+								"architecture": "arm64"
+							},
+							{
+								"id": "linux-armv7l",
+								"files": [
+									"node-v22.8.0-linux-armv7l.tar.gz",
+									"node-v22.8.0-linux-armv7l.tar.xz"
+								],
+								"architecture": "armv7l"
+							},
+							{
+								"id": "linux-ppc64le",
+								"files": [
+									"node-v22.8.0-linux-ppc64le.tar.gz",
+									"node-v22.8.0-linux-ppc64le.tar.xz"
+								],
+								"architecture": "power"
+							},
+							{
+								"id": "linux-s390x",
+								"files": [
+									"node-v22.8.0-linux-s390x.tar.gz",
+									"node-v22.8.0-linux-s390x.tar.xz"
+								],
+								"architecture": "z"
+							},
+							{
+								"id": "linux-x64",
+								"files": [
+									"node-v22.8.0-linux-x64.tar.gz",
+									"node-v22.8.0-linux-x64.tar.xz"
+								],
+								"architecture": "x64"
+							}
+						],
+						"macos": [
+							{
+								"id": "osx-arm64-tar",
+								"files": ["node-v22.8.0-darwin-arm64.tar.gz"],
+								"architecture": "arm64"
+							},
+							{
+								"id": "osx-x64-pkg",
+								"files": ["node-v22.8.0.pkg"],
+								"architecture": "x64"
+							},
+							{
+								"id": "osx-x64-tar",
+								"files": ["node-v22.8.0-darwin-x64.tar.gz"],
+								"architecture": "x64"
+							}
+						],
+						"source": [
+							{
+								"id": "src",
+								"files": ["node-v22.8.0.tar.xz"]
+							}
+						],
+						"windows": [
+							{
+								"id": "win-arm64-7z",
+								"files": ["node-v22.8.0-win-arm64.7z"],
+								"architecture": "arm64"
+							},
+							{
+								"id": "win-arm64-zip",
+								"files": ["node-v22.8.0-win-arm64.zip"],
+								"architecture": "arm64"
+							},
+							{
+								"id": "win-x64-7z",
+								"files": ["node-v22.8.0-win-x64.7z"],
+								"architecture": "x64"
+							},
+							{
+								"id": "win-x64-exe",
+								"files": [
+									"win-x64/node.exe",
+									"win-x64/node.lib",
+									"win-x64/node_pdb.7z",
+									"win-x64/node_pdb.zip",
+									"win-x86/node.exe",
+									"win-x86/node.lib",
+									"win-x86/node_pdb.7z",
+									"win-x86/node_pdb.zip"
+								],
+								"architecture": "x64"
+							},
+							{
+								"id": "win-x64-msi",
+								"files": ["node-v22.8.0-x64.msi"],
+								"architecture": "x64"
+							},
+							{
+								"id": "win-x64-zip",
+								"files": ["node-v22.8.0-win-x64.zip"],
+								"architecture": "x64"
+							},
+							{
+								"id": "win-x86-7z",
+								"files": ["node-v22.8.0-win-x86.7z"],
+								"architecture": "x86"
+							},
+							{
+								"id": "win-x86-exe",
+								"files": [
+									"win-x64/node.exe",
+									"win-x64/node.lib",
+									"win-x64/node_pdb.7z",
+									"win-x64/node_pdb.zip",
+									"win-x86/node.exe",
+									"win-x86/node.lib",
+									"win-x86/node_pdb.7z",
+									"win-x86/node_pdb.zip"
+								],
+								"architecture": "x86"
+							},
+							{
+								"id": "win-x86-msi",
+								"files": ["node-v22.8.0-x86.msi"],
+								"architecture": "x86"
+							},
+							{
+								"id": "win-x86-zip",
+								"files": ["node-v22.8.0-win-x86.zip"],
+								"architecture": "x86"
+							}
+						]
+					}
+				},
+				"lts": {
+					"isLts": false
+				},
+				"security": {
+					"isSecurity": false
+				}
+			},
 			"v22.7.0": {
 				"semver": {
 					"raw": "22.7.0",
@@ -619,7 +1812,7 @@
 					"isLts": false
 				},
 				"security": {
-					"isSecurity": true
+					"isSecurity": false
 				}
 			},
 			"v22.5.0": {
@@ -826,7 +2019,7 @@
 					"isLts": false
 				},
 				"security": {
-					"isSecurity": true
+					"isSecurity": false
 				}
 			},
 			"v22.4.1": {
@@ -1033,7 +2226,7 @@
 					"isLts": false
 				},
 				"security": {
-					"isSecurity": false
+					"isSecurity": true
 				}
 			},
 			"v22.4.0": {
@@ -2073,8 +3266,11 @@
 			}
 		},
 		"support": {
-			"codename": "",
-			"lts": {},
+			"codename": "Jod",
+			"lts": {
+				"newest": "22.11.0",
+				"oldest": "22.11.0"
+			},
 			"phases": {
 				"dates": {
 					"start": "2024-04-24",
@@ -2082,7 +3278,7 @@
 					"maintenance": "2025-10-21",
 					"end": "2027-04-30"
 				},
-				"current": "start"
+				"current": "lts"
 			}
 		},
 		"security": {
@@ -3332,7 +4528,7 @@
 					"isLts": false
 				},
 				"security": {
-					"isSecurity": true
+					"isSecurity": false
 				}
 			},
 			"v21.6.0": {
@@ -4803,6 +5999,213 @@
 	},
 	"v20": {
 		"releases": {
+			"v20.18.0": {
+				"semver": {
+					"raw": "20.18.0",
+					"major": 20,
+					"minor": 18,
+					"patch": 0,
+					"line": "v20"
+				},
+				"releaseDate": "2024-10-03",
+				"modules": {
+					"version": "115"
+				},
+				"dependencies": {
+					"npm": "10.8.2",
+					"v8": "11.3.244.8",
+					"uv": "1.46.0",
+					"zlib": "1.3.0.1-motley",
+					"openssl": "3.0.13+quic"
+				},
+				"files": {
+					"available": [
+						"aix-ppc64",
+						"headers",
+						"linux-arm64",
+						"linux-armv7l",
+						"linux-ppc64le",
+						"linux-s390x",
+						"linux-x64",
+						"osx-arm64-tar",
+						"osx-x64-pkg",
+						"osx-x64-tar",
+						"src",
+						"win-arm64-7z",
+						"win-arm64-zip",
+						"win-x64-7z",
+						"win-x64-exe",
+						"win-x64-msi",
+						"win-x64-zip",
+						"win-x86-7z",
+						"win-x86-exe",
+						"win-x86-msi",
+						"win-x86-zip"
+					],
+					"links": {
+						"aix": [
+							{
+								"id": "aix-ppc64",
+								"files": [
+									"node-v20.18.0-aix-ppc64.tar.gz",
+									"node-v20.18.0-aix-ppc64.tar.xz"
+								],
+								"architecture": "power"
+							}
+						],
+						"headers": [
+							{
+								"id": "headers",
+								"files": [
+									"node-v20.18.0-headers.tar.gz",
+									"node-v20.18.0-headers.tar.xz"
+								]
+							}
+						],
+						"linux": [
+							{
+								"id": "linux-arm64",
+								"files": [
+									"node-v20.18.0-linux-arm64.tar.gz",
+									"node-v20.18.0-linux-arm64.tar.xz"
+								],
+								"architecture": "arm64"
+							},
+							{
+								"id": "linux-armv7l",
+								"files": [
+									"node-v20.18.0-linux-armv7l.tar.gz",
+									"node-v20.18.0-linux-armv7l.tar.xz"
+								],
+								"architecture": "armv7l"
+							},
+							{
+								"id": "linux-ppc64le",
+								"files": [
+									"node-v20.18.0-linux-ppc64le.tar.gz",
+									"node-v20.18.0-linux-ppc64le.tar.xz"
+								],
+								"architecture": "power"
+							},
+							{
+								"id": "linux-s390x",
+								"files": [
+									"node-v20.18.0-linux-s390x.tar.gz",
+									"node-v20.18.0-linux-s390x.tar.xz"
+								],
+								"architecture": "z"
+							},
+							{
+								"id": "linux-x64",
+								"files": [
+									"node-v20.18.0-linux-x64.tar.gz",
+									"node-v20.18.0-linux-x64.tar.xz"
+								],
+								"architecture": "x64"
+							}
+						],
+						"macos": [
+							{
+								"id": "osx-arm64-tar",
+								"files": ["node-v20.18.0-darwin-arm64.tar.gz"],
+								"architecture": "arm64"
+							},
+							{
+								"id": "osx-x64-pkg",
+								"files": ["node-v20.18.0.pkg"],
+								"architecture": "x64"
+							},
+							{
+								"id": "osx-x64-tar",
+								"files": ["node-v20.18.0-darwin-x64.tar.gz"],
+								"architecture": "x64"
+							}
+						],
+						"source": [
+							{
+								"id": "src",
+								"files": ["node-v20.18.0.tar.xz"]
+							}
+						],
+						"windows": [
+							{
+								"id": "win-arm64-7z",
+								"files": ["node-v20.18.0-win-arm64.7z"],
+								"architecture": "arm64"
+							},
+							{
+								"id": "win-arm64-zip",
+								"files": ["node-v20.18.0-win-arm64.zip"],
+								"architecture": "arm64"
+							},
+							{
+								"id": "win-x64-7z",
+								"files": ["node-v20.18.0-win-x64.7z"],
+								"architecture": "x64"
+							},
+							{
+								"id": "win-x64-exe",
+								"files": [
+									"win-x64/node.exe",
+									"win-x64/node.lib",
+									"win-x64/node_pdb.7z",
+									"win-x64/node_pdb.zip",
+									"win-x86/node.exe",
+									"win-x86/node.lib",
+									"win-x86/node_pdb.7z",
+									"win-x86/node_pdb.zip"
+								],
+								"architecture": "x64"
+							},
+							{
+								"id": "win-x64-msi",
+								"files": ["node-v20.18.0-x64.msi"],
+								"architecture": "x64"
+							},
+							{
+								"id": "win-x64-zip",
+								"files": ["node-v20.18.0-win-x64.zip"],
+								"architecture": "x64"
+							},
+							{
+								"id": "win-x86-7z",
+								"files": ["node-v20.18.0-win-x86.7z"],
+								"architecture": "x86"
+							},
+							{
+								"id": "win-x86-exe",
+								"files": [
+									"win-x64/node.exe",
+									"win-x64/node.lib",
+									"win-x64/node_pdb.7z",
+									"win-x64/node_pdb.zip",
+									"win-x86/node.exe",
+									"win-x86/node.lib",
+									"win-x86/node_pdb.7z",
+									"win-x86/node_pdb.zip"
+								],
+								"architecture": "x86"
+							},
+							{
+								"id": "win-x86-msi",
+								"files": ["node-v20.18.0-x86.msi"],
+								"architecture": "x86"
+							},
+							{
+								"id": "win-x86-zip",
+								"files": ["node-v20.18.0-win-x86.zip"],
+								"architecture": "x86"
+							}
+						]
+					}
+				},
+				"lts": {
+					"isLts": true
+				},
+				"security": {
+					"isSecurity": false
+				}
+			},
 			"v20.17.0": {
 				"semver": {
 					"raw": "20.17.0",
@@ -10396,7 +11799,7 @@
 		"support": {
 			"codename": "Iron",
 			"lts": {
-				"newest": "20.17.0",
+				"newest": "20.18.0",
 				"oldest": "20.9.0"
 			},
 			"phases": {
@@ -10406,7 +11809,7 @@
 					"maintenance": "2024-10-22",
 					"end": "2026-04-30"
 				},
-				"current": "lts"
+				"current": "maintenance"
 			}
 		},
 		"security": {
