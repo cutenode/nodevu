@@ -25,6 +25,7 @@
 	"devDependencies": {
 		"@biomejs/biome": "1.6.1",
 		"nyc": "^15.1.0",
-		"test": "^3.3.0"
+		"test": "^3.3.0",
+		"undici": "^5.22.1"
 	}
 }
