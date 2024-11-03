@@ -10,7 +10,7 @@
 		"build:security": "node build/security.js",
 		"build:support": "node build/support.js",
 		"lint": "biome check ./",
-		"lint:apply": "biome check ./ --apply",
+		"lint:write": "biome check ./ --write",
 		"prepublish": "npm run build",
 		"test": "node--test",
 		"coverage": "nyc node--test",
@@ -30,8 +30,8 @@
 	},
 	"homepage": "https://github.com/cutenode/nodevu#readme",
 	"devDependencies": {
-		"@biomejs/biome": "1.6.1",
-		"nyc": "^15.1.0",
+		"@biomejs/biome": "1.9.4",
+		"nyc": "^17.1.0",
 		"test": "^3.3.0"
 	}
 }
