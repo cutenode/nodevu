@@ -20683,12 +20683,7 @@
 	{
 		"version": "v0.7.10",
 		"date": "2012-06-11",
-		"files": [
-			"osx-x64-pkg",
-			"src",
-			"win-x64-exe",
-			"win-x86-exe"
-		],
+		"files": ["osx-x64-pkg", "src", "win-x64-exe", "win-x86-exe"],
 		"npm": "1.1.25",
 		"v8": "3.9.24.31",
 		"uv": "0.6",
@@ -20701,12 +20696,7 @@
 	{
 		"version": "v0.7.9",
 		"date": "2012-05-29",
-		"files": [
-			"osx-x64-pkg",
-			"src",
-			"win-x64-exe",
-			"win-x86-exe"
-		],
+		"files": ["osx-x64-pkg", "src", "win-x64-exe", "win-x86-exe"],
 		"npm": "1.1.23",
 		"v8": "3.11.1.0",
 		"uv": "0.6",
@@ -20719,12 +20709,7 @@
 	{
 		"version": "v0.7.8",
 		"date": "2012-04-18",
-		"files": [
-			"osx-x64-pkg",
-			"src",
-			"win-x64-exe",
-			"win-x86-exe"
-		],
+		"files": ["osx-x64-pkg", "src", "win-x64-exe", "win-x86-exe"],
 		"npm": "1.1.18",
 		"v8": "3.9.24.9",
 		"uv": "0.6",
@@ -20737,12 +20722,7 @@
 	{
 		"version": "v0.7.7",
 		"date": "2012-03-30",
-		"files": [
-			"osx-x64-pkg",
-			"src",
-			"win-x64-exe",
-			"win-x86-exe"
-		],
+		"files": ["osx-x64-pkg", "src", "win-x64-exe", "win-x86-exe"],
 		"npm": "1.1.15",
 		"v8": "3.9.24.7",
 		"uv": "0.6",
@@ -20755,12 +20735,7 @@
 	{
 		"version": "v0.7.6",
 		"date": "2012-03-13",
-		"files": [
-			"osx-x64-pkg",
-			"src",
-			"win-x64-exe",
-			"win-x86-exe"
-		],
+		"files": ["osx-x64-pkg", "src", "win-x64-exe", "win-x86-exe"],
 		"npm": "1.1.8",
 		"v8": "3.9.17.0",
 		"uv": "0.6",
@@ -20773,12 +20748,7 @@
 	{
 		"version": "v0.7.5",
 		"date": "2012-02-23",
-		"files": [
-			"osx-x64-pkg",
-			"src",
-			"win-x64-exe",
-			"win-x86-exe"
-		],
+		"files": ["osx-x64-pkg", "src", "win-x64-exe", "win-x86-exe"],
 		"npm": "1.1.1",
 		"v8": "3.9.5.0",
 		"uv": "0.6",
@@ -20791,12 +20761,7 @@
 	{
 		"version": "v0.7.4",
 		"date": "2012-02-14",
-		"files": [
-			"osx-x64-pkg",
-			"src",
-			"win-x64-exe",
-			"win-x86-exe"
-		],
+		"files": ["osx-x64-pkg", "src", "win-x64-exe", "win-x86-exe"],
 		"npm": "1.1.1",
 		"v8": "3.9.5.0",
 		"uv": "0.6",
@@ -20809,11 +20774,7 @@
 	{
 		"version": "v0.7.3",
 		"date": "2012-02-07",
-		"files": [
-			"osx-x64-pkg",
-			"src",
-			"win-x86-exe"
-		],
+		"files": ["osx-x64-pkg", "src", "win-x86-exe"],
 		"npm": "1.1.0-3",
 		"v8": "3.9.2.0",
 		"uv": "0.6",
@@ -20826,11 +20787,7 @@
 	{
 		"version": "v0.7.2",
 		"date": "2012-02-01",
-		"files": [
-			"osx-x64-pkg",
-			"src",
-			"win-x86-exe"
-		],
+		"files": ["osx-x64-pkg", "src", "win-x86-exe"],
 		"npm": "1.1.0-3",
 		"v8": "3.8.9.0",
 		"uv": "0.6",
@@ -20843,11 +20800,7 @@
 	{
 		"version": "v0.7.1",
 		"date": "2012-01-23",
-		"files": [
-			"osx-x64-pkg",
-			"src",
-			"win-x86-exe"
-		],
+		"files": ["osx-x64-pkg", "src", "win-x86-exe"],
 		"npm": "1.1.0-2",
 		"v8": "3.8.8.0",
 		"uv": "0.6",
@@ -20860,11 +20813,7 @@
 	{
 		"version": "v0.7.0",
 		"date": "2012-01-17",
-		"files": [
-			"osx-x64-pkg",
-			"src",
-			"win-x86-exe"
-		],
+		"files": ["osx-x64-pkg", "src", "win-x86-exe"],
 		"npm": "1.1.0-2",
 		"v8": "3.8.6.0",
 		"uv": "0.6",
@@ -20877,12 +20826,7 @@
 	{
 		"version": "v0.6.21",
 		"date": "2012-08-03",
-		"files": [
-			"osx-x64-pkg",
-			"src",
-			"win-x64-exe",
-			"win-x86-exe"
-		],
+		"files": ["osx-x64-pkg", "src", "win-x64-exe", "win-x86-exe"],
 		"npm": "1.1.37",
 		"v8": "3.6.6.25",
 		"uv": "0.6",
@@ -20895,12 +20839,7 @@
 	{
 		"version": "v0.6.20",
 		"date": "2012-07-10",
-		"files": [
-			"osx-x64-pkg",
-			"src",
-			"win-x64-exe",
-			"win-x86-exe"
-		],
+		"files": ["osx-x64-pkg", "src", "win-x64-exe", "win-x86-exe"],
 		"npm": "1.1.37",
 		"v8": "3.6.6.25",
 		"uv": "0.6",
@@ -20913,12 +20852,7 @@
 	{
 		"version": "v0.6.19",
 		"date": "2012-06-06",
-		"files": [
-			"osx-x64-pkg",
-			"src",
-			"win-x64-exe",
-			"win-x86-exe"
-		],
+		"files": ["osx-x64-pkg", "src", "win-x64-exe", "win-x86-exe"],
 		"npm": "1.1.24",
 		"v8": "3.6.6.25",
 		"uv": "0.6",
@@ -20931,12 +20865,7 @@
 	{
 		"version": "v0.6.18",
 		"date": "2012-05-14",
-		"files": [
-			"osx-x64-pkg",
-			"src",
-			"win-x64-exe",
-			"win-x86-exe"
-		],
+		"files": ["osx-x64-pkg", "src", "win-x64-exe", "win-x86-exe"],
 		"npm": "1.1.21",
 		"v8": "3.6.6.25",
 		"uv": "0.6",
@@ -20949,12 +20878,7 @@
 	{
 		"version": "v0.6.17",
 		"date": "2012-05-04",
-		"files": [
-			"osx-x64-pkg",
-			"src",
-			"win-x64-exe",
-			"win-x86-exe"
-		],
+		"files": ["osx-x64-pkg", "src", "win-x64-exe", "win-x86-exe"],
 		"npm": "1.1.21",
 		"v8": "3.6.6.25",
 		"uv": "0.6",
@@ -20967,12 +20891,7 @@
 	{
 		"version": "v0.6.16",
 		"date": "2012-04-27",
-		"files": [
-			"osx-x64-pkg",
-			"src",
-			"win-x64-exe",
-			"win-x86-exe"
-		],
+		"files": ["osx-x64-pkg", "src", "win-x64-exe", "win-x86-exe"],
 		"npm": "1.1.19",
 		"v8": "3.6.6.25",
 		"uv": "0.6",
@@ -20985,12 +20904,7 @@
 	{
 		"version": "v0.6.15",
 		"date": "2012-04-08",
-		"files": [
-			"osx-x64-pkg",
-			"src",
-			"win-x64-exe",
-			"win-x86-exe"
-		],
+		"files": ["osx-x64-pkg", "src", "win-x64-exe", "win-x86-exe"],
 		"npm": "1.1.16",
 		"v8": "3.6.6.24",
 		"uv": "0.6",
@@ -21003,12 +20917,7 @@
 	{
 		"version": "v0.6.14",
 		"date": "2012-03-23",
-		"files": [
-			"osx-x64-pkg",
-			"src",
-			"win-x64-exe",
-			"win-x86-exe"
-		],
+		"files": ["osx-x64-pkg", "src", "win-x64-exe", "win-x86-exe"],
 		"npm": "1.1.12",
 		"v8": "3.6.6.24",
 		"uv": "0.6",
@@ -21021,12 +20930,7 @@
 	{
 		"version": "v0.6.13",
 		"date": "2012-03-15",
-		"files": [
-			"osx-x64-pkg",
-			"src",
-			"win-x64-exe",
-			"win-x86-exe"
-		],
+		"files": ["osx-x64-pkg", "src", "win-x64-exe", "win-x86-exe"],
 		"npm": "1.1.9",
 		"v8": "3.6.6.24",
 		"uv": "0.6",
@@ -21039,11 +20943,7 @@
 	{
 		"version": "v0.6.12",
 		"date": "2012-03-02",
-		"files": [
-			"osx-x64-pkg",
-			"src",
-			"win-x86-exe"
-		],
+		"files": ["osx-x64-pkg", "src", "win-x86-exe"],
 		"npm": "1.1.4",
 		"v8": "3.6.6.24",
 		"uv": "0.6",
@@ -21056,11 +20956,7 @@
 	{
 		"version": "v0.6.11",
 		"date": "2012-02-08",
-		"files": [
-			"osx-x64-pkg",
-			"src",
-			"win-x86-exe"
-		],
+		"files": ["osx-x64-pkg", "src", "win-x86-exe"],
 		"npm": "1.1.1",
 		"v8": "3.6.6.20",
 		"uv": "0.6",
@@ -21073,11 +20969,7 @@
 	{
 		"version": "v0.6.10",
 		"date": "2012-02-03",
-		"files": [
-			"osx-x64-pkg",
-			"src",
-			"win-x86-exe"
-		],
+		"files": ["osx-x64-pkg", "src", "win-x86-exe"],
 		"npm": "1.1.0-3",
 		"v8": "3.6.6.20",
 		"uv": "0.6",
@@ -21090,11 +20982,7 @@
 	{
 		"version": "v0.6.9",
 		"date": "2012-01-27",
-		"files": [
-			"osx-x64-pkg",
-			"src",
-			"win-x86-exe"
-		],
+		"files": ["osx-x64-pkg", "src", "win-x86-exe"],
 		"npm": "1.1.0-3",
 		"v8": "3.6.6.19",
 		"uv": "0.6",
@@ -21107,11 +20995,7 @@
 	{
 		"version": "v0.6.8",
 		"date": "2012-01-20",
-		"files": [
-			"osx-x64-pkg",
-			"src",
-			"win-x86-exe"
-		],
+		"files": ["osx-x64-pkg", "src", "win-x86-exe"],
 		"npm": "1.1.0-2",
 		"v8": "3.6.6.19",
 		"uv": "0.6",
@@ -21124,11 +21008,7 @@
 	{
 		"version": "v0.6.7",
 		"date": "2012-01-07",
-		"files": [
-			"osx-x64-pkg",
-			"src",
-			"win-x86-exe"
-		],
+		"files": ["osx-x64-pkg", "src", "win-x86-exe"],
 		"npm": "1.1.0-beta-10",
 		"v8": "3.6.6.15",
 		"uv": "0.6",
@@ -21141,11 +21021,7 @@
 	{
 		"version": "v0.6.6",
 		"date": "2011-12-15",
-		"files": [
-			"osx-x64-pkg",
-			"src",
-			"win-x86-exe"
-		],
+		"files": ["osx-x64-pkg", "src", "win-x86-exe"],
 		"npm": "1.1.0-beta-4",
 		"v8": "3.6.6.14",
 		"uv": "0.6",
@@ -21158,11 +21034,7 @@
 	{
 		"version": "v0.6.5",
 		"date": "2011-12-04",
-		"files": [
-			"osx-x64-pkg",
-			"src",
-			"win-x86-exe"
-		],
+		"files": ["osx-x64-pkg", "src", "win-x86-exe"],
 		"npm": "1.1.0-alpha-6",
 		"v8": "3.6.6.11",
 		"uv": "0.6",
@@ -21175,11 +21047,7 @@
 	{
 		"version": "v0.6.4",
 		"date": "2011-12-02",
-		"files": [
-			"osx-x64-pkg",
-			"src",
-			"win-x86-exe"
-		],
+		"files": ["osx-x64-pkg", "src", "win-x86-exe"],
 		"npm": "1.1.0-alpha-6",
 		"v8": "3.6.6.8",
 		"uv": "0.6",
@@ -21192,11 +21060,7 @@
 	{
 		"version": "v0.6.3",
 		"date": "2011-11-25",
-		"files": [
-			"osx-x64-pkg",
-			"src",
-			"win-x86-exe"
-		],
+		"files": ["osx-x64-pkg", "src", "win-x86-exe"],
 		"npm": "1.1.0-alpha-2",
 		"v8": "3.6.6.8",
 		"uv": "0.6",
@@ -21209,11 +21073,7 @@
 	{
 		"version": "v0.6.2",
 		"date": "2011-11-18",
-		"files": [
-			"osx-x64-pkg",
-			"src",
-			"win-x86-exe"
-		],
+		"files": ["osx-x64-pkg", "src", "win-x86-exe"],
 		"v8": "3.6.6.8",
 		"uv": "0.6",
 		"zlib": "1.2.3",
@@ -21225,11 +21085,7 @@
 	{
 		"version": "v0.6.1",
 		"date": "2011-11-11",
-		"files": [
-			"osx-x64-pkg",
-			"src",
-			"win-x86-exe"
-		],
+		"files": ["osx-x64-pkg", "src", "win-x86-exe"],
 		"v8": "3.6.6.7",
 		"uv": "0.1",
 		"zlib": "1.2.3",
@@ -21241,10 +21097,7 @@
 	{
 		"version": "v0.6.0",
 		"date": "2011-11-04",
-		"files": [
-			"src",
-			"win-x86-exe"
-		],
+		"files": ["src", "win-x86-exe"],
 		"v8": "3.6.6.6",
 		"uv": "0.1",
 		"zlib": "1.2.3",
@@ -21256,10 +21109,7 @@
 	{
 		"version": "v0.5.10",
 		"date": "2011-10-22",
-		"files": [
-			"src",
-			"win-x86-exe"
-		],
+		"files": ["src", "win-x86-exe"],
 		"v8": "3.7.0.0",
 		"uv": "0.1",
 		"zlib": "1.2.3",
@@ -21271,10 +21121,7 @@
 	{
 		"version": "v0.5.9",
 		"date": "2011-10-11",
-		"files": [
-			"src",
-			"win-x86-exe"
-		],
+		"files": ["src", "win-x86-exe"],
 		"v8": "3.6.4.0",
 		"uv": "0.1",
 		"zlib": "1.2.3",
@@ -21286,10 +21133,7 @@
 	{
 		"version": "v0.5.8",
 		"date": "2011-09-30",
-		"files": [
-			"src",
-			"win-x86-exe"
-		],
+		"files": ["src", "win-x86-exe"],
 		"v8": "3.6.4.0",
 		"uv": "0.1",
 		"zlib": "1.2.3",
@@ -21301,10 +21145,7 @@
 	{
 		"version": "v0.5.7",
 		"date": "2011-09-16",
-		"files": [
-			"src",
-			"win-x86-exe"
-		],
+		"files": ["src", "win-x86-exe"],
 		"v8": "3.6.4.0",
 		"uv": "0.1",
 		"openssl": "0.9.8r",
@@ -21315,10 +21156,7 @@
 	{
 		"version": "v0.5.6",
 		"date": "2011-08-26",
-		"files": [
-			"src",
-			"win-x86-exe"
-		],
+		"files": ["src", "win-x86-exe"],
 		"v8": "3.6.2.0",
 		"uv": "0.1",
 		"openssl": "0.9.8r",
@@ -21329,10 +21167,7 @@
 	{
 		"version": "v0.5.5",
 		"date": "2011-08-26",
-		"files": [
-			"src",
-			"win-x86-exe"
-		],
+		"files": ["src", "win-x86-exe"],
 		"v8": "3.5.8.0",
 		"uv": "0.1",
 		"openssl": "0.9.8r",
@@ -21343,10 +21178,7 @@
 	{
 		"version": "v0.5.4",
 		"date": "2011-08-26",
-		"files": [
-			"src",
-			"win-x86-exe"
-		],
+		"files": ["src", "win-x86-exe"],
 		"v8": "3.5.4.3",
 		"uv": "0.1",
 		"modules": "1",
@@ -21356,10 +21188,7 @@
 	{
 		"version": "v0.5.3",
 		"date": "2011-08-26",
-		"files": [
-			"src",
-			"win-x86-exe"
-		],
+		"files": ["src", "win-x86-exe"],
 		"v8": "3.4.14.0",
 		"uv": "0.1",
 		"modules": "1",
@@ -21369,10 +21198,7 @@
 	{
 		"version": "v0.5.2",
 		"date": "2011-08-26",
-		"files": [
-			"src",
-			"win-x86-exe"
-		],
+		"files": ["src", "win-x86-exe"],
 		"v8": "3.4.14.0",
 		"uv": "0.1",
 		"modules": "1",
@@ -21382,10 +21208,7 @@
 	{
 		"version": "v0.5.1",
 		"date": "2011-08-26",
-		"files": [
-			"src",
-			"win-x86-exe"
-		],
+		"files": ["src", "win-x86-exe"],
 		"v8": "3.4.10.0",
 		"uv": "0.1",
 		"modules": "1",
@@ -21395,9 +21218,7 @@
 	{
 		"version": "v0.5.0",
 		"date": "2011-08-26",
-		"files": [
-			"src"
-		],
+		"files": ["src"],
 		"v8": "3.1.8.25",
 		"modules": "1",
 		"lts": false,
@@ -21406,9 +21227,7 @@
 	{
 		"version": "v0.4.12",
 		"date": "2011-09-15",
-		"files": [
-			"src"
-		],
+		"files": ["src"],
 		"v8": "3.1.8.26",
 		"modules": "1",
 		"lts": false,
@@ -21417,9 +21236,7 @@
 	{
 		"version": "v0.4.11",
 		"date": "2011-08-26",
-		"files": [
-			"src"
-		],
+		"files": ["src"],
 		"v8": "3.1.8.26",
 		"modules": "1",
 		"lts": false,
@@ -21428,9 +21245,7 @@
 	{
 		"version": "v0.4.10",
 		"date": "2011-08-26",
-		"files": [
-			"src"
-		],
+		"files": ["src"],
 		"v8": "3.1.8.26",
 		"modules": "1",
 		"lts": false,
@@ -21439,9 +21254,7 @@
 	{
 		"version": "v0.4.9",
 		"date": "2011-08-26",
-		"files": [
-			"src"
-		],
+		"files": ["src"],
 		"v8": "3.1.8.25",
 		"modules": "1",
 		"lts": false,
@@ -21450,9 +21263,7 @@
 	{
 		"version": "v0.4.8",
 		"date": "2011-08-26",
-		"files": [
-			"src"
-		],
+		"files": ["src"],
 		"v8": "3.1.8.16",
 		"modules": "1",
 		"lts": false,
@@ -21461,9 +21272,7 @@
 	{
 		"version": "v0.4.7",
 		"date": "2011-08-26",
-		"files": [
-			"src"
-		],
+		"files": ["src"],
 		"v8": "3.1.8.10",
 		"modules": "1",
 		"lts": false,
@@ -21472,9 +21281,7 @@
 	{
 		"version": "v0.4.6",
 		"date": "2011-08-26",
-		"files": [
-			"src"
-		],
+		"files": ["src"],
 		"v8": "3.1.8.10",
 		"modules": "1",
 		"lts": false,
@@ -21483,9 +21290,7 @@
 	{
 		"version": "v0.4.5",
 		"date": "2011-08-26",
-		"files": [
-			"src"
-		],
+		"files": ["src"],
 		"v8": "3.1.8.8",
 		"modules": "1",
 		"lts": false,
@@ -21494,9 +21299,7 @@
 	{
 		"version": "v0.4.4",
 		"date": "2011-08-26",
-		"files": [
-			"src"
-		],
+		"files": ["src"],
 		"v8": "3.1.8.5",
 		"modules": "1",
 		"lts": false,
@@ -21505,9 +21308,7 @@
 	{
 		"version": "v0.4.3",
 		"date": "2011-08-26",
-		"files": [
-			"src"
-		],
+		"files": ["src"],
 		"v8": "3.1.8.3",
 		"modules": "1",
 		"lts": false,
@@ -21516,9 +21317,7 @@
 	{
 		"version": "v0.4.2",
 		"date": "2011-08-26",
-		"files": [
-			"src"
-		],
+		"files": ["src"],
 		"v8": "3.1.8.0",
 		"modules": "1",
 		"lts": false,
@@ -21527,9 +21326,7 @@
 	{
 		"version": "v0.4.1",
 		"date": "2011-08-26",
-		"files": [
-			"src"
-		],
+		"files": ["src"],
 		"v8": "3.1.5.0",
 		"modules": "1",
 		"lts": false,
@@ -21538,9 +21335,7 @@
 	{
 		"version": "v0.4.0",
 		"date": "2011-08-26",
-		"files": [
-			"src"
-		],
+		"files": ["src"],
 		"v8": "3.1.2.0",
 		"modules": "1",
 		"lts": false,
@@ -21549,9 +21344,7 @@
 	{
 		"version": "v0.3.8",
 		"date": "2011-08-26",
-		"files": [
-			"src"
-		],
+		"files": ["src"],
 		"v8": "3.1.1.0",
 		"modules": "1",
 		"lts": false,
@@ -21560,9 +21353,7 @@
 	{
 		"version": "v0.3.7",
 		"date": "2011-08-26",
-		"files": [
-			"src"
-		],
+		"files": ["src"],
 		"v8": "3.0.10.0",
 		"modules": "1",
 		"lts": false,
@@ -21571,9 +21362,7 @@
 	{
 		"version": "v0.3.6",
 		"date": "2011-08-26",
-		"files": [
-			"src"
-		],
+		"files": ["src"],
 		"v8": "3.0.9.0",
 		"modules": "1",
 		"lts": false,
@@ -21582,9 +21371,7 @@
 	{
 		"version": "v0.3.5",
 		"date": "2011-08-26",
-		"files": [
-			"src"
-		],
+		"files": ["src"],
 		"v8": "3.0.4.1",
 		"modules": "1",
 		"lts": false,
@@ -21593,9 +21380,7 @@
 	{
 		"version": "v0.3.4",
 		"date": "2011-08-26",
-		"files": [
-			"src"
-		],
+		"files": ["src"],
 		"v8": "3.0.4.1",
 		"modules": "1",
 		"lts": false,
@@ -21604,9 +21389,7 @@
 	{
 		"version": "v0.3.3",
 		"date": "2011-08-26",
-		"files": [
-			"src"
-		],
+		"files": ["src"],
 		"v8": "3.0.4.1",
 		"modules": "1",
 		"lts": false,
@@ -21615,9 +21398,7 @@
 	{
 		"version": "v0.3.2",
 		"date": "2011-08-26",
-		"files": [
-			"src"
-		],
+		"files": ["src"],
 		"v8": "3.0.3.0",
 		"modules": "1",
 		"lts": false,
@@ -21626,9 +21407,7 @@
 	{
 		"version": "v0.3.1",
 		"date": "2011-08-26",
-		"files": [
-			"src"
-		],
+		"files": ["src"],
 		"v8": "2.5.3.0",
 		"modules": "1",
 		"lts": false,
@@ -21637,9 +21416,7 @@
 	{
 		"version": "v0.3.0",
 		"date": "2011-08-26",
-		"files": [
-			"src"
-		],
+		"files": ["src"],
 		"v8": "2.5.1.0",
 		"modules": "1",
 		"lts": false,
@@ -21648,9 +21425,7 @@
 	{
 		"version": "v0.2.6",
 		"date": "2011-08-26",
-		"files": [
-			"src"
-		],
+		"files": ["src"],
 		"v8": "2.3.8.0",
 		"modules": "1",
 		"lts": false,
@@ -21659,9 +21434,7 @@
 	{
 		"version": "v0.2.5",
 		"date": "2011-08-26",
-		"files": [
-			"src"
-		],
+		"files": ["src"],
 		"v8": "2.3.8.0",
 		"modules": "1",
 		"lts": false,
@@ -21670,9 +21443,7 @@
 	{
 		"version": "v0.2.4",
 		"date": "2011-08-26",
-		"files": [
-			"src"
-		],
+		"files": ["src"],
 		"v8": "2.3.8.0",
 		"modules": "1",
 		"lts": false,
@@ -21681,9 +21452,7 @@
 	{
 		"version": "v0.2.3",
 		"date": "2011-08-26",
-		"files": [
-			"src"
-		],
+		"files": ["src"],
 		"v8": "2.3.8.0",
 		"modules": "1",
 		"lts": false,
@@ -21692,9 +21461,7 @@
 	{
 		"version": "v0.2.2",
 		"date": "2011-08-26",
-		"files": [
-			"src"
-		],
+		"files": ["src"],
 		"v8": "2.3.8.0",
 		"modules": "1",
 		"lts": false,
@@ -21703,9 +21470,7 @@
 	{
 		"version": "v0.2.1",
 		"date": "2011-08-26",
-		"files": [
-			"src"
-		],
+		"files": ["src"],
 		"v8": "2.3.8.0",
 		"modules": "1",
 		"lts": false,
@@ -21714,9 +21479,7 @@
 	{
 		"version": "v0.2.0",
 		"date": "2011-08-26",
-		"files": [
-			"src"
-		],
+		"files": ["src"],
 		"v8": "2.3.8.0",
 		"modules": "1",
 		"lts": false,
@@ -21725,9 +21488,7 @@
 	{
 		"version": "v0.1.104",
 		"date": "2011-08-26",
-		"files": [
-			"src"
-		],
+		"files": ["src"],
 		"v8": "2.3.6.1",
 		"lts": false,
 		"security": false
@@ -21735,9 +21496,7 @@
 	{
 		"version": "v0.1.103",
 		"date": "2011-08-26",
-		"files": [
-			"src"
-		],
+		"files": ["src"],
 		"v8": "2.3.5.0",
 		"lts": false,
 		"security": false
@@ -21745,9 +21504,7 @@
 	{
 		"version": "v0.1.102",
 		"date": "2011-08-26",
-		"files": [
-			"src"
-		],
+		"files": ["src"],
 		"v8": "2.3.2.0",
 		"lts": false,
 		"security": false
@@ -21755,9 +21512,7 @@
 	{
 		"version": "v0.1.101",
 		"date": "2011-08-26",
-		"files": [
-			"src"
-		],
+		"files": ["src"],
 		"v8": "2.3.0.0",
 		"lts": false,
 		"security": false
@@ -21765,9 +21520,7 @@
 	{
 		"version": "v0.1.100",
 		"date": "2011-08-26",
-		"files": [
-			"src"
-		],
+		"files": ["src"],
 		"v8": "2.2.21.0",
 		"lts": false,
 		"security": false
@@ -21775,9 +21528,7 @@
 	{
 		"version": "v0.1.99",
 		"date": "2011-08-26",
-		"files": [
-			"src"
-		],
+		"files": ["src"],
 		"v8": "2.2.18.0",
 		"lts": false,
 		"security": false
@@ -21785,9 +21536,7 @@
 	{
 		"version": "v0.1.98",
 		"date": "2011-08-26",
-		"files": [
-			"src"
-		],
+		"files": ["src"],
 		"v8": "2.2.16.0",
 		"lts": false,
 		"security": false
@@ -21795,9 +21544,7 @@
 	{
 		"version": "v0.1.97",
 		"date": "2011-08-26",
-		"files": [
-			"src"
-		],
+		"files": ["src"],
 		"v8": "2.2.12.0",
 		"lts": false,
 		"security": false
@@ -21805,9 +21552,7 @@
 	{
 		"version": "v0.1.96",
 		"date": "2011-08-26",
-		"files": [
-			"src"
-		],
+		"files": ["src"],
 		"v8": "2.2.0",
 		"lts": false,
 		"security": false
@@ -21815,9 +21560,7 @@
 	{
 		"version": "v0.1.95",
 		"date": "2011-08-26",
-		"files": [
-			"src"
-		],
+		"files": ["src"],
 		"v8": "2.2.0",
 		"lts": false,
 		"security": false
@@ -21825,9 +21568,7 @@
 	{
 		"version": "v0.1.94",
 		"date": "2011-08-26",
-		"files": [
-			"src"
-		],
+		"files": ["src"],
 		"v8": "2.2.8.0",
 		"lts": false,
 		"security": false
@@ -21835,9 +21576,7 @@
 	{
 		"version": "v0.1.93",
 		"date": "2011-08-26",
-		"files": [
-			"src"
-		],
+		"files": ["src"],
 		"v8": "2.2.6.0",
 		"lts": false,
 		"security": false
@@ -21845,9 +21584,7 @@
 	{
 		"version": "v0.1.92",
 		"date": "2011-08-26",
-		"files": [
-			"src"
-		],
+		"files": ["src"],
 		"v8": "2.2.4.2",
 		"lts": false,
 		"security": false
@@ -21855,9 +21592,7 @@
 	{
 		"version": "v0.1.91",
 		"date": "2011-08-26",
-		"files": [
-			"src"
-		],
+		"files": ["src"],
 		"v8": "2.2.3.1",
 		"lts": false,
 		"security": false
@@ -21865,9 +21600,7 @@
 	{
 		"version": "v0.1.90",
 		"date": "2011-08-26",
-		"files": [
-			"src"
-		],
+		"files": ["src"],
 		"v8": "2.2.0.3",
 		"lts": false,
 		"security": false
@@ -21875,9 +21608,7 @@
 	{
 		"version": "v0.1.33",
 		"date": "2011-08-26",
-		"files": [
-			"src"
-		],
+		"files": ["src"],
 		"v8": "2.1.6.0",
 		"lts": false,
 		"security": false
@@ -21885,9 +21616,7 @@
 	{
 		"version": "v0.1.32",
 		"date": "2011-08-26",
-		"files": [
-			"src"
-		],
+		"files": ["src"],
 		"v8": "2.1.3.0",
 		"lts": false,
 		"security": false
@@ -21895,9 +21624,7 @@
 	{
 		"version": "v0.1.31",
 		"date": "2011-08-26",
-		"files": [
-			"src"
-		],
+		"files": ["src"],
 		"v8": "2.1.2.0",
 		"lts": false,
 		"security": false
@@ -21905,9 +21632,7 @@
 	{
 		"version": "v0.1.30",
 		"date": "2011-08-26",
-		"files": [
-			"src"
-		],
+		"files": ["src"],
 		"v8": "2.1.1.1",
 		"lts": false,
 		"security": false
@@ -21915,9 +21640,7 @@
 	{
 		"version": "v0.1.29",
 		"date": "2011-08-26",
-		"files": [
-			"src"
-		],
+		"files": ["src"],
 		"v8": "2.1.0.0",
 		"lts": false,
 		"security": false
@@ -21925,9 +21648,7 @@
 	{
 		"version": "v0.1.28",
 		"date": "2011-08-26",
-		"files": [
-			"src"
-		],
+		"files": ["src"],
 		"v8": "2.1.0.0",
 		"lts": false,
 		"security": false
@@ -21935,9 +21656,7 @@
 	{
 		"version": "v0.1.27",
 		"date": "2011-08-26",
-		"files": [
-			"src"
-		],
+		"files": ["src"],
 		"v8": "2.1.0.0",
 		"lts": false,
 		"security": false
@@ -21945,9 +21664,7 @@
 	{
 		"version": "v0.1.26",
 		"date": "2011-08-26",
-		"files": [
-			"src"
-		],
+		"files": ["src"],
 		"v8": "2.0.6.1",
 		"lts": false,
 		"security": false
@@ -21955,9 +21672,7 @@
 	{
 		"version": "v0.1.25",
 		"date": "2011-08-26",
-		"files": [
-			"src"
-		],
+		"files": ["src"],
 		"v8": "2.0.5.4",
 		"lts": false,
 		"security": false
@@ -21965,9 +21680,7 @@
 	{
 		"version": "v0.1.24",
 		"date": "2011-08-26",
-		"files": [
-			"src"
-		],
+		"files": ["src"],
 		"v8": "2.0.5.4",
 		"lts": false,
 		"security": false
@@ -21975,9 +21688,7 @@
 	{
 		"version": "v0.1.23",
 		"date": "2011-08-26",
-		"files": [
-			"src"
-		],
+		"files": ["src"],
 		"v8": "2.0.0",
 		"lts": false,
 		"security": false
@@ -21985,9 +21696,7 @@
 	{
 		"version": "v0.1.22",
 		"date": "2011-08-26",
-		"files": [
-			"src"
-		],
+		"files": ["src"],
 		"v8": "2.0.0",
 		"lts": false,
 		"security": false
@@ -21995,9 +21704,7 @@
 	{
 		"version": "v0.1.21",
 		"date": "2011-08-26",
-		"files": [
-			"src"
-		],
+		"files": ["src"],
 		"v8": "2.0.0",
 		"lts": false,
 		"security": false
@@ -22005,9 +21712,7 @@
 	{
 		"version": "v0.1.20",
 		"date": "2011-08-26",
-		"files": [
-			"src"
-		],
+		"files": ["src"],
 		"v8": "2.0.2.0",
 		"lts": false,
 		"security": false
@@ -22015,9 +21720,7 @@
 	{
 		"version": "v0.1.19",
 		"date": "2011-08-26",
-		"files": [
-			"src"
-		],
+		"files": ["src"],
 		"v8": "2.0.2.0",
 		"lts": false,
 		"security": false
@@ -22025,9 +21728,7 @@
 	{
 		"version": "v0.1.18",
 		"date": "2011-08-26",
-		"files": [
-			"src"
-		],
+		"files": ["src"],
 		"v8": "1.3.18.0",
 		"lts": false,
 		"security": false
@@ -22035,9 +21736,7 @@
 	{
 		"version": "v0.1.17",
 		"date": "2011-08-26",
-		"files": [
-			"src"
-		],
+		"files": ["src"],
 		"v8": "1.3.18.0",
 		"lts": false,
 		"security": false
@@ -22045,9 +21744,7 @@
 	{
 		"version": "v0.1.16",
 		"date": "2011-08-26",
-		"files": [
-			"src"
-		],
+		"files": ["src"],
 		"v8": "1.3.18.0",
 		"lts": false,
 		"security": false
@@ -22055,9 +21752,7 @@
 	{
 		"version": "v0.1.15",
 		"date": "2011-08-26",
-		"files": [
-			"src"
-		],
+		"files": ["src"],
 		"v8": "1.3.16.0",
 		"lts": false,
 		"security": false
@@ -22065,9 +21760,7 @@
 	{
 		"version": "v0.1.14",
 		"date": "2011-08-26",
-		"files": [
-			"src"
-		],
+		"files": ["src"],
 		"v8": "1.3.15.0",
 		"lts": false,
 		"security": false
