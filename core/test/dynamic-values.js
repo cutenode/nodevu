@@ -21,12 +21,17 @@ describe('statically check that we get dynamic values correctly', async () => {
 		const staticData = await nodevu({ now });
 		assert.deepStrictEqual(staticData.v8.support.phases.current, 'end');
 		assert.deepStrictEqual(staticData.v14.support.phases.current, 'end');
+		assert.deepStrictEqual(staticData.v16.support.phases.current, 'end');
+		assert.deepStrictEqual(staticData.v17.support.phases.current, 'end');
 		assert.deepStrictEqual(
-			staticData.v16.support.phases.current,
+			staticData.v18.support.phases.current,
 			'maintenance',
 		);
-		assert.deepStrictEqual(staticData.v17.support.phases.current, 'end');
-		assert.deepStrictEqual(staticData.v18.support.phases.current, 'lts');
-		assert.deepStrictEqual(staticData.v20.support.phases.current, 'start');
+		assert.deepStrictEqual(
+			staticData.v20.support.phases.current,
+			'maintenance',
+		);
+		assert.deepStrictEqual(staticData.v22.support.phases.current, 'lts');
+		assert.deepStrictEqual(staticData.v23.support.phases.current, 'start');
 	});
 });
