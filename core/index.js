@@ -1,4 +1,3 @@
-const { fetch: defaultFetch } = require('undici');
 const { DateTime } = require('luxon');
 const semver = require('semver');
 const parsefiles = require('@nodevu/parsefiles');
@@ -225,7 +224,6 @@ async function determineCurrentReleasePhase(now, dates = {}) {
 async function parseOptions(options) {
 	// set up our defaults
 	const parsedOptions = {
-		fetch: await defaultFetch,
 		now: DateTime.now(),
 		urls: {
 			index: 'https://nodejs.org/dist/index.json',
@@ -234,10 +232,8 @@ async function parseOptions(options) {
 		},
 	};
 
-	// allow the end-user to replace our fetch implementation with another one of their precernece.
-	if (options?.fetch) {
-		parsedOptions.fetch = options.fetch;
-	}
+	// allow the end-user to replace our fetch implementation with another one they prefer.
+	parsedOptions.fetch = await Promise.resolve(options?.fetch ?? globalThis.fetch);
 
 	// allow the end-user to provide a custom DateTime. This is particularly useful for tests.
 	if (options?.now) {
