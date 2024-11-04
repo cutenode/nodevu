@@ -5,7 +5,7 @@
 	"main": "index.js",
 	"scripts": {
 		"lint": "biome check ./",
-		"lint:apply": "biome check ./ --apply",
+		"lint:write": "biome check ./ --write",
 		"test": "node--test",
 		"test:update": "npm run test:update:static && npm run test:update:now",
 		"test:update:static": "node ./util/dev/updateStaticData.js",
@@ -19,13 +19,13 @@
 	"files": ["index.js", "LICENSE"],
 	"dependencies": {
 		"@nodevu/parsefiles": "^0.0.3",
-		"luxon": "^3.3.0",
-		"semver": "^7.5.1"
+		"luxon": "^3.5.0",
+		"semver": "^7.6.3"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "1.6.1",
-		"nyc": "^15.1.0",
+		"@biomejs/biome": "1.9.4",
+		"nyc": "^17.1.0",
 		"test": "^3.3.0",
-		"undici": "^5.22.1"
+		"undici": "^6.20.1"
 	}
 }
