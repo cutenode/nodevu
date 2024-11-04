@@ -1,0 +1,22 @@
+name: Publish @nodevu/static to npmjs
+on:
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+      # Setup .npmrc file to publish to npm
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 'latest'
+          registry-url: 'https://registry.npmjs.org'
+      - run: npm install -w static
+      - run: npm run lint -w static
+      - run: npm run coverage -w static
+      - run: npm publish --provenance --access public -w static
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
