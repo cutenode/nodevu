@@ -6,9 +6,9 @@
 	"files": ["index.js", "LICENSE"],
 	"scripts": {
 		"lint": "biome check ./",
-		"lint:apply": "biome check ./ --apply",
-		"test": "node--test",
-		"coverage": "nyc node--test",
+		"lint:write": "biome check ./ --write",
+		"test": "node --test",
+		"coverage": "c8 node --test",
 		"updates:check": "npx npm-check-updates",
 		"updates:update": "npx npm-check-updates -u"
 	},
@@ -28,7 +28,6 @@
 	},
 	"devDependencies": {
 		"@biomejs/biome": "1.6.1",
-		"nyc": "^15.1.0",
-		"test": "^3.3.0"
+		"c8": "^10.1.2"
 	}
 }

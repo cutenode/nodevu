@@ -12,8 +12,8 @@
 		"lint": "biome check ./",
 		"lint:write": "biome check ./ --write",
 		"prepublish": "npm run build",
-		"test": "node--test",
-		"coverage": "nyc node--test",
+		"test": "node --test",
+		"coverage": "c8 node --test",
 		"updates:check": "npx npm-check-updates",
 		"updates:update": "npx npm-check-updates -u"
 	},
@@ -21,8 +21,16 @@
 		"type": "git",
 		"url": "git+https://github.com/cutenode/nodevu.git"
 	},
-	"keywords": ["node.js", "version", "versions"],
-	"files": ["/data", "index.js", "LICENSE"],
+	"keywords": [
+		"node.js",
+		"version",
+		"versions"
+	],
+	"files": [
+		"/data",
+		"index.js",
+		"LICENSE"
+	],
 	"author": "Tierney Cyren <hello@bnb.im>",
 	"license": "MIT",
 	"bugs": {
@@ -31,7 +39,6 @@
 	"homepage": "https://github.com/cutenode/nodevu#readme",
 	"devDependencies": {
 		"@biomejs/biome": "1.9.4",
-		"nyc": "^17.1.0",
-		"test": "^3.3.0"
+		"c8": "^10.1.2"
 	}
 }

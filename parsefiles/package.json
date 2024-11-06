@@ -5,19 +5,26 @@
 	"main": "index.js",
 	"scripts": {
 		"lint": "biome check ./",
-		"lint:apply": "biome check ./ --apply",
-		"test": "node--test",
-		"coverage": "nyc mocha",
+		"lint:write": "biome check ./ --write",
+		"test": "node --test",
+		"coverage": "c8 node --test",
 		"updates:check": "npx npm-check-updates",
 		"updates:update": "npx npm-check-updates -u"
 	},
-	"keywords": ["node.js", "versions", "parse", "files"],
-	"files": ["index.js", "LICENSE"],
+	"keywords": [
+		"node.js",
+		"versions",
+		"parse",
+		"files"
+	],
+	"files": [
+		"index.js",
+		"LICENSE"
+	],
 	"author": "Tierney Cyren <hello@bnb.im>",
 	"license": "MIT",
 	"devDependencies": {
-		"@biomejs/biome": "1.6.1",
-		"nyc": "^15.1.0",
-		"test": "^3.3.0"
+		"@biomejs/biome": "1.9.4",
+		"c8": "^10.1.2"
 	}
 }

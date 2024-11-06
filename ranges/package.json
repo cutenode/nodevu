@@ -3,12 +3,15 @@
 	"version": "0.1.0",
 	"description": "support node's unofficial alias namespace",
 	"main": "index.js",
-	"files": ["index.js", "LICENSE"],
+	"files": [
+		"index.js",
+		"LICENSE"
+	],
 	"scripts": {
 		"lint": "biome check ./",
 		"lint:write": "biome check ./ --write",
 		"test": "node --test",
-		"coverage": "nyc node --test",
+		"coverage": "c8 node --test",
 		"updates:check": "npx npm-check-updates",
 		"updates:update": "npx npm-check-updates -u"
 	},
@@ -28,6 +31,6 @@
 	},
 	"devDependencies": {
 		"@biomejs/biome": "1.9.4",
-		"nyc": "^17.1.0"
+		"c8": "^10.1.2"
 	}
 }
