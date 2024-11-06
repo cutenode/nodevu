@@ -5,7 +5,7 @@
 	"main": "index.js",
 	"scripts": {
 		"lint": "npm run lint --ws",
-		"lint:apply": "npm run lint:apply --ws",
+		"lint:write": "npm run lint:write --ws",
 		"coverage": "npm run coverage --ws",
 		"test": "npm run test --ws",
 		"updates": "npm run updates --ws"
