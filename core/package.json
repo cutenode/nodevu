@@ -6,11 +6,11 @@
 	"scripts": {
 		"lint": "biome check ./",
 		"lint:write": "biome check ./ --write",
-		"test": "node--test",
+		"test": "node --test",
 		"test:update": "npm run test:update:static && npm run test:update:now",
 		"test:update:static": "node ./util/dev/updateStaticData.js",
 		"test:update:now": "node ./util/dev/updateStaticNow.js",
-		"coverage": "nyc node--test",
+		"coverage": "c8 node --test",
 		"updates:check": "npx npm-check-updates",
 		"updates:update": "npx npm-check-updates -u"
 	},
@@ -24,8 +24,7 @@
 	},
 	"devDependencies": {
 		"@biomejs/biome": "1.9.4",
-		"nyc": "^17.1.0",
-		"test": "^3.3.0",
+		"c8": "^10.1.2",
 		"undici": "^6.20.1"
 	}
 }
