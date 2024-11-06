@@ -6,9 +6,9 @@
 	"files": ["index.js", "LICENSE"],
 	"scripts": {
 		"lint": "biome check ./",
-		"lint:apply": "biome check ./ --apply",
-		"test": "node--test",
-		"coverage": "nyc node--test",
+		"lint:write": "biome check ./ --write",
+		"test": "node --test",
+		"coverage": "nyc node --test",
 		"updates:check": "npx npm-check-updates",
 		"updates:update": "npx npm-check-updates -u"
 	},
