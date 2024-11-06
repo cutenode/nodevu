@@ -1,6 +1,7 @@
 const assert = require('node:assert');
 const nodevu = require('../index');
 const { describe, it, beforeEach } = require('test');
+const { fetch: undiciFetch } = require('undici')
 
 const beforeEachTemplate = require('../util/dev/beforeEachTemplate');
 
@@ -30,6 +31,12 @@ const now = JSON.parse(staticNow);
 
 describe('check to make sure that combining options works as expected', async () => {
 	beforeEach(beforeEachTemplate);
+
+	it('should work with a different fetch', async () => {
+		const staticData = await nodevu({ undiciFetch });
+
+		check(staticData);
+	});
 
 	it('should still return valid data when the index is a different URL from the default while also using static now', async () => {
 		const urls = {
