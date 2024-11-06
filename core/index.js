@@ -1,19 +1,19 @@
 const { DateTime } = require('luxon');
 const semver = require('semver');
 const parsefiles = require('@nodevu/parsefiles');
-const optionsParser = require('./util/prod/optionsParser')
-const versionFetcher = require('./util/prod/versions')
-const scheduleFetcher = require('./util/prod/schedule')
+const optionsParser = require('./util/prod/optionsParser');
+const versionFetcher = require('./util/prod/versions');
+const scheduleFetcher = require('./util/prod/schedule');
 
 async function core(options) {
 	// parse our user's options and set up our fetch/DateTime implementations
 	const parsedOptions = optionsParser(options);
 
 	const now = DateTime.fromISO(parsedOptions.now);
-	
+
 	// collect and configure our data sources
-	const versions = await versionFetcher(parsedOptions)
-	const schedule = await scheduleFetcher(parsedOptions)
+	const versions = await versionFetcher(parsedOptions);
+	const schedule = await scheduleFetcher(parsedOptions);
 
 	// instantiate our data object, to be expanded upon
 	const data = {};

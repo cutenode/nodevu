@@ -1,7 +1,7 @@
 const assert = require('node:assert');
 const nodevu = require('../index');
 const { describe, it, beforeEach } = require('test');
-const { fetch: undiciFetch } = require('undici')
+const { fetch: undiciFetch } = require('undici');
 
 const beforeEachTemplate = require('../util/dev/beforeEachTemplate');
 

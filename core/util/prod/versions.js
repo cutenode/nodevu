@@ -1,4 +1,4 @@
-async function versions (options) {
+async function versions(options) {
 	// parse our options and set up fetch if a custom fetch is passed
 	const fetch = options.fetch;
 	const url = options.urls.index;
@@ -7,7 +7,7 @@ async function versions (options) {
 	const raw = await fetch(url);
 	const versions = await raw.json();
 
-	return versions
+	return versions;
 }
 
-module.exports = versions
+module.exports = versions;
