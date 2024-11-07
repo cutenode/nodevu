@@ -16,7 +16,7 @@
 	},
 	"author": "Tierney Cyren <hello@bnb.im> (https://bnb.im/)",
 	"license": "MIT",
-	"files": ["index.js", "LICENSE"],
+	"files": ["index.js", "LICENSE", "/util/prod"],
 	"dependencies": {
 		"@nodevu/parsefiles": "^0.0.3",
 		"luxon": "^3.5.0",

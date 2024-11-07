@@ -1,5 +1,5 @@
 const assert = require('node:assert');
-const { describe, it } = require('test');
+const { describe, it } = require('node:test');
 
 const parseFiles = require('../index');
 const input = require('./data/input.json');
