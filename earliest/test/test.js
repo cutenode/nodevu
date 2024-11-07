@@ -1,6 +1,6 @@
 const assert = require('node:assert');
 const { earliest, lts, security } = require('../index');
-const { describe, it } = require('test');
+const { describe, it } = require('node:test');
 
 describe('check v10', async () => {
 	describe('running earliest', async () => {

@@ -1,6 +1,6 @@
 const assert = require('node:assert');
 const ranges = require('../index');
-const { describe, it } = require('test');
+const { describe, it } = require('node:test');
 
 describe('failure states for arguments', async () => {
 	it('should throw an error on a string with an unknown value', async () => {

@@ -1,6 +1,6 @@
 const assert = require('node:assert');
 const translate = require('../index');
-const { describe, it } = require('test');
+const { describe, it } = require('node:test');
 
 describe('test that translating current works as expected', async () => {
 	it('should return "current" when passed "current"', async () => {

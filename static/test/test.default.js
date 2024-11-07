@@ -1,6 +1,6 @@
 const assert = require('node:assert');
 const staticData = require('../index');
-const { describe, it } = require('test');
+const { describe, it } = require('node:test');
 
 // always feel free to add more checks here - any addition will help ensure that we're even more solid.
 //
