@@ -1,6 +1,6 @@
 {
 	"name": "@nodevu/earliest",
-	"version": "0.0.3",
+	"version": "0.1.0",
 	"description": "a module that returns the earliest lts or security release of the release line passed.",
 	"main": "index.js",
 	"files": ["index.js", "LICENSE"],
@@ -24,10 +24,10 @@
 	},
 	"homepage": "https://github.com/cutenode/nodevu#readme",
 	"dependencies": {
-		"@nodevu/core": "^0.0.4"
+		"@nodevu/core": "^0.3.0"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "1.6.1",
+		"@biomejs/biome": "1.9.4",
 		"c8": "^10.1.2"
 	}
 }
