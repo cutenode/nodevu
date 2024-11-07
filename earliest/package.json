@@ -3,10 +3,7 @@
 	"version": "0.1.0",
 	"description": "a module that returns the earliest lts or security release of the release line passed.",
 	"main": "index.js",
-	"files": [
-		"index.js",
-		"LICENSE"
-	],
+	"files": ["index.js", "LICENSE"],
 	"scripts": {
 		"lint": "biome check ./",
 		"lint:write": "biome check ./ --write",
@@ -19,10 +16,7 @@
 		"type": "git",
 		"url": "git+https://github.com/cutenode/nodevu.git"
 	},
-	"keywords": [
-		"node.js",
-		"versions"
-	],
+	"keywords": ["node.js", "versions"],
 	"author": "Tierney Cyren <hello@bnb.im> (https://bnb.im/)",
 	"license": "MIT",
 	"bugs": {
