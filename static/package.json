@@ -21,16 +21,8 @@
 		"type": "git",
 		"url": "git+https://github.com/cutenode/nodevu.git"
 	},
-	"keywords": [
-		"node.js",
-		"version",
-		"versions"
-	],
-	"files": [
-		"/data",
-		"index.js",
-		"LICENSE"
-	],
+	"keywords": ["node.js", "version", "versions"],
+	"files": ["/data", "index.js", "LICENSE"],
 	"author": "Tierney Cyren <hello@bnb.im>",
 	"license": "MIT",
 	"bugs": {

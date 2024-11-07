@@ -7,10 +7,7 @@
 		"type": "git",
 		"url": "git+https://github.com/cutenode/nodevu.git"
 	},
-	"keywords": [
-		"node.js",
-		"version"
-	],
+	"keywords": ["node.js", "version"],
 	"author": "Tierney Cyren <hello@bnb.im> (https://bnb.im/)",
 	"license": "MIT",
 	"bugs": {
