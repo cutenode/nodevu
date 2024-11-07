@@ -1,6 +1,6 @@
 const assert = require('node:assert');
 const ranges = require('../index');
-const { describe, it } = require('test');
+const { describe, it } = require('node:test');
 
 describe('check some values we know should exist', async () => {
 	it('should include some known, static values in "all"', async () => {

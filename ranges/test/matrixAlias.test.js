@@ -1,6 +1,6 @@
 const assert = require('node:assert');
 const ranges = require('../index');
-const { describe, it } = require('test');
+const { describe, it } = require('node:test');
 
 // this is a non-exhaustive list of sets of aliases.
 // please feel free to add more.
