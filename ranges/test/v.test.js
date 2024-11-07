@@ -1,6 +1,6 @@
 const assert = require('node:assert');
 const ranges = require('../index');
-const { describe, it } = require('test');
+const { describe, it } = require('node:test');
 
 // tests various values to ensure that the start with the correct character
 describe('check that "v"s are where they should (and are not where they should not be)', async () => {

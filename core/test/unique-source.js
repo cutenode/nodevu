@@ -1,6 +1,6 @@
 const { deepStrictEqual } = require('node:assert');
 const nodevu = require('../index');
-const { describe, it, beforeEach } = require('test');
+const { describe, it, beforeEach } = require('node:test');
 
 const beforeEachTemplate = require('../util/dev/beforeEachTemplate');
 

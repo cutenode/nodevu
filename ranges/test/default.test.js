@@ -1,6 +1,6 @@
 const assert = require('node:assert');
 const ranges = require('../index');
-const { describe, it } = require('test');
+const { describe, it } = require('node:test');
 
 describe('data should exist as it is defined', async () => {
 	it('versions should have correct types on every property', async () => {

@@ -1,7 +1,7 @@
 const assert = require('node:assert');
 const translate = require('../index');
 const ranges = require('@nodevu/ranges');
-const { describe, it } = require('test');
+const { describe, it } = require('node:test');
 
 describe('test that each alias works with @nodevu/ranges', async () => {
 	it('should return the same result when both the translated and untranslated "current" are passed to @nodevu/ranges', async () => {
