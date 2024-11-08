@@ -25,7 +25,7 @@
 		"core",
 		"static",
 		"parsefiles",
-		"earliest",
+		"oldest",
 		"newest",
 		"ranges",
 		"aliases",
