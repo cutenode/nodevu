@@ -1,0 +1,22 @@
+name: Publish @nodevu/newest to npmjs
+on:
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+      # Setup .npmrc file to publish to npm
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 'latest'
+          registry-url: 'https://registry.npmjs.org'
+      - run: npm install -w newest
+      - run: npm run lint -w newest
+      - run: npm run coverage -w newest
+      - run: npm publish --provenance --access public -w newest
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
