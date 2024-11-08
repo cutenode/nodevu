@@ -1,0 +1,32 @@
+{
+	"name": "@nodevu/fetchindex",
+	"version": "0.1.0",
+	"description": "A tool that fetches the /dist/index.json file from the Node.js website.",
+	"main": "index.js",
+	"files": ["index.js", "LICENSE"],
+	"scripts": {
+		"lint": "biome check ./",
+		"lint:write": "biome check ./ --write",
+		"test": "node --test",
+		"coverage": "c8 node --test",
+		"updates:check": "npx npm-check-updates",
+		"updates:update": "npx npm-check-updates -u"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/cutenode/nodevu.git"
+	},
+	"keywords": ["node.js", "versions"],
+	"author": "Tierney Cyren <hello@bnb.im> (https://bnb.im/)",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/cutenode/nodevu/issues"
+	},
+	"homepage": "https://github.com/cutenode/nodevu#readme",
+	"devDependencies": {
+		"@biomejs/biome": "1.9.4",
+		"c8": "^10.1.2",
+		"luxon": "^3.5.0",
+		"undici": "^6.20.1"
+	}
+}

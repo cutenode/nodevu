@@ -29,6 +29,7 @@
 		"newest",
 		"ranges",
 		"aliases",
-		"translate"
+		"translate",
+		"fetchindex"
 	]
 }
