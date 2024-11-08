@@ -1,0 +1,31 @@
+name: "Test Suite: @nodevu/newest"
+
+on:
+  pull_request:
+    paths:
+      - 'newest/**'
+    branches:
+      - main
+  workflow_dispatch:
+  workflow_call:
+
+jobs:
+  tests:
+    if: github.repository == 'cutenode/nodevu'
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [current, lts/*, lts/-1]
+    steps:
+    - name: Checkout the repository
+      uses: actions/checkout@v4
+    - name: Setup Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Install most recent npm
+      run: npm install -g npm
+    - name: Run npm install -w newest
+      run: npm install -w newest
+    - name: Run npm test -w newest
+      run: npm test -w newest

@@ -1,0 +1,27 @@
+name: "Test Suite: Linter (newest)"
+
+on:
+  push:
+  pull_request:
+    paths:
+        - 'newest/**'
+    branches:
+      - main
+  workflow_dispatch:
+  workflow_call:
+
+jobs:
+  tests:
+    if: github.repository == 'cutenode/nodevu'
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout the repository
+      uses: actions/checkout@v4
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: current
+    - name: Run npm install -w newest
+      run: npm install -w newest
+    - name: Run npm run lint -w newest
+      run: npm run lint -w newest
