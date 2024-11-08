@@ -1,6 +1,6 @@
 const nodevu = require('@nodevu/core');
 
-async function earliest(name, type) {
+async function oldest(name, type) {
 	const data = await nodevu();
 
 	if (type === 'lts') {
@@ -13,13 +13,13 @@ async function earliest(name, type) {
 }
 
 async function lts(name) {
-	return await earliest(name, 'lts');
+	return await oldest(name, 'lts');
 }
 
 async function security(name) {
-	return await earliest(name, 'security');
+	return await oldest(name, 'security');
 }
 
-module.exports.earliest = earliest;
+module.exports.oldest = oldest;
 module.exports.lts = lts;
 module.exports.security = security;

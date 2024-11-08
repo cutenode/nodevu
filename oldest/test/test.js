@@ -1,16 +1,16 @@
 const assert = require('node:assert');
-const { earliest, lts, security } = require('../index');
+const { oldest, lts, security } = require('../index');
 const { describe, it } = require('node:test');
 
 describe('check v10', async () => {
-	describe('running earliest', async () => {
+	describe('running oldest', async () => {
 		it('should return the correct security version for v10', async () => {
-			const data = await earliest('v10', 'security');
+			const data = await oldest('v10', 'security');
 			assert.equal(data, '10.14.0');
 		});
 
 		it('should return the correct lts version for v10', async () => {
-			const data = await earliest('v10', 'lts');
+			const data = await oldest('v10', 'lts');
 			assert.equal(data, '10.13.0');
 		});
 	});
