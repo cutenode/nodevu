@@ -1,0 +1,27 @@
+name: "Test Suite: Linter (@nodevu/fetchindex)"
+
+on:
+  push:
+  pull_request:
+    paths:
+        - 'fetchindex/**'
+    branches:
+      - main
+  workflow_dispatch:
+  workflow_call:
+
+jobs:
+  tests:
+    if: github.repository == 'cutenode/nodevu'
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout the repository
+      uses: actions/checkout@v4
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: current
+    - name: Run npm install -w fetchindex
+      run: npm install -w fetchindex
+    - name: Run npm run lint -w fetchindex
+      run: npm run lint -w fetchindex
