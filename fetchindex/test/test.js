@@ -2,8 +2,8 @@ const { deepStrictEqual } = require('node:assert');
 const { describe, it } = require('node:test');
 const { fetch: undiciFetch } = require('undici');
 const { DateTime } = require('luxon');
-const nodevu = require('../index');
-const versions = require('../index');
+const nodevu = require('@nodevu/core');
+const fetchindex = require('../index');
 const optionsParser = require('../../core/util/prod/optionsParser');
 
 // checks that verify the result of data returned
@@ -31,13 +31,13 @@ const options = {
 
 describe('under normal condiditons, versions should work', async () => {
 	it('should work with default options', async () => {
-		const data = await versions(options);
+		const data = await fetchindex(options);
 		check(data);
 	});
 
 	it('should work with Undici fetch', async () => {
 		options.fetch = undiciFetch;
-		const data = await versions(options);
+		const data = await fetchindex(options);
 		check(data);
 	});
 });
@@ -45,7 +45,7 @@ describe('under normal condiditons, versions should work', async () => {
 describe('versions should work with optionsParser', async () => {
 	it('should work with the default output of optionsParser', async () => {
 		const parsedOptions = optionsParser({});
-		const data = await versions(parsedOptions);
+		const data = await fetchindex(parsedOptions);
 		check(data);
 	});
 
@@ -53,7 +53,7 @@ describe('versions should work with optionsParser', async () => {
 		const parsedOptions = optionsParser({
 			fetch: undiciFetch,
 		});
-		const data = await versions(parsedOptions);
+		const data = await fetchindex(parsedOptions);
 		check(data);
 	});
 });
