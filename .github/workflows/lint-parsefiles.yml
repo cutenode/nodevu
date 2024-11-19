@@ -1,4 +1,4 @@
-name: "Test Suite: Linter (parsefiles)"
+name: "Linter: parsefiles"
 
 on:
   push:

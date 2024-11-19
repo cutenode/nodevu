@@ -1,4 +1,4 @@
-name: "Test Suite: Linter (aliases)"
+name: "Linter: (aliases)"
 
 on:
   push:

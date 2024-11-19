@@ -1,4 +1,4 @@
-name: "Test Suite: @nodevu/core"
+name: "Test Suite: core"
 
 on:
   pull_request:

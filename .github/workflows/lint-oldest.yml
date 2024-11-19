@@ -1,4 +1,4 @@
-name: "Test Suite: Linter (oldest)"
+name: "Linter: oldest"
 
 on:
   push:

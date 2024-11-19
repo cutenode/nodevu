@@ -1,4 +1,4 @@
-name: "Test Suite: Linter (@nodevu/opt)"
+name: "Linter: opt"
 
 on:
   push:
