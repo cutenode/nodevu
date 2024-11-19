@@ -17,7 +17,7 @@ function opt(inputOptions) {
 	};
 
 	if (typeof inputOptions === 'undefined') {
-		return result
+		return result;
 	}
 
 	// allow the end-user to replace our fetch implementation with another one they prefer.
