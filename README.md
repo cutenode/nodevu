@@ -12,5 +12,8 @@ nodevu is composed of a set of modules:
   * [newest](./newest/): this is a utility for finding the newest LTS or Security release in a Node.js release line.
   * [ranges](./ranges/): a module that provides information about ranges of Node.js versions.
   * [aliases](./aliases/): a module that provides information about aliases for Node.js versions.
+  * [translate](./translate/): a module that translates from the version structure that the Node.js project proposed for the `support` property in `package.json` to [aliases](./aliases/).
 - Helper Modules
   * [parsefiles](./parsefiles/): this is a utility for parsing the `files` property of the [Node.js distributions JSON](https://nodejs.org/dist/index.json) file to understand the available files for any given set of identifiers from that list. It also provides additional, potentially useful information.
+  * [opt](./opt/): this is a utility for generating a usable `options` for `@nodevu/core`.
+  * [fetchindex](./fetchindex/): this is a utility for fetching `/dist/index.json` from `nodejs.org` for `@nodevu/core`. Might be useful for other projects.
