@@ -1,4 +1,4 @@
-name: "Test Suite: Linter (@nodevu/fetchindex)"
+name: "Linter: fetchindex"
 
 on:
   push:

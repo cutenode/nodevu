@@ -1,4 +1,4 @@
-name: "Test Suite: Linter (ranges)"
+name: "Linter: ranges"
 
 on:
   push:
