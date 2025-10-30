@@ -29,3 +29,5 @@ jobs:
       run: npm install -w core
     - name: Run npm test -w core
       run: npm test -w core
+    - name: 'Run npm run test:update and npm test -w core'
+      run: npm run test:update && npm test -w core
