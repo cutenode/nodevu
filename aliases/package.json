@@ -1,6 +1,6 @@
 {
 	"name": "@nodevu/aliases",
-	"version": "0.0.2",
+	"version": "1.0.0",
 	"description": "available aliases for sets of Node.js versions",
 	"main": "index.js",
 	"repository": {

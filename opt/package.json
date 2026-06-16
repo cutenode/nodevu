@@ -1,6 +1,6 @@
 {
 	"name": "@nodevu/opt",
-	"version": "0.1.0",
+	"version": "1.0.0",
 	"description": "internal options parser for @nodevu packages.",
 	"main": "index.js",
 	"files": ["index.js", "LICENSE"],
