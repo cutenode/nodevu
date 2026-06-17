@@ -1,5 +1,9 @@
 const dns = require('node:dns');
-const { fetch: undiciFetch, MockAgent, setGlobalDispatcher } = require('undici');
+const {
+	fetch: undiciFetch,
+	MockAgent,
+	setGlobalDispatcher,
+} = require('undici');
 
 const staticIndex = require('../../test/data/static/index.json');
 const staticSchedule = require('../../test/data/static/schedule.json');
@@ -31,9 +35,7 @@ function beforeEachTemplate() {
 		.reply(200, staticSchedule);
 
 	const customMock = mockAgent.get('https://bnb.im');
-	customMock
-		.intercept({ path: '/dist/index.json' })
-		.reply(200, staticIndex);
+	customMock.intercept({ path: '/dist/index.json' }).reply(200, staticIndex);
 	customMock
 		.intercept({ path: '/dist/schedule.json' })
 		.reply(200, staticSchedule);
