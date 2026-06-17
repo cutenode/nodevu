@@ -1,6 +1,6 @@
 {
 	"name": "@nodevu/fetchindex",
-	"version": "0.1.0",
+	"version": "1.0.0",
 	"description": "A tool that fetches the /dist/index.json file from the Node.js website.",
 	"main": "index.js",
 	"files": ["index.js", "LICENSE"],
