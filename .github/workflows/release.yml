@@ -31,11 +31,11 @@ jobs:
             fetchindex
             newest
             oldest
-            opt
             parsefiles
             ranges
             static
-
+            !opt
+            
   # The release PR was merged: tag the squash commit, cut a GitHub release
   # from the PR body, and dispatch the publish workflow. The `release/v`
   # head-ref guard keeps regular feature-PR merges from triggering this;
@@ -63,10 +63,10 @@ jobs:
             fetchindex
             newest
             oldest
-            opt
             parsefiles
             ranges
             static
+            !opt
 
   # The chained dispatch from `release` lands here as a `workflow_dispatch`
   # event on a `vX.Y.Z` tag ref. The `pack` job installs deps, runs
@@ -92,10 +92,10 @@ jobs:
             fetchindex
             newest
             oldest
-            opt
             parsefiles
             ranges
             static
+            !opt
 
   # `publish` downloads the prebuilt tarball from the pack job's
   # artifact and stages it for publish.
