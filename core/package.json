@@ -1,6 +1,6 @@
 {
 	"name": "@nodevu/core",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"description": "nodevu core API: comprehensive node.js version tooling",
 	"main": "index.js",
 	"scripts": {
@@ -16,7 +16,11 @@
 	},
 	"author": "Tierney Cyren <hello@bnb.im> (https://bnb.im/)",
 	"license": "MIT",
-	"files": ["index.js", "LICENSE", "/util/prod"],
+	"files": [
+		"index.js",
+		"LICENSE",
+		"/util/prod"
+	],
 	"dependencies": {
 		"@nodevu/parsefiles": "^0.0.3",
 		"luxon": "^3.5.0",

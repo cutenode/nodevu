@@ -1,9 +1,12 @@
 {
 	"name": "@nodevu/ranges",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"description": "support node's unofficial alias namespace",
 	"main": "index.js",
-	"files": ["index.js", "LICENSE"],
+	"files": [
+		"index.js",
+		"LICENSE"
+	],
 	"scripts": {
 		"lint": "biome check ./",
 		"lint:write": "biome check ./ --write",
