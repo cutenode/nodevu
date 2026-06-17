@@ -1,6 +1,6 @@
 {
 	"name": "@nodevu/static",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"description": "static outputs from @nodevu/core",
 	"main": "index.js",
 	"scripts": {
@@ -21,8 +21,16 @@
 		"type": "git",
 		"url": "git+https://github.com/cutenode/nodevu.git"
 	},
-	"keywords": ["node.js", "version", "versions"],
-	"files": ["/data", "index.js", "LICENSE"],
+	"keywords": [
+		"node.js",
+		"version",
+		"versions"
+	],
+	"files": [
+		"/data",
+		"index.js",
+		"LICENSE"
+	],
 	"author": "Tierney Cyren <hello@bnb.im>",
 	"license": "MIT",
 	"bugs": {
