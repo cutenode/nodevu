@@ -77,6 +77,8 @@ The data returned by this module follows a pretty specific structure. Here's a d
               - `architecture` (`String`) - The name of the architecture for the files in `files`.
         - `lts` (`Object`):
           - `isLts`(Boolean) - `true` if the release is an LTS release, `false` if it's not.
+        - `alpha` (`Object`):
+          - `isAlpha` (Boolean) - `true` if the release is an Alpha release (like `v27.0.0-alpha.0.0.0`), `false` if it's not.
         - `security` (`Object`):
           - `isSecurity` (Boolean) - `true` if the release is a security release, `false` if it's not.
     - `support` (`Object`) - An`Object`to provide information about the project's support of the given release line, including dates, status, LTS codename, and LTS version info:
@@ -84,11 +86,14 @@ The data returned by this module follows a pretty specific structure. Here's a d
       - `lts` (`Object`) - **Only present if applicable to the given release.** An`Object`that provides LTS versioning information.
         - `newest` (`String`) - The newest release in the release line that is LTS. _Usually_, this will be the latest release in the line.
         - `oldest` (`String`) - **Only present if applicable to the given release.** The oldest (first) release in the release line that was flagged as LTS.
-      - `phases` (`Object`) - Start dates for each phase of a release line's lifecycle:
-        - `start` (`String`) - The start date of the release line (releases in this phase are `current`). Example: `2021-04-20`.
-        - `lts` (`String`) - **Only present if the release line is an LTS release.** The start date of the LTS lifecycle (releases in this phase are `lts`). Example: `2021-10-26`. 
-        - `maintenance` (`String`) - **Only present if the release line is an LTS release.** The start date of the maintenance phase of the lifecycle. Example: `2022-10-18`.
-        - `end` (`String`) - the date the release line is no longer supported. Example: `2024-04-30`.
+      - `phases` (`Object`) - Information about each phase of a release line's lifecycle:
+        - `dates` (`Object`) - Start dates for each phase of a release line's lifecycle:
+          - `alpha` (`String`) - **Only present if the release line has an Alpha phase.** The start date of the Alpha phase, before the first Current release of the release line (releases in this phase are `alpha`). Example: `2026-10-28`.
+          - `start` (`String`) - The start date of the release line's Current phase (releases in this phase are `current`). Example: `2021-04-20`.
+          - `lts` (`String`) - **Only present if the release line is an LTS release.** The start date of the LTS lifecycle (releases in this phase are `lts`). Example: `2021-10-26`.
+          - `maintenance` (`String`) - **Only present if the release line has a maintenance phase.** The start date of the maintenance phase of the lifecycle. Example: `2022-10-18`.
+          - `end` (`String`) - the date the release line is no longer supported. Example: `2024-04-30`.
+        - `current` (`String`) - The phase the release line is in, based on `now`: `alpha`, `start`, `lts`, `maintenance`, or `end`. An empty `Object` if no phase has started yet.
     - `security` (`Object`):
       - `all` (`Array`) - an `Array` of _all_ security releases in the release line.
       - `newest` (`String`) - the newest (most recent) security release. Example: `17.3.1`.
