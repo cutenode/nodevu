@@ -4,6 +4,7 @@ on:
   pull_request:
     paths:
       - 'oldest/**'
+      - 'core/**'
     branches:
       - main
   workflow_dispatch:
