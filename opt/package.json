@@ -3,7 +3,10 @@
 	"version": "1.0.0",
 	"description": "internal options parser for @nodevu packages.",
 	"main": "index.js",
-	"files": ["index.js", "LICENSE"],
+	"files": [
+		"index.js",
+		"LICENSE"
+	],
 	"scripts": {
 		"lint": "biome check ./",
 		"lint:write": "biome check ./ --write",
@@ -16,7 +19,10 @@
 		"type": "git",
 		"url": "git+https://github.com/cutenode/nodevu.git"
 	},
-	"keywords": ["node.js", "versions"],
+	"keywords": [
+		"node.js",
+		"versions"
+	],
 	"author": "Tierney Cyren <hello@bnb.im> (https://bnb.im/)",
 	"license": "MIT",
 	"bugs": {
@@ -24,7 +30,7 @@
 	},
 	"homepage": "https://github.com/cutenode/nodevu#readme",
 	"devDependencies": {
-		"@biomejs/biome": "1.9.4",
+		"@biomejs/biome": "2.5.15",
 		"c8": "^10.1.2",
 		"luxon": "^3.5.0",
 		"undici": "^6.20.1"
