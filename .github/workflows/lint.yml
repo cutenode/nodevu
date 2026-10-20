@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - 'package.json'
+      - '*/package.json'
       - 'biome.json'
       - '.npmrc'
     branches:
@@ -11,6 +12,7 @@ on:
   pull_request:
     paths:
       - 'package.json'
+      - '*/package.json'
       - 'biome.json'
       - '.npmrc'
     branches:
@@ -33,4 +35,11 @@ jobs:
       run: npm install -ws
     - name: Run npm lint
       run: npm run lint
+    # npm rejects a provenance publish when repository.url doesn't match the
+    # repo the release workflow runs in, so every package release.yml
+    # publishes has to name it
+    - name: Check published packages name this repository
+      run: |
+        npm pkg get repository.url -w aliases -w core -w fetchindex -w newest -w oldest -w parsefiles -w ranges -w static --json \
+          | jq -e 'to_entries | map(select(.value["repository.url"] != "git+https://github.com/cutenode/nodevu.git") | .key) | if length == 0 then true else ("missing or wrong repository.url: " + join(", ") | halt_error) end'
       
