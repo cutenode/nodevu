@@ -36,7 +36,7 @@ describe('check v10', async () => {
 	});
 });
 
-// the live data has v24 releases from after these dates, so these fail if
+// the snapshot has releases from after these dates, so these fail if
 // `options` doesn't reach core
 describe('check v24 at different dates', async () => {
 	it('should return undefined for lts before the first LTS release', async () => {
@@ -55,9 +55,9 @@ describe('check v24 at different dates', async () => {
 
 describe('check missing data', async () => {
 	it('should return undefined for lts on a release line without LTS', async () => {
-		// v25 is in schedule.json without an lts date
+		// an odd line, which schedule.json lists without an lts date
 		assert.strictEqual(await newest('v25', 'lts', at()), undefined);
-		// v0.11 isn't in schedule.json at all
+		// an old unstable line that isn't in schedule.json at all
 		assert.strictEqual(await lts('v0.11', at()), undefined);
 	});
 
