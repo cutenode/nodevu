@@ -2,6 +2,10 @@ name: "Linter: translate"
 
 on:
   push:
+    paths:
+      - 'translate/**'
+    branches:
+      - main
   pull_request:
     paths:
         - 'translate/**'

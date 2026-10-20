@@ -2,6 +2,10 @@ name: "Linter: core"
 
 on:
   push:
+    paths:
+      - 'core/**'
+    branches:
+      - main
   pull_request:
     paths:
         - 'core/**'

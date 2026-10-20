@@ -2,7 +2,17 @@ name: "Linter: all"
 
 on:
   push:
+    paths:
+      - 'package.json'
+      - 'biome.json'
+      - '.npmrc'
+    branches:
+      - main
   pull_request:
+    paths:
+      - 'package.json'
+      - 'biome.json'
+      - '.npmrc'
     branches:
       - main
   workflow_dispatch:

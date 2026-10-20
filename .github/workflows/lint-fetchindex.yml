@@ -2,6 +2,10 @@ name: "Linter: fetchindex"
 
 on:
   push:
+    paths:
+      - 'fetchindex/**'
+    branches:
+      - main
   pull_request:
     paths:
         - 'fetchindex/**'

@@ -2,6 +2,10 @@ name: "Linter: static"
 
 on:
   push:
+    paths:
+      - 'static/**'
+    branches:
+      - main
   pull_request:
     paths:
         - 'static/**'
