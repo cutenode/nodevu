@@ -1,8 +1,7 @@
 const { deepStrictEqual } = require('node:assert');
-const { describe, it, beforeEach } = require('node:test');
+const { describe, it } = require('node:test');
 const { fetch: undiciFetch } = require('undici');
 const { DateTime } = require('luxon');
-const nodevu = require('../index');
 const parseOptions = require('../util/prod/optionsParser');
 
 describe('the parseOptions module should return all correct defaults', async () => {

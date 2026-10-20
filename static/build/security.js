@@ -1,7 +1,7 @@
 const nodevu = require('@nodevu/core');
 const write = require('../util/dev/write');
 
-async function writeSecurity(filename) {
+async function writeSecurity() {
 	const data = await nodevu();
 	const security = {};
 
