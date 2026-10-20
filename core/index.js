@@ -19,7 +19,11 @@ async function core(options) {
 	const data = {};
 
 	for (const version of Object.keys(versions)) {
-		const versionSemver = semver.coerce(versions[version].version);
+		// keep the pre-release identifiers, otherwise every Alpha release (like
+		// `v27.0.0-alpha.0.0.0`) would be coerced into `v27.0.0`
+		const versionSemver = semver.coerce(versions[version].version, {
+			includePrerelease: true,
+		});
 		const name =
 			versionSemver.major !== 0
 				? `v${versionSemver.major}`
@@ -119,6 +123,8 @@ async function core(options) {
 
 				data[name].support.phases = {};
 				data[name].support.phases.dates = {};
+				data[name].support.phases.dates.alpha =
+					schedule[name]?.alpha ?? undefined;
 				data[name].support.phases.dates.start =
 					schedule[name]?.start ?? undefined;
 				data[name].support.phases.dates.lts = schedule[name]?.lts ?? undefined;
@@ -145,6 +151,16 @@ async function core(options) {
 
 		data[name].releases[`v${versionSemver.version}`].lts.isLts =
 			!!versions[version].lts;
+
+		// # Alpha
+		// ## define the alpha object in each specific version
+		//
+		// Alpha releases are the pre-releases a release line gets before its
+		// first Current release, versioned as `vN.0.0-alpha.X.Y.Z`
+		data[name].releases[`v${versionSemver.version}`].alpha = {};
+
+		data[name].releases[`v${versionSemver.version}`].alpha.isAlpha =
+			versionSemver.prerelease[0] === 'alpha';
 
 		// # Security
 		// ## define the release-line specific security object
@@ -189,6 +205,8 @@ function determineCurrentReleasePhase(now, dates = {}) {
 	// `true` is in the past
 	// `false` is in the future
 	const isoified = {
+		alpha:
+			isInPast(DateTime.fromISO(dates.alpha).diff(now).toMillis()) ?? undefined,
 		start:
 			isInPast(DateTime.fromISO(dates.start).diff(now).toMillis()) ?? undefined,
 		lts:
@@ -206,7 +224,7 @@ function determineCurrentReleasePhase(now, dates = {}) {
 	// iterate over the past/future object and set the above variable to whatever the first date is in the future.
 	for (const phase of Object.keys(isoified)) {
 		// since we're looping, the last true is the current phase
-		// since the start date will always be in the past
+		// since the start (or alpha) date will always be in the past
 		if (isoified[phase] === true) {
 			result = phase;
 		}
