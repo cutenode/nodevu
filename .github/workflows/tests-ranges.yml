@@ -3,7 +3,8 @@ name: "Test Suite: ranges"
 on:
   pull_request:
     paths:
-      - 'ranges/*'
+      - 'ranges/**'
+      - 'core/test/data/static/**'
     branches:
       - main
   workflow_dispatch:
