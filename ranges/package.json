@@ -7,8 +7,8 @@
 	"scripts": {
 		"lint": "biome check ./",
 		"lint:write": "biome check ./ --write",
-		"test": "node --test",
-		"coverage": "c8 node --test",
+		"test": "node --test test/*.test.js",
+		"coverage": "c8 node --test test/*.test.js",
 		"updates:check": "npx npm-check-updates",
 		"updates:update": "npx npm-check-updates -u"
 	},
@@ -23,8 +23,8 @@
 	},
 	"homepage": "https://github.com/cutenode/nodevu#readme",
 	"dependencies": {
-		"@nodevu/aliases": "^0.0.2",
-		"@nodevu/core": "^0.3.0"
+		"@nodevu/aliases": "^1.0.0",
+		"@nodevu/core": "^1.0.0"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "1.9.4",
