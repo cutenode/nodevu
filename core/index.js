@@ -112,8 +112,12 @@ async function core(options) {
 				data[name].support.lts = schedule[name]?.lts ? {} : undefined;
 
 				// run this the first time we start working on the support object,
-				// since that will be the newest version
+				// since that will be the newest version.
+				//
+				// index.json is the source of truth for LTS status, so create the lts
+				// object even if schedule.json doesn't list an lts date for this line
 				if (versions[version].lts) {
+					data[name].support.lts ??= {};
 					data[name].support.lts.newest = versionSemver.version;
 				}
 
@@ -137,8 +141,10 @@ async function core(options) {
 		//
 		// tl;dr we're just assigning this every single iteration and the last
 		// iteration will be the oldest version, since we're going from newest
-		// to oldest
-		if (versions[version].lts) {
+		// to oldest. lines without a support object (no start date in
+		// schedule.json) are skipped.
+		if (versions[version].lts && data[name].support) {
+			data[name].support.lts ??= {};
 			data[name].support.lts.oldest = versionSemver.version;
 		}
 
