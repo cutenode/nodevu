@@ -4,6 +4,9 @@ on:
   pull_request:
     paths:
       - 'translate/**'
+      - 'ranges/**'
+      - 'core/**'
+      - 'aliases/**'
     branches:
       - main
   workflow_dispatch:
