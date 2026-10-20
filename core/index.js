@@ -18,7 +18,7 @@ async function core(options) {
 	// instantiate our data object, to be expanded upon
 	const data = {};
 
-	Object.keys(versions).map(async (version) => {
+	for (const version of Object.keys(versions)) {
 		const versionSemver = semver.coerce(versions[version].version);
 		const name =
 			versionSemver.major !== 0
@@ -127,10 +127,8 @@ async function core(options) {
 				data[name].support.phases.dates.end = schedule[name]?.end ?? undefined;
 			}
 			data[name].support.phases.current =
-				(await determineCurrentReleasePhase(
-					now,
-					data[name].support.phases.dates,
-				)) ?? {};
+				determineCurrentReleasePhase(now, data[name].support.phases.dates) ??
+				{};
 		}
 
 		// this is a slightly inefficient way to do this but it's also easy
@@ -178,12 +176,12 @@ async function core(options) {
 
 		data[name].releases[`v${versionSemver.version}`].security.isSecurity =
 			versions[version].security ?? false;
-	});
+	}
 
 	return data;
 }
 
-async function determineCurrentReleasePhase(now, dates = {}) {
+function determineCurrentReleasePhase(now, dates = {}) {
 	// we set set this up to enable custom `now` passing, since passing an ISO
 	// const usableNow = DateTime.fromISO(now)
 
