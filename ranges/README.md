@@ -27,7 +27,7 @@ const data = await ranges('alpha', { now: '2026-12-15' })
 
 ## Structure
 
-This module will return a medium-sized object with the following structure, with each property being in the context of the range it's under:
+This module will return a medium-sized object with the following structure, with each property being in the context of the range it's under. A field with nothing to point to, like `oldestSecurity` on a release line that hasn't had a security release yet, is `undefined` (and left out of JSON).
 
 - all:
   - versions (Array): An array of versions. Leaves out Alpha releases.
