@@ -4,7 +4,8 @@ on:
   pull_request:
     paths:
       - 'ranges/**'
-      - 'core/test/data/static/**'
+      - 'core/**'
+      - 'aliases/**'
     branches:
       - main
   workflow_dispatch:
