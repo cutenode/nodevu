@@ -42,6 +42,7 @@ describe('schedule should work with optionsParser', async () => {
 	it('should work with the default output of optionsParser', async () => {
 		const parsedOptions = optionsParser({});
 		const data = await schedule(parsedOptions);
+		check(data);
 	});
 
 	it('should work with a different fetch pased to optionsParser', async () => {
@@ -49,5 +50,6 @@ describe('schedule should work with optionsParser', async () => {
 			fetch: undiciFetch,
 		});
 		const data = await schedule(parsedOptions);
+		check(data);
 	});
 });
