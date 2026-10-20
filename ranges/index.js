@@ -12,6 +12,11 @@ const defaultRangesObject = {
 		newest: undefined,
 		oldest: undefined,
 	},
+	alpha: {
+		versions: [],
+		newest: undefined,
+		oldest: undefined,
+	},
 	current: {
 		versions: [],
 		oldestSecurity: undefined,
@@ -62,7 +67,7 @@ const defaultRangesObject = {
 // If you figure one out, or there's one in the future, please feel free
 // to submit a PR to update this code.
 
-async function generateRanges(filter) {
+async function generateRanges(filter, options) {
 	let localFilter = filter;
 	if (typeof localFilter === 'string') {
 		// check to make sure that the filter is valid. if it's not, yeet.
@@ -88,9 +93,9 @@ async function generateRanges(filter) {
 		localFilter = 'all';
 	}
 
-	// set up the data from @nodevu/core
+	// set up the data from @nodevu/core, passing options (like `fetch` and `now`) through
 
-	const data = await nodevu();
+	const data = await nodevu(options);
 
 	// deep clone the default object so we don't modify it.
 	//
@@ -100,9 +105,25 @@ async function generateRanges(filter) {
 
 	for (const line in data) {
 		for (const key in data[line].releases) {
+			// Alpha releases (`vN.0.0-alpha.X.Y.Z`) are pre-releases, so they only
+			// go into `alpha` and are kept out of every other range
+			if (data[line].releases[key].alpha?.isAlpha) {
+				if (
+					(localFilter === 'alpha' ||
+						localFilter === 'all' ||
+						localFilter.includes('alpha') ||
+						localFilter.includes('all')) &&
+					data[line].support?.phases.current === 'alpha'
+				) {
+					ranges.alpha.versions.push(key);
+				}
+
+				continue;
+			}
+
 			// define `all` data
 			if (localFilter === 'all' || localFilter.includes('all')) {
-				ranges.all.versions.push(key); // put every release into the all array
+				ranges.all.versions.push(key); // put every non-Alpha release into the all array
 
 				if (
 					data[line].releases[key].lts.isLts === true &&
