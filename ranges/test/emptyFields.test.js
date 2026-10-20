@@ -3,7 +3,7 @@ const ranges = require('../index');
 const { at } = require('./fixtures');
 const { describe, it } = require('node:test');
 
-// core's snapshot time. 25.x is Current and hasn't had a security release yet.
+// core's snapshot time, when the Current line hasn't had a security release yet
 const snapshotNow = JSON.parse(require('../../core/test/data/static/now.json'));
 
 describe('fields without a value should be undefined, not "undefined"', async () => {
@@ -21,8 +21,7 @@ describe('fields without a value should be undefined, not "undefined"', async ()
 	});
 
 	it('should leave out the security fields of an LTS line without security releases', async () => {
-		// on 2016-06-01, 4.x is the only Active LTS line and none of its
-		// releases are marked as security releases
+		// a date when the only Active LTS line hasn't had a security release
 		const data = await ranges(undefined, at('2016-06-01'));
 
 		deepStrictEqual(data['lts/latest'].oldestSecurity, undefined);
@@ -33,8 +32,9 @@ describe('fields without a value should be undefined, not "undefined"', async ()
 	});
 
 	it('should only take the security fields from the first Current line', async () => {
-		// on 2016-06-23, 6.x has no security releases, while 0.12.15 (also in
-		// "current", since 0.12.x has no LTS or maintenance dates) is one
+		// a date when the newest Current line has no security releases, but an
+		// older line also in "current" (one with no LTS or maintenance dates in
+		// schedule.json) has one
 		const data = await ranges('current', at('2016-06-23'));
 
 		deepStrictEqual(data.current.newest, 'v6.2.2');

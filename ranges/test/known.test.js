@@ -17,8 +17,8 @@ describe('check some values we know should exist', async () => {
 		assert.deepStrictEqual(data.eol.versions.includes('v0.8.0'), true); // oldest included data in the array - this should be fixed since it's clearly not the oldest in the dataset.
 	});
 
-	// on 2025-09-01, v24 is Current, v22 is Active LTS, v20 is Maintenance LTS,
-	// and v23 is the newest End of Life line
+	// pins every range's values on the fixture date, so a release line that
+	// lands in the wrong range fails
 	it('should put each release line in the right range', async () => {
 		const data = await ranges(undefined, at());
 		const summary = Object.fromEntries(
