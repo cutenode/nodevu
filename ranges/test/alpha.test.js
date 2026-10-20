@@ -3,9 +3,9 @@ const ranges = require('../index');
 const fixtures = require('./fixtures');
 const { describe, it } = require('node:test');
 
-// these tests use made-up data that follows the release schedule starting with
-// 27.x, where every release line gets Alpha releases (versioned as
-// `vN.0.0-alpha.X.Y.Z`) before its first Current release.
+// these tests use made-up data that follows the new release schedule, where
+// every release line gets Alpha releases (versioned as `vN.0.0-alpha.X.Y.Z`)
+// before its first Current release.
 //
 // see https://nodejs.org/en/blog/announcements/evolving-the-nodejs-release-schedule
 function release(version, date, lts = false) {
@@ -22,8 +22,9 @@ const index = [
 	release('v26.12.0', '2026-10-14'),
 ];
 
-// 27.x goes alpha -> start -> lts -> end, with no maintenance phase. the real
-// schedule.json lists 27.x's lts date as `maintenance` until
+// the line on the new schedule goes alpha -> start -> lts -> end, with no
+// maintenance phase, while the line before it keeps the old schedule. the
+// real schedule.json labels the new schedule's lts date as `maintenance` until
 // https://github.com/nodejs/Release/pull/1188 lands.
 const schedule = {
 	v26: {
