@@ -1,7 +1,7 @@
 const nodevu = require('@nodevu/core');
 const write = require('../util/dev/write');
 
-async function writeReleases(filename) {
+async function writeReleases() {
 	const data = await nodevu();
 	const releases = {};
 

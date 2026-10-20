@@ -1,7 +1,7 @@
 const nodevu = require('@nodevu/core');
 const write = require('../util/dev/write');
 
-async function writeDefault(filename) {
+async function writeDefault() {
 	const data = await nodevu();
 	write('./static/data/default.json', data);
 }

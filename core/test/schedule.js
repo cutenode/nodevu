@@ -1,14 +1,12 @@
 const { deepStrictEqual } = require('node:assert');
 const { describe, it } = require('node:test');
 const { fetch: undiciFetch } = require('undici');
-const { DateTime } = require('luxon');
-const nodevu = require('../index');
 const schedule = require('../util/prod/schedule');
 const optionsParser = require('../util/prod/optionsParser');
 
 // checks that verify the result of data returned
 function check(data) {
-	for (const [line, metadata] of Object.entries(data)) {
+	for (const metadata of Object.values(data)) {
 		for (const [metadataKey, metadataValue] of Object.entries(metadata)) {
 			deepStrictEqual(typeof metadataKey, 'string');
 			deepStrictEqual(typeof metadataValue, 'string');
