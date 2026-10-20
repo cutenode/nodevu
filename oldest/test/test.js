@@ -1,31 +1,74 @@
 const assert = require('node:assert');
 const { oldest, lts, security } = require('../index');
 const { describe, it } = require('node:test');
+const fixtures = require('../../core/util/dev/fixtures');
+
+// the day core's snapshot was taken (see now.json), so every release in it is
+// out, and releases a later snapshot refresh adds get filtered out, so the
+// expected values don't move
+const at = (now = '2025-10-30') => fixtures.at(now);
 
 describe('check v10', async () => {
 	describe('running oldest', async () => {
 		it('should return the correct security version for v10', async () => {
-			const data = await oldest('v10', 'security');
+			const data = await oldest('v10', 'security', at());
 			assert.equal(data, '10.14.0');
 		});
 
 		it('should return the correct lts version for v10', async () => {
-			const data = await oldest('v10', 'lts');
+			const data = await oldest('v10', 'lts', at());
 			assert.equal(data, '10.13.0');
 		});
 	});
 
 	describe('running security', async () => {
 		it('should return the correct security version for v10', async () => {
-			const data = await security('v10');
+			const data = await security('v10', at());
 			assert.equal(data, '10.14.0');
 		});
 	});
 
 	describe('running lts', async () => {
 		it('should return the correct lts version for v10', async () => {
-			const data = await lts('v10');
+			const data = await lts('v10', at());
 			assert.equal(data, '10.13.0');
 		});
+	});
+});
+
+// the snapshot has releases from after these dates, so these fail if
+// `options` doesn't reach core
+describe('check v24 at different dates', async () => {
+	it('should return undefined for lts before the first LTS release', async () => {
+		assert.strictEqual(await lts('v24', at('2025-10-27')), undefined);
+	});
+
+	it('should return the correct lts version once v24 is LTS', async () => {
+		assert.strictEqual(await oldest('v24', 'lts', at()), '24.11.0');
+	});
+
+	it('should return the oldest security release out by now', async () => {
+		assert.strictEqual(await security('v24', at('2025-05-13')), undefined);
+		assert.strictEqual(await security('v24', at()), '24.0.2');
+	});
+});
+
+describe('check missing data', async () => {
+	it('should return undefined for lts on a release line without LTS', async () => {
+		// an odd line, which schedule.json lists without an lts date
+		assert.strictEqual(await oldest('v25', 'lts', at()), undefined);
+		// an old unstable line that isn't in schedule.json at all
+		assert.strictEqual(await lts('v0.11', at()), undefined);
+	});
+
+	it('should return undefined for a release line that does not exist', async () => {
+		assert.strictEqual(await oldest('v999', 'lts', at()), undefined);
+		assert.strictEqual(await oldest('v999', 'security', at()), undefined);
+		// names that exist on Object.prototype aren't release lines either
+		assert.strictEqual(await security('toString', at()), undefined);
+	});
+
+	it('should return undefined for security on a release line without security releases', async () => {
+		assert.strictEqual(await security('v5', at()), undefined);
 	});
 });
