@@ -7,11 +7,14 @@ on:
 jobs:
   run-build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write       # push the `nightly` branch
+      pull-requests: write  # open or update the data PR and assign it
     steps:
       - name: Checkout the repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
           node-version: latest
       - name: Run npm install
@@ -25,15 +28,13 @@ jobs:
       - name: Run build:support
         run: npm run build:support -w static
       - name: Format Output
-        run: npm run lint:apply -w static
+        run: npm run lint:write -w static
       - name: Create or Update Pull Request
-        uses: gr2m/create-or-update-pull-request-action@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: peter-evans/create-pull-request@v8
         with:
           title: "feat: update data"
           body: "Updates the static data based on a nightly (or manual) run of the build step in GitHub Actions. Unless the data is invalid, this should be good to go."
           branch: "nightly"
           commit-message: "feat: update data"
+          author: "github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>"
           assignees: bnb
-          auto-merge: squash
