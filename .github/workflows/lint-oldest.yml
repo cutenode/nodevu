@@ -2,6 +2,10 @@ name: "Linter: oldest"
 
 on:
   push:
+    paths:
+      - 'oldest/**'
+    branches:
+      - main
   pull_request:
     paths:
         - 'oldest/**'

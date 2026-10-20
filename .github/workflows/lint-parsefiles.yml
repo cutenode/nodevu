@@ -2,6 +2,10 @@ name: "Linter: parsefiles"
 
 on:
   push:
+    paths:
+      - 'parsefiles/**'
+    branches:
+      - main
   pull_request:
     paths:
         - 'parsefiles/**'

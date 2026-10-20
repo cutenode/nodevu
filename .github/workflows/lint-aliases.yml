@@ -2,6 +2,10 @@ name: "Linter: aliases"
 
 on:
   push:
+    paths:
+      - 'aliases/**'
+    branches:
+      - main
   pull_request:
     paths:
         - 'aliases/**'

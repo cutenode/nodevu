@@ -2,6 +2,10 @@ name: "Linter: ranges"
 
 on:
   push:
+    paths:
+      - 'ranges/**'
+    branches:
+      - main
   pull_request:
     paths:
         - 'ranges/**'

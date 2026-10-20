@@ -2,6 +2,10 @@ name: "Linter: newest"
 
 on:
   push:
+    paths:
+      - 'newest/**'
+    branches:
+      - main
   pull_request:
     paths:
         - 'newest/**'

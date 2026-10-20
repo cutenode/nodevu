@@ -2,6 +2,10 @@ name: "Linter: opt"
 
 on:
   push:
+    paths:
+      - 'opt/**'
+    branches:
+      - main
   pull_request:
     paths:
         - 'opt/**'
