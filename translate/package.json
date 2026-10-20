@@ -24,7 +24,7 @@
 	},
 	"devDependencies": {
 		"@biomejs/biome": "1.9.4",
-		"@nodevu/ranges": "^0.1.0",
+		"@nodevu/ranges": "^1.0.0",
 		"c8": "^10.1.2"
 	},
 	"engines": {
