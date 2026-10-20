@@ -3,7 +3,7 @@ const translate = require('../index'); // would normally be "const translate = r
 
 async function getTranslatedData() {
 	// translation for the 'current' Package Support term
-	const translatedCurrent = await ranges('current');
+	const translatedCurrent = await ranges(await translate('current'));
 
 	// translation for the 'lts_latest' Package Support term
 	const translatedLtsLatest = await ranges(await translate('lts_latest'));

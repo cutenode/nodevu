@@ -1,8 +1,6 @@
 const { deepStrictEqual } = require('node:assert');
 const { describe, it } = require('node:test');
 const { fetch: undiciFetch } = require('undici');
-const { DateTime } = require('luxon');
-const nodevu = require('@nodevu/core');
 const fetchindex = require('../index');
 const optionsParser = require('../../core/util/prod/optionsParser');
 

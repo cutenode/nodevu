@@ -150,12 +150,12 @@ async function generateRanges(filter, options) {
 				if (data[line].support?.phases.current === 'start') {
 					ranges.current.versions.push(key); // add current iteration to the versions array if the phase is `start` which means it'll be current.
 
-					if (
-						ranges.current.oldestSecurity === undefined &&
-						ranges.current.newestSecurity === undefined
-					) {
-						ranges.current.oldestSecurity = `${data[line].security.oldest}`;
-						ranges.current.newestSecurity = `${data[line].security.newest}`;
+					// only the first Current line fills these in. checking the versions
+					// count rather than the fields, since a line without a security
+					// release leaves them undefined.
+					if (ranges.current.versions.length === 1) {
+						ranges.current.oldestSecurity = data[line].security.oldest;
+						ranges.current.newestSecurity = data[line].security.newest;
 					}
 				}
 			}
@@ -176,14 +176,12 @@ async function generateRanges(filter, options) {
 					// TODO: do we want to include all versions in the release line, even prior to it being minted LTS?
 					ranges['lts/latest'].versions.push(key);
 
-					if (ranges['lts/latest'].oldestSecurity === undefined) {
-						// only checking if this one is undefined, since everything else _should_ be undefined if this one is. saves some processing power.
-						ranges['lts/latest'].oldestSecurity =
-							`${data[line].security.oldest}`;
-						ranges['lts/latest'].newestSecurity =
-							`${data[line].security.newest}`;
-						ranges['lts/latest'].oldestLts = `${data[line].support.lts.oldest}`;
-						ranges['lts/latest'].newestLts = `${data[line].support.lts.newest}`;
+					if (ranges['lts/latest'].versions.length === 1) {
+						// only the first LTS line fills these in, same as 'current'
+						ranges['lts/latest'].oldestSecurity = data[line].security.oldest;
+						ranges['lts/latest'].newestSecurity = data[line].security.newest;
+						ranges['lts/latest'].oldestLts = data[line].support.lts.oldest;
+						ranges['lts/latest'].newestLts = data[line].support.lts.newest;
 					}
 				}
 			}
@@ -203,26 +201,21 @@ async function generateRanges(filter, options) {
 				) {
 					ranges['lts/maintenance'].versions.push(key);
 
-					if (
-						ranges['lts/maintenance'].newestSecurity === undefined &&
-						ranges['lts/maintenance'].newestLts === undefined
-					) {
+					if (ranges['lts/maintenance'].versions.length === 1) {
 						ranges['lts/maintenance'].newestSecurity =
-							`${data[line].security.newest}`;
-						ranges['lts/maintenance'].newestLts =
-							`${data[line].support.lts.newest}`;
+							data[line].security.newest;
+						ranges['lts/maintenance'].newestLts = data[line].support.lts.newest;
 					}
 
 					if (
 						ranges['lts/maintenance'].oldestSecurity !==
-							`${data[line].security.oldest}` ||
+							data[line].security.oldest ||
 						ranges['lts/maintenance'].oldestLts !==
-							`${data[line].support.lts.oldest}`
+							data[line].support.lts.oldest
 					) {
 						ranges['lts/maintenance'].oldestSecurity =
-							`${data[line].security.oldest}`;
-						ranges['lts/maintenance'].oldestLts =
-							`${data[line].support.lts.oldest}`;
+							data[line].security.oldest;
+						ranges['lts/maintenance'].oldestLts = data[line].support.lts.oldest;
 					}
 				}
 			}
