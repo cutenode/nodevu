@@ -71,10 +71,14 @@ jobs:
             !translate
 
   # The chained dispatch from `release` lands here as a `workflow_dispatch`
-  # event on a `vX.Y.Z` tag ref. The `pack` job installs deps, runs
-  # `pnpm pack` (or `npm pack`), and uploads the tarball as a workflow
-  # artifact. See "Lifecycle scripts" below for what runs where. Manual
+  # event on a `vX.Y.Z` tag ref. The `pack` job runs `npm pack` in each
+  # workspace and uploads the tarballs as a workflow artifact. Manual
   # recovery uses the same path (Run workflow -> pick a `v*` tag).
+  #
+  # uppt/pack's own install step refuses to run without a lockfile, and
+  # this repo has none (`.npmrc` sets `package-lock=false`). No published
+  # package has a `prepack` or `prepare` script, so `npm pack` needs no
+  # dependencies: skip the install and only put Node on PATH.
   pack:
     if: github.event_name == 'workflow_dispatch' && startsWith(github.ref, 'refs/tags/v')
     runs-on: ubuntu-latest
@@ -85,9 +89,14 @@ jobs:
     outputs:
       files: ${{ steps.pack.outputs.files }}
     steps:
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
+          package-manager-cache: false
       - id: pack
         uses: danielroe/uppt/pack@7bcfb5397c37202ef882363f755423130419d28a # v0.5.5
         with:
+          install: false
           packages: |
             aliases
             core
