@@ -14,14 +14,29 @@ async function generateData () {
 }
 ```
 
+## API
+
+### `ranges(filter, options)`
+
+- `filter` (String or Array, optional): one or more aliases from [@nodevu/aliases](../aliases/) to limit the result to. Defaults to `'all'`, which returns every range.
+- `options` (Object, optional): passed straight to [@nodevu/core](../core/), so you can set things like a custom `fetch` or `now`.
+
+```js
+const data = await ranges('alpha', { now: '2026-12-15' })
+```
+
 ## Structure
 
 This module will return a medium-sized object with the following structure, with each property being in the context of the range it's under:
 
 - all:
-  - versions (Array): An array of versions.
+  - versions (Array): An array of versions. Leaves out Alpha releases.
   - newestLts (String): The newest LTS version.
   - newestSecurity (String): The newest possible security release.
+  - newest (String): The newest version.
+  - oldest (String): The oldest version.
+- alpha:
+  - versions (Array): An array of the Alpha releases (`vN.0.0-alpha.X.Y.Z`) of the release line in its Alpha phase. Alpha releases only ever show up here, never in the other ranges.
   - newest (String): The newest version.
   - oldest (String): The oldest version.
 - current:

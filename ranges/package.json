@@ -23,8 +23,8 @@
 	},
 	"homepage": "https://github.com/cutenode/nodevu#readme",
 	"dependencies": {
-		"@nodevu/aliases": "^0.0.2",
-		"@nodevu/core": "^0.3.0"
+		"@nodevu/aliases": "^1.0.0",
+		"@nodevu/core": "^1.0.0"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "1.9.4",

@@ -16,6 +16,7 @@ for (const alias of aliases) {
 
 This module returns an `Array` of aliases:
 
+- 'alpha' - This represents the release line in its Alpha phase, if any. Starting with Node.js 27, each release line gets Alpha releases (`vN.0.0-alpha.X.Y.Z`) before its first Current release.
 - 'current' - This represents the current Node.js release line.
 - 'lts/latest' - This represents the latest LTS release line.
 - 'lts/active' - This represents the active LTS release lines.

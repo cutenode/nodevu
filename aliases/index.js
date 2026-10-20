@@ -1,4 +1,5 @@
 const aliases = [
+	'alpha',
 	'current',
 	'lts/latest',
 	'lts/active',
