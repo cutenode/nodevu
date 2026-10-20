@@ -83,7 +83,7 @@ The data returned by this module follows a pretty specific structure. Here's a d
           - `isSecurity` (Boolean) - `true` if the release is a security release, `false` if it's not.
     - `support` (`Object`) - An`Object`to provide information about the project's support of the given release line, including dates, status, LTS codename, and LTS version info:
       - `codename` (`String`) - **Only present if applicable to the given release.** A `String` of the LTS release line's codename. 
-      - `lts` (`Object`) - **Only present if applicable to the given release.** An`Object`that provides LTS versioning information.
+      - `lts` (`Object`) - **Only present if the release line has an LTS date in schedule.json or a release flagged as LTS in index.json.** An`Object`that provides LTS versioning information.
         - `newest` (`String`) - The newest release in the release line that is LTS. _Usually_, this will be the latest release in the line.
         - `oldest` (`String`) - **Only present if applicable to the given release.** The oldest (first) release in the release line that was flagged as LTS.
       - `phases` (`Object`) - Information about each phase of a release line's lifecycle:
