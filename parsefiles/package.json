@@ -11,16 +11,8 @@
 		"updates:check": "npx npm-check-updates",
 		"updates:update": "npx npm-check-updates -u"
 	},
-	"keywords": [
-		"node.js",
-		"versions",
-		"parse",
-		"files"
-	],
-	"files": [
-		"index.js",
-		"LICENSE"
-	],
+	"keywords": ["node.js", "versions", "parse", "files"],
+	"files": ["index.js", "LICENSE"],
 	"author": "Tierney Cyren <hello@bnb.im>",
 	"license": "MIT",
 	"devDependencies": {
