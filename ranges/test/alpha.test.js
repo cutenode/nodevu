@@ -1,5 +1,6 @@
 const { deepStrictEqual } = require('node:assert');
 const ranges = require('../index');
+const fixtures = require('./fixtures');
 const { describe, it } = require('node:test');
 
 // these tests use made-up data that follows the release schedule starting with
@@ -41,18 +42,8 @@ const schedule = {
 	},
 };
 
-// only serves the releases that would be out by `now`, like the real index.json
-function at(now) {
-	return {
-		now,
-		fetch: async (url) =>
-			Response.json(
-				url.endsWith('schedule.json')
-					? schedule
-					: index.filter((entry) => entry.date <= now),
-			),
-	};
-}
+// serves the made-up data above instead of core's snapshots
+const at = (now) => fixtures.at(now, { index, schedule });
 
 describe('check to make sure that Alpha releases work as expected', async () => {
 	it('should leave Alpha releases out of "all"', async () => {
