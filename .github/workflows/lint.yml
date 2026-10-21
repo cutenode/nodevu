@@ -40,6 +40,12 @@ jobs:
     # publishes has to name it
     - name: Check published packages name this repository
       run: |
-        npm pkg get repository.url -w aliases -w core -w fetchindex -w newest -w oldest -w parsefiles -w ranges -w static --json \
-          | jq -e 'to_entries | map(select(.value["repository.url"] != "git+https://github.com/cutenode/nodevu.git") | .key) | if length == 0 then true else ("missing or wrong repository.url: " + join(", ") | halt_error) end'
+        status=0
+        for ws in aliases core fetchindex newest oldest parsefiles ranges static; do
+          if ! jq -e '.repository.url == "git+https://github.com/cutenode/nodevu.git"' "$ws/package.json" > /dev/null; then
+            echo "::error file=$ws/package.json::repository.url must be git+https://github.com/cutenode/nodevu.git"
+            status=1
+          fi
+        done
+        exit "$status"
       
