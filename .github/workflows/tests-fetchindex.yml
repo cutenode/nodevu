@@ -27,5 +27,5 @@ jobs:
         run: npm install -g npm
       - name: Run npm install -w fetchindex
         run: npm install -w fetchindex
-      - name: Run npm test -w fetchindex
-        run: npm test -w fetchindex
+      - name: Run npm run coverage -w fetchindex
+        run: npm run coverage -w fetchindex

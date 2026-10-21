@@ -28,5 +28,5 @@ jobs:
         run: npm install -g npm
       - name: Run npm install -w oldest
         run: npm install -w oldest
-      - name: Run npm test -w oldest
-        run: npm test -w oldest
+      - name: Run npm run coverage -w oldest
+        run: npm run coverage -w oldest
