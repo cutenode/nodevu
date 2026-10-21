@@ -80,7 +80,7 @@ async function core(options) {
 
 		// TODO: parse versions[version].files and convert them to URLs that can be directly accessed
 		data[name].releases[`v${versionSemver.version}`].files.available =
-			versions[version].files ?? undefined;
+			versions[version].files ?? [];
 
 		const availableShorthand =
 			data[name].releases[`v${versionSemver.version}`].files.available; // since we're going to be writing this a lot for assignments, it's nice to have shorthand for readability
