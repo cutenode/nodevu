@@ -21,6 +21,7 @@ describe('check some values we know should exist', async () => {
 	// lands in the wrong range fails
 	it('should put each release line in the right range', async () => {
 		const data = await ranges(undefined, at());
+
 		const summary = Object.fromEntries(
 			Object.entries(data).map(([alias, { versions, ...range }]) => [
 				alias,

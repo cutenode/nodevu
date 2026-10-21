@@ -69,6 +69,7 @@ const defaultRangesObject = {
 
 async function generateRanges(filter, options) {
 	let localFilter = filter;
+
 	if (typeof localFilter === 'string') {
 		// check to make sure that the filter is valid. if it's not, yeet.
 		if (!aliases.includes(localFilter)) {
@@ -219,6 +220,7 @@ async function generateRanges(filter, options) {
 					}
 				}
 			}
+
 			// define 'eol' data
 			if (
 				localFilter === 'eol' ||

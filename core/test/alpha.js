@@ -77,6 +77,7 @@ describe('check to make sure that Alpha releases work as expected', async () => 
 
 	it('should have correct files for an Alpha release', async () => {
 		const data = await nodevu({ fetch: mockFetch });
+
 		const { linux, source } =
 			data.v27.releases['v27.0.0-alpha.1.0.0'].files.links;
 

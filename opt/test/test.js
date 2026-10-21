@@ -61,6 +61,7 @@ describe('the parseOptions module should still work when defaults are changed', 
 		const defaultParsedOptions = opt({
 			urls: { index: 'https://example.com' },
 		});
+
 		deepStrictEqual(defaultParsedOptions.urls.index, 'https://example.com');
 	});
 
@@ -68,6 +69,7 @@ describe('the parseOptions module should still work when defaults are changed', 
 		const defaultParsedOptions = opt({
 			urls: { schedule: 'https://example.com' },
 		});
+
 		deepStrictEqual(defaultParsedOptions.urls.schedule, 'https://example.com');
 	});
 });

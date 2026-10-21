@@ -47,6 +47,7 @@ describe('schedule should work with optionsParser', async () => {
 		const parsedOptions = optionsParser({
 			fetch: undiciFetch,
 		});
+
 		const data = await schedule(parsedOptions);
 		check(data);
 	});

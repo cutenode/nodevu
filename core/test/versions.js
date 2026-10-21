@@ -51,6 +51,7 @@ describe('versions should work with optionsParser', async () => {
 		const parsedOptions = optionsParser({
 			fetch: undiciFetch,
 		});
+
 		const data = await versions(parsedOptions);
 		check(data);
 	});

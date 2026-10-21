@@ -30,6 +30,7 @@ function beforeEachTemplate() {
 	const defaultScheduleMock = mockAgent.get(
 		'https://raw.githubusercontent.com',
 	);
+
 	defaultScheduleMock
 		.intercept({ path: '/nodejs/Release/master/schedule.json' })
 		.reply(200, staticSchedule);

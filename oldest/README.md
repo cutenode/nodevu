@@ -5,17 +5,17 @@ A module that returns oldest LTS or Security release of a given Node.js release 
 ## Usage
 
 ```js
-const { oldest } = require('@nodevu/oldest')
+const { oldest } = require('@nodevu/oldest');
 
-const oldestLts = await oldest('v16', 'lts')
-const oldestSecurity = await oldest('v16', 'security')
+const oldestLts = await oldest('v16', 'lts');
+const oldestSecurity = await oldest('v16', 'security');
 ```
 
 ```js
-const { lts, security } = require('@nodevu/oldest')
+const { lts, security } = require('@nodevu/oldest');
 
-const oldestLts = await lts('v16')
-const oldestSecurity = await security('v16')
+const oldestLts = await lts('v16');
+const oldestSecurity = await security('v16');
 ```
 
 ## API

@@ -1,4 +1,4 @@
-name: "Test Suite: oldest"
+name: 'Test Suite: oldest'
 
 on:
   pull_request:
@@ -18,15 +18,15 @@ jobs:
       matrix:
         node-version: [current, lts/*, lts/-1]
     steps:
-    - name: Checkout the repository
-      uses: actions/checkout@v7
-    - name: Setup Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v7
-      with:
-        node-version: ${{ matrix.node-version }}
-    - name: Install most recent npm
-      run: npm install -g npm
-    - name: Run npm install -w oldest
-      run: npm install -w oldest
-    - name: Run npm test -w oldest
-      run: npm test -w oldest
+      - name: Checkout the repository
+        uses: actions/checkout@v7
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v7
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Install most recent npm
+        run: npm install -g npm
+      - name: Run npm install -w oldest
+        run: npm install -w oldest
+      - name: Run npm test -w oldest
+        run: npm test -w oldest

@@ -5,14 +5,14 @@ The core, online-only utility of nodevu.
 ## Usage
 
 ```js
-const nodevu = require('@nodevu/core')
+const nodevu = require('@nodevu/core');
 
 async function getData() {
-    const data = await nodevu() // returns a lot of data!
-    console.log(data)
+	const data = await nodevu(); // returns a lot of data!
+	console.log(data);
 }
 
-getData()
+getData();
 ```
 
 ## API
@@ -43,7 +43,7 @@ The data returned by this module follows a pretty specific structure. Here's a d
         - `modules` (`Object`)
           - `version` (`String`) - the ABI (Application Binary Interface) version number of Node.js, used to determine which version of Node.js compiled C++ add-on binaries can be loaded in to without needing to be re-compiled.
         - `dependencies` (`Object`) - the bundled dependencies in this version of Node.js:
-          - `npm` (`String`) - version of the bundled npm. 
+          - `npm` (`String`) - version of the bundled npm.
           - `v8` (`String`) - version of the bundled v8.
           - `uv` (`String`) - version of the bundled libuv.
           - `zlib` (`String`) - version of the bundled zlib.
@@ -71,7 +71,7 @@ The data returned by this module follows a pretty specific structure. Here's a d
               - `id` (`String`) - the initial identifier from `available` that was passed in.
               - `files` (`Array`) - an `Array` of associated filenames for the ID.
               - `architecture` (`String`) - the name of the architecture for the files in `files`.
-            - `windows` (`Array`): 
+            - `windows` (`Array`):
               - `id` (`String`) - the initial identifier from `available` that was passed in.
               - `files` (`Array`) - An `Array` of associated filenames for the ID.
               - `architecture` (`String`) - The name of the architecture for the files in `files`.
@@ -82,7 +82,7 @@ The data returned by this module follows a pretty specific structure. Here's a d
         - `security` (`Object`):
           - `isSecurity` (Boolean) - `true` if the release is a security release, `false` if it's not.
     - `support` (`Object`) - An`Object`to provide information about the project's support of the given release line, including dates, status, LTS codename, and LTS version info:
-      - `codename` (`String`) - **Only present if applicable to the given release.** A `String` of the LTS release line's codename. 
+      - `codename` (`String`) - **Only present if applicable to the given release.** A `String` of the LTS release line's codename.
       - `lts` (`Object`) - **Only present if the release line has an LTS date in schedule.json or a release flagged as LTS in index.json.** An`Object`that provides LTS versioning information.
         - `newest` (`String`) - The newest release in the release line that is LTS. _Usually_, this will be the latest release in the line.
         - `oldest` (`String`) - **Only present if applicable to the given release.** The oldest (first) release in the release line that was flagged as LTS.

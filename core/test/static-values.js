@@ -109,6 +109,7 @@ describe('check that we get the values we expect from values that should not eve
 
 	it('should have correct support values for a security ', async () => {
 		const staticData = await nodevu();
+
 		const v12AllSecurityReleases = [
 			'12.22.11',
 			'12.22.9',
@@ -126,6 +127,7 @@ describe('check that we get the values we expect from values that should not eve
 			'12.14.0',
 			'12.8.1',
 		];
+
 		assert.deepStrictEqual(staticData.v12.security.all, v12AllSecurityReleases);
 		assert.deepStrictEqual(staticData.v12.security.newest, '12.22.11');
 		assert.deepStrictEqual(staticData.v12.security.oldest, '12.8.1');
