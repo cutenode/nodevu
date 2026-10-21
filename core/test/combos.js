@@ -26,9 +26,7 @@ function check(data) {
 	assert.deepStrictEqual(data.v12.security.oldest, '12.8.1');
 }
 
-const staticNow = require('./data/static/now.json');
-
-const now = JSON.parse(staticNow);
+const now = require('./data/static/now.json');
 
 describe('check to make sure that combining options works as expected', async () => {
 	beforeEach(beforeEachTemplate);
