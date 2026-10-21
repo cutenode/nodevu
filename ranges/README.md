@@ -5,12 +5,12 @@ a module that provides information about ranges of Node.js versions.
 ## Usage
 
 ```js
-const ranges = require('@nodevu/ranges')
+const ranges = require('@nodevu/ranges');
 
-async function generateData () {
-  const data = await ranges()
+async function generateData() {
+	const data = await ranges();
 
-  console.log(data) // will be a chunky object!
+	console.log(data); // will be a chunky object!
 }
 ```
 
@@ -22,7 +22,7 @@ async function generateData () {
 - `options` (Object, optional): passed straight to [@nodevu/core](../core/), so you can set things like a custom `fetch` or `now`.
 
 ```js
-const data = await ranges('alpha', { now: '2026-12-15' })
+const data = await ranges('alpha', { now: '2026-12-15' });
 ```
 
 ## Structure

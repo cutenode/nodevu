@@ -27,6 +27,7 @@ function check(data) {
 }
 
 const staticNow = require('./data/static/now.json');
+
 const now = JSON.parse(staticNow);
 
 describe('check to make sure that combining options works as expected', async () => {
@@ -42,6 +43,7 @@ describe('check to make sure that combining options works as expected', async ()
 		const urls = {
 			index: 'https://bnb.im/dist/index.json',
 		};
+
 		const staticData = await nodevu({ now, urls });
 
 		check(staticData);
@@ -51,6 +53,7 @@ describe('check to make sure that combining options works as expected', async ()
 		const urls = {
 			schedule: 'https://bnb.im/dist/schedule.json',
 		};
+
 		const staticData = await nodevu({ now, urls });
 
 		check(staticData);
@@ -61,6 +64,7 @@ describe('check to make sure that combining options works as expected', async ()
 			index: 'https://bnb.im/dist/index.json',
 			schedule: 'https://bnb.im/dist/schedule.json',
 		};
+
 		const staticData = await nodevu({ now, urls });
 
 		check(staticData);

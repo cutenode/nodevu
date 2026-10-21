@@ -24,5 +24,7 @@ async function security(name, options) {
 }
 
 module.exports.newest = newest;
+
 module.exports.lts = lts;
+
 module.exports.security = security;

@@ -12,6 +12,7 @@ describe('check to make sure that changing sources works as expected', async () 
 		const urls = {
 			index: 'https://bnb.im/dist/index.json',
 		};
+
 		const staticData = await nodevu({ urls });
 		deepStrictEqual(
 			staticData.v17.releases['v17.0.0'].dependencies.npm,
@@ -26,6 +27,7 @@ describe('check to make sure that changing sources works as expected', async () 
 		const urls = {
 			schedule: 'https://bnb.im/dist/schedule.json',
 		};
+
 		const staticData = await nodevu({ urls });
 		deepStrictEqual(
 			staticData.v17.releases['v17.0.0'].dependencies.v8,

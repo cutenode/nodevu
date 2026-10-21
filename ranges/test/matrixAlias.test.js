@@ -1,6 +1,6 @@
 const assert = require('node:assert');
 const ranges = require('../index');
-const { at } = require('./fixtures');
+const { at, versionPattern } = require('./fixtures');
 const { describe, it } = require('node:test');
 
 // this is a non-exhaustive list of sets of aliases.
@@ -14,8 +14,8 @@ describe('data should exist as it is defined when calling multiple aliases', asy
 		assert.deepStrictEqual(Array.isArray(data['lts/latest'].versions), true);
 		assert.deepStrictEqual(data['lts/latest'].versions.length > 0, true);
 		assert.deepStrictEqual(
-			data['lts/latest'].versions.every(
-				(version) => typeof version === 'string',
+			data['lts/latest'].versions.every((version) =>
+				versionPattern.test(version),
 			),
 			true,
 		);
@@ -27,8 +27,8 @@ describe('data should exist as it is defined when calling multiple aliases', asy
 		);
 		assert.deepStrictEqual(data['lts/maintenance'].versions.length > 0, true);
 		assert.deepStrictEqual(
-			data['lts/maintenance'].versions.every(
-				(version) => typeof version === 'string',
+			data['lts/maintenance'].versions.every((version) =>
+				versionPattern.test(version),
 			),
 			true,
 		);
@@ -44,8 +44,8 @@ describe('data should exist as it is defined when calling multiple aliases', asy
 		assert.deepStrictEqual(Array.isArray(data['lts/latest'].versions), true);
 		assert.deepStrictEqual(data['lts/latest'].versions.length > 0, true);
 		assert.deepStrictEqual(
-			data['lts/latest'].versions.every(
-				(version) => typeof version === 'string',
+			data['lts/latest'].versions.every((version) =>
+				versionPattern.test(version),
 			),
 			true,
 		);
@@ -54,8 +54,8 @@ describe('data should exist as it is defined when calling multiple aliases', asy
 		assert.deepStrictEqual(Array.isArray(data['lts/active'].versions), true);
 		assert.deepStrictEqual(data['lts/active'].versions.length > 0, true);
 		assert.deepStrictEqual(
-			data['lts/active'].versions.every(
-				(version) => typeof version === 'string',
+			data['lts/active'].versions.every((version) =>
+				versionPattern.test(version),
 			),
 			true,
 		);
@@ -74,8 +74,8 @@ describe('data should exist as it is defined when calling multiple aliases', asy
 		);
 		assert.deepStrictEqual(data['lts/maintenance'].versions.length > 0, true);
 		assert.deepStrictEqual(
-			data['lts/maintenance'].versions.every(
-				(version) => typeof version === 'string',
+			data['lts/maintenance'].versions.every((version) =>
+				versionPattern.test(version),
 			),
 			true,
 		);
@@ -84,8 +84,8 @@ describe('data should exist as it is defined when calling multiple aliases', asy
 		assert.deepStrictEqual(Array.isArray(data['lts/active'].versions), true);
 		assert.deepStrictEqual(data['lts/active'].versions.length > 0, true);
 		assert.deepStrictEqual(
-			data['lts/active'].versions.every(
-				(version) => typeof version === 'string',
+			data['lts/active'].versions.every((version) =>
+				versionPattern.test(version),
 			),
 			true,
 		);
@@ -107,8 +107,8 @@ describe('data should exist as it is defined when calling multiple aliases', asy
 		);
 		assert.deepStrictEqual(data['lts/maintenance'].versions.length > 0, true);
 		assert.deepStrictEqual(
-			data['lts/maintenance'].versions.every(
-				(version) => typeof version === 'string',
+			data['lts/maintenance'].versions.every((version) =>
+				versionPattern.test(version),
 			),
 			true,
 		);
@@ -117,8 +117,8 @@ describe('data should exist as it is defined when calling multiple aliases', asy
 		assert.deepStrictEqual(Array.isArray(data['lts/active'].versions), true);
 		assert.deepStrictEqual(data['lts/active'].versions.length > 0, true);
 		assert.deepStrictEqual(
-			data['lts/active'].versions.every(
-				(version) => typeof version === 'string',
+			data['lts/active'].versions.every((version) =>
+				versionPattern.test(version),
 			),
 			true,
 		);
@@ -127,8 +127,8 @@ describe('data should exist as it is defined when calling multiple aliases', asy
 		assert.deepStrictEqual(Array.isArray(data['lts/latest'].versions), true);
 		assert.deepStrictEqual(data['lts/latest'].versions.length > 0, true);
 		assert.deepStrictEqual(
-			data['lts/latest'].versions.every(
-				(version) => typeof version === 'string',
+			data['lts/latest'].versions.every((version) =>
+				versionPattern.test(version),
 			),
 			true,
 		);
@@ -148,8 +148,8 @@ describe('data should exist as it is defined when calling multiple aliases', asy
 		assert.deepStrictEqual(Array.isArray(data['lts/active'].versions), true);
 		assert.deepStrictEqual(data['lts/active'].versions.length > 0, true);
 		assert.deepStrictEqual(
-			data['lts/active'].versions.every(
-				(version) => typeof version === 'string',
+			data['lts/active'].versions.every((version) =>
+				versionPattern.test(version),
 			),
 			true,
 		);
@@ -161,8 +161,8 @@ describe('data should exist as it is defined when calling multiple aliases', asy
 		);
 		assert.deepStrictEqual(data['lts/maintenance'].versions.length > 0, true);
 		assert.deepStrictEqual(
-			data['lts/maintenance'].versions.every(
-				(version) => typeof version === 'string',
+			data['lts/maintenance'].versions.every((version) =>
+				versionPattern.test(version),
 			),
 			true,
 		);
@@ -184,7 +184,7 @@ describe('data should exist as it is defined when calling multiple aliases', asy
 		assert.deepStrictEqual(Array.isArray(data.current.versions), true);
 		assert.deepStrictEqual(data.current.versions.length > 0, true);
 		assert.deepStrictEqual(
-			data.current.versions.every((version) => typeof version === 'string'),
+			data.current.versions.every((version) => versionPattern.test(version)),
 			true,
 		);
 
@@ -192,8 +192,8 @@ describe('data should exist as it is defined when calling multiple aliases', asy
 		assert.deepStrictEqual(Array.isArray(data['lts/active'].versions), true);
 		assert.deepStrictEqual(data['lts/active'].versions.length > 0, true);
 		assert.deepStrictEqual(
-			data['lts/active'].versions.every(
-				(version) => typeof version === 'string',
+			data['lts/active'].versions.every((version) =>
+				versionPattern.test(version),
 			),
 			true,
 		);
@@ -205,8 +205,8 @@ describe('data should exist as it is defined when calling multiple aliases', asy
 		);
 		assert.deepStrictEqual(data['lts/maintenance'].versions.length > 0, true);
 		assert.deepStrictEqual(
-			data['lts/maintenance'].versions.every(
-				(version) => typeof version === 'string',
+			data['lts/maintenance'].versions.every((version) =>
+				versionPattern.test(version),
 			),
 			true,
 		);
@@ -227,7 +227,7 @@ describe('data should exist as it is defined when calling multiple aliases', asy
 		assert.deepStrictEqual(Array.isArray(data.current.versions), true);
 		assert.deepStrictEqual(data.current.versions.length > 0, true);
 		assert.deepStrictEqual(
-			data.current.versions.every((version) => typeof version === 'string'),
+			data.current.versions.every((version) => versionPattern.test(version)),
 			true,
 		);
 
@@ -235,8 +235,8 @@ describe('data should exist as it is defined when calling multiple aliases', asy
 		assert.deepStrictEqual(Array.isArray(data['lts/active'].versions), true);
 		assert.deepStrictEqual(data['lts/active'].versions.length > 0, true);
 		assert.deepStrictEqual(
-			data['lts/active'].versions.every(
-				(version) => typeof version === 'string',
+			data['lts/active'].versions.every((version) =>
+				versionPattern.test(version),
 			),
 			true,
 		);
@@ -248,8 +248,8 @@ describe('data should exist as it is defined when calling multiple aliases', asy
 		);
 		assert.deepStrictEqual(data['lts/maintenance'].versions.length > 0, true);
 		assert.deepStrictEqual(
-			data['lts/maintenance'].versions.every(
-				(version) => typeof version === 'string',
+			data['lts/maintenance'].versions.every((version) =>
+				versionPattern.test(version),
 			),
 			true,
 		);
@@ -270,7 +270,7 @@ describe('data should exist as it is defined when calling multiple aliases', asy
 		assert.deepStrictEqual(Array.isArray(data.current.versions), true);
 		assert.deepStrictEqual(data.current.versions.length > 0, true);
 		assert.deepStrictEqual(
-			data.current.versions.every((version) => typeof version === 'string'),
+			data.current.versions.every((version) => versionPattern.test(version)),
 			true,
 		);
 
@@ -278,8 +278,8 @@ describe('data should exist as it is defined when calling multiple aliases', asy
 		assert.deepStrictEqual(Array.isArray(data['lts/active'].versions), true);
 		assert.deepStrictEqual(data['lts/active'].versions.length > 0, true);
 		assert.deepStrictEqual(
-			data['lts/active'].versions.every(
-				(version) => typeof version === 'string',
+			data['lts/active'].versions.every((version) =>
+				versionPattern.test(version),
 			),
 			true,
 		);
@@ -291,8 +291,8 @@ describe('data should exist as it is defined when calling multiple aliases', asy
 		);
 		assert.deepStrictEqual(data['lts/maintenance'].versions.length > 0, true);
 		assert.deepStrictEqual(
-			data['lts/maintenance'].versions.every(
-				(version) => typeof version === 'string',
+			data['lts/maintenance'].versions.every((version) =>
+				versionPattern.test(version),
 			),
 			true,
 		);

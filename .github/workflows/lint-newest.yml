@@ -1,4 +1,4 @@
-name: "Linter: newest"
+name: 'Linter: newest'
 
 on:
   push:
@@ -8,7 +8,7 @@ on:
       - main
   pull_request:
     paths:
-        - 'newest/**'
+      - 'newest/**'
     branches:
       - main
   workflow_dispatch:
@@ -19,13 +19,13 @@ jobs:
     if: github.repository == 'cutenode/nodevu'
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout the repository
-      uses: actions/checkout@v7
-    - name: Setup Node.js
-      uses: actions/setup-node@v7
-      with:
-        node-version: current
-    - name: Run npm install -w newest
-      run: npm install -w newest
-    - name: Run npm run lint -w newest
-      run: npm run lint -w newest
+      - name: Checkout the repository
+        uses: actions/checkout@v7
+      - name: Setup Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: current
+      - name: Run npm install -w newest --include-workspace-root
+        run: npm install -w newest --include-workspace-root
+      - name: Run npm run lint -w newest
+        run: npm run lint -w newest

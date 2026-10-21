@@ -28,6 +28,7 @@ describe('test that each alias works with @nodevu/ranges', async () => {
 			['lts/active', 'lts/maintenance'],
 			options,
 		);
+
 		const translated = await ranges(await translate('lts'), options);
 
 		assert.deepStrictEqual(untranslated, translated);
@@ -38,6 +39,7 @@ describe('test that each alias works with @nodevu/ranges', async () => {
 			['current', 'lts/active', 'lts/maintenance'],
 			options,
 		);
+
 		const translated = await ranges(await translate('supported'), options);
 
 		assert.deepStrictEqual(untranslated, translated);
@@ -48,6 +50,7 @@ describe('test that each alias works with @nodevu/ranges', async () => {
 			['current', 'lts/active', 'lts/maintenance', 'eol'],
 			options,
 		);
+
 		const translated = await ranges(await translate('all'), options);
 
 		assert.deepStrictEqual(untranslated, translated);

@@ -4,8 +4,8 @@
 	"description": "comprehensive node.js version tooling",
 	"main": "index.js",
 	"scripts": {
-		"lint": "npm run lint --ws",
-		"lint:write": "npm run lint:write --ws",
+		"lint": "oxlint && oxfmt --check",
+		"lint:write": "oxlint --fix && oxfmt",
 		"coverage": "npm run coverage --ws",
 		"test": "npm run test --ws",
 		"updates": "npm run updates --ws"
@@ -35,5 +35,10 @@
 		"translate",
 		"fetchindex",
 		"opt"
-	]
+	],
+	"devDependencies": {
+		"@oxlint/plugins": "1.89.0",
+		"oxfmt": "0.74.0",
+		"oxlint": "1.89.0"
+	}
 }

@@ -1,4 +1,4 @@
-const { deepStrictEqual } = require('node:assert');
+const { deepStrictEqual, match } = require('node:assert');
 const { describe, it } = require('node:test');
 const { fetch: undiciFetch } = require('undici');
 const fetchindex = require('../index');
@@ -6,17 +6,22 @@ const optionsParser = require('../../core/util/prod/optionsParser');
 
 // checks that verify the result of data returned
 function check(data) {
-	deepStrictEqual(typeof data[0].version, 'string');
-	deepStrictEqual(typeof data[0].date, 'string');
+	match(data[0].version, /^v\d+\.\d+\.\d+$/);
+	match(data[0].date, /^\d{4}-\d{2}-\d{2}$/);
 	deepStrictEqual(Array.isArray(data[0].files), true);
-	deepStrictEqual(typeof data[0].npm, 'string');
-	deepStrictEqual(typeof data[0].v8, 'string');
-	deepStrictEqual(typeof data[0].uv, 'string');
-	deepStrictEqual(typeof data[0].zlib, 'string');
-	deepStrictEqual(typeof data[0].openssl, 'string');
-	deepStrictEqual(typeof data[0].modules, 'string');
-	deepStrictEqual(typeof data[0].lts, 'boolean');
-	deepStrictEqual(typeof data[0].security, 'boolean');
+	match(data[0].npm, /^\d+\.\d+\.\d+/);
+	match(data[0].v8, /^\d+\.\d+\.\d+/);
+	match(data[0].uv, /^\d+\.\d+\.\d+/);
+	match(data[0].zlib, /^\d+\.\d+/);
+	match(data[0].openssl, /^\d+\.\d+\.\d+/);
+	match(data[0].modules, /^\d+$/);
+	// index.json has false for non-LTS releases and the line's codename for LTS
+	// ones
+	deepStrictEqual(
+		data[0].lts === false || /^[A-Z][a-z]+$/.test(data[0].lts),
+		true,
+	);
+	deepStrictEqual([true, false].includes(data[0].security), true);
 }
 
 // set up options object that would normally be passed to the module
@@ -51,6 +56,7 @@ describe('versions should work with optionsParser', async () => {
 		const parsedOptions = optionsParser({
 			fetch: undiciFetch,
 		});
+
 		const data = await fetchindex(parsedOptions);
 		check(data);
 	});

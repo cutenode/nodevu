@@ -9,8 +9,8 @@
 		"build:releases": "node build/releases.js",
 		"build:security": "node build/security.js",
 		"build:support": "node build/support.js",
-		"lint": "biome check ./",
-		"lint:write": "biome check ./ --write",
+		"lint": "oxlint && oxfmt --check",
+		"lint:write": "oxlint --fix && oxfmt",
 		"prepublish": "npm run build",
 		"test": "node --test",
 		"coverage": "c8 node --test",
@@ -38,7 +38,6 @@
 	},
 	"homepage": "https://github.com/cutenode/nodevu#readme",
 	"devDependencies": {
-		"@biomejs/biome": "2.5.15",
 		"c8": "^10.1.2"
 	}
 }

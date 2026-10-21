@@ -23,9 +23,11 @@ function parseFilename(file, version) {
 	} else if (info.files[0].includes('osx-')) {
 		// macOS filenames, but with architectures. Different than the above.
 		const basemacOSString = `node-v${version}-darwin-`;
+
 		if (info.files[0].includes('arm64')) {
 			info.files[0] = basemacOSString.concat('arm64.tar.gz');
 		}
+
 		if (info.files[0].includes('x64')) {
 			info.files[0] = basemacOSString.concat('x64.tar.gz');
 		}

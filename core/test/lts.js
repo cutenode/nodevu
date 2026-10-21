@@ -35,6 +35,7 @@ describe('LTS data when schedule.json and index.json disagree', async () => {
 				release('v27.0.0', '2027-04-20', false),
 			],
 		);
+
 		assert.deepStrictEqual(data.v27.support.lts, {
 			newest: '27.2.0',
 			oldest: '27.1.0',
@@ -50,6 +51,7 @@ describe('LTS data when schedule.json and index.json disagree', async () => {
 				release('v27.0.0', '2027-04-20', 'Somename'),
 			],
 		);
+
 		assert.deepStrictEqual(data.v27.support.lts, { oldest: '27.0.0' });
 	});
 
@@ -81,6 +83,7 @@ describe('LTS data when schedule.json and index.json disagree', async () => {
 				release('v22.10.0', '2024-10-16', false),
 			],
 		);
+
 		assert.deepStrictEqual(data.v23.support.lts, undefined);
 		assert.deepStrictEqual(data.v22.support.lts, {
 			newest: '22.11.0',

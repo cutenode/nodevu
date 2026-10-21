@@ -7,6 +7,7 @@ describe('failure states for arguments', async () => {
 	it('should throw an error on a string with an unknown value', async () => {
 		try {
 			const data = await ranges('poopin', at());
+
 			if (data) throw new Error('Should not have gotten here');
 		} catch (error) {
 			assert.deepStrictEqual(
@@ -19,6 +20,7 @@ describe('failure states for arguments', async () => {
 	it('should throw an error on a string with an unknown value', async () => {
 		try {
 			const data = await ranges('poopin', at());
+
 			if (data) throw new Error('Should not have gotten here');
 		} catch (error) {
 			assert.deepStrictEqual(
@@ -31,6 +33,7 @@ describe('failure states for arguments', async () => {
 	it('should throw an error on a single unknown array entry', async () => {
 		try {
 			const data = await ranges(['poopin'], at());
+
 			if (data) throw new Error('Should not have gotten here');
 		} catch (error) {
 			assert.deepStrictEqual(
@@ -43,6 +46,7 @@ describe('failure states for arguments', async () => {
 	it('should throw an error on an unknown array entry where multiple entries exist and it is the first entry', async () => {
 		try {
 			const data = await ranges(['poopin', 'lts/active'], at());
+
 			if (data) throw new Error('Should not have gotten here');
 		} catch (error) {
 			assert.deepStrictEqual(
@@ -55,6 +59,7 @@ describe('failure states for arguments', async () => {
 	it('should throw an error on an unknown array entry where multiple entries exist and it is the first entry', async () => {
 		try {
 			const data = await ranges(['lts/active', 'poopin'], at());
+
 			if (data) throw new Error('Should not have gotten here');
 		} catch (error) {
 			assert.deepStrictEqual(
@@ -67,6 +72,7 @@ describe('failure states for arguments', async () => {
 	it('should throw an error on passing an Object', async () => {
 		try {
 			const data = await ranges({}, at());
+
 			if (data) throw new Error('Should not have gotten here');
 		} catch (error) {
 			assert.deepStrictEqual(

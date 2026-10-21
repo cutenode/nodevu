@@ -53,12 +53,14 @@ describe('fields without a value should be undefined, not "undefined"', async ()
 			lts,
 			files: ['linux-x64', 'src'],
 		});
+
 		const index = [
 			release('v99.1.0', '2099-11-01'),
 			release('v99.0.0', '2099-10-25', 'Placeholder'),
 			release('v98.1.0', '2098-11-01'),
 			release('v98.0.0', '2098-10-25', 'Placeholder'),
 		];
+
 		const schedule = {
 			v98: {
 				start: '2098-04-20',
@@ -75,6 +77,7 @@ describe('fields without a value should be undefined, not "undefined"', async ()
 				codename: '',
 			},
 		};
+
 		// round-tripping through JSON to check what ends up in the output
 		const data = JSON.parse(
 			JSON.stringify(
@@ -112,6 +115,7 @@ describe('fields without a value should be undefined, not "undefined"', async ()
 			snapshotNow,
 		]) {
 			const data = await ranges(undefined, at(now));
+
 			for (const range in data) {
 				for (const field in data[range]) {
 					deepStrictEqual(

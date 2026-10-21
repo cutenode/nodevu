@@ -1,11 +1,15 @@
-name: "Linter: all"
+name: 'Linter: all'
 
 on:
   push:
     paths:
       - 'package.json'
       - '*/package.json'
-      - 'biome.json'
+      - '.oxlintrc.json'
+      - '.oxfmtrc.json'
+      - 'tools/**'
+      - '.github/workflows/**'
+      - '*.md'
       - '.npmrc'
     branches:
       - main
@@ -13,7 +17,11 @@ on:
     paths:
       - 'package.json'
       - '*/package.json'
-      - 'biome.json'
+      - '.oxlintrc.json'
+      - '.oxfmtrc.json'
+      - 'tools/**'
+      - '.github/workflows/**'
+      - '*.md'
       - '.npmrc'
     branches:
       - main
@@ -25,27 +33,26 @@ jobs:
     if: github.repository == 'cutenode/nodevu'
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout the repository
-      uses: actions/checkout@v7
-    - name: Setup Node.js
-      uses: actions/setup-node@v7
-      with:
-        node-version: current
-    - name: Run npm install
-      run: npm install -ws
-    - name: Run npm lint
-      run: npm run lint
-    # npm rejects a provenance publish when repository.url doesn't match the
-    # repo the release workflow runs in, so every package release.yml
-    # publishes has to name it
-    - name: Check published packages name this repository
-      run: |
-        status=0
-        for ws in aliases core fetchindex newest oldest parsefiles ranges static; do
-          if ! jq -e '.repository.url == "git+https://github.com/cutenode/nodevu.git"' "$ws/package.json" > /dev/null; then
-            echo "::error file=$ws/package.json::repository.url must be git+https://github.com/cutenode/nodevu.git"
-            status=1
-          fi
-        done
-        exit "$status"
-      
+      - name: Checkout the repository
+        uses: actions/checkout@v7
+      - name: Setup Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: current
+      - name: Run npm install
+        run: npm install --workspaces=false
+      - name: Run npm lint
+        run: npm run lint
+      # npm rejects a provenance publish when repository.url doesn't match the
+      # repo the release workflow runs in, so every package release.yml
+      # publishes has to name it
+      - name: Check published packages name this repository
+        run: |
+          status=0
+          for ws in aliases core fetchindex newest oldest parsefiles ranges static; do
+            if ! jq -e '.repository.url == "git+https://github.com/cutenode/nodevu.git"' "$ws/package.json" > /dev/null; then
+              echo "::error file=$ws/package.json::repository.url must be git+https://github.com/cutenode/nodevu.git"
+              status=1
+            fi
+          done
+          exit "$status"

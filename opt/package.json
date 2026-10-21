@@ -8,8 +8,8 @@
 		"LICENSE"
 	],
 	"scripts": {
-		"lint": "biome check ./",
-		"lint:write": "biome check ./ --write",
+		"lint": "oxlint && oxfmt --check",
+		"lint:write": "oxlint --fix && oxfmt",
 		"test": "node --test",
 		"coverage": "c8 node --test",
 		"updates:check": "npx npm-check-updates",
@@ -30,7 +30,6 @@
 	},
 	"homepage": "https://github.com/cutenode/nodevu#readme",
 	"devDependencies": {
-		"@biomejs/biome": "2.5.15",
 		"c8": "^10.1.2",
 		"luxon": "^3.5.0",
 		"undici": "^6.20.1"

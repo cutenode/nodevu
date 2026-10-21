@@ -69,6 +69,9 @@ const defaultRangesObject = {
 
 async function generateRanges(filter, options) {
 	let localFilter = filter;
+
+	// filter is untyped public input, so typeof is how it gets validated here
+	// oxlint-disable-next-line anti-slop/no-runtime-typeof
 	if (typeof localFilter === 'string') {
 		// check to make sure that the filter is valid. if it's not, yeet.
 		if (!aliases.includes(localFilter)) {
@@ -87,6 +90,8 @@ async function generateRanges(filter, options) {
 		}
 	} else if (localFilter) {
 		throw new Error(
+			// names the wrong type in the error, nothing is narrowed
+			// oxlint-disable-next-line anti-slop/no-runtime-typeof
 			`Unknown value passed as a filter. The passed value: '${localFilter}', with a type of '${typeof localFilter}'. Make sure you are passing a string (or an Array of strings) with valid value(s).`,
 		);
 	} else {
@@ -219,6 +224,7 @@ async function generateRanges(filter, options) {
 					}
 				}
 			}
+
 			// define 'eol' data
 			if (
 				localFilter === 'eol' ||

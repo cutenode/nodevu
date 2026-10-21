@@ -24,6 +24,7 @@ async function core(options) {
 		const versionSemver = semver.coerce(versions[version].version, {
 			includePrerelease: true,
 		});
+
 		const name =
 			versionSemver.major !== 0
 				? `v${versionSemver.major}`
@@ -80,10 +81,12 @@ async function core(options) {
 		// TODO: parse versions[version].files and convert them to URLs that can be directly accessed
 		data[name].releases[`v${versionSemver.version}`].files.available =
 			versions[version].files ?? undefined;
+
 		const availableShorthand =
 			data[name].releases[`v${versionSemver.version}`].files.available; // since we're going to be writing this a lot for assignments, it's nice to have shorthand for readability
 
 		data[name].releases[`v${versionSemver.version}`].files.links = {};
+
 		const linksShorthand =
 			data[name].releases[`v${versionSemver.version}`].files.links; // since we're going to be writing this a lot for assignments, it's nice to have shorthand for readability
 
@@ -92,6 +95,7 @@ async function core(options) {
 				data[name].releases[`v${versionSemver.version}`].files.available[
 					filename
 				];
+
 			const parsedFile = parsefiles(id, versionSemver.version);
 
 			if (!linksShorthand[parsedFile.type]) {
@@ -136,6 +140,7 @@ async function core(options) {
 					schedule[name]?.maintenance ?? undefined;
 				data[name].support.phases.dates.end = schedule[name]?.end ?? undefined;
 			}
+
 			data[name].support.phases.current =
 				determineCurrentReleasePhase(now, data[name].support.phases.dates) ??
 				{};
@@ -247,6 +252,7 @@ function determineCurrentReleasePhase(now, dates = {}) {
 // where DATE is your date value
 function isInPast(number) {
 	const sign = Math.sign(number);
+
 	if (sign === -1 || sign === 0) {
 		return true;
 	}

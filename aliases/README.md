@@ -5,10 +5,10 @@ This is a module that provides an array of aliases for ranges of Node.js release
 ## Usage
 
 ```js
-const aliases = require('@nodevu/aliases')
+const aliases = require('@nodevu/aliases');
 
 for (const alias of aliases) {
-  console.log(alias)
+	console.log(alias);
 }
 ```
 
