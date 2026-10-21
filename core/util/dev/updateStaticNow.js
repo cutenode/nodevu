@@ -2,10 +2,8 @@ const { DateTime } = require('luxon');
 const write = require('./write');
 
 async function updateStaticDateTime() {
-	await write(
-		'./test/data/static/now.json',
-		JSON.stringify(DateTime.now(), null, 2),
-	);
+	// write serializes the DateTime to its ISO string
+	await write('./test/data/static/now.json', DateTime.now());
 }
 
 updateStaticDateTime();

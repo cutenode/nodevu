@@ -28,16 +28,30 @@ describe('check if sunos support is working as expected', () => {
 		assert.deepEqual(result.id, id);
 		assert.deepEqual(result.type, 'sunos');
 	});
+
+	it('should return the correct sunos x86 version string', () => {
+		const id = 'sunos-x86';
+		const result = parseFiles(id, mockverson);
+		assert.deepEqual(result.architecture, 'x86');
+		assert.deepEqual(result.files, [
+			`node-v${mockverson}-sunos-x86.tar.gz`,
+			`node-v${mockverson}-sunos-x86.tar.xz`,
+		]);
+		assert.deepEqual(result.id, id);
+		assert.deepEqual(result.type, 'sunos');
+	});
 });
 
 describe('check if the armv6l support is working as expected', () => {
-	const id = 'linux-armv6l';
-	const result = parseFiles(id, mockverson);
-	assert.deepEqual(result.architecture, 'armv6l');
-	assert.deepEqual(result.files, [
-		`node-v${mockverson}-linux-armv6l.tar.gz`,
-		`node-v${mockverson}-linux-armv6l.tar.xz`,
-	]);
-	assert.deepEqual(result.id, id);
-	assert.deepEqual(result.type, 'linux');
+	it('should return the correct armv6l version string', () => {
+		const id = 'linux-armv6l';
+		const result = parseFiles(id, mockverson);
+		assert.deepEqual(result.architecture, 'armv6l');
+		assert.deepEqual(result.files, [
+			`node-v${mockverson}-linux-armv6l.tar.gz`,
+			`node-v${mockverson}-linux-armv6l.tar.xz`,
+		]);
+		assert.deepEqual(result.id, id);
+		assert.deepEqual(result.type, 'linux');
+	});
 });

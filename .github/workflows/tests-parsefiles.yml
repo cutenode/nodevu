@@ -27,5 +27,5 @@ jobs:
         run: npm install -g npm
       - name: Run npm install -w parsefiles
         run: npm install -w parsefiles
-      - name: Run npm test -w parsefiles
-        run: npm test -w parsefiles
+      - name: Run npm run coverage -w parsefiles
+        run: npm run coverage -w parsefiles

@@ -72,7 +72,7 @@
 	},
 	{
 		"id": "src",
-		"files": ["node-v17.7.0.tar.xz"],
+		"files": ["node-v17.7.0.tar.gz", "node-v17.7.0.tar.xz"],
 		"type": "source"
 	},
 	{

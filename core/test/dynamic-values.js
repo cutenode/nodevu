@@ -4,9 +4,7 @@ const { describe, it, beforeEach } = require('node:test');
 
 const beforeEachTemplate = require('../util/dev/beforeEachTemplate');
 
-const staticNow = require('./data/static/now.json');
-
-const now = JSON.parse(staticNow);
+const now = require('./data/static/now.json');
 
 // this is a set of tests that only test against static data effectively frozen at a point in time.
 // these tests should *probably* be updated sometimes. see the npm scripts for update scripts.

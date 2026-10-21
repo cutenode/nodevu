@@ -52,7 +52,7 @@ function parseFilename(file, version) {
 	} else if (info.files[0] === 'src') {
 		// source filenames.
 		info.files[0] = `node-v${version}.tar.gz`;
-		info.files[0] = `node-v${version}.tar.xz`;
+		info.files.push(`node-v${version}.tar.xz`);
 	} else if (
 		info.files[0].includes('linux-') ||
 		info.files[0] === 'headers' ||

@@ -80,7 +80,7 @@ async function core(options) {
 
 		// TODO: parse versions[version].files and convert them to URLs that can be directly accessed
 		data[name].releases[`v${versionSemver.version}`].files.available =
-			versions[version].files ?? undefined;
+			versions[version].files ?? [];
 
 		const availableShorthand =
 			data[name].releases[`v${versionSemver.version}`].files.available; // since we're going to be writing this a lot for assignments, it's nice to have shorthand for readability
@@ -209,24 +209,18 @@ async function core(options) {
 }
 
 function determineCurrentReleasePhase(now, dates = {}) {
-	// we set set this up to enable custom `now` passing, since passing an ISO
-	// const usableNow = DateTime.fromISO(now)
-
 	// here we figure out if the dates for each release line passed is in the past or future
 	// `true` is in the past
 	// `false` is in the future
+	// `undefined` is a missing date
 	const isoified = {
-		alpha:
-			isInPast(DateTime.fromISO(dates.alpha).diff(now).toMillis()) ?? undefined,
-		start:
-			isInPast(DateTime.fromISO(dates.start).diff(now).toMillis()) ?? undefined,
-		lts:
-			isInPast(DateTime.fromISO(dates.lts).diff(now).toMillis()) ?? undefined,
-		maintenance:
-			isInPast(DateTime.fromISO(dates.maintenance).diff(now).toMillis()) ??
-			undefined,
-		end:
-			isInPast(DateTime.fromISO(dates.end).diff(now).toMillis()) ?? undefined,
+		alpha: isInPast(DateTime.fromISO(dates.alpha).diff(now).toMillis()),
+		start: isInPast(DateTime.fromISO(dates.start).diff(now).toMillis()),
+		lts: isInPast(DateTime.fromISO(dates.lts).diff(now).toMillis()),
+		maintenance: isInPast(
+			DateTime.fromISO(dates.maintenance).diff(now).toMillis(),
+		),
+		end: isInPast(DateTime.fromISO(dates.end).diff(now).toMillis()),
 	};
 
 	// set up our result to return
