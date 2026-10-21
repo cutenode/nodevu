@@ -1,6 +1,6 @@
 const assert = require('node:assert');
 const ranges = require('../index');
-const { at } = require('./fixtures');
+const { at, versionPattern } = require('./fixtures');
 const { describe, it } = require('node:test');
 
 describe('data should exist as it is defined', async () => {
@@ -11,7 +11,7 @@ describe('data should exist as it is defined', async () => {
 			assert.deepStrictEqual(Array.isArray(data[key].versions), true);
 			assert.deepStrictEqual(data[key].versions.length > 0, true);
 			assert.deepStrictEqual(
-				data[key].versions.every((version) => typeof version === 'string'),
+				data[key].versions.every((version) => versionPattern.test(version)),
 				true,
 			);
 		}
@@ -21,8 +21,8 @@ describe('data should exist as it is defined', async () => {
 		const data = await ranges(undefined, at());
 
 		for (const key in data) {
-			assert.deepStrictEqual(typeof data[key].newest, 'string');
-			assert.deepStrictEqual(typeof data[key].oldest, 'string');
+			assert.match(data[key].newest, versionPattern);
+			assert.match(data[key].oldest, versionPattern);
 		}
 	});
 });

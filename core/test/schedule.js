@@ -1,4 +1,4 @@
-const { deepStrictEqual } = require('node:assert');
+const { match } = require('node:assert');
 const { describe, it } = require('node:test');
 const { fetch: undiciFetch } = require('undici');
 const schedule = require('../util/prod/schedule');
@@ -8,8 +8,12 @@ const optionsParser = require('../util/prod/optionsParser');
 function check(data) {
 	for (const metadata of Object.values(data)) {
 		for (const [metadataKey, metadataValue] of Object.entries(metadata)) {
-			deepStrictEqual(typeof metadataKey, 'string');
-			deepStrictEqual(typeof metadataValue, 'string');
+			// every value is a date except codename, which is empty for
+			// release lines that never had LTS
+			const valuePattern =
+				metadataKey === 'codename' ? /^([A-Z][a-z]+)?$/ : /^\d{4}-\d{2}-\d{2}$/;
+
+			match(metadataValue, valuePattern);
 		}
 	}
 }

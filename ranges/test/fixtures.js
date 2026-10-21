@@ -7,6 +7,9 @@ const schedule = require('../../core/test/data/static/schedule.json');
 // empty.
 const now = '2025-09-01';
 
+// every version in index.json, like v22.19.0
+const versionPattern = /^v\d+\.\d+\.\d+$/;
+
 // returns options for `ranges` that serve `data` (core's index.json and
 // schedule.json snapshots by default) instead of fetching them, only including
 // releases that would be out by `now`, like the real index.json. any other URL
@@ -28,4 +31,4 @@ function at(date = now, data = { index, schedule }) {
 	};
 }
 
-module.exports = { at };
+module.exports = { at, versionPattern };
