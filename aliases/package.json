@@ -7,7 +7,10 @@
 		"type": "git",
 		"url": "git+https://github.com/cutenode/nodevu.git"
 	},
-	"keywords": ["node.js", "version"],
+	"keywords": [
+		"node.js",
+		"version"
+	],
 	"author": "Tierney Cyren <hello@bnb.im> (https://bnb.im/)",
 	"license": "MIT",
 	"bugs": {
@@ -22,6 +25,6 @@
 		"updates:update": "npx npm-check-updates -u"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "1.9.4"
+		"@biomejs/biome": "2.5.15"
 	}
 }

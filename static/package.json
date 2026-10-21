@@ -21,8 +21,16 @@
 		"type": "git",
 		"url": "git+https://github.com/cutenode/nodevu.git"
 	},
-	"keywords": ["node.js", "version", "versions"],
-	"files": ["/data", "index.js", "LICENSE"],
+	"keywords": [
+		"node.js",
+		"version",
+		"versions"
+	],
+	"files": [
+		"/data",
+		"index.js",
+		"LICENSE"
+	],
 	"author": "Tierney Cyren <hello@bnb.im>",
 	"license": "MIT",
 	"bugs": {
@@ -30,7 +38,7 @@
 	},
 	"homepage": "https://github.com/cutenode/nodevu#readme",
 	"devDependencies": {
-		"@biomejs/biome": "1.9.4",
+		"@biomejs/biome": "2.5.15",
 		"c8": "^10.1.2"
 	}
 }
