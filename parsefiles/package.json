@@ -26,5 +26,9 @@
 	"devDependencies": {
 		"@biomejs/biome": "2.5.15",
 		"c8": "^10.1.2"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/cutenode/nodevu.git"
 	}
 }
