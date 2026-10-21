@@ -6,7 +6,7 @@
 	"scripts": {
 		"lint": "oxlint && oxfmt --check",
 		"lint:write": "oxlint --fix && oxfmt",
-		"coverage": "npm run coverage --ws",
+		"coverage": "npm run coverage --ws --if-present",
 		"test": "npm run test --ws",
 		"updates": "npm run updates --ws"
 	},

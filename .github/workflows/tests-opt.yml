@@ -27,5 +27,5 @@ jobs:
         run: npm install -g npm
       - name: Run npm install -w opt
         run: npm install -w opt
-      - name: Run npm test -w opt
-        run: npm test -w opt
+      - name: Run npm run coverage -w opt
+        run: npm run coverage -w opt
