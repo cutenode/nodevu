@@ -38,6 +38,7 @@
 	},
 	"homepage": "https://github.com/cutenode/nodevu#readme",
 	"devDependencies": {
+		"@nodevu/core": "^1.1.0",
 		"c8": "^10.1.2"
 	}
 }
