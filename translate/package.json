@@ -21,15 +21,14 @@
 	"author": "Tierney Cyren",
 	"main": "index.js",
 	"scripts": {
-		"lint": "biome check ./",
-		"lint:write": "biome check ./ --write",
+		"lint": "oxlint && oxfmt --check",
+		"lint:write": "oxlint --fix && oxfmt",
 		"test": "node --test",
 		"coverage": "c8 node --test",
 		"updates:check": "npx npm-check-updates",
 		"updates:update": "npx npm-check-updates -u"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "2.5.15",
 		"@nodevu/ranges": "^1.0.0",
 		"c8": "^10.1.2"
 	},

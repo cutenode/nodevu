@@ -18,13 +18,10 @@
 	},
 	"homepage": "https://github.com/cutenode/nodevu#readme",
 	"scripts": {
-		"lint": "biome check ./",
-		"lint:write": "biome check ./ --write",
+		"lint": "oxlint && oxfmt --check",
+		"lint:write": "oxlint --fix && oxfmt",
 		"test": "",
 		"updates:check": "npx npm-check-updates",
 		"updates:update": "npx npm-check-updates -u"
-	},
-	"devDependencies": {
-		"@biomejs/biome": "2.5.15"
 	}
 }

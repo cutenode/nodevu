@@ -5,7 +5,11 @@ on:
     paths:
       - 'package.json'
       - '*/package.json'
-      - 'biome.json'
+      - '.oxlintrc.json'
+      - '.oxfmtrc.json'
+      - 'tools/**'
+      - '.github/workflows/**'
+      - '*.md'
       - '.npmrc'
     branches:
       - main
@@ -13,7 +17,11 @@ on:
     paths:
       - 'package.json'
       - '*/package.json'
-      - 'biome.json'
+      - '.oxlintrc.json'
+      - '.oxfmtrc.json'
+      - 'tools/**'
+      - '.github/workflows/**'
+      - '*.md'
       - '.npmrc'
     branches:
       - main
@@ -32,7 +40,7 @@ jobs:
       with:
         node-version: current
     - name: Run npm install
-      run: npm install -ws
+      run: npm install --workspaces=false
     - name: Run npm lint
       run: npm run lint
     # npm rejects a provenance publish when repository.url doesn't match the

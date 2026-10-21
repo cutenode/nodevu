@@ -25,7 +25,7 @@ jobs:
       uses: actions/setup-node@v7
       with:
         node-version: current
-    - name: Run npm install -w aliases
-      run: npm install -w aliases
+    - name: Run npm install -w aliases --include-workspace-root
+      run: npm install -w aliases --include-workspace-root
     - name: Run npm run lint -w aliases
       run: npm run lint -w aliases
