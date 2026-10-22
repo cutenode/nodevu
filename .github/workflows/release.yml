@@ -18,13 +18,20 @@ jobs:
   pr:
     if: github.event_name == 'push' && github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
     runs-on: ubuntu-latest
-    permissions:
-      contents: write # push the `release/vX.Y.Z` branch and delete superseded ones
-      pull-requests: write # create a release PR, update its body, close superseded PRs
+    permissions: {} # uppt/pr does everything with the app token below
     steps:
+      # runs on a PR opened with GITHUB_TOKEN wait for someone to approve them;
+      # runs on an app token's PR start on their own
+      - id: app-token
+        uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510 # v3.3.0
+        with:
+          client-id: ${{ vars.CI_APP_CLIENT_ID }}
+          private-key: ${{ secrets.CI_APP_PRIVATE_KEY }}
+          permission-contents: write # push the `release/vX.Y.Z` branch and delete superseded ones
+          permission-pull-requests: write # create a release PR, update its body, close superseded PRs
       - uses: danielroe/uppt/pr@7bcfb5397c37202ef882363f755423130419d28a # v0.5.5
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ steps.app-token.outputs.token }}
           packages: |
             aliases
             core
