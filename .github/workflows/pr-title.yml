@@ -1,0 +1,24 @@
+name: 'Linter: PR title'
+
+# PRs are squash-merged, so the title becomes the commit uppt reads to pick the
+# next version
+on:
+  pull_request:
+    types: [opened, edited, reopened]
+    branches:
+      - main
+
+permissions: {}
+
+jobs:
+  conventional-commit:
+    # uppt titles its release PRs with the bare version (`v1.1.1`)
+    if: ${{ !startsWith(github.event.pull_request.head.ref, 'release/v') }}
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: read # read the PR title
+    steps:
+      - name: Check the PR title
+        uses: amannn/action-semantic-pull-request@48f256284bd46cdaab1048c3721360e808335d50 # v6.1.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
