@@ -1,0 +1,4 @@
+rules:
+  adhoc-packages:
+    # .npmrc sets package-lock=false, so every npm install is ad hoc by design
+    disable: true
