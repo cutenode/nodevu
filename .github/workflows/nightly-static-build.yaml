@@ -11,8 +11,7 @@ jobs:
   run-build:
     runs-on: ubuntu-latest
     permissions:
-      contents: write # push the `nightly` branch
-      pull-requests: write # open or update the data PR and assign it
+      contents: read # the app token below pushes and opens the PR
     steps:
       - name: Checkout the repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -34,9 +33,20 @@ jobs:
         run: npm run build:support -w static
       - name: Format Output
         run: npm run lint:write -w static
+      # runs on a PR opened with GITHUB_TOKEN wait for someone to approve them;
+      # runs on an app token's PR start on their own
+      - name: Create a GitHub App token
+        id: app-token
+        uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510 # v3.3.0
+        with:
+          client-id: ${{ vars.CI_APP_CLIENT_ID }}
+          private-key: ${{ secrets.CI_APP_PRIVATE_KEY }}
+          permission-contents: write # push the `nightly` branch
+          permission-pull-requests: write # open or update the data PR and assign it
       - name: Create or Update Pull Request
         uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8.1.1
         with:
+          token: ${{ steps.app-token.outputs.token }}
           title: 'feat: update data'
           body: 'Updates the static data based on a nightly (or manual) run of the build step in GitHub Actions. Unless the data is invalid, this should be good to go.'
           branch: 'nightly'
