@@ -1,0 +1,42 @@
+version: 2
+
+updates:
+  - package-ecosystem: npm
+    directories:
+      - '/'
+      - '/aliases'
+      - '/core'
+      - '/fetchindex'
+      - '/newest'
+      - '/oldest'
+      - '/opt'
+      - '/parsefiles'
+      - '/ranges'
+      - '/static'
+      - '/translate'
+    schedule:
+      interval: weekly
+    # skip releases younger than a week; security updates ignore this
+    cooldown:
+      default-days: 7
+    commit-message:
+      prefix: fix
+      prefix-development: chore
+      include: scope
+    groups:
+      # one PR per dependency, however many packages use it
+      npm:
+        group-by: dependency-name
+        patterns: ['*']
+
+  - package-ecosystem: github-actions
+    directory: '/'
+    schedule:
+      interval: weekly
+    cooldown:
+      default-days: 7
+    commit-message:
+      prefix: ci
+    groups:
+      actions:
+        patterns: ['*']
