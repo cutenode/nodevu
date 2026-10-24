@@ -1,4 +1,43 @@
 {
+	"v26": {
+		"codename": "",
+		"lts": {},
+		"phases": {
+			"dates": {
+				"start": "2026-05-05",
+				"lts": "2026-10-28",
+				"maintenance": "2027-10-20",
+				"end": "2029-04-30"
+			},
+			"current": "start"
+		}
+	},
+	"v25": {
+		"phases": {
+			"dates": {
+				"start": "2025-10-15",
+				"maintenance": "2026-04-01",
+				"end": "2026-06-01"
+			},
+			"current": "end"
+		}
+	},
+	"v24": {
+		"codename": "Krypton",
+		"lts": {
+			"newest": "24.22.1",
+			"oldest": "24.11.0"
+		},
+		"phases": {
+			"dates": {
+				"start": "2025-05-06",
+				"lts": "2025-10-28",
+				"maintenance": "2026-10-20",
+				"end": "2028-04-30"
+			},
+			"current": "maintenance"
+		}
+	},
 	"v23": {
 		"phases": {
 			"dates": {
@@ -6,13 +45,13 @@
 				"maintenance": "2025-04-01",
 				"end": "2025-06-01"
 			},
-			"current": "start"
+			"current": "end"
 		}
 	},
 	"v22": {
 		"codename": "Jod",
 		"lts": {
-			"newest": "22.11.0",
+			"newest": "22.23.4",
 			"oldest": "22.11.0"
 		},
 		"phases": {
@@ -22,7 +61,7 @@
 				"maintenance": "2025-10-21",
 				"end": "2027-04-30"
 			},
-			"current": "lts"
+			"current": "maintenance"
 		}
 	},
 	"v21": {
@@ -38,7 +77,7 @@
 	"v20": {
 		"codename": "Iron",
 		"lts": {
-			"newest": "20.18.0",
+			"newest": "20.20.2",
 			"oldest": "20.9.0"
 		},
 		"phases": {
@@ -48,7 +87,7 @@
 				"maintenance": "2024-10-22",
 				"end": "2026-04-30"
 			},
-			"current": "maintenance"
+			"current": "end"
 		}
 	},
 	"v19": {
@@ -64,7 +103,7 @@
 	"v18": {
 		"codename": "Hydrogen",
 		"lts": {
-			"newest": "18.20.4",
+			"newest": "18.20.8",
 			"oldest": "18.12.0"
 		},
 		"phases": {
@@ -74,7 +113,7 @@
 				"maintenance": "2023-10-18",
 				"end": "2025-04-30"
 			},
-			"current": "maintenance"
+			"current": "end"
 		}
 	},
 	"v17": {
