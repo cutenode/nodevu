@@ -301,4 +301,9 @@ describe('data should exist as it is defined when calling multiple aliases', asy
 		assert.deepStrictEqual(data.all, undefined);
 		assert.deepStrictEqual(data['lts/latest'], undefined);
 	});
+
+	it('every range should be present if an array with "all" and "lts/active" is passed', async () => {
+		const data = await ranges(['all', 'lts/active'], at());
+		assert.deepStrictEqual(data, await ranges('all', at()));
+	});
 });
