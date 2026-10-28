@@ -85,7 +85,10 @@ describe('check to make sure that Alpha releases work as expected', async () => 
 			'node-v27.0.0-alpha.1.0.0-linux-x64.tar.gz',
 			'node-v27.0.0-alpha.1.0.0-linux-x64.tar.xz',
 		]);
-		deepStrictEqual(source[0].files, ['node-v27.0.0-alpha.1.0.0.tar.xz']);
+		deepStrictEqual(source[0].files, [
+			'node-v27.0.0-alpha.1.0.0.tar.gz',
+			'node-v27.0.0-alpha.1.0.0.tar.xz',
+		]);
 	});
 
 	it('should have correct support values for a release line with an Alpha phase', async () => {
