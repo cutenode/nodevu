@@ -84,4 +84,9 @@ describe('data should exist as it is defined when calling a single alias', async
 			true,
 		);
 	});
+
+	it('only "lts/active" should be present if the string "lts/active" is passed', async () => {
+		const data = await ranges('lts/active', at());
+		assert.deepStrictEqual(Object.keys(data), ['lts/active']);
+	});
 });

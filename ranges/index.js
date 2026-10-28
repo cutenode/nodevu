@@ -273,14 +273,18 @@ async function generateRanges(filter, options) {
 		}
 	}
 
-	// make sure we remove any unrequested remnants from lts/active construction
-	if (Array.isArray(localFilter) && localFilter.includes('lts/active')) {
-		if (!localFilter.includes('lts/latest')) {
-			ranges['lts/latest'] = undefined;
+	// make sure we remove any unrequested remnants from lts/active construction.
+	// a string filter is checked as a one-item list, since `includes` on a
+	// string matches substrings
+	const requested = [localFilter].flat();
+
+	if (requested.includes('lts/active') && !requested.includes('all')) {
+		if (!requested.includes('lts/latest')) {
+			delete ranges['lts/latest'];
 		}
 
-		if (!localFilter.includes('lts/maintenance')) {
-			ranges['lts/maintenance'] = undefined;
+		if (!requested.includes('lts/maintenance')) {
+			delete ranges['lts/maintenance'];
 		}
 	}
 
