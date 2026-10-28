@@ -8,7 +8,9 @@
 		"lint:write": "oxlint --fix && oxfmt",
 		"coverage": "npm run coverage --ws --if-present",
 		"test": "npm run test --ws",
-		"updates": "npm run updates --ws"
+		"updates": "npm run updates --ws",
+		"docs": "doc-kit generate",
+		"docs:dev": "doc-kit generate && sirv out --dev"
 	},
 	"repository": {
 		"type": "git",
@@ -37,8 +39,12 @@
 		"opt"
 	],
 	"devDependencies": {
+		"@doc-kit/cli": "1.0.5",
+		"@doc-kit/generator-react": "0.5.0",
+		"@node-core/ui-components": "1.8.1",
 		"@oxlint/plugins": "1.89.0",
 		"oxfmt": "0.74.0",
-		"oxlint": "1.89.0"
+		"oxlint": "1.89.0",
+		"sirv-cli": "3.0.1"
 	}
 }
