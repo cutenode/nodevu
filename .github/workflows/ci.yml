@@ -100,6 +100,33 @@ jobs:
           done
           exit "$status"
 
+  # The published types are generated from the JSDoc, and committed since
+  # releases pack without installing anything, so check they're current
+  types:
+    if: github.repository == 'cutenode/nodevu'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Setup Node.js
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: current
+      # the packages import each other, so link the workspaces
+      - name: Run npm install
+        run: npm install -ws --include-workspace-root
+      - name: Build the types
+        run: npm run types
+      - name: Check the committed types match the source
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            git status --porcelain
+            echo "::error::the committed types are out of date, run npm run types and commit the result"
+            exit 1
+          fi
+
   test:
     needs: changes
     if: needs.changes.outputs.packages != '[]'
@@ -131,7 +158,7 @@ jobs:
   # required check that never reports blocks the merge
   ci-ok:
     if: always()
-    needs: [changes, lint, test]
+    needs: [changes, lint, types, test]
     runs-on: ubuntu-latest
     steps:
       - name: Fail if any job failed or was cancelled

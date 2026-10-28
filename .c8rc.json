@@ -1,6 +1,6 @@
 {
 	"all": true,
-	"exclude": ["coverage/**", "test/**"],
+	"exclude": ["coverage/**", "test/**", "**/*.d.ts"],
 	"check-coverage": true,
 	"branches": 100,
 	"functions": 100,

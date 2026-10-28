@@ -19,7 +19,8 @@
 	],
 	"files": [
 		"index.js",
-		"LICENSE"
+		"LICENSE",
+		"/types"
 	],
 	"author": "Tierney Cyren <hello@bnb.im>",
 	"license": "MIT",
@@ -29,5 +30,6 @@
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/cutenode/nodevu.git"
-	}
+	},
+	"types": "types/index.d.ts"
 }

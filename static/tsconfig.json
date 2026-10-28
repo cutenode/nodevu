@@ -1,0 +1,9 @@
+{
+	"extends": "../tsconfig.base.json",
+	"compilerOptions": {
+		// json.d.ts types the data files instead
+		"resolveJsonModule": false
+	},
+	"include": ["index.js", "json.d.ts"],
+	"references": [{ "path": "../core" }]
+}

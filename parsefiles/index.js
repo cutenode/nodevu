@@ -1,5 +1,23 @@
-// file should be a string
+/**
+ * @typedef {object} ParsedFile
+ * @property {string} id The identifier passed in, such as `'linux-x64'`.
+ * @property {string[]} files The file names that should exist for the
+ *   identifier.
+ * @property {'aix' | 'headers' | 'linux' | 'macos' | 'source' | 'sunos' | 'windows'} [type]
+ *   The platform, or what kind of files these are.
+ * @property {'x86' | 'x64' | 'arm64' | 'armv7l' | 'armv6l' | 'power' | 'z'} [architecture]
+ */
+
+/**
+ * Parses an identifier from the `files` of a release in the Node.js release
+ * index into the file names it stands for, its platform, and its architecture.
+ *
+ * @param {string} file An identifier, such as `'win-x64-msi'`.
+ * @param {string} version The release's version, without its `v`.
+ * @returns {ParsedFile}
+ */
 function parseFilename(file, version) {
+	/** @type {ParsedFile} */
 	const info = {
 		id: file,
 		files: [file],

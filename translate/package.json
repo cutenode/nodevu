@@ -34,5 +34,10 @@
 	},
 	"engines": {
 		"node": ">=18.0.0"
-	}
+	},
+	"types": "types/index.d.ts",
+	"files": [
+		"index.js",
+		"/types"
+	]
 }
