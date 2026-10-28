@@ -1,0 +1,139 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# a push run only tests what its own push changed, so pushes to main each get
+# their own group; sharing one would let a newer push replace a queued run
+concurrency:
+  group: ci-${{ github.event_name == 'pull_request' && github.ref || github.sha }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  # Pick the packages whose tests could change: a package's own files, the
+  # workspace packages it tests against, and anything shared by all of them
+  changes:
+    if: github.repository == 'cutenode/nodevu'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: read # list the files a PR changes
+    outputs:
+      packages: ${{ steps.packages.outputs.packages }}
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Find changed packages
+        id: filter
+        if: github.event_name != 'workflow_dispatch'
+        uses: dorny/paths-filter@ceb8a2b8f2d89434be7ff52d3de7ec3738c5cc9d # v4.0.3
+        with:
+          filters: |
+            shared: &shared
+              - 'package.json'
+              - '.c8rc.json'
+              - '.npmrc'
+              - '.github/workflows/ci.yml'
+            core: [*shared, 'core/**']
+            fetchindex: [*shared, 'fetchindex/**']
+            newest: [*shared, 'newest/**', 'core/**']
+            oldest: [*shared, 'oldest/**', 'core/**']
+            opt: [*shared, 'opt/**']
+            parsefiles: [*shared, 'parsefiles/**']
+            ranges: [*shared, 'ranges/**', 'core/**', 'aliases/**']
+            static: [*shared, 'static/**', 'core/**']
+            translate: [*shared, 'translate/**', 'ranges/**', 'core/**', 'aliases/**']
+      # a manual run tests every workspace that has a coverage script
+      - name: List packages to test
+        id: packages
+        env:
+          CHANGES: ${{ steps.filter.outputs.changes }}
+        run: |
+          if [ "$GITHUB_EVENT_NAME" = workflow_dispatch ]; then
+            packages=$(for ws in $(jq -r '.workspaces[]' package.json); do
+              jq -e '.scripts.coverage' "$ws/package.json" > /dev/null && echo "$ws"
+            done | jq -Rcs 'split("\n") | map(select(. != ""))')
+          else
+            packages=$(jq -c 'map(select(. != "shared"))' <<< "$CHANGES")
+          fi
+          echo "packages=$packages" >> "$GITHUB_OUTPUT"
+
+  # The root config lints every package, so one run covers the whole repo
+  lint:
+    if: github.repository == 'cutenode/nodevu'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Setup Node.js
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: current
+      - name: Run npm install
+        run: npm install --workspaces=false
+      - name: Run npm lint
+        run: npm run lint
+      # npm rejects a provenance publish when repository.url doesn't match the
+      # repo the release workflow runs in, so every package release.yml
+      # publishes has to name it
+      - name: Check published packages name this repository
+        run: |
+          status=0
+          for ws in aliases core fetchindex newest oldest parsefiles ranges static; do
+            if ! jq -e '.repository.url == "git+https://github.com/cutenode/nodevu.git"' "$ws/package.json" > /dev/null; then
+              echo "::error file=$ws/package.json::repository.url must be git+https://github.com/cutenode/nodevu.git"
+              status=1
+            fi
+          done
+          exit "$status"
+
+  test:
+    needs: changes
+    if: needs.changes.outputs.packages != '[]'
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        package: ${{ fromJSON(needs.changes.outputs.packages) }}
+        node-version: [current, lts/*, lts/-1]
+    env:
+      PACKAGE: ${{ matrix.package }}
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Install most recent npm
+        run: npm install -g npm
+      - name: Run npm install -w ${{ matrix.package }}
+        run: npm install -w "$PACKAGE"
+      - name: Run npm run coverage -w ${{ matrix.package }}
+        run: npm run coverage -w "$PACKAGE"
+
+  # The one check to require on main: path filters skip the other jobs, and a
+  # required check that never reports blocks the merge
+  ci-ok:
+    if: always()
+    needs: [changes, lint, test]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fail if any job failed or was cancelled
+        if: contains(needs.*.result, 'failure') || contains(needs.*.result, 'cancelled')
+        run: exit 1
