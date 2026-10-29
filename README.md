@@ -21,7 +21,7 @@ nodevu is composed of a set of modules:
 ## Development
 
 - `npm test` and `npm run coverage` run every module's tests.
-- `npm run lint` checks the whole repo with oxlint and oxfmt.
+- `npm run lint` checks the whole repo with oxlint and oxfmt, and checks with [docov](https://github.com/cutenode/docov) that everything the modules export has JSDoc. `docov.jsonc` sets what it scans.
 - `npm run types` type-checks the JSDoc and writes each module's TypeScript declarations to its `types/` folder. Commit them: CI fails when they're out of date.
 - `npm run docs:dev` builds the docs from `docs/pages/` with [doc-kit](https://doc-kit.nodejs.org/) and serves them locally. `npm run docs` only builds them, into `out/`.
 
