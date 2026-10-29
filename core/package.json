@@ -22,7 +22,7 @@
 		"/util/prod"
 	],
 	"dependencies": {
-		"@nodevu/parsefiles": "^0.0.3",
+		"@nodevu/parsefiles": "^1.1.0",
 		"luxon": "^3.5.0",
 		"semver": "^7.6.3"
 	},
