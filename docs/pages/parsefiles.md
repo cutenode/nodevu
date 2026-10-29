@@ -1,3 +1,7 @@
+---
+title: '@nodevu/parsefiles'
+---
+
 # `@nodevu/parsefiles`
 
 <!--source_link=parsefiles/index.js-->

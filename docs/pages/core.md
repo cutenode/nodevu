@@ -1,3 +1,7 @@
+---
+title: '@nodevu/core'
+---
+
 # `@nodevu/core`
 
 <!--source_link=core/index.js-->

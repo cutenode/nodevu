@@ -1,3 +1,7 @@
+---
+title: '@nodevu/newest'
+---
+
 # `@nodevu/newest`
 
 <!--source_link=newest/index.js-->

@@ -1,3 +1,7 @@
+---
+title: '@nodevu/opt'
+---
+
 # `@nodevu/opt`
 
 <!--source_link=opt/index.js-->
