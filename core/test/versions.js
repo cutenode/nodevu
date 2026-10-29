@@ -6,7 +6,8 @@ const optionsParser = require('../util/prod/optionsParser');
 
 // checks that verify the result of data returned
 function check(data) {
-	match(data[0].version, /^v\d+\.\d+\.\d+$/);
+	// the newest release can be a prerelease, like v27.0.0-alpha.0.0.0
+	match(data[0].version, /^v\d+\.\d+\.\d+(-[0-9A-Za-z.-]+)?$/);
 	match(data[0].date, /^\d{4}-\d{2}-\d{2}$/);
 	deepStrictEqual(Array.isArray(data[0].files), true);
 	match(data[0].npm, /^\d+\.\d+\.\d+/);
