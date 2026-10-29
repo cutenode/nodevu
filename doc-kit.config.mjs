@@ -8,6 +8,8 @@ const { version } = JSON.parse(
 
 const repository = 'cutenode/nodevu';
 
+const baseURL = 'https://cutenode.github.io/nodevu';
+
 const description =
 	'nodevu collects, merges, and reasons about Node.js versions: release lines, LTS and security releases, support phases, and downloadable files.';
 
@@ -20,7 +22,7 @@ export default {
 		version,
 		repository,
 		ref: 'main',
-		baseURL: 'https://cutenode.github.io/nodevu',
+		baseURL,
 		input: ['docs/pages/**/*.md'],
 		output: 'out',
 	},
@@ -86,6 +88,11 @@ export default {
 			meta: [
 				{ name: 'description', content: description },
 				{ property: 'og:description', content: description },
+			],
+			html: [
+				// absolute URLs make the sidebar mark every page as an external
+				// link, so only links that leave the site keep the arrow
+				`<style>li > a[href^="${baseURL}/"] > div > svg { display: none; }</style>`,
 			],
 		},
 	},
