@@ -1,5 +1,6 @@
-const { deepStrictEqual } = require('node:assert');
+const { deepStrictEqual, ok, strictEqual } = require('node:assert');
 const { describe, it } = require('node:test');
+const fc = require('fast-check');
 const { fetch: undiciFetch } = require('undici');
 const { DateTime } = require('luxon');
 const opt = require('../index');
@@ -73,3 +74,50 @@ describe('the parseOptions module should still work when defaults are changed', 
 		deepStrictEqual(defaultParsedOptions.urls.schedule, 'https://example.com');
 	});
 });
+
+describe('opt', async () => {
+	it('should use each option passed and the default for each one left out', async () => {
+		await fc.assert(
+			fc.property(options(), (input) => {
+				// Arrange
+				const defaults = opt();
+
+				// Act
+				const result = opt(input);
+
+				// Assert
+				strictEqual(result.fetch, input.fetch ?? defaults.fetch);
+				strictEqual(
+					result.urls.index,
+					input.urls?.index ?? defaults.urls.index,
+				);
+				strictEqual(
+					result.urls.schedule,
+					input.urls?.schedule ?? defaults.urls.schedule,
+				);
+
+				if (input.now === undefined) {
+					ok(DateTime.isDateTime(result.now));
+				} else {
+					strictEqual(result.now, input.now);
+				}
+			}),
+		);
+	});
+});
+
+// Helpers
+
+// any subset of the options opt takes, each one set to a usable value
+function options() {
+	const value = fc.string({ minLength: 1 });
+
+	return fc.record(
+		{
+			fetch: fc.func(fc.anything()),
+			now: value,
+			urls: fc.record({ index: value, schedule: value }, { requiredKeys: [] }),
+		},
+		{ requiredKeys: [] },
+	);
+}
