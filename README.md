@@ -1,6 +1,6 @@
 # nodevu
 
-nodevu is a Node.js Version Utility meant to collect, merge, and reason about Node.js versions in a way that's explicitly developer friendly.
+nodevu is a Node.js Version Utility meant to collect, merge, and reason about Node.js versions in a way that's explicitly developer friendly. Its docs live at [cutenode.github.io/nodevu](https://cutenode.github.io/nodevu/).
 
 nodevu is composed of a set of modules:
 
@@ -17,3 +17,12 @@ nodevu is composed of a set of modules:
   - [parsefiles](./parsefiles/): this is a utility for parsing the `files` property of the [Node.js distributions JSON](https://nodejs.org/dist/index.json) file to understand the available files for any given set of identifiers from that list. It also provides additional, potentially useful information.
   - [opt](./opt/): this is a utility for generating a usable `options` for `@nodevu/core`.
   - [fetchindex](./fetchindex/): this is a utility for fetching `/dist/index.json` from `nodejs.org` for `@nodevu/core`. Might be useful for other projects.
+
+## Development
+
+- `npm test` and `npm run coverage` run every module's tests.
+- `npm run lint` checks the whole repo with oxlint and oxfmt.
+- `npm run types` type-checks the JSDoc and writes each module's TypeScript declarations to its `types/` folder. Commit them: CI fails when they're out of date.
+- `npm run docs:dev` builds the docs from `docs/pages/` with [doc-kit](https://doc-kit.nodejs.org/) and serves them locally. `npm run docs` only builds them, into `out/`.
+
+Merging to `main` publishes the docs to GitHub Pages.
