@@ -22,7 +22,7 @@ jobs:
         with:
           node-version: latest
       - name: Run npm install
-        run: npm install -ws --include-workspace-root
+        run: npm install --workspaces --include-workspace-root
       - name: Run build:default
         run: npm run build:default -w static
       - name: Run build:releases

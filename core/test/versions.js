@@ -1,4 +1,4 @@
-const { deepStrictEqual, match } = require('node:assert');
+const { deepStrictEqual, match, rejects } = require('node:assert');
 const { describe, it } = require('node:test');
 const { fetch: undiciFetch } = require('undici');
 const versions = require('../util/prod/versions');
@@ -61,3 +61,24 @@ describe('versions should work with optionsParser', async () => {
 		check(data);
 	});
 });
+
+describe('versions', async () => {
+	it('should reject naming the URL and status when the response is not ok', async () => {
+		// Arrange
+		const url = 'https://nodejs.org/dist/index.json';
+
+		// Act
+		const result = versions({ fetch: notFound, urls: { index: url } });
+
+		// Assert
+		await rejects(result, {
+			message: `Fetching ${url} failed: 404 Not Found`,
+		});
+	});
+});
+
+// Helpers
+
+async function notFound() {
+	return new Response('Not Found', { status: 404, statusText: 'Not Found' });
+}

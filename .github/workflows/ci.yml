@@ -116,7 +116,7 @@ jobs:
           node-version: current
       # the packages import each other, so link the workspaces
       - name: Run npm install
-        run: npm install -ws --include-workspace-root
+        run: npm install --workspaces --include-workspace-root
       - name: Build the types
         run: npm run types
       - name: Check the committed types match the source

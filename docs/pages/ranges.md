@@ -94,10 +94,12 @@ The releases in `versions`, and `newest`, `oldest`, `newestLts`, and
 - Type: {Object}
   - `versions` {string[]} The releases of `lts/latest`, then those of
     `lts/maintenance`.
-  - `oldestLts` {string} The `oldestLts` of `lts/maintenance`.
-  - `oldestSecurity` {string} The `oldestSecurity` of `lts/maintenance`.
-  - `newestLts` {string} The `newestLts` of `lts/latest`.
-  - `newestSecurity` {string} The `newestSecurity` of `lts/latest`.
+  - `oldestLts` {string} The first LTS release of the oldest line, which is
+    in `lts/maintenance` unless that's empty.
+  - `oldestSecurity` {string} The oldest security release of the oldest line.
+  - `newestLts` {string} The newest LTS release of the newest line, which is
+    in `lts/latest` unless that's empty.
+  - `newestSecurity` {string} The newest security release of the newest line.
   - `newest` {string} The newest release.
   - `oldest` {string} The oldest release.
 
