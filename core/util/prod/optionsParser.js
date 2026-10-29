@@ -1,11 +1,23 @@
 const { DateTime } = require('luxon');
 
+/**
+ * @typedef {object} ParsedOptions
+ * @property {typeof fetch} fetch
+ * @property {string | DateTime} now
+ * @property {{ index: string, schedule: string }} urls
+ */
+
 // this function allows us to parse user-passed options.
 //
 // this is particularly useful for tests so we can reduce variables
 // and ensure that our test suite is able to be consistent.
+/**
+ * @param {import('../../index').Options} [options]
+ * @returns {ParsedOptions}
+ */
 function parseOptions(options) {
 	// set up our defaults
+	/** @type {ParsedOptions} */
 	const parsedOptions = {
 		fetch: globalThis.fetch,
 		now: DateTime.now(),

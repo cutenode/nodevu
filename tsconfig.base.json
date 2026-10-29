@@ -1,0 +1,17 @@
+{
+	"compilerOptions": {
+		"allowJs": true,
+		"checkJs": true,
+		"composite": true,
+		"declaration": true,
+		"emitDeclarationOnly": true,
+		"strict": true,
+		"module": "nodenext",
+		"target": "es2022",
+		"types": ["node"],
+		"skipLibCheck": true,
+		"rootDir": "${configDir}",
+		"outDir": "${configDir}/types",
+		"tsBuildInfoFile": "${configDir}/node_modules/.cache/types.tsbuildinfo"
+	}
+}

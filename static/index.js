@@ -3,10 +3,29 @@ const releasesData = require('./data/releases.json');
 const securityData = require('./data/security.json');
 const supportData = require('./data/support.json');
 
-module.exports.default = defaultData;
+/**
+ * Everything `@nodevu/core` returns.
+ */
+module.exports.default = /** @type {import('@nodevu/core').Data} */ (
+	defaultData
+);
 
-module.exports.releases = releasesData;
+/**
+ * The releases of each release line.
+ */
+module.exports.releases =
+	/** @type {Record<string, import('@nodevu/core').ReleaseLine['releases']>} */ (
+		releasesData
+	);
 
-module.exports.security = securityData;
+/**
+ * The security releases of each release line.
+ */
+module.exports.security =
+	/** @type {Record<string, import('@nodevu/core').Security>} */ (securityData);
 
-module.exports.support = supportData;
+/**
+ * The support phases of each release line the release schedule lists.
+ */
+module.exports.support =
+	/** @type {Record<string, import('@nodevu/core').Support>} */ (supportData);

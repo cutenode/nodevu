@@ -19,10 +19,12 @@
 	"files": [
 		"index.js",
 		"LICENSE",
-		"/util/prod"
+		"/util/prod",
+		"/types"
 	],
 	"dependencies": {
 		"@nodevu/parsefiles": "^1.1.0",
+		"@types/luxon": "^3.7.6",
 		"luxon": "^3.5.0",
 		"semver": "^7.6.3"
 	},
@@ -34,5 +36,6 @@
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/cutenode/nodevu.git"
-	}
+	},
+	"types": "types/index.d.ts"
 }

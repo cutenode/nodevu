@@ -67,6 +67,29 @@ const defaultRangesObject = {
 // If you figure one out, or there's one in the future, please feel free
 // to submit a PR to update this code.
 
+/**
+ * A range of versions. The fields a range doesn't have, or has nothing to
+ * point to, are `undefined`.
+ *
+ * @typedef {object} Range
+ * @property {string[]} versions The versions in the range, newest first.
+ * @property {string} [newest]
+ * @property {string} [oldest]
+ * @property {string} [newestLts]
+ * @property {string} [oldestLts]
+ * @property {string} [newestSecurity]
+ * @property {string} [oldestSecurity]
+ */
+
+/**
+ * Works out ranges of Node.js versions, named by `@nodevu/aliases`.
+ *
+ * @param {import('@nodevu/aliases').Alias | readonly import('@nodevu/aliases').Alias[]} [filter]
+ *   The ranges to work out. Defaults to `'all'`, every range.
+ * @param {import('@nodevu/core').Options} [options] Passed to `@nodevu/core`.
+ * @returns {Promise<Partial<Record<import('@nodevu/aliases').Alias, Range>>>}
+ *   A key per range. A range with no releases is left out.
+ */
 async function generateRanges(filter, options) {
 	let localFilter = filter;
 
@@ -106,6 +129,7 @@ async function generateRanges(filter, options) {
 	//
 	// modifying the default object has some super wonky side effects
 	// on subsequent calls to this function that we don't want.
+	/** @type {Record<string, Range>} */
 	const ranges = JSON.parse(JSON.stringify(defaultRangesObject));
 
 	for (const line in data) {
@@ -185,8 +209,8 @@ async function generateRanges(filter, options) {
 						// only the first LTS line fills these in, same as 'current'
 						ranges['lts/latest'].oldestSecurity = data[line].security.oldest;
 						ranges['lts/latest'].newestSecurity = data[line].security.newest;
-						ranges['lts/latest'].oldestLts = data[line].support.lts.oldest;
-						ranges['lts/latest'].newestLts = data[line].support.lts.newest;
+						ranges['lts/latest'].oldestLts = data[line].support.lts?.oldest;
+						ranges['lts/latest'].newestLts = data[line].support.lts?.newest;
 					}
 				}
 			}
@@ -209,18 +233,20 @@ async function generateRanges(filter, options) {
 					if (ranges['lts/maintenance'].versions.length === 1) {
 						ranges['lts/maintenance'].newestSecurity =
 							data[line].security.newest;
-						ranges['lts/maintenance'].newestLts = data[line].support.lts.newest;
+						ranges['lts/maintenance'].newestLts =
+							data[line].support.lts?.newest;
 					}
 
 					if (
 						ranges['lts/maintenance'].oldestSecurity !==
 							data[line].security.oldest ||
 						ranges['lts/maintenance'].oldestLts !==
-							data[line].support.lts.oldest
+							data[line].support.lts?.oldest
 					) {
 						ranges['lts/maintenance'].oldestSecurity =
 							data[line].security.oldest;
-						ranges['lts/maintenance'].oldestLts = data[line].support.lts.oldest;
+						ranges['lts/maintenance'].oldestLts =
+							data[line].support.lts?.oldest;
 					}
 				}
 			}

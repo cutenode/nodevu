@@ -1,0 +1,22 @@
+{
+	"compilerOptions": {
+		"strict": true,
+		"module": "nodenext",
+		"target": "es2022",
+		"types": ["node"],
+		"noEmit": true
+	},
+	"files": ["test/types.mts"],
+	"references": [
+		{ "path": "aliases" },
+		{ "path": "core" },
+		{ "path": "fetchindex" },
+		{ "path": "newest" },
+		{ "path": "oldest" },
+		{ "path": "opt" },
+		{ "path": "parsefiles" },
+		{ "path": "ranges" },
+		{ "path": "static" },
+		{ "path": "translate" }
+	]
+}

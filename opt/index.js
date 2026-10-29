@@ -1,11 +1,26 @@
 const { DateTime } = require('luxon');
 
+/**
+ * @typedef {object} Options
+ * @property {typeof fetch} fetch
+ * @property {string | DateTime} now An ISO 8601 date, or a Luxon `DateTime`.
+ * @property {{ index: string, schedule: string }} urls
+ */
+
 // this function allows us to parse user-passed options.
 //
 // this is particularly useful for tests so we can reduce variables
 // and ensure that our test suite is able to be consistent.
+/**
+ * Builds the options `@nodevu/core` takes, filling in a default for each one
+ * left out.
+ *
+ * @param {{ fetch?: typeof fetch, now?: string | DateTime, urls?: { index?: string, schedule?: string } }} [inputOptions]
+ * @returns {Options}
+ */
 function opt(inputOptions) {
 	// set up our defaults
+	/** @type {Options} */
 	const result = {
 		fetch: globalThis.fetch,
 		now: DateTime.now(),

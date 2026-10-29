@@ -1,3 +1,20 @@
+/**
+ * The Node.js release schedule, keyed by release line.
+ *
+ * @typedef {Record<string, {
+ *   alpha?: string,
+ *   start?: string,
+ *   lts?: string,
+ *   maintenance?: string,
+ *   end?: string,
+ *   codename?: string,
+ * }>} Schedule
+ */
+
+/**
+ * @param {import('./optionsParser').ParsedOptions} options
+ * @returns {Promise<Schedule>}
+ */
 async function schedule(options) {
 	// parse our options and set up fetch if a custom fetch is passed
 	const fetch = options.fetch;
