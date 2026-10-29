@@ -1,3 +1,7 @@
+---
+title: '@nodevu/static'
+---
+
 # `@nodevu/static`
 
 <!--source_link=static/index.js-->

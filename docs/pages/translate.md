@@ -1,3 +1,7 @@
+---
+title: '@nodevu/translate'
+---
+
 # `@nodevu/translate`
 
 <!--source_link=translate/index.js-->

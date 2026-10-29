@@ -1,3 +1,7 @@
+---
+title: '@nodevu/fetchindex'
+---
+
 # `@nodevu/fetchindex`
 
 <!--source_link=fetchindex/index.js-->

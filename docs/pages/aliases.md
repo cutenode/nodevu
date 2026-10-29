@@ -1,3 +1,7 @@
+---
+title: '@nodevu/aliases'
+---
+
 # `@nodevu/aliases`
 
 <!--source_link=aliases/index.js-->
