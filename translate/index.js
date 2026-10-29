@@ -16,11 +16,14 @@ const translations = /** @type {const} */ ({
  * @returns {Promise<(typeof translations)[Term]>}
  */
 async function translate(legacyName) {
-	if (!translations[legacyName]) {
+	// an own-property check, so names like `toString` don't resolve to
+	// Object.prototype's members
+	if (!Object.hasOwn(translations, legacyName)) {
 		throw new Error(`Unknown value: ${legacyName}`);
 	}
 
-	return translations[legacyName];
+	// a copy, so a caller changing the result can't change later results
+	return [...translations[legacyName]];
 }
 
 module.exports = translate;

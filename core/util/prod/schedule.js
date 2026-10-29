@@ -22,6 +22,11 @@ async function schedule(options) {
 
 	// fetch the url, get the json from the fetched URL that we're going to use
 	const raw = await fetch(url);
+
+	if (!raw.ok) {
+		throw new Error(`Fetching ${url} failed: ${raw.status} ${raw.statusText}`);
+	}
+
 	const schedule = await raw.json();
 
 	return schedule;

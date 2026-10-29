@@ -40,15 +40,9 @@ function parseFilename(file, version) {
 		info.files[0] = `node-v${version}.pkg`;
 	} else if (info.files[0].includes('osx-')) {
 		// macOS filenames, but with architectures. Different than the above.
-		const basemacOSString = `node-v${version}-darwin-`;
-
-		if (info.files[0].includes('arm64')) {
-			info.files[0] = basemacOSString.concat('arm64.tar.gz');
-		}
-
-		if (info.files[0].includes('x64')) {
-			info.files[0] = basemacOSString.concat('x64.tar.gz');
-		}
+		info.files[0] = `node-v${version}-${info.files[0]
+			.replace('osx-', 'darwin-')
+			.replace('-tar', '.tar.gz')}`;
 	} else if (info.files[0].includes('-7z')) {
 		// windows filenames
 		info.files[0] = `node-v${version}-${info.files[0].replace('-7z', '.7z')}`;
@@ -59,14 +53,11 @@ function parseFilename(file, version) {
 			.replace('-msi', '.msi')
 			.replace('win-', '')}`;
 	} else if (info.files[0].includes('-exe')) {
-		info.files[0] = 'win-x64/node.exe';
-		info.files.push('win-x64/node.lib');
-		info.files.push('win-x64/node_pdb.7z');
-		info.files.push('win-x64/node_pdb.zip');
-		info.files.push('win-x86/node.exe');
-		info.files.push('win-x86/node.lib');
-		info.files.push('win-x86/node_pdb.7z');
-		info.files.push('win-x86/node_pdb.zip');
+		// windows executables, in a directory named after the architecture
+		const directory = info.files[0].replace('-exe', '');
+		info.files = ['node.exe', 'node.lib', 'node_pdb.7z', 'node_pdb.zip'].map(
+			(name) => `${directory}/${name}`,
+		);
 	} else if (info.files[0] === 'src') {
 		// source filenames.
 		info.files[0] = `node-v${version}.tar.gz`;
