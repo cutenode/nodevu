@@ -1,7 +1,10 @@
 {
 	"v26": {
 		"codename": "",
-		"lts": {},
+		"lts": {
+			"newest": "26.13.0",
+			"oldest": "26.13.0"
+		},
 		"phases": {
 			"dates": {
 				"start": "2026-05-05",
@@ -25,7 +28,7 @@
 	"v24": {
 		"codename": "Krypton",
 		"lts": {
-			"newest": "24.22.1",
+			"newest": "24.22.2",
 			"oldest": "24.11.0"
 		},
 		"phases": {
