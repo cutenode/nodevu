@@ -9,9 +9,11 @@ import Logo from '#theme/Logo';
 
 import styles from '@node-core/ui-components/Containers/NavBar/index.module.css';
 
-// doc-kit's navigation bar, except the logo links to the site's index
-// relative to the page. the NavBar links it to `/`, which leaves the site
-// when it's served from a subpath, like GitHub Pages' /nodevu/
+/**
+ * doc-kit's navigation bar, except the logo links to the site's index
+ * relative to the page. The NavBar links it to `/`, which leaves the site
+ * when it's served from a subpath, like GitHub Pages' /nodevu/.
+ */
 export default ({ metadata }) => {
 	const home = `${relativeOrAbsolute('/index', metadata.path)}.html`;
 

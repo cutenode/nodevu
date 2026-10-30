@@ -1,0 +1,12 @@
+{
+	"$schema": "https://raw.githubusercontent.com/cutenode/docov/v0.1.1/docov.schema.json",
+	"exclude": [
+		"**/test/**",
+		// generated from the JSDoc by `npm run types`, and TypeScript 7 leaves
+		// @typedef descriptions out of them
+		"*/types/**",
+		// vendored oxlint plugin
+		"tools/oxlint/anti-slop/**",
+	],
+	"threshold": 100,
+}

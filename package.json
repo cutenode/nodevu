@@ -4,7 +4,7 @@
 	"description": "comprehensive node.js version tooling",
 	"main": "index.js",
 	"scripts": {
-		"lint": "oxlint && oxfmt --check",
+		"lint": "oxlint && oxfmt --check && docov",
 		"lint:write": "oxlint --fix && oxfmt",
 		"coverage": "npm run coverage --ws --if-present",
 		"test": "npm run test --ws",
@@ -42,6 +42,7 @@
 	"devDependencies": {
 		"@doc-kit/cli": "1.0.5",
 		"@doc-kit/generator-react": "0.5.0",
+		"@docov/cli": "0.1.1",
 		"@node-core/ui-components": "1.8.1",
 		"@oxlint/plugins": "1.89.0",
 		"@types/luxon": "3.7.6",
