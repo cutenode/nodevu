@@ -1,6 +1,9 @@
 const { writeFile } = require('node:fs/promises');
 const { resolve } = require('node:path');
 
+/**
+ * Writes `data` to `path` as JSON indented with two spaces.
+ */
 async function write(path, data) {
 	const outputJSON = JSON.stringify(data, null, 2);
 	let filepath = resolve(path);

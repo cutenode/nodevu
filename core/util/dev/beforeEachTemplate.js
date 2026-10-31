@@ -8,6 +8,11 @@ const {
 const staticIndex = require('../../test/data/static/index.json');
 const staticSchedule = require('../../test/data/static/schedule.json');
 
+/**
+ * Mocks the network for a test: the default and `https://bnb.im` index.json
+ * and schedule.json URLs serve core's static snapshots, and any other request
+ * fails.
+ */
 function beforeEachTemplate() {
 	// this fixes a bug in Node.js - it should be fixed _eventually_ and can be removed: https://github.com/nodejs/undici/issues/1248
 	dns.setDefaultResultOrder('ipv4first');
