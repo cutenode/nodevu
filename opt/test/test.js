@@ -1,9 +1,28 @@
 const { deepStrictEqual, ok, strictEqual } = require('node:assert');
+const { readFileSync } = require('node:fs');
 const { describe, it } = require('node:test');
 const fc = require('fast-check');
 const { fetch: undiciFetch } = require('undici');
 const { DateTime } = require('luxon');
 const opt = require('../index');
+const { dependencies } = require('../package.json');
+
+describe('the published package', () => {
+	it('should list everything index.js requires in dependencies', () => {
+		const source = readFileSync(require.resolve('../index'), 'utf8');
+
+		const required = source
+			.matchAll(/require\('([^.'][^']*)'\)/g)
+			.map(([, name]) => name)
+			.toArray();
+
+		ok(required.length > 0);
+		deepStrictEqual(
+			required.filter((name) => !dependencies?.[name]),
+			[],
+		);
+	});
+});
 
 describe('the parseOptions module should return all correct defaults', async () => {
 	it('should return the default date', async () => {
