@@ -53,6 +53,7 @@ jobs:
               - '.npmrc'
               - 'package-lock.json'
               - '.github/workflows/ci.yml'
+            aliases: [*shared, 'aliases/**']
             core: [*shared, 'core/**', 'parsefiles/**']
             fetchindex: [*shared, 'fetchindex/**']
             newest: [*shared, 'newest/**', 'core/**', 'parsefiles/**']

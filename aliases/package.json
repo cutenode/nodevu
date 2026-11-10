@@ -20,14 +20,18 @@
 	"scripts": {
 		"lint": "oxlint && oxfmt --check",
 		"lint:write": "oxlint --fix && oxfmt",
-		"test": "",
+		"test": "node --test",
 		"updates:check": "npx npm-check-updates",
-		"updates:update": "npx npm-check-updates -u"
+		"updates:update": "npx npm-check-updates -u",
+		"coverage": "c8 node --test"
 	},
 	"types": "types/index.d.ts",
 	"files": [
 		"index.js",
 		"/types"
 	],
-	"type": "commonjs"
+	"type": "commonjs",
+	"devDependencies": {
+		"c8": "^12.0.0"
+	}
 }
