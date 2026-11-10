@@ -12,9 +12,7 @@
 		"lint": "oxlint && oxfmt --check",
 		"lint:write": "oxlint --fix && oxfmt",
 		"test": "node --test test/*.test.js",
-		"coverage": "c8 node --test test/*.test.js",
-		"updates:check": "npx npm-check-updates",
-		"updates:update": "npx npm-check-updates -u"
+		"coverage": "c8 node --test test/*.test.js"
 	},
 	"repository": {
 		"type": "git",

@@ -10,7 +10,6 @@
 		"lint:workspaces": "node --test test/workspaces.test.mjs",
 		"coverage": "npm run coverage --ws --if-present",
 		"test": "npm run test --ws",
-		"updates": "npm run updates --ws",
 		"docs": "doc-kit generate",
 		"docs:dev": "doc-kit generate && sirv out --dev",
 		"types": "tsc -b",

@@ -21,8 +21,6 @@
 		"lint": "oxlint && oxfmt --check",
 		"lint:write": "oxlint --fix && oxfmt",
 		"test": "node --test",
-		"updates:check": "npx npm-check-updates",
-		"updates:update": "npx npm-check-updates -u",
 		"coverage": "c8 node --test"
 	},
 	"types": "types/index.d.ts",
