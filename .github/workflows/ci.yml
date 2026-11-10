@@ -46,15 +46,15 @@ jobs:
               - '.npmrc'
               - 'package-lock.json'
               - '.github/workflows/ci.yml'
-            core: [*shared, 'core/**', 'fixtures/**']
+            core: [*shared, 'core/**', 'fetchindex/**', 'fixtures/**']
             fetchindex: [*shared, 'fetchindex/**']
-            newest: [*shared, 'newest/**', 'core/**', 'fixtures/**']
-            oldest: [*shared, 'oldest/**', 'core/**', 'fixtures/**']
+            newest: [*shared, 'newest/**', 'core/**', 'fetchindex/**', 'fixtures/**']
+            oldest: [*shared, 'oldest/**', 'core/**', 'fetchindex/**', 'fixtures/**']
             opt: [*shared, 'opt/**']
             parsefiles: [*shared, 'parsefiles/**', 'fixtures/**']
-            ranges: [*shared, 'ranges/**', 'core/**', 'aliases/**', 'fixtures/**']
-            static: [*shared, 'static/**', 'core/**', 'fixtures/**']
-            translate: [*shared, 'translate/**', 'ranges/**', 'core/**', 'aliases/**', 'fixtures/**']
+            ranges: [*shared, 'ranges/**', 'core/**', 'fetchindex/**', 'aliases/**', 'fixtures/**']
+            static: [*shared, 'static/**', 'core/**', 'fetchindex/**', 'fixtures/**']
+            translate: [*shared, 'translate/**', 'ranges/**', 'core/**', 'fetchindex/**', 'aliases/**', 'fixtures/**']
             fixtures: [*shared, 'fixtures/**']
       # a manual run tests every workspace that has a coverage script
       - name: List packages to test
