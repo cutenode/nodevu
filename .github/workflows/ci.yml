@@ -82,7 +82,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
-          node-version: current
+          node-version-file: .node-version
           # no npm cache: npm ci takes seconds, and devEngines in package.json would
           # otherwise switch one on
           package-manager-cache: false
@@ -119,7 +119,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
-          node-version: current
+          node-version-file: .node-version
           package-manager-cache: false
       # the packages import each other, so link the workspaces
       - name: Run npm ci
@@ -142,7 +142,9 @@ jobs:
       fail-fast: false
       matrix:
         package: ${{ fromJSON(needs.changes.outputs.packages) }}
-        node-version: [current, lts/*, lts/-1]
+        # the LTS lines whose bundled npm meets devEngines; `current` would
+        # install the next major's alpha
+        node-version: [26, 24]
     env:
       PACKAGE: ${{ matrix.package }}
     steps:
