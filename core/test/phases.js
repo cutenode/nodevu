@@ -43,18 +43,22 @@ describe('support.phases.current', async () => {
 					),
 				};
 
+				const isoNow = now.toISODate();
+				assert.ok(isoNow);
+
 				// Act
 				const data = await nodevu({
 					fetch: async (url) =>
 						Response.json(
-							url.endsWith('schedule.json')
+							String(url).endsWith('schedule.json')
 								? schedule
 								: [{ version: 'v30.0.0', files: ['src'], lts: false }],
 						),
-					now: now.toISODate(),
+					now: isoNow,
 				});
 
 				// Assert
+				assert.ok(data.v30.support);
 				assert.strictEqual(data.v30.support.phases.current, phases[phase]);
 			}),
 		);

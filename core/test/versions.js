@@ -1,15 +1,32 @@
-const { deepStrictEqual, match, rejects } = require('node:assert');
+const { deepStrictEqual, match, ok, rejects } = require('node:assert');
 const { describe, it } = require('node:test');
-const { fetch: undiciFetch } = require('undici');
+const undici = require('undici');
 const versions = require('../util/prod/versions');
 const optionsParser = require('../util/prod/optionsParser');
 
+// undici's types only take its own Request class, so they don't match the
+// global fetch's type even though it works as one
+const undiciFetch = /** @type {typeof fetch} */ (
+	/** @type {unknown} */ (undici.fetch)
+);
+
+/** @typedef {import('../util/prod/optionsParser').ParsedOptions} ParsedOptions */
+
 // checks that verify the result of data returned
+/** @param {import('../util/prod/versions').IndexRelease[]} data */
 function check(data) {
 	// the newest release can be a prerelease, like v27.0.0-alpha.0.0.0
 	match(data[0].version, /^v\d+\.\d+\.\d+(-[0-9A-Za-z.-]+)?$/);
 	match(data[0].date, /^\d{4}-\d{2}-\d{2}$/);
 	deepStrictEqual(Array.isArray(data[0].files), true);
+	ok(
+		data[0].npm &&
+			data[0].v8 &&
+			data[0].uv &&
+			data[0].zlib &&
+			data[0].openssl &&
+			data[0].modules,
+	);
 	match(data[0].npm, /^\d+\.\d+\.\d+/);
 	match(data[0].v8, /^\d+\.\d+\.\d+/);
 	match(data[0].uv, /^\d+\.\d+\.\d+/);
@@ -25,13 +42,14 @@ function check(data) {
 	deepStrictEqual([true, false].includes(data[0].security), true);
 }
 
-// set up options object that would normally be passed to the module
-const options = {
+// set up options object that would normally be passed to the module. the
+// module only reads fetch and its own URL
+const options = /** @type {ParsedOptions} */ ({
 	fetch: globalThis.fetch,
 	urls: {
 		index: 'https://nodejs.org/dist/index.json',
 	},
-};
+});
 
 describe('under normal condiditons, versions should work', async () => {
 	it('should work with default options', async () => {
@@ -69,7 +87,9 @@ describe('versions', async () => {
 		const url = 'https://nodejs.org/dist/index.json';
 
 		// Act
-		const result = versions({ fetch: notFound, urls: { index: url } });
+		const result = versions(
+			/** @type {ParsedOptions} */ ({ fetch: notFound, urls: { index: url } }),
+		);
 
 		// Assert
 		await rejects(result, {
@@ -80,6 +100,6 @@ describe('versions', async () => {
 
 // Helpers
 
-async function notFound() {
-	return new Response('Not Found', { status: 404, statusText: 'Not Found' });
-}
+/** @type {typeof fetch} */
+const notFound = async () =>
+	new Response('Not Found', { status: 404, statusText: 'Not Found' });

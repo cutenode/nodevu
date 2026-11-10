@@ -70,6 +70,7 @@ describe('check that we get the values we expect from values that should not eve
 
 	it('should have some correct static values for support in a release line', async () => {
 		const staticData = await nodevu();
+		assert.ok(staticData.v14.support?.lts);
 		assert.deepStrictEqual(staticData.v14.support.codename, 'Fermium');
 		assert.deepStrictEqual(staticData.v14.support.lts.newest, '14.21.3');
 		assert.deepStrictEqual(staticData.v14.support.lts.oldest, '14.15.0');
@@ -93,6 +94,7 @@ describe('check that we get the values we expect from values that should not eve
 
 	it('should have correct support values for an odd release line', async () => {
 		const staticData = await nodevu();
+		assert.ok(staticData.v13.support);
 		assert.deepStrictEqual(
 			staticData.v13.support.phases.dates.start,
 			'2019-10-22',

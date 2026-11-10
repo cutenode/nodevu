@@ -1,15 +1,32 @@
-const { deepStrictEqual, match, rejects } = require('node:assert');
+const { deepStrictEqual, match, ok, rejects } = require('node:assert');
 const { describe, it } = require('node:test');
-const { fetch: undiciFetch } = require('undici');
+
+// undici's fetch works as the global one, but its types don't overlap with
+// it: its Request has members the global one lacks, and its Headers
+// iterators lack the global ones' Symbol.dispose
+const undiciFetch = /** @type {typeof fetch} */ (
+	/** @type {unknown} */ (require('undici').fetch)
+);
+
 const fetchindex = require('../index');
 const optionsParser = require('../../core/util/prod/optionsParser');
 
 // checks that verify the result of data returned
+/** @param {import('../index').IndexRelease[]} data */
 function check(data) {
 	// the newest release can be a prerelease, like v27.0.0-alpha.0.0.0
 	match(data[0].version, /^v\d+\.\d+\.\d+(-[0-9A-Za-z.-]+)?$/);
 	match(data[0].date, /^\d{4}-\d{2}-\d{2}$/);
 	deepStrictEqual(Array.isArray(data[0].files), true);
+	// the index leaves these out only for releases from before they existed
+	ok(
+		data[0].npm &&
+			data[0].v8 &&
+			data[0].uv &&
+			data[0].zlib &&
+			data[0].openssl &&
+			data[0].modules,
+	);
 	match(data[0].npm, /^\d+\.\d+\.\d+/);
 	match(data[0].v8, /^\d+\.\d+\.\d+/);
 	match(data[0].uv, /^\d+\.\d+\.\d+/);

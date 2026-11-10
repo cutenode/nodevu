@@ -1,4 +1,4 @@
-const { deepStrictEqual } = require('node:assert');
+const { deepStrictEqual, ok } = require('node:assert');
 const ranges = require('../index');
 const fixtures = require('./fixtures');
 const { describe, it } = require('node:test');
@@ -18,6 +18,7 @@ describe('generateRanges', () => {
 
 		// Assert
 		deepStrictEqual(data['lts/latest'], undefined);
+		ok(data['lts/active']);
 		deepStrictEqual(data['lts/active'].newestLts, '20.18.0');
 		deepStrictEqual(data['lts/active'].newestSecurity, '20.15.1');
 	});
@@ -32,6 +33,7 @@ describe('generateRanges', () => {
 
 		// Assert
 		deepStrictEqual(data['lts/maintenance'], undefined);
+		ok(data['lts/active']);
 		deepStrictEqual(data['lts/active'].oldestLts, '4.2.0');
 	});
 
@@ -44,6 +46,7 @@ describe('generateRanges', () => {
 		const data = await ranges('lts/maintenance', options);
 
 		// Assert
+		ok(data['lts/maintenance']);
 		deepStrictEqual(summarize(data['lts/maintenance']), {
 			newest: 'v20.18.0',
 			oldest: 'v18.12.0',
@@ -75,6 +78,7 @@ describe('generateRanges', () => {
 		const data = await ranges('lts/maintenance', options);
 
 		// Assert
+		ok(data['lts/maintenance']);
 		deepStrictEqual(data['lts/maintenance'].versions, [
 			'v99.1.0',
 			'v98.2.0',
@@ -88,16 +92,24 @@ describe('generateRanges', () => {
 // Helpers
 
 // a range without its versions, to compare its bounds
+/** @param {import('../index').Range} range */
 function summarize({ versions, ...range }) {
 	return range;
 }
 
 // an index.json entry
+/**
+ * @param {string} version
+ * @param {string} date
+ * @param {string | false} [lts]
+ * @param {boolean} [security]
+ */
 function release(version, date, lts = false, security = false) {
 	return { version, date, lts, security, files: ['linux-x64', 'src'] };
 }
 
 // a schedule.json entry for a line that's in maintenance from 2101 to 2103
+/** @param {string} year */
 function line(year) {
 	return {
 		start: `${year}-04-20`,

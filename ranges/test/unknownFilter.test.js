@@ -6,10 +6,12 @@ const { describe, it } = require('node:test');
 describe('failure states for arguments', async () => {
 	it('should throw an error on a string with an unknown value', async () => {
 		try {
+			// @ts-expect-error: an unknown filter, on purpose
 			const data = await ranges('poopin', at());
 
 			if (data) throw new Error('Should not have gotten here');
 		} catch (error) {
+			assert.ok(error instanceof Error);
 			assert.deepStrictEqual(
 				error.message,
 				"Unknown value passed as a filter. The passed value: 'poopin'.",
@@ -19,10 +21,12 @@ describe('failure states for arguments', async () => {
 
 	it('should throw an error on a string with an unknown value', async () => {
 		try {
+			// @ts-expect-error: an unknown filter, on purpose
 			const data = await ranges('poopin', at());
 
 			if (data) throw new Error('Should not have gotten here');
 		} catch (error) {
+			assert.ok(error instanceof Error);
 			assert.deepStrictEqual(
 				error.message,
 				"Unknown value passed as a filter. The passed value: 'poopin'.",
@@ -32,10 +36,12 @@ describe('failure states for arguments', async () => {
 
 	it('should throw an error on a single unknown array entry', async () => {
 		try {
+			// @ts-expect-error: an unknown filter, on purpose
 			const data = await ranges(['poopin'], at());
 
 			if (data) throw new Error('Should not have gotten here');
 		} catch (error) {
+			assert.ok(error instanceof Error);
 			assert.deepStrictEqual(
 				error.message,
 				"At least one of the values passed as a filter is unknown. The passed value(s): 'poopin'",
@@ -45,10 +51,12 @@ describe('failure states for arguments', async () => {
 
 	it('should throw an error on an unknown array entry where multiple entries exist and it is the first entry', async () => {
 		try {
+			// @ts-expect-error: an unknown filter, on purpose
 			const data = await ranges(['poopin', 'lts/active'], at());
 
 			if (data) throw new Error('Should not have gotten here');
 		} catch (error) {
+			assert.ok(error instanceof Error);
 			assert.deepStrictEqual(
 				error.message,
 				"At least one of the values passed as a filter is unknown. The passed value(s): 'poopin', 'lts/active'",
@@ -58,10 +66,12 @@ describe('failure states for arguments', async () => {
 
 	it('should throw an error on an unknown array entry where multiple entries exist and it is the first entry', async () => {
 		try {
+			// @ts-expect-error: an unknown filter, on purpose
 			const data = await ranges(['lts/active', 'poopin'], at());
 
 			if (data) throw new Error('Should not have gotten here');
 		} catch (error) {
+			assert.ok(error instanceof Error);
 			assert.deepStrictEqual(
 				error.message,
 				"At least one of the values passed as a filter is unknown. The passed value(s): 'lts/active', 'poopin'",
@@ -71,10 +81,12 @@ describe('failure states for arguments', async () => {
 
 	it('should throw an error on passing an Object', async () => {
 		try {
+			// @ts-expect-error: an unknown filter, on purpose
 			const data = await ranges({}, at());
 
 			if (data) throw new Error('Should not have gotten here');
 		} catch (error) {
+			assert.ok(error instanceof Error);
 			assert.deepStrictEqual(
 				error.message,
 				"Unknown value passed as a filter. The passed value: '[object Object]', with a type of 'object'. Make sure you are passing a string (or an Array of strings) with valid value(s).",

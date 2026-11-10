@@ -3,6 +3,7 @@ const write = require('../util/dev/write');
 
 async function writeSecurity() {
 	const data = await nodevu();
+	/** @type {Record<string, import('@nodevu/core').Security>} */
 	const security = {};
 
 	for await (const version of Object.keys(data)) {

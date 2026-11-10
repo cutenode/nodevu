@@ -6,16 +6,20 @@ const schedule = require('../../test/data/static/schedule.json');
  * `data` (core's index.json and schedule.json snapshots by default) instead of
  * fetching them, only including releases that were out by `now`, like the
  * real index.json. Any other URL throws, so tests never touch the network.
+ *
+ * @param {string} now
+ * @param {{ index: { date: string }[], schedule: unknown }} [data]
+ * @returns {{ now: string, fetch: typeof fetch }}
  */
 function at(now, data = { index, schedule }) {
 	return {
 		now,
 		fetch: async (url) => {
-			if (url.endsWith('/schedule.json')) {
+			if (String(url).endsWith('/schedule.json')) {
 				return Response.json(data.schedule);
 			}
 
-			if (url.endsWith('/index.json')) {
+			if (String(url).endsWith('/index.json')) {
 				return Response.json(data.index.filter((entry) => entry.date <= now));
 			}
 

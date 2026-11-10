@@ -3,9 +3,13 @@
 import { createRequire } from 'node:module';
 import { join } from 'node:path';
 
-const require = createRequire(join(process.cwd(), 'package.json'));
+// the manifest of the workspace under test, since `npm run -w` runs there
+const manifest = join(process.cwd(), 'package.json');
 
-const { devDependencies = {} } = require('./package.json');
+const require = createRequire(manifest);
+
+/** @type {{ devDependencies?: Record<string, string> }} */
+const { devDependencies = {} } = require(manifest);
 
 const numRuns = Number(process.env.FC_NUM_RUNS);
 

@@ -5,6 +5,7 @@ const aliases = require('@nodevu/aliases');
 
 const translate = require('../index');
 
+/** @type {Parameters<typeof translate>[0][]} */
 const terms = ['current', 'lts_latest', 'lts', 'supported', 'all'];
 
 describe('translate', () => {
@@ -13,6 +14,8 @@ describe('translate', () => {
 		const name = 'toString';
 
 		// Act
+		// @ts-expect-error: the types only take terms, and this checks a caller
+		// that ignores them
 		const result = translate(name);
 
 		// Assert
@@ -21,6 +24,8 @@ describe('translate', () => {
 
 	it('should not let a caller change what later calls return', async () => {
 		// Arrange
+		// @ts-expect-error: the types make the result read-only, and this checks a
+		// caller that ignores them
 		(await translate('lts')).push('eol');
 
 		// Act
@@ -36,6 +41,8 @@ describe('translate', () => {
 				// Arrange (by the arbitrary)
 
 				// Act
+				// @ts-expect-error: the types only take terms, and this checks a caller
+				// that ignores them
 				const result = translate(value);
 
 				// Assert
@@ -71,5 +78,5 @@ function notTermArbitrary() {
 			fc.string(),
 			fc.constantFrom(...Object.getOwnPropertyNames(Object.prototype)),
 		)
-		.filter((value) => !terms.includes(value));
+		.filter((value) => !(/** @type {string[]} */ (terms).includes(value)));
 }
