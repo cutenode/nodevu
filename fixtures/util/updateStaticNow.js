@@ -3,7 +3,7 @@ const write = require('./write');
 
 async function updateStaticDateTime() {
 	// write serializes the DateTime to its ISO string
-	await write('./test/data/static/now.json', DateTime.now());
+	await write('./data/now.json', DateTime.now());
 }
 
 updateStaticDateTime();

@@ -43,7 +43,7 @@ const schedule = {
 	},
 };
 
-// serves the made-up data above instead of core's snapshots
+// serves the made-up data above instead of the snapshots
 const at = (now) => fixtures.at(now, { index, schedule });
 
 describe('check to make sure that Alpha releases work as expected', async () => {

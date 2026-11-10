@@ -5,12 +5,12 @@ const {
 	setGlobalDispatcher,
 } = require('undici');
 
-const staticIndex = require('../../test/data/static/index.json');
-const staticSchedule = require('../../test/data/static/schedule.json');
+const staticIndex = require('./data/index.json');
+const staticSchedule = require('./data/schedule.json');
 
 /**
  * Mocks the network for a test: the default and `https://bnb.im` index.json
- * and schedule.json URLs serve core's static snapshots, and any other request
+ * and schedule.json URLs serve the snapshots, and any other request
  * fails.
  */
 function beforeEachTemplate() {

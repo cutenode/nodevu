@@ -2,7 +2,7 @@ const assert = require('node:assert');
 const nodevu = require('../index');
 const { describe, it, beforeEach } = require('node:test');
 
-const beforeEachTemplate = require('../util/dev/beforeEachTemplate');
+const beforeEachTemplate = require('@nodevu/fixtures/beforeEachTemplate');
 
 // these are tests that run with static data but do not need to be frozen in time.
 describe('check that we get the values we expect from values that should not ever change', async () => {

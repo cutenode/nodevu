@@ -3,7 +3,7 @@ const { describe, it } = require('node:test');
 const fc = require('fast-check');
 
 const parseFilename = require('../index');
-const releases = require('../../core/test/data/static/index.json');
+const releases = require('@nodevu/fixtures/data/index.json');
 
 describe('parseFilename', () => {
 	it('should only list the win-x86 directory for win-x86-exe', () => {

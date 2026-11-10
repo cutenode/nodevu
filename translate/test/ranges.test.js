@@ -2,9 +2,9 @@ const assert = require('node:assert');
 const translate = require('../index');
 const ranges = require('@nodevu/ranges');
 const { describe, it } = require('node:test');
-const { at } = require('../../ranges/test/fixtures');
+const { at } = require('@nodevu/fixtures');
 
-// serve core's snapshot data at a fixed date so results don't depend on
+// serve the snapshot data at a fixed date so results don't depend on
 // nodejs.org or today's date
 const options = at();
 

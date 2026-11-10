@@ -30,6 +30,7 @@
 	},
 	"devDependencies": {
 		"@nodevu/aliases": "^1.1.0",
+		"@nodevu/fixtures": "^0.0.0",
 		"@nodevu/ranges": "^1.0.0",
 		"c8": "^12.0.0",
 		"fast-check": "^4.10.2"

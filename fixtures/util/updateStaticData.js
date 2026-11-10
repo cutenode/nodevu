@@ -11,8 +11,8 @@ async function update() {
 	const index = await rawIndex.json();
 	const schedule = await rawSchedule.json();
 
-	await write('./test/data/static/index.json', index);
-	await write('./test/data/static/schedule.json', schedule);
+	await write('./data/index.json', index);
+	await write('./data/schedule.json', schedule);
 }
 
 update();

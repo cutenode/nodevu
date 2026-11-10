@@ -6,8 +6,8 @@ const { join } = require('node:path');
 const { describe, it } = require('node:test');
 const { promisify } = require('node:util');
 const { DateTime } = require('luxon');
-const index = require('./data/static/index.json');
-const schedule = require('./data/static/schedule.json');
+const index = require('../data/index.json');
+const schedule = require('../data/schedule.json');
 
 describe('test:update:static', async () => {
 	it('should save the index.json and schedule.json it downloads', async () => {
@@ -17,7 +17,7 @@ describe('test:update:static', async () => {
 		// Act
 		await runScript(
 			'updateStaticData.js',
-			`require(${JSON.stringify(require.resolve('../util/dev/beforeEachTemplate'))})();`,
+			`require(${JSON.stringify(require.resolve('../beforeEachTemplate'))})();`,
 			cwd,
 		);
 
@@ -53,24 +53,23 @@ describe('test:update:now', async () => {
 
 // Helpers
 
-// a directory laid out like core, for the scripts to write their snapshots into
+// a directory laid out like this package, for the scripts to write their
+// snapshots into
 async function snapshotDirectory() {
 	const cwd = await mkdtemp(join(tmpdir(), 'nodevu-'));
-	await mkdir(join(cwd, 'test/data/static'), { recursive: true });
+	await mkdir(join(cwd, 'data'));
 
 	return cwd;
 }
 
 async function readSnapshot(cwd, file) {
-	return JSON.parse(
-		await readFile(join(cwd, 'test/data/static', file), 'utf8'),
-	);
+	return JSON.parse(await readFile(join(cwd, 'data', file), 'utf8'));
 }
 
-// runs a util/dev script the way its npm script does, after `setup` stubs
+// runs a util script the way its npm script does, after `setup` stubs
 // whatever it reaches outside the process for
 function runScript(script, setup, cwd) {
-	const path = require.resolve(`../util/dev/${script}`);
+	const path = require.resolve(`../util/${script}`);
 
 	return promisify(execFile)(
 		process.execPath,

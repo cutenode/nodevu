@@ -38,7 +38,8 @@
 		"aliases",
 		"translate",
 		"fetchindex",
-		"opt"
+		"opt",
+		"fixtures"
 	],
 	"devDependencies": {
 		"@doc-kit/cli": "1.0.5",

@@ -3,7 +3,7 @@ const nodevu = require('../index');
 const { describe, it, beforeEach } = require('node:test');
 const { fetch: undiciFetch } = require('undici');
 
-const beforeEachTemplate = require('../util/dev/beforeEachTemplate');
+const beforeEachTemplate = require('@nodevu/fixtures/beforeEachTemplate');
 
 function check(data) {
 	// releases checks
@@ -26,7 +26,7 @@ function check(data) {
 	assert.deepStrictEqual(data.v12.security.oldest, '12.8.1');
 }
 
-const now = require('./data/static/now.json');
+const now = require('@nodevu/fixtures/data/now.json');
 
 describe('check to make sure that combining options works as expected', async () => {
 	beforeEach(beforeEachTemplate);

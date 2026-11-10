@@ -5,7 +5,7 @@ const { describe, it } = require('node:test');
 
 // the LTS and security bounds of lts/maintenance and lts/active come from the
 // newest and oldest lines in them, even when those lines have none. the
-// expected values come from core's index.json and schedule.json snapshots.
+// expected values come from the index.json and schedule.json snapshots.
 describe('generateRanges', () => {
 	it('should take the newest bounds of "lts/active" from "lts/maintenance" when "lts/latest" is empty', async () => {
 		// Arrange

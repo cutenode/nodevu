@@ -6,8 +6,8 @@ const { promisify } = require('node:util');
 describe('examples/default.js', async () => {
 	it('should print the ranges for each Package Support term', async () => {
 		// Arrange
-		// serve core's snapshot data instead of fetching from nodejs.org
-		const setup = `globalThis.fetch = require(${JSON.stringify(require.resolve('../../ranges/test/fixtures'))}).at().fetch;`;
+		// serve the snapshot data instead of fetching from nodejs.org
+		const setup = `globalThis.fetch = require(${JSON.stringify(require.resolve('@nodevu/fixtures'))}).at().fetch;`;
 		const example = JSON.stringify(require.resolve('../examples/default'));
 
 		// Act
