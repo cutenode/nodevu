@@ -1,0 +1,6 @@
+{
+	"n_scripts": "n_allowscripts",
+	"n_deny_existing_lifecycle": true,
+	"n_nogit": true,
+	"n_runner": false
+}
