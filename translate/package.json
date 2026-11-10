@@ -1,7 +1,7 @@
 {
 	"name": "@nodevu/translate",
 	"version": "1.0.0",
-	"description": "a translation layer between the nodevu naming mechanism and the Node.js supported mechanism. Neceessary for legacy interop.",
+	"description": "a translation layer between the nodevu naming mechanism and the Node.js supported mechanism. Necessary for legacy interop.",
 	"keywords": [
 		"nodevu",
 		"node",
@@ -24,9 +24,7 @@
 		"lint": "oxlint && oxfmt --check",
 		"lint:write": "oxlint --fix && oxfmt",
 		"test": "node --test",
-		"coverage": "c8 node --test",
-		"updates:check": "npx npm-check-updates",
-		"updates:update": "npx npm-check-updates -u"
+		"coverage": "c8 node --test"
 	},
 	"devDependencies": {
 		"@nodevu/aliases": "^1.1.0",
@@ -36,11 +34,12 @@
 		"fast-check": "^4.10.2"
 	},
 	"engines": {
-		"node": ">=18.0.0"
+		"node": ">=24"
 	},
 	"types": "types/index.d.ts",
 	"files": [
 		"index.js",
 		"/types"
-	]
+	],
+	"type": "commonjs"
 }

@@ -12,9 +12,7 @@
 		"lint": "oxlint && oxfmt --check",
 		"lint:write": "oxlint --fix && oxfmt",
 		"test": "node --test",
-		"coverage": "c8 node --test",
-		"updates:check": "npx npm-check-updates",
-		"updates:update": "npx npm-check-updates -u"
+		"coverage": "c8 node --test"
 	},
 	"repository": {
 		"type": "git",
@@ -39,5 +37,9 @@
 	"dependencies": {
 		"@types/luxon": "^3.7.6",
 		"luxon": "^3.5.0"
+	},
+	"type": "commonjs",
+	"engines": {
+		"node": ">=24"
 	}
 }

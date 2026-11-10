@@ -9,6 +9,8 @@ describe('data should exist as it is defined when calling multiple aliases', asy
 	// begin by testing some of the more risky logic in the data construction
 	it('versions should have correct types on every property if an array when "lts/latest" and "lts/maintenance" are passed', async () => {
 		const data = await ranges(['lts/latest', 'lts/maintenance'], at());
+		assert.ok(data['lts/latest']);
+		assert.ok(data['lts/maintenance']);
 
 		// check lts/latest values
 		assert.deepStrictEqual(Array.isArray(data['lts/latest'].versions), true);
@@ -39,6 +41,8 @@ describe('data should exist as it is defined when calling multiple aliases', asy
 
 	it('versions should have correct types on every property if an array when "lts/latest" and "lts/active" are passed', async () => {
 		const data = await ranges(['lts/latest', 'lts/active'], at());
+		assert.ok(data['lts/latest']);
+		assert.ok(data['lts/active']);
 
 		// check lts/latest values
 		assert.deepStrictEqual(Array.isArray(data['lts/latest'].versions), true);
@@ -66,6 +70,8 @@ describe('data should exist as it is defined when calling multiple aliases', asy
 
 	it('versions should have correct types on every property if an array when "lts/maintenance" and "lts/active" are passed', async () => {
 		const data = await ranges(['lts/maintenance', 'lts/active'], at());
+		assert.ok(data['lts/maintenance']);
+		assert.ok(data['lts/active']);
 
 		// check lts/maintenance values
 		assert.deepStrictEqual(
@@ -99,6 +105,10 @@ describe('data should exist as it is defined when calling multiple aliases', asy
 			['lts/maintenance', 'lts/active', 'lts/latest'],
 			at(),
 		);
+
+		assert.ok(data['lts/maintenance']);
+		assert.ok(data['lts/active']);
+		assert.ok(data['lts/latest']);
 
 		// check lts/maintenance values
 		assert.deepStrictEqual(
@@ -143,6 +153,8 @@ describe('data should exist as it is defined when calling multiple aliases', asy
 	// as a set to ensure that it is direct and clear when they're breaking.
 	it('should pass the "lts" translation ("lts/active" and "lts/maintenance")', async () => {
 		const data = await ranges(['lts/active', 'lts/maintenance'], at());
+		assert.ok(data['lts/active']);
+		assert.ok(data['lts/maintenance']);
 
 		// check lts/active values
 		assert.deepStrictEqual(Array.isArray(data['lts/active'].versions), true);
@@ -179,6 +191,10 @@ describe('data should exist as it is defined when calling multiple aliases', asy
 			['current', 'lts/active', 'lts/maintenance'],
 			at(),
 		);
+
+		assert.ok(data.current);
+		assert.ok(data['lts/active']);
+		assert.ok(data['lts/maintenance']);
 
 		// check current values
 		assert.deepStrictEqual(Array.isArray(data.current.versions), true);
@@ -222,6 +238,10 @@ describe('data should exist as it is defined when calling multiple aliases', asy
 			['current', 'lts/active', 'lts/maintenance'],
 			at(),
 		);
+
+		assert.ok(data.current);
+		assert.ok(data['lts/active']);
+		assert.ok(data['lts/maintenance']);
 
 		// check current values
 		assert.deepStrictEqual(Array.isArray(data.current.versions), true);
@@ -265,6 +285,10 @@ describe('data should exist as it is defined when calling multiple aliases', asy
 			['current', 'lts/active', 'lts/maintenance', 'eol'],
 			at(),
 		);
+
+		assert.ok(data.current);
+		assert.ok(data['lts/active']);
+		assert.ok(data['lts/maintenance']);
 
 		// check current values
 		assert.deepStrictEqual(Array.isArray(data.current.versions), true);

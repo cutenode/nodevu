@@ -1,4 +1,4 @@
-const { deepStrictEqual } = require('node:assert');
+const { deepStrictEqual, ok } = require('node:assert');
 const nodevu = require('../index');
 const { describe, it } = require('node:test');
 
@@ -7,6 +7,10 @@ const { describe, it } = require('node:test');
 // `vN.0.0-alpha.X.Y.Z`) before its first Current release.
 //
 // see https://nodejs.org/en/blog/announcements/evolving-the-nodejs-release-schedule
+/**
+ * @param {string} version
+ * @param {string} date
+ */
 function release(version, date) {
 	return { version, date, files: ['linux-x64', 'src'] };
 }
@@ -37,8 +41,11 @@ const schedule = {
 	},
 };
 
+/** @param {RequestInfo | URL} url */
 async function mockFetch(url) {
-	return Response.json(url.endsWith('schedule.json') ? schedule : index);
+	return Response.json(
+		String(url).endsWith('schedule.json') ? schedule : index,
+	);
 }
 
 describe('check to make sure that Alpha releases work as expected', async () => {
@@ -93,6 +100,8 @@ describe('check to make sure that Alpha releases work as expected', async () => 
 
 	it('should have correct support values for a release line with an Alpha phase', async () => {
 		const data = await nodevu({ fetch: mockFetch });
+		ok(data.v27.support);
+		ok(data.v26.support);
 
 		deepStrictEqual(data.v27.support.phases.dates.alpha, '2026-10-28');
 		deepStrictEqual(data.v26.support.phases.dates.alpha, undefined);
@@ -108,6 +117,8 @@ describe('check to make sure that Alpha releases work as expected', async () => 
 
 		for (const [now, v27, v26] of phases) {
 			const data = await nodevu({ fetch: mockFetch, now });
+			ok(data.v27.support);
+			ok(data.v26.support);
 
 			deepStrictEqual(data.v27.support.phases.current, v27, now);
 			deepStrictEqual(data.v26.support.phases.current, v26, now);

@@ -7,9 +7,7 @@
 		"lint": "oxlint && oxfmt --check",
 		"lint:write": "oxlint --fix && oxfmt",
 		"test": "node --test",
-		"coverage": "c8 node --test",
-		"updates:check": "npx npm-check-updates",
-		"updates:update": "npx npm-check-updates -u"
+		"coverage": "c8 node --test"
 	},
 	"author": "Tierney Cyren <hello@bnb.im> (https://bnb.im/)",
 	"license": "MIT",
@@ -35,5 +33,9 @@
 		"type": "git",
 		"url": "git+https://github.com/cutenode/nodevu.git"
 	},
-	"types": "types/index.d.ts"
+	"types": "types/index.d.ts",
+	"type": "commonjs",
+	"engines": {
+		"node": ">=24"
+	}
 }

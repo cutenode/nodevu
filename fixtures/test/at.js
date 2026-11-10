@@ -83,6 +83,7 @@ describe('at', async () => {
 					const response = await fetch('https://nodejs.org/dist/index.json');
 
 					// Assert
+					/** @type {{ date: string }[]} */
 					const releases = await response.json();
 					assert.ok(releases.every((release) => release.date <= now));
 				},

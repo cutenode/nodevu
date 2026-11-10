@@ -11,19 +11,20 @@ describe('check that "v"s are where they should (and are not where they should n
 		// loop over all versions arrays in all sets (all,
 		// current, lts/latest, lts/active, lts/maintenance,
 		// and eol) and check that they all start with a v
-		for (const entry in data) {
-			for (const version in data[entry].versions) {
-				assert.deepStrictEqual(
-					data[entry].versions[version].startsWith('v'),
-					true,
-				);
+		for (const range of Object.values(data)) {
+			for (const version of range.versions) {
+				assert.deepStrictEqual(version.startsWith('v'), true);
 			}
 
 			// all newest and oldest entries should start with v
-			assert.deepStrictEqual(data[entry].newest.startsWith('v'), true);
-			assert.deepStrictEqual(data[entry].oldest.startsWith('v'), true);
+			assert.ok(range.newest);
+			assert.ok(range.oldest);
+			assert.deepStrictEqual(range.newest.startsWith('v'), true);
+			assert.deepStrictEqual(range.oldest.startsWith('v'), true);
 		}
 
+		assert.ok(data.all?.newestLts);
+		assert.ok(data.all.newestSecurity);
 		assert.deepStrictEqual(data.all.newestLts.startsWith('v'), true);
 		assert.deepStrictEqual(data.all.newestSecurity.startsWith('v'), true);
 	});
@@ -31,6 +32,21 @@ describe('check that "v"s are where they should (and are not where they should n
 	// this probably needs to be fixed. It's a bug in core and it trickles down to ranges.
 	it('is missing the letter v where it should not be... for now', async () => {
 		const data = await ranges(undefined, at());
+		assert.ok(data.current?.oldestSecurity);
+		assert.ok(data.current.newestSecurity);
+		assert.ok(data['lts/latest']?.oldestLts);
+		assert.ok(data['lts/latest'].oldestSecurity);
+		assert.ok(data['lts/latest'].newestLts);
+		assert.ok(data['lts/latest'].newestSecurity);
+		assert.ok(data['lts/active']?.oldestLts);
+		assert.ok(data['lts/active'].oldestSecurity);
+		assert.ok(data['lts/active'].newestLts);
+		assert.ok(data['lts/active'].newestSecurity);
+		assert.ok(data['lts/maintenance']?.oldestLts);
+		assert.ok(data['lts/maintenance'].oldestSecurity);
+		assert.ok(data['lts/maintenance'].newestLts);
+		assert.ok(data['lts/maintenance'].newestSecurity);
+
 		assert.deepStrictEqual(data.current.oldestSecurity.startsWith('v'), false);
 		assert.deepStrictEqual(data.current.newestSecurity.startsWith('v'), false);
 

@@ -6,6 +6,7 @@ const { describe, it } = require('node:test');
 describe('data should exist as it is defined when calling a single alias', async () => {
 	it('versions should have correct types on every property if an array with "all" is passed', async () => {
 		const data = await ranges(['all'], at());
+		assert.ok(data.all);
 		assert.deepStrictEqual(Array.isArray(data.all.versions), true);
 		assert.deepStrictEqual(data.all.versions.length > 0, true);
 		assert.deepStrictEqual(
@@ -16,6 +17,7 @@ describe('data should exist as it is defined when calling a single alias', async
 
 	it('versions should have correct types on every property if an array with "current" is passed', async () => {
 		const data = await ranges(['current'], at());
+		assert.ok(data.current);
 		assert.deepStrictEqual(Array.isArray(data.current.versions), true);
 		assert.deepStrictEqual(data.current.versions.length > 0, true);
 		assert.deepStrictEqual(
@@ -26,6 +28,7 @@ describe('data should exist as it is defined when calling a single alias', async
 
 	it('versions should have correct types on every property if an array with "lts/latest" is passed', async () => {
 		const data = await ranges(['lts/latest'], at());
+		assert.ok(data['lts/latest']);
 		assert.deepStrictEqual(Array.isArray(data['lts/latest'].versions), true);
 		assert.deepStrictEqual(data['lts/latest'].versions.length > 0, true);
 		assert.deepStrictEqual(
@@ -42,6 +45,7 @@ describe('data should exist as it is defined when calling a single alias', async
 
 	it('versions should have correct types on every property if an array with "lts/active" is passed', async () => {
 		const data = await ranges(['lts/active'], at());
+		assert.ok(data['lts/active']);
 		assert.deepStrictEqual(Array.isArray(data['lts/active'].versions), true);
 		assert.deepStrictEqual(data['lts/active'].versions.length > 0, true);
 		assert.deepStrictEqual(
@@ -58,6 +62,7 @@ describe('data should exist as it is defined when calling a single alias', async
 
 	it('versions should have correct types on every property if an array with "lts/maintenance" is passed', async () => {
 		const data = await ranges(['lts/maintenance'], at());
+		assert.ok(data['lts/maintenance']);
 		assert.deepStrictEqual(
 			Array.isArray(data['lts/maintenance'].versions),
 			true,
@@ -77,6 +82,7 @@ describe('data should exist as it is defined when calling a single alias', async
 
 	it('versions should have correct types on every property if an array with "eol" is passed', async () => {
 		const data = await ranges(['eol'], at());
+		assert.ok(data.eol);
 		assert.deepStrictEqual(Array.isArray(data.eol.versions), true);
 		assert.deepStrictEqual(data.eol.versions.length > 0, true);
 		assert.deepStrictEqual(

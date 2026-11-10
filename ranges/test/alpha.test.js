@@ -1,4 +1,4 @@
-const { deepStrictEqual } = require('node:assert');
+const { deepStrictEqual, ok } = require('node:assert');
 const ranges = require('../index');
 const fixtures = require('./fixtures');
 const { describe, it } = require('node:test');
@@ -8,6 +8,11 @@ const { describe, it } = require('node:test');
 // before its first Current release.
 //
 // see https://nodejs.org/en/blog/announcements/evolving-the-nodejs-release-schedule
+/**
+ * @param {string} version
+ * @param {string} date
+ * @param {string | false} [lts]
+ */
 function release(version, date, lts = false) {
 	return { version, date, lts, files: ['linux-x64', 'src'] };
 }
@@ -44,11 +49,13 @@ const schedule = {
 };
 
 // serves the made-up data above instead of the snapshots
+/** @param {string} now */
 const at = (now) => fixtures.at(now, { index, schedule });
 
 describe('check to make sure that Alpha releases work as expected', async () => {
 	it('should leave Alpha releases out of "all"', async () => {
 		const data = await ranges('all', at('2026-12-15'));
+		ok(data.all);
 
 		deepStrictEqual(data.all.versions, ['v26.13.0', 'v26.12.0']);
 		deepStrictEqual(data.all.newest, 'v26.13.0');
@@ -65,6 +72,7 @@ describe('check to make sure that Alpha releases work as expected', async () => 
 		});
 
 		const data = await ranges(undefined, at('2026-12-15'));
+		ok(data.alpha);
 		deepStrictEqual(data.alpha.versions, [
 			'v27.0.0-alpha.1.0.0',
 			'v27.0.0-alpha.0.0.0',
@@ -80,6 +88,8 @@ describe('check to make sure that Alpha releases work as expected', async () => 
 
 	it('should leave Alpha releases out of "current" once the release line is Current', async () => {
 		const data = await ranges(undefined, at('2027-05-01'));
+		ok(data.current);
+		ok(data.all);
 
 		deepStrictEqual(data.current.versions, ['v27.0.0']);
 		deepStrictEqual(data.current.newest, 'v27.0.0');
@@ -88,6 +98,9 @@ describe('check to make sure that Alpha releases work as expected', async () => 
 
 	it('should leave Alpha releases out of the LTS ranges once the release line is LTS', async () => {
 		const data = await ranges(undefined, at('2027-11-01'));
+		ok(data['lts/latest']);
+		ok(data['lts/active']);
+		ok(data['lts/maintenance']);
 
 		deepStrictEqual(data['lts/latest'].versions, ['v27.2.0']);
 		deepStrictEqual(data['lts/active'].versions, ['v27.2.0', 'v26.13.0']);
@@ -96,6 +109,7 @@ describe('check to make sure that Alpha releases work as expected', async () => 
 
 	it('should leave Alpha releases out of "eol" once the release line is End of Life', async () => {
 		const data = await ranges('eol', at('2030-05-01'));
+		ok(data.eol);
 
 		deepStrictEqual(data.eol.versions, [
 			'v27.2.0',

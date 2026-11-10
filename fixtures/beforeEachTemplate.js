@@ -25,7 +25,11 @@ function beforeEachTemplate() {
 	// the npm package, so setGlobalDispatcher above doesn't affect it. Replacing it here
 	// ensures all fetch calls (including those that fall through to globalThis.fetch in
 	// optionsParser) go through the mock dispatcher.
-	globalThis.fetch = undiciFetch;
+	// undici's types only take its own Request class, so they don't match the
+	// global fetch's type even though it works as one
+	globalThis.fetch = /** @type {typeof fetch} */ (
+		/** @type {unknown} */ (undiciFetch)
+	);
 
 	const defaultIndexMock = mockAgent.get('https://nodejs.org');
 	defaultIndexMock

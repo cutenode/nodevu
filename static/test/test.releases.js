@@ -9,6 +9,7 @@ const { describe, it } = require('node:test');
 // specifically because we want to be sure the data is consistent *and* because we want to be sure that
 // the various ways of accessing the data produce consistent results.
 
+/** @param {Record<string, import('@nodevu/core').ReleaseLine['releases']>} data */
 function check(data) {
 	// releases checks
 	assert.deepStrictEqual(data.v17['v17.0.0'].dependencies.npm, '8.1.0');
