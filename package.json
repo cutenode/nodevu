@@ -3,7 +3,7 @@
 	"version": "0.0.1",
 	"description": "comprehensive node.js version tooling",
 	"scripts": {
-		"lint": "oxlint && oxfmt --check && docov && npm run lint:harden",
+		"lint": "oxlint && oxfmt --check && docov && npm run lint:harden && npm run knip",
 		"lint:write": "oxlint --fix && oxfmt",
 		"lint:harden": "node --test tools/harden/test/*.test.mjs && harden check -p npm -l strict --json | node tools/harden/check.mjs",
 		"coverage": "npm run coverage --ws --if-present",
@@ -11,7 +11,8 @@
 		"updates": "npm run updates --ws",
 		"docs": "doc-kit generate",
 		"docs:dev": "doc-kit generate && sirv out --dev",
-		"types": "tsc -b"
+		"types": "tsc -b",
+		"knip": "knip --treat-config-hints-as-errors"
 	},
 	"repository": {
 		"type": "git",
@@ -49,6 +50,7 @@
 		"@types/luxon": "3.7.6",
 		"@types/node": "26.6.5",
 		"@types/semver": "7.8.0",
+		"knip": "6.44.1",
 		"oxfmt": "0.74.0",
 		"oxlint": "1.89.0",
 		"sirv-cli": "3.0.1",

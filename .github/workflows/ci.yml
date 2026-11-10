@@ -86,8 +86,10 @@ jobs:
           # no npm cache: npm ci takes seconds, and devEngines in package.json would
           # otherwise switch one on
           package-manager-cache: false
+      # knip needs every workspace's dependencies to match binaries like c8
+      # in their scripts to the packages that provide them
       - name: Run npm ci
-        run: npm ci --workspaces=false
+        run: npm ci
       - name: Run npm lint
         run: npm run lint
       # npm rejects a provenance publish when repository.url doesn't match the
