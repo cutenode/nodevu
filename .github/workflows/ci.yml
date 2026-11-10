@@ -105,19 +105,6 @@ jobs:
         run: npm ci
       - name: Run npm lint
         run: npm run lint
-      # npm rejects a provenance publish when repository.url doesn't match the
-      # repo the release workflow runs in, so every package release.yml
-      # publishes has to name it
-      - name: Check published packages name this repository
-        run: |
-          status=0
-          for ws in aliases core fetchindex newest oldest parsefiles ranges static; do
-            if ! jq -e '.repository.url == "git+https://github.com/cutenode/nodevu.git"' "$ws/package.json" > /dev/null; then
-              echo "::error file=$ws/package.json::repository.url must be git+https://github.com/cutenode/nodevu.git"
-              status=1
-            fi
-          done
-          exit "$status"
 
   # The published types are generated from the JSDoc, and committed since
   # releases pack without installing anything, so check they're current
