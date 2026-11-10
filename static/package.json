@@ -50,5 +50,6 @@
 		"@nodevu/core": {
 			"optional": true
 		}
-	}
+	},
+	"type": "commonjs"
 }

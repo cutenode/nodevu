@@ -37,5 +37,6 @@
 		"type": "git",
 		"url": "git+https://github.com/cutenode/nodevu.git"
 	},
-	"types": "types/index.d.ts"
+	"types": "types/index.d.ts",
+	"type": "commonjs"
 }

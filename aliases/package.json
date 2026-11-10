@@ -28,5 +28,6 @@
 	"files": [
 		"index.js",
 		"/types"
-	]
+	],
+	"type": "commonjs"
 }

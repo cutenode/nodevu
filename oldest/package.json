@@ -36,5 +36,6 @@
 	"devDependencies": {
 		"c8": "^12.0.0"
 	},
-	"types": "types/index.d.ts"
+	"types": "types/index.d.ts",
+	"type": "commonjs"
 }
