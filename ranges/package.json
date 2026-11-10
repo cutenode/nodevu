@@ -33,5 +33,8 @@
 		"fast-check": "^4.10.2"
 	},
 	"types": "types/index.d.ts",
-	"type": "commonjs"
+	"type": "commonjs",
+	"engines": {
+		"node": ">=24"
+	}
 }

@@ -2,7 +2,7 @@
 
 nodevu is a Node.js Version Utility meant to collect, merge, and reason about Node.js versions in a way that's explicitly developer friendly. Its docs live at [cutenode.github.io/nodevu](https://cutenode.github.io/nodevu/).
 
-nodevu is composed of a set of modules:
+nodevu is composed of a set of modules, each supporting Node.js 24 and later:
 
 - Foundational Modules
   - [core](./core/): this is the core, online-only module. It calls out to sources that have version information about Node.js and does the heavy lifting of coercion, merging, and reasoning about that data into a format that is easily accessible and (hopefully!) extremely useful. It transparently provides data from the sources it fetches from, but also adds additional useful context that it figures out based on time, context, and other signals.

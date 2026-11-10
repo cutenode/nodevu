@@ -35,5 +35,8 @@
 		"c8": "^12.0.0"
 	},
 	"types": "types/index.d.ts",
-	"type": "commonjs"
+	"type": "commonjs",
+	"engines": {
+		"node": ">=24"
+	}
 }

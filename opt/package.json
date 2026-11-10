@@ -38,5 +38,8 @@
 		"@types/luxon": "^3.7.6",
 		"luxon": "^3.5.0"
 	},
-	"type": "commonjs"
+	"type": "commonjs",
+	"engines": {
+		"node": ">=24"
+	}
 }

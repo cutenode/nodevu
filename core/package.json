@@ -36,5 +36,8 @@
 		"url": "git+https://github.com/cutenode/nodevu.git"
 	},
 	"types": "types/index.d.ts",
-	"type": "commonjs"
+	"type": "commonjs",
+	"engines": {
+		"node": ">=24"
+	}
 }
