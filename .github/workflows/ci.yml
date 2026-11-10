@@ -29,6 +29,9 @@ jobs:
       pull-requests: read # list the files a PR changes
     outputs:
       packages: ${{ steps.packages.outputs.packages }}
+      # the filter doesn't run on a manual run, which checks everything
+      docs: ${{ steps.filter.outputs.docs || 'true' }}
+      workflows: ${{ steps.filter.outputs.workflows || 'true' }}
     steps:
       - name: Checkout the repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -55,6 +58,9 @@ jobs:
             ranges: [*shared, 'ranges/**', 'core/**', 'aliases/**', 'parsefiles/**']
             static: [*shared, 'static/**', 'core/**', 'parsefiles/**']
             translate: [*shared, 'translate/**', 'ranges/**', 'core/**', 'aliases/**', 'parsefiles/**']
+            # the site shows core's version, which every release bumps
+            docs: [*shared, 'docs/**', 'doc-kit.config.mjs', 'core/package.json', '.github/workflows/docs.yml']
+            workflows: ['.github/**']
       # a manual run tests every workspace that has a coverage script
       - name: List packages to test
         id: packages
@@ -66,7 +72,7 @@ jobs:
               jq -e '.scripts.coverage' "$ws/package.json" > /dev/null && echo "$ws"
             done | jq -Rcs 'split("\n") | map(select(. != ""))')
           else
-            packages=$(jq -c 'map(select(. != "shared"))' <<< "$CHANGES")
+            packages=$(jq -c --slurpfile root package.json 'map(select(IN($root[0].workspaces[])))' <<< "$CHANGES")
           fi
           echo "packages=$packages" >> "$GITHUB_OUTPUT"
 
@@ -162,11 +168,41 @@ jobs:
       - name: Run npm run coverage -w ${{ matrix.package }}
         run: npm run coverage -w "$PACKAGE"
 
+  docs:
+    needs: changes
+    if: needs.changes.outputs.docs == 'true'
+    # a called workflow can't have more permissions than its caller; docs.yml's
+    # deploy job only runs on a push or manual run on main
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    # actionlint 1.7.12 rejects the `$/` self-repository form zizmor asks for
+    uses: ./.github/workflows/docs.yml # zizmor: ignore[self-repository]
+
+  # zizmor.yml uploads findings to code scanning, which doesn't fail a run, so
+  # check the workflows here too. zizmor.yml runs the online audits
+  workflows:
+    needs: changes
+    if: needs.changes.outputs.workflows == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Run zizmor
+        uses: zizmorcore/zizmor-action@53290badfa369cb0bf7ad16342cb62c2fa47ac7b # v0.8.0
+        with:
+          version: 1.31.1
+          advanced-security: false
+          online-audits: false
+
   # The one check to require on main: path filters skip the other jobs, and a
   # required check that never reports blocks the merge
   ci-ok:
     if: always()
-    needs: [changes, lint, types, test]
+    needs: [changes, lint, types, test, docs, workflows]
     runs-on: ubuntu-latest
     steps:
       - name: Fail if any job failed or was cancelled
