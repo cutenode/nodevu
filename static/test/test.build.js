@@ -2,12 +2,12 @@ const assert = require('node:assert');
 const { execFile } = require('node:child_process');
 const { mkdir, mkdtemp, readFile } = require('node:fs/promises');
 const { tmpdir } = require('node:os');
-const { dirname, join } = require('node:path');
+const { join } = require('node:path');
 const { describe, it } = require('node:test');
 const { promisify } = require('node:util');
 const nodevu = require('@nodevu/core');
-const fixtures = require('../../core/util/dev/fixtures');
-const now = require('../../core/test/data/static/now.json');
+const fixtures = require('@nodevu/fixtures');
+const now = require('@nodevu/fixtures/data/now.json');
 
 // a full diff of every release takes node minutes to build, so failures say
 // this instead
@@ -89,20 +89,17 @@ function toJSON(data) {
 }
 
 // runs a build script the way `npm run build -w static` does, from a copy of
-// static/, with core's snapshot data served instead of nodejs.org and the
+// static/, with the snapshot data served instead of nodejs.org and the
 // clock stopped at the time the snapshot was taken. returns what it wrote.
 /** @param {'default' | 'releases' | 'security' | 'support'} name */
 async function runBuild(name) {
 	const cwd = join(await mkdtemp(join(tmpdir(), 'nodevu-')), 'static');
 	await mkdir(join(cwd, 'data'), { recursive: true });
 
-	const luxon = require.resolve('luxon', {
-		paths: [dirname(require.resolve('@nodevu/core'))],
-	});
-
 	const setup = [
-		`require(${JSON.stringify(luxon)}).Settings.now = () => ${Date.parse(now)};`,
-		`globalThis.fetch = require(${JSON.stringify(require.resolve('../../core/util/dev/fixtures'))}).at(${JSON.stringify(now)}).fetch;`,
+		// core reads the time through luxon, which calls Date.now()
+		`Date.now = () => ${Date.parse(now)};`,
+		`globalThis.fetch = require(${JSON.stringify(require.resolve('@nodevu/fixtures'))}).at(${JSON.stringify(now)}).fetch;`,
 	].join(' ');
 
 	await promisify(execFile)(

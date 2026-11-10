@@ -3,7 +3,7 @@ const nodevu = require('../index');
 const { describe, it, beforeEach } = require('node:test');
 const undici = require('undici');
 
-const beforeEachTemplate = require('../util/dev/beforeEachTemplate');
+const beforeEachTemplate = require('@nodevu/fixtures/beforeEachTemplate');
 
 /** @param {import('../index').Data} data */
 function check(data) {
@@ -30,7 +30,7 @@ function check(data) {
 	assert.deepStrictEqual(data.v12.security.oldest, '12.8.1');
 }
 
-const now = require('./data/static/now.json');
+const now = require('@nodevu/fixtures/data/now.json');
 
 // undici's types only take its own Request class, so they don't match the
 // global fetch's type even though it works as one

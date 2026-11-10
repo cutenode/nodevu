@@ -1,8 +1,8 @@
 const assert = require('node:assert');
 const { describe, it } = require('node:test');
 const fc = require('fast-check');
-const { at } = require('../util/dev/fixtures');
-const schedule = require('./data/static/schedule.json');
+const { at } = require('../index');
+const schedule = require('../data/schedule.json');
 
 describe('at', async () => {
 	it('should pass now through as an option', () => {
@@ -16,7 +16,15 @@ describe('at', async () => {
 		assert.strictEqual(options.now, now);
 	});
 
-	it("should serve core's schedule.json snapshot by default", async () => {
+	it('should default now to 2025-09-01', () => {
+		// Act
+		const options = at();
+
+		// Assert
+		assert.strictEqual(options.now, '2025-09-01');
+	});
+
+	it('should serve the schedule.json snapshot by default', async () => {
 		// Arrange
 		const { fetch } = at('2025-09-01');
 

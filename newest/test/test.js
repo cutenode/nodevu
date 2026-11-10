@@ -1,9 +1,9 @@
 const assert = require('node:assert');
 const { newest, lts, security } = require('../index');
 const { describe, it } = require('node:test');
-const fixtures = require('../../core/util/dev/fixtures');
+const fixtures = require('@nodevu/fixtures');
 
-// the day core's snapshot was taken (see now.json), so every release in it is
+// the day the snapshot was taken (see now.json), so every release in it is
 // out, and releases a later snapshot refresh adds get filtered out, so the
 // expected values don't move
 const at = (now = '2025-10-30') => fixtures.at(now);

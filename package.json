@@ -3,7 +3,7 @@
 	"version": "0.0.1",
 	"description": "comprehensive node.js version tooling",
 	"scripts": {
-		"lint": "oxlint --deny-warnings && oxfmt --check && docov && npm run lint:harden && npm run lint:pack && npm run lint:workspaces && npm run knip",
+		"lint": "oxlint --deny-warnings && oxfmt --check && docov && npm run lint:harden && npm run lint:rules && npm run lint:pack && npm run lint:workspaces && npm run knip",
 		"lint:write": "oxlint --fix && oxfmt",
 		"lint:harden": "node --test tools/harden/test/*.test.mjs && harden check -p npm -l strict --json | node tools/harden/check.mjs",
 		"lint:pack": "npm exec --ws -- publint --strict && npm exec --ws -- attw --pack .",
@@ -13,7 +13,8 @@
 		"docs": "doc-kit generate",
 		"docs:dev": "doc-kit generate && sirv out --dev",
 		"types": "tsc -b",
-		"knip": "knip --treat-config-hints-as-errors"
+		"knip": "knip --treat-config-hints-as-errors",
+		"lint:rules": "node --test tools/oxlint/nodevu/test/*.test.mjs"
 	},
 	"repository": {
 		"type": "git",
@@ -39,7 +40,8 @@
 		"aliases",
 		"translate",
 		"fetchindex",
-		"opt"
+		"opt",
+		"fixtures"
 	],
 	"devDependencies": {
 		"@arethetypeswrong/cli": "0.18.5",
@@ -49,7 +51,6 @@
 		"@lavamoat/harden": "0.8.1",
 		"@node-core/ui-components": "1.8.1",
 		"@oxlint/plugins": "1.89.0",
-		"@types/luxon": "3.7.6",
 		"@types/node": "26.6.5",
 		"@types/semver": "7.8.0",
 		"knip": "6.44.1",

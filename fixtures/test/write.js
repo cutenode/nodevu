@@ -3,7 +3,7 @@ const { mkdtemp, readFile } = require('node:fs/promises');
 const { tmpdir } = require('node:os');
 const { join } = require('node:path');
 const { describe, it } = require('node:test');
-const write = require('../util/dev/write');
+const write = require('../util/write');
 
 describe('write', async () => {
 	it('should save data as tab-indented JSON', async () => {

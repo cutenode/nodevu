@@ -16,11 +16,13 @@
 		"*/types/**"
 	],
 	"jsPlugins": [
-		{ "name": "anti-slop", "specifier": "./tools/oxlint/anti-slop/index.ts" }
+		{ "name": "anti-slop", "specifier": "./tools/oxlint/anti-slop/index.ts" },
+		{ "name": "nodevu", "specifier": "./tools/oxlint/nodevu/index.mjs" }
 	],
 	"rules": {
 		"no-unused-vars": ["warn", { "ignoreRestSiblings": true }],
 		"oxc/no-accumulating-spread": "error",
+		"nodevu/no-cross-package-paths": "error",
 		"anti-slop/no-array-filter-map": "error",
 		"anti-slop/no-reduce-accumulator-copy": "error",
 		"anti-slop/no-chained-type-assertions": "error",

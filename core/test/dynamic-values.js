@@ -2,9 +2,9 @@ const assert = require('node:assert');
 const nodevu = require('../index');
 const { describe, it, beforeEach } = require('node:test');
 
-const beforeEachTemplate = require('../util/dev/beforeEachTemplate');
+const beforeEachTemplate = require('@nodevu/fixtures/beforeEachTemplate');
 
-const now = require('./data/static/now.json');
+const now = require('@nodevu/fixtures/data/now.json');
 
 // this is a set of tests that only test against static data effectively frozen at a point in time.
 // these tests should *probably* be updated sometimes. see the npm scripts for update scripts.

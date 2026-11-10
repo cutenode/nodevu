@@ -1,4 +1,4 @@
-const ranges = require('../../ranges'); // would normally be "const ranges = require('@nodevu/ranges')" in your code
+const ranges = require('@nodevu/ranges');
 const translate = require('../index'); // would normally be "const translate = require('@nodevu/translate')" in your code
 
 async function getTranslatedData() {

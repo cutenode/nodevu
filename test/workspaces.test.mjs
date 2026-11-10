@@ -21,6 +21,7 @@ function read(path) {
  * @typedef {object} Manifest
  * @property {string[]} [workspaces]
  * @property {{ url: string }} [repository]
+ * @property {boolean} [private]
  * @property {Record<string, string>} [scripts]
  * @property {Record<string, string>} [dependencies]
  * @property {Record<string, string>} [devDependencies]
@@ -121,16 +122,19 @@ describe('the workspace list', () => {
 		assert.equal(new Set(releaseLists().map(String)).size, 1);
 	});
 
-	it('has a docs page and a sidebar link for each module', () => {
+	// private modules, like the tests' fixtures, aren't for users
+	it('has a docs page and a sidebar link for each public module', () => {
+		const documented = workspaces.filter((ws) => !manifest(ws).private);
+
 		const links = docKit.html.navigation.sidebar
 			.flatMap(({ items }) => items)
 			.map(({ link }) => link.slice(1))
 			.filter((link) => link !== 'index')
 			.sort();
 
-		assert.deepStrictEqual(links, workspaces);
+		assert.deepStrictEqual(links, documented);
 
-		for (const ws of workspaces) {
+		for (const ws of documented) {
 			assert.ok(
 				existsSync(new URL(`../docs/pages/${ws}.md`, import.meta.url)),
 				ws,

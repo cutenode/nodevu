@@ -41,6 +41,7 @@ jobs:
             parsefiles
             ranges
             static
+            !fixtures
             !opt
             !translate
 
@@ -74,6 +75,7 @@ jobs:
             parsefiles
             ranges
             static
+            !fixtures
             !opt
             !translate
 
@@ -111,6 +113,7 @@ jobs:
             parsefiles
             ranges
             static
+            !fixtures
             !opt
             !translate
 

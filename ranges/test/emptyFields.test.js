@@ -3,8 +3,8 @@ const ranges = require('../index');
 const { at } = require('./fixtures');
 const { describe, it } = require('node:test');
 
-// core's snapshot time, when the Current line hasn't had a security release yet
-const snapshotNow = require('../../core/test/data/static/now.json');
+// the snapshot time, when the Current line hasn't had a security release yet
+const snapshotNow = require('@nodevu/fixtures/data/now.json');
 
 describe('fields without a value should be undefined, not "undefined"', async () => {
 	it('should leave out the security fields of a Current line without security releases', async () => {

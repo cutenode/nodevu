@@ -48,7 +48,7 @@ const schedule = {
 	},
 };
 
-// serves the made-up data above instead of core's snapshots
+// serves the made-up data above instead of the snapshots
 /** @param {string} now */
 const at = (now) => fixtures.at(now, { index, schedule });
 

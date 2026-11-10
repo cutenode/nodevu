@@ -1,0 +1,31 @@
+{
+	"name": "@nodevu/fixtures",
+	"version": "0.0.0",
+	"description": "Snapshot data and helpers the nodevu packages' tests share. Not published.",
+	"main": "index.js",
+	"scripts": {
+		"test": "node --test",
+		"lint": "oxlint && oxfmt --check",
+		"lint:write": "oxlint --fix && oxfmt",
+		"coverage": "c8 node --test",
+		"test:update": "npm run test:update:static && npm run test:update:now",
+		"test:update:static": "node ./util/updateStaticData.js",
+		"test:update:now": "node ./util/updateStaticNow.js"
+	},
+	"author": "Tierney Cyren <hello@bnb.im> (https://bnb.im/)",
+	"license": "MIT",
+	"private": true,
+	"dependencies": {
+		"undici": "^8.12.4"
+	},
+	"devDependencies": {
+		"c8": "^12.0.0",
+		"fast-check": "^4.10.2",
+		"luxon": "^3.7.2"
+	},
+	"types": "types/index.d.ts",
+	"type": "commonjs",
+	"engines": {
+		"node": ">=24"
+	}
+}

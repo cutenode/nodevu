@@ -2,7 +2,7 @@ const { deepStrictEqual, ok } = require('node:assert');
 const nodevu = require('../index');
 const { describe, it, beforeEach } = require('node:test');
 
-const beforeEachTemplate = require('../util/dev/beforeEachTemplate');
+const beforeEachTemplate = require('@nodevu/fixtures/beforeEachTemplate');
 
 describe('check to make sure that changing sources works as expected', async () => {
 	beforeEach(beforeEachTemplate);

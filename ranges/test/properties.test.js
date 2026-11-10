@@ -3,8 +3,8 @@ const aliases = require('@nodevu/aliases');
 const fc = require('fast-check');
 const ranges = require('../index');
 const { at } = require('./fixtures');
-const index = require('../../core/test/data/static/index.json');
-const schedule = require('../../core/test/data/static/schedule.json');
+const index = require('@nodevu/fixtures/data/index.json');
+const schedule = require('@nodevu/fixtures/data/schedule.json');
 const { describe, it } = require('node:test');
 
 // an LTS bound from @nodevu/core, a version without a `v`, like 20.9.0

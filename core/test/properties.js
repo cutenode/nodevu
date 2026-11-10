@@ -3,7 +3,7 @@ const { describe, it } = require('node:test');
 const fc = require('fast-check');
 const semver = require('semver');
 const nodevu = require('../index');
-const { at } = require('../util/dev/fixtures');
+const { at } = require('@nodevu/fixtures');
 
 const phases = ['alpha', 'start', 'lts', 'maintenance', 'end'];
 
