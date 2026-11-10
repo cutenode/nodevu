@@ -3,7 +3,7 @@
 	"version": "0.0.1",
 	"description": "comprehensive node.js version tooling",
 	"scripts": {
-		"lint": "oxlint && oxfmt --check && docov && npm run lint:harden && npm run knip",
+		"lint": "oxlint && oxfmt --check && docov && npm run lint:harden && npm run lint:rules && npm run knip",
 		"lint:write": "oxlint --fix && oxfmt",
 		"lint:harden": "node --test tools/harden/test/*.test.mjs && harden check -p npm -l strict --json | node tools/harden/check.mjs",
 		"coverage": "npm run coverage --ws --if-present",
@@ -12,7 +12,8 @@
 		"docs": "doc-kit generate",
 		"docs:dev": "doc-kit generate && sirv out --dev",
 		"types": "tsc -b",
-		"knip": "knip --treat-config-hints-as-errors"
+		"knip": "knip --treat-config-hints-as-errors",
+		"lint:rules": "node --test tools/oxlint/nodevu/test/*.test.mjs"
 	},
 	"repository": {
 		"type": "git",
