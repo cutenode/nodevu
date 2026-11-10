@@ -1,10 +1,19 @@
+/// <reference lib="es2025.iterator" />
 const { deepStrictEqual, ok, strictEqual } = require('node:assert');
 const { readFileSync } = require('node:fs');
 const { describe, it } = require('node:test');
 const fc = require('fast-check');
-const { fetch: undiciFetch } = require('undici');
+
+// undici's fetch works as the global one, but its types don't overlap with
+// it: its Request has members the global one lacks, and its Headers
+// iterators lack the global ones' Symbol.dispose
+const undiciFetch = /** @type {typeof fetch} */ (
+	/** @type {unknown} */ (require('undici').fetch)
+);
+
 const { DateTime } = require('luxon');
 const opt = require('../index');
+/** @type {{ dependencies?: Record<string, string> }} */
 const { dependencies } = require('../package.json');
 
 describe('the published package', () => {
@@ -28,6 +37,7 @@ describe('the parseOptions module should return all correct defaults', async () 
 	it('should return the default date', async () => {
 		const now = DateTime.now();
 		const defaultParsedOptions = opt();
+		ok(DateTime.isDateTime(defaultParsedOptions.now));
 		deepStrictEqual(defaultParsedOptions.now.day, now.day);
 		deepStrictEqual(defaultParsedOptions.now.hour, now.hour);
 		deepStrictEqual(defaultParsedOptions.now.minute, now.minute);
@@ -37,6 +47,7 @@ describe('the parseOptions module should return all correct defaults', async () 
 	it('should return the default date, when options is an empty object', async () => {
 		const now = DateTime.now();
 		const defaultParsedOptions = opt({});
+		ok(DateTime.isDateTime(defaultParsedOptions.now));
 		deepStrictEqual(defaultParsedOptions.now.day, now.day);
 		deepStrictEqual(defaultParsedOptions.now.hour, now.hour);
 		deepStrictEqual(defaultParsedOptions.now.minute, now.minute);
@@ -133,7 +144,10 @@ function options() {
 
 	return fc.record(
 		{
-			fetch: fc.func(fc.anything()),
+			// opt only passes fetch along, so it never calls this one
+			fetch: /** @type {import('fast-check').Arbitrary<typeof fetch>} */ (
+				fc.func(fc.anything())
+			),
 			now: value,
 			urls: fc.record({ index: value, schedule: value }, { requiredKeys: [] }),
 		},

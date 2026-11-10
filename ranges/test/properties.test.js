@@ -1,4 +1,4 @@
-const { deepStrictEqual, match } = require('node:assert');
+const { deepStrictEqual, match, ok } = require('node:assert');
 const aliases = require('@nodevu/aliases');
 const fc = require('fast-check');
 const ranges = require('../index');
@@ -28,12 +28,14 @@ describe('generateRanges', () => {
 					const data = await ranges(filter, at(now));
 
 					// Assert
-					for (const alias in data) {
+					/** @type {import('@nodevu/aliases').Alias} */
+					let alias;
+
+					for (alias in data) {
 						deepStrictEqual(data[alias], everything[alias], alias);
 					}
 				},
 			),
-			{ numRuns: 50 },
 		);
 	});
 
@@ -48,13 +50,13 @@ describe('generateRanges', () => {
 
 					// Assert
 					const unrequested = Object.keys(data).filter(
-						(alias) => !filter.includes(alias),
+						(alias) =>
+							!(/** @type {readonly string[]} */ (filter).includes(alias)),
 					);
 
 					deepStrictEqual(filter.includes('all') ? [] : unrequested, []);
 				},
 			),
-			{ numRuns: 50 },
 		);
 	});
 
@@ -71,7 +73,6 @@ describe('generateRanges', () => {
 					deepStrictEqual(range.oldest, range.versions.at(-1), alias);
 				}
 			}),
-			{ numRuns: 50 },
 		);
 	});
 
@@ -88,7 +89,6 @@ describe('generateRanges', () => {
 
 				deepStrictEqual(versionsOf(data['lts/active']), versions);
 			}),
-			{ numRuns: 50 },
 		);
 	});
 
@@ -102,11 +102,12 @@ describe('generateRanges', () => {
 				// every release in lts/active is an LTS release, so its lines always
 				// have LTS bounds
 				if (active) {
+					ok(active.newestLts);
+					ok(active.oldestLts);
 					match(active.newestLts, ltsVersion);
 					match(active.oldestLts, ltsVersion);
 				}
 			}),
-			{ numRuns: 50 },
 		);
 	});
 
@@ -119,13 +120,13 @@ describe('generateRanges', () => {
 				// Assert
 				const all = new Set(versionsOf(data.all));
 
-				for (const alias of [
+				for (const alias of /** @type {const} */ ([
 					'current',
 					'lts/latest',
 					'lts/active',
 					'lts/maintenance',
 					'eol',
-				]) {
+				])) {
 					const outside = versionsOf(data[alias]).filter(
 						(version) => !all.has(version),
 					);
@@ -133,7 +134,6 @@ describe('generateRanges', () => {
 					deepStrictEqual(outside, [], alias);
 				}
 			}),
-			{ numRuns: 50 },
 		);
 	});
 
@@ -153,6 +153,7 @@ describe('generateRanges', () => {
 					const data = await ranges('all', options);
 
 					// Assert
+					ok(data.alpha);
 					deepStrictEqual(data.alpha.versions.length, alphas.length);
 					deepStrictEqual(
 						versionsOf(data.all).filter((version) =>
@@ -162,7 +163,6 @@ describe('generateRanges', () => {
 					);
 				},
 			),
-			{ numRuns: 50 },
 		);
 	});
 });
@@ -183,6 +183,11 @@ function day() {
 
 // the snapshot's index.json and schedule.json, plus Alpha releases of
 // `vMAJOR`, released on `now` and still in the Alpha phase
+/**
+ * @param {string} now
+ * @param {number} major
+ * @param {number[]} alphas
+ */
 function withAlphaLine(now, major, alphas) {
 	const releases = alphas.map((alpha) => ({
 		version: `v${major}.0.0-alpha.${alpha}.0.0`,
@@ -202,6 +207,7 @@ function withAlphaLine(now, major, alphas) {
 }
 
 // a range's versions, or none when it's left out
+/** @param {import('../index').Range} [range] */
 function versionsOf(range) {
 	return range?.versions ?? [];
 }

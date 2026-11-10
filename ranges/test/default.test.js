@@ -7,11 +7,16 @@ describe('data should exist as it is defined', async () => {
 	it('versions should have correct types on every property', async () => {
 		const data = await ranges(undefined, at());
 
-		for (const key in data) {
-			assert.deepStrictEqual(Array.isArray(data[key].versions), true);
-			assert.deepStrictEqual(data[key].versions.length > 0, true);
+		/** @type {import('@nodevu/aliases').Alias} */
+		let key;
+
+		for (key in data) {
+			const range = data[key];
+			assert.ok(range);
+			assert.deepStrictEqual(Array.isArray(range.versions), true);
+			assert.deepStrictEqual(range.versions.length > 0, true);
 			assert.deepStrictEqual(
-				data[key].versions.every((version) => versionPattern.test(version)),
+				range.versions.every((version) => versionPattern.test(version)),
 				true,
 			);
 		}
@@ -20,9 +25,15 @@ describe('data should exist as it is defined', async () => {
 	it('both newest and oldest on every property should be the correct type', async () => {
 		const data = await ranges(undefined, at());
 
-		for (const key in data) {
-			assert.match(data[key].newest, versionPattern);
-			assert.match(data[key].oldest, versionPattern);
+		/** @type {import('@nodevu/aliases').Alias} */
+		let key;
+
+		for (key in data) {
+			const range = data[key];
+			assert.ok(range?.newest);
+			assert.ok(range.oldest);
+			assert.match(range.newest, versionPattern);
+			assert.match(range.oldest, versionPattern);
 		}
 	});
 });

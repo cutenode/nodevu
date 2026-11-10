@@ -1,4 +1,4 @@
-const { deepStrictEqual } = require('node:assert');
+const { deepStrictEqual, ok } = require('node:assert');
 const ranges = require('../index');
 const { at } = require('./fixtures');
 const { describe, it } = require('node:test');
@@ -9,6 +9,7 @@ const snapshotNow = require('../../core/test/data/static/now.json');
 describe('fields without a value should be undefined, not "undefined"', async () => {
 	it('should leave out the security fields of a Current line without security releases', async () => {
 		const data = await ranges(undefined, at(snapshotNow));
+		ok(data.current);
 
 		deepStrictEqual(data.current.versions, ['v25.1.0', 'v25.0.0']);
 		deepStrictEqual(data.current.oldestSecurity, undefined);
@@ -23,6 +24,8 @@ describe('fields without a value should be undefined, not "undefined"', async ()
 	it('should leave out the security fields of an LTS line without security releases', async () => {
 		// a date when the only Active LTS line hasn't had a security release
 		const data = await ranges(undefined, at('2016-06-01'));
+		ok(data['lts/latest']);
+		ok(data['lts/active']);
 
 		deepStrictEqual(data['lts/latest'].oldestSecurity, undefined);
 		deepStrictEqual(data['lts/latest'].newestSecurity, undefined);
@@ -36,6 +39,7 @@ describe('fields without a value should be undefined, not "undefined"', async ()
 		// older line also in "current" (one with no LTS or maintenance dates in
 		// schedule.json) has one
 		const data = await ranges('current', at('2016-06-23'));
+		ok(data.current);
 
 		deepStrictEqual(data.current.newest, 'v6.2.2');
 		deepStrictEqual(data.current.versions.includes('v0.12.15'), true);
@@ -47,6 +51,11 @@ describe('fields without a value should be undefined, not "undefined"', async ()
 		// made-up data, since the real data always has these by the time a line
 		// is LTS: neither line has security releases, and the newest release of
 		// each line isn't marked as LTS, so core has no `support.lts.newest`
+		/**
+		 * @param {string} version
+		 * @param {string} date
+		 * @param {string | false} [lts]
+		 */
 		const release = (version, date, lts = false) => ({
 			version,
 			date,
@@ -116,10 +125,19 @@ describe('fields without a value should be undefined, not "undefined"', async ()
 		]) {
 			const data = await ranges(undefined, at(now));
 
-			for (const range in data) {
-				for (const field in data[range]) {
+			/** @type {import('@nodevu/aliases').Alias} */
+			let range;
+
+			for (range in data) {
+				const fields = data[range];
+				ok(fields);
+
+				/** @type {keyof import('../index').Range} */
+				let field;
+
+				for (field in fields) {
 					deepStrictEqual(
-						data[range][field] === 'undefined',
+						fields[field] === 'undefined',
 						false,
 						`${now} ${range}.${field}`,
 					);

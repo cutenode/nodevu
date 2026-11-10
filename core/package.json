@@ -10,9 +10,7 @@
 		"test:update": "npm run test:update:static && npm run test:update:now",
 		"test:update:static": "node ./util/dev/updateStaticData.js",
 		"test:update:now": "node ./util/dev/updateStaticNow.js",
-		"coverage": "c8 node --test",
-		"updates:check": "npx npm-check-updates",
-		"updates:update": "npx npm-check-updates -u"
+		"coverage": "c8 node --test"
 	},
 	"author": "Tierney Cyren <hello@bnb.im> (https://bnb.im/)",
 	"license": "MIT",
@@ -37,5 +35,9 @@
 		"type": "git",
 		"url": "git+https://github.com/cutenode/nodevu.git"
 	},
-	"types": "types/index.d.ts"
+	"types": "types/index.d.ts",
+	"type": "commonjs",
+	"engines": {
+		"node": ">=24"
+	}
 }

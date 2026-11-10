@@ -72,6 +72,10 @@ function coreData() {
 	return nodevu(fixtures.at(now));
 }
 
+/**
+ * @param {import('@nodevu/core').Data} data
+ * @param {keyof import('@nodevu/core').ReleaseLine} key
+ */
 function pick(data, key) {
 	return Object.fromEntries(
 		Object.entries(data).map(([line, value]) => [line, value[key]]),
@@ -79,6 +83,7 @@ function pick(data, key) {
 }
 
 // the build output is JSON, which drops undefined values
+/** @param {unknown} data */
 function toJSON(data) {
 	return JSON.parse(JSON.stringify(data));
 }
@@ -86,6 +91,7 @@ function toJSON(data) {
 // runs a build script the way `npm run build -w static` does, from a copy of
 // static/, with core's snapshot data served instead of nodejs.org and the
 // clock stopped at the time the snapshot was taken. returns what it wrote.
+/** @param {'default' | 'releases' | 'security' | 'support'} name */
 async function runBuild(name) {
 	const cwd = join(await mkdtemp(join(tmpdir(), 'nodevu-')), 'static');
 	await mkdir(join(cwd, 'data'), { recursive: true });

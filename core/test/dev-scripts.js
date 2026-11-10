@@ -61,6 +61,10 @@ async function snapshotDirectory() {
 	return cwd;
 }
 
+/**
+ * @param {string} cwd
+ * @param {string} file
+ */
 async function readSnapshot(cwd, file) {
 	return JSON.parse(
 		await readFile(join(cwd, 'test/data/static', file), 'utf8'),
@@ -69,6 +73,11 @@ async function readSnapshot(cwd, file) {
 
 // runs a util/dev script the way its npm script does, after `setup` stubs
 // whatever it reaches outside the process for
+/**
+ * @param {string} script
+ * @param {string} setup
+ * @param {string} cwd
+ */
 function runScript(script, setup, cwd) {
 	const path = require.resolve(`../util/dev/${script}`);
 

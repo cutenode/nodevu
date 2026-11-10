@@ -1,4 +1,4 @@
-const { deepStrictEqual } = require('node:assert');
+const { deepStrictEqual, ok } = require('node:assert');
 const nodevu = require('../index');
 const { describe, it, beforeEach } = require('node:test');
 
@@ -14,6 +14,8 @@ describe('check to make sure that changing sources works as expected', async () 
 		};
 
 		const staticData = await nodevu({ urls });
+		ok(staticData.v14.support);
+		ok(staticData.v8.support);
 		deepStrictEqual(
 			staticData.v17.releases['v17.0.0'].dependencies.npm,
 			'8.1.0',
@@ -29,6 +31,8 @@ describe('check to make sure that changing sources works as expected', async () 
 		};
 
 		const staticData = await nodevu({ urls });
+		ok(staticData.v14.support?.lts);
+		ok(staticData.v9.support);
 		deepStrictEqual(
 			staticData.v17.releases['v17.0.0'].dependencies.v8,
 			'9.5.172.21',

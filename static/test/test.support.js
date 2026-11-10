@@ -9,10 +9,11 @@ const { describe, it } = require('node:test');
 // specifically because we want to be sure the data is consistent *and* because we want to be sure that
 // the various ways of accessing the data produce consistent results.
 
+/** @param {Record<string, import('@nodevu/core').Support>} data */
 function check(data) {
 	// support checks
 	assert.deepStrictEqual(data.v14.codename, 'Fermium');
-	assert.deepStrictEqual(data.v12.lts.newest, '12.22.12');
+	assert.deepStrictEqual(data.v12.lts?.newest, '12.22.12');
 	assert.deepStrictEqual(data.v9.phases.current, 'end');
 	assert.deepStrictEqual(data.v8.phases.current, 'end');
 }

@@ -117,6 +117,7 @@ function day() {
 }
 
 // a phase that hasn't begun (`{}`) sorts before every phase
+/** @param {import('../index').Support} [support] */
 function phaseIndex(support) {
 	return phases.indexOf(String(support?.phases.current));
 }

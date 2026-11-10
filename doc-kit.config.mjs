@@ -13,7 +13,13 @@ const baseURL = 'https://cutenode.github.io/nodevu';
 const description =
 	'nodevu collects, merges, and reasons about Node.js versions: release lines, LTS and security releases, support phases, and downloadable files.';
 
-/** @type {import('@doc-kit/core/utils/configuration/types').Configuration} */
+/**
+ * @import { Configuration, GlobalConfiguration } from '@doc-kit/core/utils/configuration/types'
+ */
+
+// doc-kit deep-merges this with its defaults, so `global` can leave out what
+// they fill in. its own types only describe the merged result
+/** @satisfies {Omit<Partial<Configuration>, 'global'> & { global?: Partial<GlobalConfiguration> }} */
 export default {
 	target: ['html', 'orama-db', 'json', 'llms-txt', 'sitemap'],
 

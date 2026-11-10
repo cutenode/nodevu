@@ -8,6 +8,7 @@ const decisions = JSON.parse(
 	await readFile(new URL('decisions.json', import.meta.url), 'utf8'),
 );
 
+/** @type {{ checks: { id: string, satisfied: number }[] }} */
 const { checks } = JSON.parse(await text(process.stdin));
 
 const missing = checks.filter(

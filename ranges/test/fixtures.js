@@ -14,20 +14,32 @@ const versionPattern = /^v\d+\.\d+\.\d+$/;
 // schedule.json snapshots by default) instead of fetching them, only including
 // releases that would be out by `now`, like the real index.json. any other URL
 // throws, so tests never touch the network.
+/**
+ * @param {string} [date]
+ * @param {{
+ *   index: { date: string }[],
+ *   schedule: import('@nodevu/core/util/prod/schedule').Schedule,
+ * }} [data]
+ */
 function at(date = now, data = { index, schedule }) {
 	return {
 		now: date,
-		fetch: async (url) => {
-			if (url.endsWith('/schedule.json')) {
-				return Response.json(data.schedule);
-			}
+		// core only calls this with a URL string
+		fetch: /** @type {typeof fetch} */ (
+			async (/** @type {string} */ url) => {
+				if (url.endsWith('/schedule.json')) {
+					return Response.json(data.schedule);
+				}
 
-			if (url.endsWith('/index.json')) {
-				return Response.json(data.index.filter((entry) => entry.date <= date));
-			}
+				if (url.endsWith('/index.json')) {
+					return Response.json(
+						data.index.filter((entry) => entry.date <= date),
+					);
+				}
 
-			throw new Error(`No fixture data for ${url}`);
-		},
+				throw new Error(`No fixture data for ${url}`);
+			}
+		),
 	};
 }
 

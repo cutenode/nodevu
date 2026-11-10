@@ -7,6 +7,10 @@ on:
   pull_request:
     branches:
       - main
+  # a PR or push only tests what it changed, while dependencies float and Node
+  # keeps releasing, so test everything once a week too
+  schedule:
+    - cron: '0 5 * * 1'
   workflow_dispatch:
 
 permissions:
@@ -29,6 +33,9 @@ jobs:
       pull-requests: read # list the files a PR changes
     outputs:
       packages: ${{ steps.packages.outputs.packages }}
+      # the filter doesn't run on a manual or scheduled run, which checks everything
+      docs: ${{ steps.filter.outputs.docs || 'true' }}
+      workflows: ${{ steps.filter.outputs.workflows || 'true' }}
     steps:
       - name: Checkout the repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -36,7 +43,7 @@ jobs:
           persist-credentials: false
       - name: Find changed packages
         id: filter
-        if: github.event_name != 'workflow_dispatch'
+        if: github.event_name == 'pull_request' || github.event_name == 'push'
         uses: dorny/paths-filter@ceb8a2b8f2d89434be7ff52d3de7ec3738c5cc9d # v4.0.3
         with:
           filters: |
@@ -46,27 +53,31 @@ jobs:
               - '.npmrc'
               - 'package-lock.json'
               - '.github/workflows/ci.yml'
-            core: [*shared, 'core/**']
+            aliases: [*shared, 'aliases/**']
+            core: [*shared, 'core/**', 'parsefiles/**']
             fetchindex: [*shared, 'fetchindex/**']
-            newest: [*shared, 'newest/**', 'core/**']
-            oldest: [*shared, 'oldest/**', 'core/**']
+            newest: [*shared, 'newest/**', 'core/**', 'parsefiles/**']
+            oldest: [*shared, 'oldest/**', 'core/**', 'parsefiles/**']
             opt: [*shared, 'opt/**']
             parsefiles: [*shared, 'parsefiles/**']
-            ranges: [*shared, 'ranges/**', 'core/**', 'aliases/**']
-            static: [*shared, 'static/**', 'core/**']
-            translate: [*shared, 'translate/**', 'ranges/**', 'core/**', 'aliases/**']
-      # a manual run tests every workspace that has a coverage script
+            ranges: [*shared, 'ranges/**', 'core/**', 'aliases/**', 'parsefiles/**']
+            static: [*shared, 'static/**', 'core/**', 'parsefiles/**']
+            translate: [*shared, 'translate/**', 'ranges/**', 'core/**', 'aliases/**', 'parsefiles/**']
+            # the site shows core's version, which every release bumps
+            docs: [*shared, 'docs/**', 'doc-kit.config.mjs', 'core/package.json', '.github/workflows/docs.yml']
+            workflows: ['.github/**']
+      # a manual or scheduled run tests every workspace that has a coverage script
       - name: List packages to test
         id: packages
         env:
           CHANGES: ${{ steps.filter.outputs.changes }}
         run: |
-          if [ "$GITHUB_EVENT_NAME" = workflow_dispatch ]; then
+          if [ -z "$CHANGES" ]; then
             packages=$(for ws in $(jq -r '.workspaces[]' package.json); do
               jq -e '.scripts.coverage' "$ws/package.json" > /dev/null && echo "$ws"
             done | jq -Rcs 'split("\n") | map(select(. != ""))')
           else
-            packages=$(jq -c 'map(select(. != "shared"))' <<< "$CHANGES")
+            packages=$(jq -c --slurpfile root package.json 'map(select(IN($root[0].workspaces[])))' <<< "$CHANGES")
           fi
           echo "packages=$packages" >> "$GITHUB_OUTPUT"
 
@@ -79,10 +90,19 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
+      # _typos.toml lists the words it shouldn't flag
+      - name: Check spelling
+        uses: crate-ci/typos@7f9d0819ca1c008ade73f4b41fa9d258d48f605b # v1.51.1
+      # relative links and anchors only; the weekly docs build checks the rest
+      - name: Check links
+        uses: lycheeverse/lychee-action@e7477775783ea5526144ba13e8db5eec57747ce8 # v2.9.0
+        with:
+          args: --offline --include-fragments --no-progress --exclude-path tools/oxlint/anti-slop .
+          output: ${{ runner.temp }}/lychee.md
       - name: Setup Node.js
         uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
-          node-version: current
+          node-version-file: .node-version
           # no npm cache: npm ci takes seconds, and devEngines in package.json would
           # otherwise switch one on
           package-manager-cache: false
@@ -92,19 +112,6 @@ jobs:
         run: npm ci
       - name: Run npm lint
         run: npm run lint
-      # npm rejects a provenance publish when repository.url doesn't match the
-      # repo the release workflow runs in, so every package release.yml
-      # publishes has to name it
-      - name: Check published packages name this repository
-        run: |
-          status=0
-          for ws in aliases core fetchindex newest oldest parsefiles ranges static; do
-            if ! jq -e '.repository.url == "git+https://github.com/cutenode/nodevu.git"' "$ws/package.json" > /dev/null; then
-              echo "::error file=$ws/package.json::repository.url must be git+https://github.com/cutenode/nodevu.git"
-              status=1
-            fi
-          done
-          exit "$status"
 
   # The published types are generated from the JSDoc, and committed since
   # releases pack without installing anything, so check they're current
@@ -119,7 +126,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
-          node-version: current
+          node-version-file: .node-version
           package-manager-cache: false
       # the packages import each other, so link the workspaces
       - name: Run npm ci
@@ -137,14 +144,23 @@ jobs:
   test:
     needs: changes
     if: needs.changes.outputs.packages != '[]'
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
         package: ${{ fromJSON(needs.changes.outputs.packages) }}
-        node-version: [current, lts/*, lts/-1]
+        # the LTS lines whose bundled npm meets devEngines; `current` would
+        # install the next major's alpha
+        node-version: [26, 24]
+        # nothing in the modules depends on the platform, so macOS and Windows
+        # only run on the weekly and manual runs
+        os: ${{ fromJSON((github.event_name == 'schedule' || github.event_name == 'workflow_dispatch') && '["ubuntu-latest", "macos-latest", "windows-latest"]' || '["ubuntu-latest"]') }}
     env:
       PACKAGE: ${{ matrix.package }}
+    # Windows' default shell is PowerShell, which doesn't read "$PACKAGE"
+    defaults:
+      run:
+        shell: bash
     steps:
       - name: Checkout the repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -157,14 +173,64 @@ jobs:
           package-manager-cache: false
       - name: Run npm ci -w ${{ matrix.package }}
         run: npm ci -w "$PACKAGE"
+      # the weekly run tries 50 times as many random cases per property.
+      # --import takes a URL, which a Windows path isn't
+      - name: Raise fast-check's runs
+        if: github.event_name == 'schedule'
+        run: |
+          echo "FC_NUM_RUNS=5000" >> "$GITHUB_ENV"
+          echo "NODE_OPTIONS=--import=$(node -p 'require("node:url").pathToFileURL("test/fc-num-runs.mjs").href')" >> "$GITHUB_ENV"
       - name: Run npm run coverage -w ${{ matrix.package }}
         run: npm run coverage -w "$PACKAGE"
+
+  docs:
+    needs: changes
+    if: needs.changes.outputs.docs == 'true'
+    # a called workflow can't have more permissions than its caller; docs.yml's
+    # deploy job only runs on a push or manual run on main
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    # actionlint 1.7.12 rejects the `$/` self-repository form zizmor asks for
+    uses: ./.github/workflows/docs.yml # zizmor: ignore[self-repository]
+
+  # zizmor.yml uploads findings to code scanning, which doesn't fail a run, so
+  # check the workflows here too. zizmor.yml runs the online audits
+  workflows:
+    needs: changes
+    if: needs.changes.outputs.workflows == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      # the image ships shellcheck, which actionlint runs on every `run:` block
+      - name: Run actionlint
+        uses: docker://rhysd/actionlint:1.7.12@sha256:b1934ee5f1c509618f2508e6eb47ee0d3520686341fec936f3b79331f9315667
+        with:
+          args: -color
+      - name: Run zizmor
+        uses: zizmorcore/zizmor-action@53290badfa369cb0bf7ad16342cb62c2fa47ac7b # v0.8.0
+        with:
+          version: 1.31.1
+          advanced-security: false
+          online-audits: false
+
+  # fails when a PR adds or upgrades to a dependency with a known advisory
+  dependency-review:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Review the dependency changes
+        uses: actions/dependency-review-action@a1d282b36b6f3519aa1f3fc636f609c47dddb294 # v5.0.0
 
   # The one check to require on main: path filters skip the other jobs, and a
   # required check that never reports blocks the merge
   ci-ok:
     if: always()
-    needs: [changes, lint, types, test]
+    needs: [changes, lint, types, test, docs, workflows, dependency-review]
     runs-on: ubuntu-latest
     steps:
       - name: Fail if any job failed or was cancelled

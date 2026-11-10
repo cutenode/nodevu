@@ -9,6 +9,7 @@ const { describe, it } = require('node:test');
 // specifically because we want to be sure the data is consistent *and* because we want to be sure that
 // the various ways of accessing the data produce consistent results.
 
+/** @param {Record<string, import('@nodevu/core').Security>} data */
 function check(data) {
 	// security checks
 	assert.deepStrictEqual(data.v12.all.length, 15);

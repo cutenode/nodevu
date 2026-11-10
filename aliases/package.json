@@ -20,13 +20,19 @@
 	"scripts": {
 		"lint": "oxlint && oxfmt --check",
 		"lint:write": "oxlint --fix && oxfmt",
-		"test": "",
-		"updates:check": "npx npm-check-updates",
-		"updates:update": "npx npm-check-updates -u"
+		"test": "node --test",
+		"coverage": "c8 node --test"
 	},
 	"types": "types/index.d.ts",
 	"files": [
 		"index.js",
 		"/types"
-	]
+	],
+	"type": "commonjs",
+	"devDependencies": {
+		"c8": "^12.0.0"
+	},
+	"engines": {
+		"node": ">=24"
+	}
 }

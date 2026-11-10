@@ -7,7 +7,7 @@ describe('files for a release that index.json lists without any', async () => {
 		const data = await nodevu({
 			fetch: async (url) =>
 				Response.json(
-					url.endsWith('schedule.json')
+					String(url).endsWith('schedule.json')
 						? {}
 						: [{ version: 'v28.0.0', date: '2028-01-01', lts: false }],
 				),

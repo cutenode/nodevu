@@ -1,0 +1,3 @@
+[default.extend-words]
+# the codename of Node.js 22's LTS line
+Jod = "Jod"
