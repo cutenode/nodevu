@@ -8,6 +8,7 @@ on:
       - 'docs/**'
       - 'doc-kit.config.mjs'
       - 'package.json'
+      - 'package-lock.json'
       # the site shows core's version, which every release bumps
       - 'core/package.json'
       - '.github/workflows/docs.yml'
@@ -39,11 +40,11 @@ jobs:
         uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version: lts/*
-          # setup-node caches npm when package.json has devEngines, and caching
-          # needs a lockfile, which this repo doesn't keep
+          # no npm cache in a job that deploys the docs, so a poisoned cache can't
+          # reach the site
           package-manager-cache: false
-      - name: Run npm install
-        run: npm install --workspaces=false
+      - name: Run npm ci
+        run: npm ci --workspaces=false
       - name: Build the docs
         run: npm run docs
       - name: Upload the site

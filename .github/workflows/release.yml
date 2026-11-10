@@ -82,10 +82,8 @@ jobs:
   # workspace and uploads the tarballs as a workflow artifact. Manual
   # recovery uses the same path (Run workflow -> pick a `v*` tag).
   #
-  # uppt/pack's own install step refuses to run without a lockfile, and
-  # this repo has none (`.npmrc` sets `package-lock=false`). No published
-  # package has a `prepack` or `prepare` script, so `npm pack` needs no
-  # dependencies: skip the install and only put Node on PATH.
+  # No published package has a `prepack` or `prepare` script, so `npm pack`
+  # needs no dependencies: skip uppt/pack's install and only put Node on PATH.
   pack:
     if: github.event_name == 'workflow_dispatch' && startsWith(github.ref, 'refs/tags/v')
     runs-on: ubuntu-latest

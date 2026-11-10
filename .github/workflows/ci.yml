@@ -44,6 +44,7 @@ jobs:
               - 'package.json'
               - '.c8rc.json'
               - '.npmrc'
+              - 'package-lock.json'
               - '.github/workflows/ci.yml'
             core: [*shared, 'core/**']
             fetchindex: [*shared, 'fetchindex/**']
@@ -82,11 +83,11 @@ jobs:
         uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version: current
-          # setup-node caches npm when package.json has devEngines, and caching
-          # needs a lockfile, which this repo doesn't keep
+          # no npm cache: npm ci takes seconds, and devEngines in package.json would
+          # otherwise switch one on
           package-manager-cache: false
-      - name: Run npm install
-        run: npm install --workspaces=false
+      - name: Run npm ci
+        run: npm ci --workspaces=false
       - name: Run npm lint
         run: npm run lint
       # npm rejects a provenance publish when repository.url doesn't match the
@@ -119,8 +120,8 @@ jobs:
           node-version: current
           package-manager-cache: false
       # the packages import each other, so link the workspaces
-      - name: Run npm install
-        run: npm install --workspaces --include-workspace-root
+      - name: Run npm ci
+        run: npm ci
       - name: Build the types
         run: npm run types
       - name: Check the committed types match the source
@@ -152,10 +153,8 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           package-manager-cache: false
-      - name: Install most recent npm
-        run: npm install -g npm
-      - name: Run npm install -w ${{ matrix.package }}
-        run: npm install -w "$PACKAGE"
+      - name: Run npm ci -w ${{ matrix.package }}
+        run: npm ci -w "$PACKAGE"
       - name: Run npm run coverage -w ${{ matrix.package }}
         run: npm run coverage -w "$PACKAGE"
 
