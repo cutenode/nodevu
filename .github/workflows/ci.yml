@@ -169,6 +169,13 @@ jobs:
           package-manager-cache: false
       - name: Run npm ci -w ${{ matrix.package }}
         run: npm ci -w "$PACKAGE"
+      # the weekly run tries 50 times as many random cases per property.
+      # --import takes a URL, which a Windows path isn't
+      - name: Raise fast-check's runs
+        if: github.event_name == 'schedule'
+        run: |
+          echo "FC_NUM_RUNS=5000" >> "$GITHUB_ENV"
+          echo "NODE_OPTIONS=--import=$(node -p 'require("node:url").pathToFileURL("test/fc-num-runs.mjs").href')" >> "$GITHUB_ENV"
       - name: Run npm run coverage -w ${{ matrix.package }}
         run: npm run coverage -w "$PACKAGE"
 

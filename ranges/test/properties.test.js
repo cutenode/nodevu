@@ -33,7 +33,6 @@ describe('generateRanges', () => {
 					}
 				},
 			),
-			{ numRuns: 50 },
 		);
 	});
 
@@ -54,7 +53,6 @@ describe('generateRanges', () => {
 					deepStrictEqual(filter.includes('all') ? [] : unrequested, []);
 				},
 			),
-			{ numRuns: 50 },
 		);
 	});
 
@@ -71,7 +69,6 @@ describe('generateRanges', () => {
 					deepStrictEqual(range.oldest, range.versions.at(-1), alias);
 				}
 			}),
-			{ numRuns: 50 },
 		);
 	});
 
@@ -88,7 +85,6 @@ describe('generateRanges', () => {
 
 				deepStrictEqual(versionsOf(data['lts/active']), versions);
 			}),
-			{ numRuns: 50 },
 		);
 	});
 
@@ -106,7 +102,6 @@ describe('generateRanges', () => {
 					match(active.oldestLts, ltsVersion);
 				}
 			}),
-			{ numRuns: 50 },
 		);
 	});
 
@@ -133,7 +128,6 @@ describe('generateRanges', () => {
 					deepStrictEqual(outside, [], alias);
 				}
 			}),
-			{ numRuns: 50 },
 		);
 	});
 
@@ -162,7 +156,6 @@ describe('generateRanges', () => {
 					);
 				},
 			),
-			{ numRuns: 50 },
 		);
 	});
 });
