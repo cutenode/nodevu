@@ -21,9 +21,5 @@
 			// aliases doc-kit's React generator defines while it builds the site
 			"ignoreUnresolved": ["^#theme/"],
 		},
-		"static": {
-			// the build test resolves core's own luxon to stop core's clock
-			"ignoreDependencies": ["luxon"],
-		},
 	},
 }

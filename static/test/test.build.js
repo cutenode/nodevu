@@ -2,7 +2,7 @@ const assert = require('node:assert');
 const { execFile } = require('node:child_process');
 const { mkdir, mkdtemp, readFile } = require('node:fs/promises');
 const { tmpdir } = require('node:os');
-const { dirname, join } = require('node:path');
+const { join } = require('node:path');
 const { describe, it } = require('node:test');
 const { promisify } = require('node:util');
 const nodevu = require('@nodevu/core');
@@ -90,12 +90,9 @@ async function runBuild(name) {
 	const cwd = join(await mkdtemp(join(tmpdir(), 'nodevu-')), 'static');
 	await mkdir(join(cwd, 'data'), { recursive: true });
 
-	const luxon = require.resolve('luxon', {
-		paths: [dirname(require.resolve('@nodevu/core'))],
-	});
-
 	const setup = [
-		`require(${JSON.stringify(luxon)}).Settings.now = () => ${Date.parse(now)};`,
+		// core reads the time through luxon, which calls Date.now()
+		`Date.now = () => ${Date.parse(now)};`,
 		`globalThis.fetch = require(${JSON.stringify(require.resolve('../../core/util/dev/fixtures'))}).at(${JSON.stringify(now)}).fetch;`,
 	].join(' ');
 
