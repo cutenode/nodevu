@@ -21,6 +21,9 @@ jobs:
         uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version: latest
+          # setup-node caches npm when package.json has devEngines, and caching
+          # needs a lockfile, which this repo doesn't keep
+          package-manager-cache: false
       - name: Run npm install
         run: npm install --workspaces --include-workspace-root
       - name: Run build:default
