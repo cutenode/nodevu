@@ -211,11 +211,19 @@ jobs:
           advanced-security: false
           online-audits: false
 
+  # fails when a PR adds or upgrades to a dependency with a known advisory
+  dependency-review:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Review the dependency changes
+        uses: actions/dependency-review-action@a1d282b36b6f3519aa1f3fc636f609c47dddb294 # v5.0.0
+
   # The one check to require on main: path filters skip the other jobs, and a
   # required check that never reports blocks the merge
   ci-ok:
     if: always()
-    needs: [changes, lint, types, test, docs, workflows]
+    needs: [changes, lint, types, test, docs, workflows, dependency-review]
     runs-on: ubuntu-latest
     steps:
       - name: Fail if any job failed or was cancelled
