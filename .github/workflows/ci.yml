@@ -7,6 +7,10 @@ on:
   pull_request:
     branches:
       - main
+  # a PR or push only tests what it changed, while dependencies float and Node
+  # keeps releasing, so test everything once a week too
+  schedule:
+    - cron: '0 5 * * 1'
   workflow_dispatch:
 
 permissions:
@@ -29,7 +33,7 @@ jobs:
       pull-requests: read # list the files a PR changes
     outputs:
       packages: ${{ steps.packages.outputs.packages }}
-      # the filter doesn't run on a manual run, which checks everything
+      # the filter doesn't run on a manual or scheduled run, which checks everything
       docs: ${{ steps.filter.outputs.docs || 'true' }}
       workflows: ${{ steps.filter.outputs.workflows || 'true' }}
     steps:
@@ -39,7 +43,7 @@ jobs:
           persist-credentials: false
       - name: Find changed packages
         id: filter
-        if: github.event_name != 'workflow_dispatch'
+        if: github.event_name == 'pull_request' || github.event_name == 'push'
         uses: dorny/paths-filter@ceb8a2b8f2d89434be7ff52d3de7ec3738c5cc9d # v4.0.3
         with:
           filters: |
@@ -61,13 +65,13 @@ jobs:
             # the site shows core's version, which every release bumps
             docs: [*shared, 'docs/**', 'doc-kit.config.mjs', 'core/package.json', '.github/workflows/docs.yml']
             workflows: ['.github/**']
-      # a manual run tests every workspace that has a coverage script
+      # a manual or scheduled run tests every workspace that has a coverage script
       - name: List packages to test
         id: packages
         env:
           CHANGES: ${{ steps.filter.outputs.changes }}
         run: |
-          if [ "$GITHUB_EVENT_NAME" = workflow_dispatch ]; then
+          if [ -z "$CHANGES" ]; then
             packages=$(for ws in $(jq -r '.workspaces[]' package.json); do
               jq -e '.scripts.coverage' "$ws/package.json" > /dev/null && echo "$ws"
             done | jq -Rcs 'split("\n") | map(select(. != ""))')
