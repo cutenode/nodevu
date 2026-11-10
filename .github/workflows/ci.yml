@@ -144,7 +144,7 @@ jobs:
   test:
     needs: changes
     if: needs.changes.outputs.packages != '[]'
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
@@ -152,8 +152,15 @@ jobs:
         # the LTS lines whose bundled npm meets devEngines; `current` would
         # install the next major's alpha
         node-version: [26, 24]
+        # nothing in the modules depends on the platform, so macOS and Windows
+        # only run on the weekly and manual runs
+        os: ${{ fromJSON((github.event_name == 'schedule' || github.event_name == 'workflow_dispatch') && '["ubuntu-latest", "macos-latest", "windows-latest"]' || '["ubuntu-latest"]') }}
     env:
       PACKAGE: ${{ matrix.package }}
+    # Windows' default shell is PowerShell, which doesn't read "$PACKAGE"
+    defaults:
+      run:
+        shell: bash
     steps:
       - name: Checkout the repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
