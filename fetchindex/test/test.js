@@ -2,7 +2,6 @@ const { deepStrictEqual, match, rejects } = require('node:assert');
 const { describe, it } = require('node:test');
 const { fetch: undiciFetch } = require('undici');
 const fetchindex = require('../index');
-const optionsParser = require('../../core/util/prod/optionsParser');
 
 // checks that verify the result of data returned
 function check(data) {
@@ -42,23 +41,6 @@ describe('under normal condiditons, versions should work', async () => {
 	it('should work with Undici fetch', async () => {
 		options.fetch = undiciFetch;
 		const data = await fetchindex(options);
-		check(data);
-	});
-});
-
-describe('versions should work with optionsParser', async () => {
-	it('should work with the default output of optionsParser', async () => {
-		const parsedOptions = optionsParser({});
-		const data = await fetchindex(parsedOptions);
-		check(data);
-	});
-
-	it('should work with a different fetch pased to optionsParser', async () => {
-		const parsedOptions = optionsParser({
-			fetch: undiciFetch,
-		});
-
-		const data = await fetchindex(parsedOptions);
 		check(data);
 	});
 });

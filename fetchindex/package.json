@@ -32,7 +32,6 @@
 	"homepage": "https://github.com/cutenode/nodevu#readme",
 	"devDependencies": {
 		"c8": "^12.0.0",
-		"luxon": "^3.5.0",
 		"undici": "^8.12.2"
 	},
 	"types": "types/index.d.ts"

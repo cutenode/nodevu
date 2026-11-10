@@ -21,11 +21,6 @@
 			// aliases doc-kit's React generator defines while it builds the site
 			"ignoreUnresolved": ["^#theme/"],
 		},
-		"fetchindex": {
-			// the tests require core's optionsParser, which requires luxon, and CI
-			// installs only this workspace's dependencies
-			"ignoreDependencies": ["luxon"],
-		},
 		"static": {
 			// the build test resolves core's own luxon to stop core's clock
 			"ignoreDependencies": ["luxon"],
