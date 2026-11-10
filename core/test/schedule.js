@@ -47,7 +47,7 @@ describe('schedule should work with optionsParser', async () => {
 		check(data);
 	});
 
-	it('should work with a different fetch pased to optionsParser', async () => {
+	it('should work with a different fetch passed to optionsParser', async () => {
 		const parsedOptions = optionsParser({
 			fetch: undiciFetch,
 		});
