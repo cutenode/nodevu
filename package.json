@@ -51,7 +51,7 @@
 		"@lavamoat/harden": "0.8.1",
 		"@node-core/ui-components": "1.8.1",
 		"@oxlint/plugins": "1.89.0",
-		"@types/node": "26.6.5",
+		"@types/node": "26.6.6",
 		"@types/semver": "7.8.0",
 		"knip": "6.44.1",
 		"oxfmt": "0.74.0",
