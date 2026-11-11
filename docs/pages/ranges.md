@@ -21,7 +21,11 @@ import ranges from '@nodevu/ranges';
 
 const data = await ranges(['current', 'lts/active']);
 
-console.log(data.current.newest);
+console.log(data['lts/active'].newest);
+
+// a range with no releases is left out, like `current` from when a line goes
+// LTS in October until the next one comes out in April
+console.log(data.current?.newest);
 ```
 
 ## `ranges([filter[, options]])`
