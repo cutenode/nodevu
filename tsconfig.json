@@ -4,13 +4,30 @@
 		"module": "nodenext",
 		"target": "es2022",
 		"types": ["node"],
-		"noEmit": true
+		"noEmit": true,
+		"allowJs": true,
+		"checkJs": true,
+		"skipLibCheck": true
 	},
-	"files": ["test/types.mts"],
+	// the type tests, plus what the packages' configs leave out because it isn't
+	// published: tests, dev and build scripts, and config. docs/theme is JSX
+	// that only doc-kit's bundler reads
+	"include": [
+		"test/**/*",
+		"*/test/**/*.js",
+		"*/test/**/*.mjs",
+		"fixtures/util/*.js",
+		"static/build/*.js",
+		"static/util/dev/*.js",
+		"translate/examples/*.js",
+		"tools/harden/**/*.mjs",
+		"doc-kit.config.mjs"
+	],
 	"references": [
 		{ "path": "aliases" },
 		{ "path": "core" },
 		{ "path": "fetchindex" },
+		{ "path": "fixtures" },
 		{ "path": "newest" },
 		{ "path": "oldest" },
 		{ "path": "opt" },

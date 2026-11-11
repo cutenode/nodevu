@@ -11,16 +11,20 @@ const schedule = require('./data/schedule.json');
  * maintenance LTS and end of life each have a release line, and each of those
  * lines already has a security release, so no range or security field is
  * empty.
+ *
+ * @param {string} [now]
+ * @param {{ index: { date: string }[], schedule: unknown }} [data]
+ * @returns {{ now: string, fetch: typeof fetch }}
  */
 function at(now = '2025-09-01', data = { index, schedule }) {
 	return {
 		now,
 		fetch: async (url) => {
-			if (url.endsWith('/schedule.json')) {
+			if (String(url).endsWith('/schedule.json')) {
 				return Response.json(data.schedule);
 			}
 
-			if (url.endsWith('/index.json')) {
+			if (String(url).endsWith('/index.json')) {
 				return Response.json(data.index.filter((entry) => entry.date <= now));
 			}
 

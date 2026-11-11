@@ -4,14 +4,23 @@ const nodevu = require('../index');
 
 const now = '2028-01-01';
 
+/**
+ * @param {string} version
+ * @param {string} date
+ * @param {string | false} lts
+ */
 function release(version, date, lts) {
 	return { version, date, files: ['src'], lts };
 }
 
+/**
+ * @param {object} schedule
+ * @param {object[]} index
+ */
 function run(schedule, index) {
 	return nodevu({
 		fetch: async (url) =>
-			Response.json(url.endsWith('schedule.json') ? schedule : index),
+			Response.json(String(url).endsWith('schedule.json') ? schedule : index),
 		now,
 	});
 }
@@ -36,6 +45,7 @@ describe('LTS data when schedule.json and index.json disagree', async () => {
 			],
 		);
 
+		assert.ok(data.v27.support);
 		assert.deepStrictEqual(data.v27.support.lts, {
 			newest: '27.2.0',
 			oldest: '27.1.0',
@@ -52,6 +62,7 @@ describe('LTS data when schedule.json and index.json disagree', async () => {
 			],
 		);
 
+		assert.ok(data.v27.support);
 		assert.deepStrictEqual(data.v27.support.lts, { oldest: '27.0.0' });
 	});
 
@@ -84,6 +95,8 @@ describe('LTS data when schedule.json and index.json disagree', async () => {
 			],
 		);
 
+		assert.ok(data.v23.support);
+		assert.ok(data.v22.support);
 		assert.deepStrictEqual(data.v23.support.lts, undefined);
 		assert.deepStrictEqual(data.v22.support.lts, {
 			newest: '22.11.0',

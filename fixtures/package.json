@@ -22,5 +22,10 @@
 		"c8": "^12.0.0",
 		"fast-check": "^4.10.2",
 		"luxon": "^3.7.2"
+	},
+	"types": "types/index.d.ts",
+	"type": "commonjs",
+	"engines": {
+		"node": ">=24"
 	}
 }

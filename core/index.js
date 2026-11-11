@@ -220,7 +220,7 @@ async function core(options) {
 		}
 
 		// # LTS
-		// ## define the release-line specific support objec`t
+		// ## define the release-line specific support object
 		if (schedule[name]?.start !== undefined) {
 			// hack-y way to skip this logic on releases that don't have a listed start
 			if (!data[name].support) {
@@ -300,7 +300,7 @@ async function core(options) {
 			}
 		}
 
-		// same inefficient hack as we do in the LTS 'oldest' logic. ineffecient but gets the job done.
+		// same inefficient hack as we do in the LTS 'oldest' logic. inefficient but gets the job done.
 		if (versions[version].security === true) {
 			data[name].security.oldest = versionSemver.version;
 		}
@@ -310,7 +310,7 @@ async function core(options) {
 			data[name].security.all.push(versionSemver.version);
 		}
 
-		// ## define the security object in each specfic version
+		// ## define the security object in each specific version
 		data[name].releases[`v${versionSemver.version}`].security =
 			/** @type {{ isSecurity: boolean }} */ ({});
 

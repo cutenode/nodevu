@@ -4,7 +4,8 @@ name: 'Linter: PR title'
 # next version
 on:
   pull_request:
-    types: [opened, edited, reopened]
+    # synchronize too, so the required check reports on every push
+    types: [opened, edited, reopened, synchronize]
     branches:
       - main
 

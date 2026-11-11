@@ -11,11 +11,8 @@
 		"build:support": "node build/support.js",
 		"lint": "oxlint && oxfmt --check",
 		"lint:write": "oxlint --fix && oxfmt",
-		"prepublish": "npm run build",
 		"test": "node --test",
-		"coverage": "c8 node --test",
-		"updates:check": "npx npm-check-updates",
-		"updates:update": "npx npm-check-updates -u"
+		"coverage": "c8 node --test"
 	},
 	"repository": {
 		"type": "git",
@@ -51,5 +48,9 @@
 		"@nodevu/core": {
 			"optional": true
 		}
+	},
+	"type": "commonjs",
+	"engines": {
+		"node": ">=24"
 	}
 }

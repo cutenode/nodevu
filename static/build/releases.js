@@ -3,6 +3,7 @@ const write = require('../util/dev/write');
 
 async function writeReleases() {
 	const data = await nodevu();
+	/** @type {Record<string, import('@nodevu/core').ReleaseLine['releases']>} */
 	const releases = {};
 
 	for await (const version of Object.keys(data)) {

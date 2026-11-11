@@ -1,13 +1,20 @@
-const { deepStrictEqual } = require('node:assert');
+const { deepStrictEqual, ok } = require('node:assert');
 const { describe, it } = require('node:test');
-const { fetch: undiciFetch } = require('undici');
+const undici = require('undici');
 const { DateTime } = require('luxon');
 const parseOptions = require('../util/prod/optionsParser');
+
+// undici's types only take its own Request class, so they don't match the
+// global fetch's type even though it works as one
+const undiciFetch = /** @type {typeof fetch} */ (
+	/** @type {unknown} */ (undici.fetch)
+);
 
 describe('the parseOptions module should return all correct defaults', async () => {
 	it('should return the default date', async () => {
 		const now = DateTime.now();
 		const defaultParsedOptions = parseOptions({});
+		ok(defaultParsedOptions.now instanceof DateTime);
 		deepStrictEqual(defaultParsedOptions.now.day, now.day);
 		deepStrictEqual(defaultParsedOptions.now.hour, now.hour);
 		deepStrictEqual(defaultParsedOptions.now.minute, now.minute);

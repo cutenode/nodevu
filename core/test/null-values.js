@@ -4,10 +4,14 @@ const nodevu = require('../index');
 
 const now = '2028-01-01';
 
+/**
+ * @param {object} schedule
+ * @param {object[]} index
+ */
 function run(schedule, index) {
 	return nodevu({
 		fetch: async (url) =>
-			Response.json(url.endsWith('schedule.json') ? schedule : index),
+			Response.json(String(url).endsWith('schedule.json') ? schedule : index),
 		now,
 	});
 }
@@ -37,6 +41,7 @@ describe('null values in index.json and schedule.json', async () => {
 		const data = await run(schedule, [release('v28.0.0')]);
 
 		// Assert
+		assert.ok(data.v28.support);
 		assert.strictEqual(data.v28.support.phases.dates.start, undefined);
 	});
 
@@ -48,12 +53,14 @@ describe('null values in index.json and schedule.json', async () => {
 		const data = await run(schedule, [release('v28.0.0')]);
 
 		// Assert
+		assert.ok(data.v28.support);
 		assert.strictEqual(data.v28.support.phases.dates.end, undefined);
 	});
 });
 
 // Helpers
 
+/** @param {string} version */
 function release(version) {
 	return { version, date: '2027-04-20', files: ['src'], lts: false };
 }
