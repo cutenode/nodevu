@@ -29,6 +29,9 @@ export async function check(): Promise<void> {
 	const all: Alias[] = aliases;
 	const supported = await ranges(await translate('supported'));
 	const current: Range | undefined = supported.current;
+	// a copy the caller can change
+	const copy: Alias[] = await translate('lts');
+	copy.push('eol');
 	// @ts-expect-error not an alias
 	await ranges('stable');
 	// @ts-expect-error not a package support term
