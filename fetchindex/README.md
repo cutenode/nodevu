@@ -6,4 +6,4 @@ Fetches the [Node.js release index](https://nodejs.org/dist/index.json), the lis
 npm install @nodevu/fetchindex
 ```
 
-Usage and the full API are in the [docs](https://cutenode.github.io/nodevu/fetchindex).
+Usage and the full API are in the [docs](https://nodevu.dev/fetchindex).

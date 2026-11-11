@@ -6,4 +6,4 @@ Works out ranges of Node.js versions, such as every release of the Current line 
 npm install @nodevu/ranges
 ```
 
-Usage and the full API are in the [docs](https://cutenode.github.io/nodevu/ranges).
+Usage and the full API are in the [docs](https://nodevu.dev/ranges).

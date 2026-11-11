@@ -8,7 +8,7 @@ const { version } = JSON.parse(
 
 const repository = 'cutenode/nodevu';
 
-const baseURL = 'https://cutenode.github.io/nodevu';
+const baseURL = 'https://nodevu.dev';
 
 const description =
 	'nodevu collects, merges, and reasons about Node.js versions: release lines, LTS and security releases, support phases, and downloadable files.';
@@ -36,9 +36,10 @@ export default {
 	html: {
 		title: '{project} documentation',
 
-		// all.html and 404.html load their assets from `/` unless URLs are
-		// absolute, which breaks under GitHub Pages' /nodevu/. CI builds what
-		// gets published; local builds stay relative so any static server works
+		// 404.html is served at any missing path, and its relative links only
+		// resolve from the top level, so /a/b would get a broken sidebar. CI
+		// builds what gets published; local builds stay relative so any static
+		// server works
 		useAbsoluteURLs: process.env.CI === 'true',
 		editURL: `https://github.com/${repository}/edit/main/docs/pages{path}.md`,
 
@@ -46,15 +47,6 @@ export default {
 		// @nodevu/static workspace. copy the pages' Markdown instead, since
 		// llms.txt links to it
 		pathsToCopy: [{ [join(import.meta.dirname, 'docs', 'pages')]: '.' }],
-
-		imports: {
-			'#theme/Navigation': join(
-				import.meta.dirname,
-				'docs',
-				'theme',
-				'Navigation.jsx',
-			),
-		},
 
 		navigation: {
 			sidebar: [

@@ -6,4 +6,4 @@ Finds the newest LTS or security release of a Node.js release line.
 npm install @nodevu/newest
 ```
 
-Usage and the full API are in the [docs](https://cutenode.github.io/nodevu/newest).
+Usage and the full API are in the [docs](https://nodevu.dev/newest).
