@@ -6,8 +6,14 @@ const versionFetcher = require('@nodevu/fetchindex');
 const scheduleFetcher = require('./util/prod/schedule');
 
 /**
+ * The part of `fetch` core uses, which `@nodevu/fetchindex` defines.
+ *
+ * @typedef {import('@nodevu/fetchindex').Fetch} Fetch
+ */
+
+/**
  * @typedef {object} Options
- * @property {typeof fetch} [fetch] The `fetch` implementation to request the
+ * @property {Fetch} [fetch] The `fetch` implementation to request the
  *   data with. Defaults to `globalThis.fetch`.
  * @property {string | import('luxon').DateTime} [now] An ISO 8601 date to work
  *   out each release line's phase against. Defaults to now.

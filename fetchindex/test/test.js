@@ -1,12 +1,7 @@
 const { deepStrictEqual, match, ok, rejects } = require('node:assert');
 const { describe, it } = require('node:test');
 
-// undici's fetch works as the global one, but its types don't overlap with
-// it: its Request has members the global one lacks, and its Headers
-// iterators lack the global ones' Symbol.dispose
-const undiciFetch = /** @type {typeof fetch} */ (
-	/** @type {unknown} */ (require('undici').fetch)
-);
+const { fetch: undiciFetch } = require('undici');
 
 const fetchindex = require('../index');
 
@@ -42,6 +37,7 @@ function check(data) {
 }
 
 // set up options object that would normally be passed to the module
+/** @type {Parameters<typeof fetchindex>[0]} */
 const options = {
 	fetch: globalThis.fetch,
 	urls: {

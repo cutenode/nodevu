@@ -1,16 +1,8 @@
 const { match, rejects } = require('node:assert');
 const { describe, it } = require('node:test');
-const undici = require('undici');
+const { fetch: undiciFetch } = require('undici');
 const schedule = require('../util/prod/schedule');
 const optionsParser = require('../util/prod/optionsParser');
-
-// undici's types only take its own Request class, so they don't match the
-// global fetch's type even though it works as one
-const undiciFetch = /** @type {typeof fetch} */ (
-	/** @type {unknown} */ (undici.fetch)
-);
-
-/** @typedef {import('../util/prod/optionsParser').ParsedOptions} ParsedOptions */
 
 // checks that verify the result of data returned
 /** @param {import('../util/prod/schedule').Schedule} data */
@@ -29,13 +21,14 @@ function check(data) {
 
 // set up options object that would normally be passed to the module. the
 // module only reads fetch and its own URL
-const options = /** @type {ParsedOptions} */ ({
+/** @type {Parameters<typeof schedule>[0]} */
+const options = {
 	fetch: globalThis.fetch,
 	urls: {
 		schedule:
 			'https://raw.githubusercontent.com/nodejs/Release/master/schedule.json',
 	},
-});
+};
 
 describe('under normal condiditons, schedule should work', async () => {
 	it('should work with default options', async () => {
@@ -74,12 +67,7 @@ describe('schedule', async () => {
 			'https://raw.githubusercontent.com/nodejs/Release/master/schedule.json';
 
 		// Act
-		const result = schedule(
-			/** @type {ParsedOptions} */ ({
-				fetch: notFound,
-				urls: { schedule: url },
-			}),
-		);
+		const result = schedule({ fetch: notFound, urls: { schedule: url } });
 
 		// Assert
 		await rejects(result, {

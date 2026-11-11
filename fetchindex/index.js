@@ -1,4 +1,16 @@
 /**
+ * The part of `fetch` fetchindex uses: a GET of a URL whose JSON it reads. Any
+ * `fetch` with this shape fits, such as `globalThis.fetch` or undici's.
+ *
+ * @typedef {(url: string) => Promise<{
+ *   ok: boolean,
+ *   status: number,
+ *   statusText: string,
+ *   json: () => Promise<unknown>,
+ * }>} Fetch
+ */
+
+/**
  * A release as the Node.js release index lists it.
  *
  * @typedef {object} IndexRelease
@@ -19,7 +31,7 @@
  * Fetches the Node.js release index.
  *
  * @param {object} options
- * @param {typeof fetch} options.fetch The `fetch` implementation to use.
+ * @param {Fetch} options.fetch The `fetch` implementation to use.
  * @param {{ index: string }} options.urls The full URL of the index.
  * @returns {Promise<IndexRelease[]>} Every release, newest first.
  */
@@ -35,7 +47,8 @@ async function versions(options) {
 		throw new Error(`Fetching ${url} failed: ${raw.status} ${raw.statusText}`);
 	}
 
-	const versions = await raw.json();
+	// index.json is the list of releases, newest first
+	const versions = /** @type {IndexRelease[]} */ (await raw.json());
 
 	return versions;
 }

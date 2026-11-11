@@ -2,7 +2,7 @@ const { DateTime } = require('luxon');
 
 /**
  * @typedef {object} ParsedOptions
- * @property {typeof fetch} fetch
+ * @property {import('../../index').Fetch} fetch
  * @property {string | DateTime} now
  * @property {{ index: string, schedule: string }} urls
  */

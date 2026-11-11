@@ -1,7 +1,7 @@
 export = parseOptions;
 import { DateTime } from 'luxon';
 export type ParsedOptions = {
-    fetch: typeof fetch;
+    fetch: import('../../index').Fetch;
     now: string | DateTime;
     urls: {
         index: string;
@@ -10,7 +10,7 @@ export type ParsedOptions = {
 };
 /**
  * @typedef {object} ParsedOptions
- * @property {typeof fetch} fetch
+ * @property {import('../../index').Fetch} fetch
  * @property {string | DateTime} now
  * @property {{ index: string, schedule: string }} urls
  */

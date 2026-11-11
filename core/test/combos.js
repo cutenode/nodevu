@@ -1,7 +1,7 @@
 const assert = require('node:assert');
 const nodevu = require('../index');
 const { describe, it, beforeEach } = require('node:test');
-const undici = require('undici');
+const { fetch: undiciFetch } = require('undici');
 
 const beforeEachTemplate = require('@nodevu/fixtures/beforeEachTemplate');
 
@@ -31,12 +31,6 @@ function check(data) {
 }
 
 const now = require('@nodevu/fixtures/data/now.json');
-
-// undici's types only take its own Request class, so they don't match the
-// global fetch's type even though it works as one
-const undiciFetch = /** @type {typeof fetch} */ (
-	/** @type {unknown} */ (undici.fetch)
-);
 
 describe('check to make sure that combining options works as expected', async () => {
 	beforeEach(beforeEachTemplate);
