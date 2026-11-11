@@ -15,10 +15,10 @@ npm install @nodevu/newest
 Pass it the name of a release line:
 
 ```js
-const { lts, security } = require('@nodevu/newest');
+import { lts, security } from '@nodevu/newest';
 
-await lts('v16'); // '16.20.2'
-await security('v16'); // '16.20.2'
+await lts('v16'); //=> '16.20.2'
+await security('v16'); //=> '16.20.2'
 ```
 
 Every function fetches fresh data through [`@nodevu/core`](core.md), and

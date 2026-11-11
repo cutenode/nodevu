@@ -17,7 +17,7 @@ npm install @nodevu/fetchindex
 It has no defaults, so pass the `fetch` to use and the URL:
 
 ```js
-const fetchindex = require('@nodevu/fetchindex');
+import fetchindex from '@nodevu/fetchindex';
 
 const index = await fetchindex({
 	fetch: globalThis.fetch,

@@ -19,11 +19,11 @@ npm install @nodevu/core
 Then call it for the data:
 
 ```js
-const nodevu = require('@nodevu/core');
+import nodevu from '@nodevu/core';
 
 const data = await nodevu();
 
-console.log(data.v20.support.codename); // 'Iron'
+data.v20.support.codename; //=> 'Iron'
 ```
 
 ## `nodevu([options])`
