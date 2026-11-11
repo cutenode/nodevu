@@ -6,4 +6,4 @@ Parses an identifier from the `files` of a release in the [Node.js release index
 npm install @nodevu/parsefiles
 ```
 
-Usage and the full API are in the [docs](https://cutenode.github.io/nodevu/parsefiles).
+Usage and the full API are in the [docs](https://nodevu.dev/parsefiles).

@@ -6,4 +6,4 @@ The core, online-only module of nodevu. It fetches the version information Node.
 npm install @nodevu/core
 ```
 
-Usage and the full API are in the [docs](https://cutenode.github.io/nodevu/core).
+Usage and the full API are in the [docs](https://nodevu.dev/core).

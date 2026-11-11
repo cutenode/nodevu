@@ -6,4 +6,4 @@ Finds the oldest LTS or security release of a Node.js release line.
 npm install @nodevu/oldest
 ```
 
-Usage and the full API are in the [docs](https://cutenode.github.io/nodevu/oldest).
+Usage and the full API are in the [docs](https://nodevu.dev/oldest).

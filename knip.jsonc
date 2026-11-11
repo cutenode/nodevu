@@ -9,20 +9,20 @@
 	],
 	"workspaces": {
 		".": {
-			// `doc-kit generate` loads its config by name, and the config points
-			// doc-kit at the theme by path
-			"entry": ["doc-kit.config.mjs", "docs/theme/Navigation.jsx"],
+			// `doc-kit generate` loads its config by name
+			"entry": ["doc-kit.config.mjs"],
 			"ignoreDependencies": [
 				// test/types.mts checks the published types through the workspace links
 				"^@nodevu/",
 				// only a JSDoc type in doc-kit.config.mjs, installed by @doc-kit/cli
 				"@doc-kit/core",
+				// @doc-kit/core's peer that renders the site. pinned here because the
+				// peer range takes any version
+				"@doc-kit/generator-react",
 				// test/fc-num-runs.mjs loads the fast-check of whichever module it runs
 				// in, so the root doesn't need its own
 				"fast-check",
 			],
-			// aliases doc-kit's React generator defines while it builds the site
-			"ignoreUnresolved": ["^#theme/"],
 		},
 	},
 }

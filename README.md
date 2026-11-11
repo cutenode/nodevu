@@ -1,6 +1,6 @@
 # nodevu
 
-nodevu is a Node.js Version Utility meant to collect, merge, and reason about Node.js versions in a way that's explicitly developer friendly. Its docs live at [cutenode.github.io/nodevu](https://cutenode.github.io/nodevu/).
+nodevu is a Node.js Version Utility meant to collect, merge, and reason about Node.js versions in a way that's explicitly developer friendly. Its docs live at [nodevu.dev](https://nodevu.dev/).
 
 nodevu is composed of a set of modules, each supporting Node.js 24 and later:
 

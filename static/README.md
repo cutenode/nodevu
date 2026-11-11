@@ -6,4 +6,4 @@ The offline version of nodevu: the data `@nodevu/core` returns, and a few subset
 npm install @nodevu/static
 ```
 
-Usage and the full API are in the [docs](https://cutenode.github.io/nodevu/static).
+Usage and the full API are in the [docs](https://nodevu.dev/static).
