@@ -7,6 +7,8 @@ on:
   pull_request:
     branches:
       - main
+  # the ruleset requires ci-ok, so it has to report on merge queue groups too
+  merge_group:
   # a PR or push only tests what it changed, while dependencies float and Node
   # keeps releasing, so test everything once a week too
   schedule:
@@ -16,8 +18,8 @@ on:
 permissions:
   contents: read
 
-# a push run only tests what its own push changed, so pushes to main each get
-# their own group; sharing one would let a newer push replace a queued run
+# a push or merge queue run only tests what its own commits changed, so each
+# gets its own group; sharing one would let a newer run replace a queued one
 concurrency:
   group: ci-${{ github.event_name == 'pull_request' && github.ref || github.sha }}
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
@@ -36,6 +38,7 @@ jobs:
       # the filter doesn't run on a manual or scheduled run, which checks everything
       docs: ${{ steps.filter.outputs.docs || 'true' }}
       workflows: ${{ steps.filter.outputs.workflows || 'true' }}
+      dependencies: ${{ steps.filter.outputs.dependencies }}
     steps:
       - name: Checkout the repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -43,7 +46,8 @@ jobs:
           persist-credentials: false
       - name: Find changed packages
         id: filter
-        if: github.event_name == 'pull_request' || github.event_name == 'push'
+        # a merge queue group is compared with the commit it goes on top of
+        if: github.event_name == 'pull_request' || github.event_name == 'push' || github.event_name == 'merge_group'
         uses: dorny/paths-filter@ceb8a2b8f2d89434be7ff52d3de7ec3738c5cc9d # v4.0.3
         with:
           filters: |
@@ -67,6 +71,9 @@ jobs:
             # the site shows core's version, which every release bumps
             docs: [*shared, 'docs/**', 'doc-kit.config.mjs', 'core/package.json', '.github/workflows/docs.yml']
             workflows: ['.github/**']
+            # what the dependency graph reads: the lockfile, the manifests, and
+            # the actions the workflows use
+            dependencies: ['package-lock.json', '**/package.json', '.github/workflows/**']
       # a manual or scheduled run tests every workspace that has a coverage script
       - name: List packages to test
         id: packages
@@ -219,13 +226,44 @@ jobs:
           advanced-security: false
           online-audits: false
 
-  # fails when a PR adds or upgrades to a dependency with a known advisory
+  # fails when a PR adds or upgrades to a dependency with a known advisory or a
+  # licence outside the list below. Here rather than in its own workflow so
+  # ci-ok gates on it, and the changes job does what a paths filter would
   dependency-review:
-    if: github.event_name == 'pull_request'
+    needs: changes
+    if: github.event_name == 'pull_request' && needs.changes.outputs.dependencies == 'true'
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      # the summary comment, posted only when the review fails. A fork's PR
+      # gets a read-only token, and the action logs a warning instead
+      pull-requests: write
     steps:
       - name: Review the dependency changes
         uses: actions/dependency-review-action@a1d282b36b6f3519aa1f3fc636f609c47dddb294 # v5.0.0
+        with:
+          # an advisory of any severity fails, in what ships (the runtime scope,
+          # which the licence check reads too) and not the dev tooling
+          fail-on-severity: low
+          fail-on-scopes: runtime
+          # cutenode/localnetwork's list, so the repos follow one policy
+          allow-licenses: >-
+            0BSD,
+            Apache-2.0,
+            Apache-2.0 WITH LLVM-exception,
+            BSD-2-Clause,
+            BSD-3-Clause,
+            BSL-1.0,
+            CC0-1.0,
+            CDLA-Permissive-2.0,
+            ISC,
+            MIT,
+            MIT-0,
+            MPL-2.0,
+            Unicode-3.0,
+            Unlicense,
+            Zlib
+          comment-summary-in-pr: on-failure
 
   # The one check to require on main: path filters skip the other jobs, and a
   # required check that never reports blocks the merge

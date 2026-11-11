@@ -8,13 +8,17 @@ on:
     types: [opened, edited, reopened, synchronize]
     branches:
       - main
+  # the ruleset requires this check, so it reports on merge queue groups too,
+  # where the job is skipped, which counts as passing: each PR in a group
+  # already passed, and a group has no title to read
+  merge_group:
 
 permissions: {}
 
 jobs:
   conventional-commit:
     # uppt titles its release PRs with the bare version (`v1.1.1`)
-    if: ${{ !startsWith(github.event.pull_request.head.ref, 'release/v') }}
+    if: ${{ github.event_name == 'pull_request' && !startsWith(github.event.pull_request.head.ref, 'release/v') }}
     runs-on: ubuntu-latest
     permissions:
       pull-requests: read # read the PR title

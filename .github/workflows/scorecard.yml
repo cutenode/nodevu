@@ -1,0 +1,43 @@
+name: Scorecard
+
+# OpenSSF Scorecard (https://scorecard.dev): how the repo does on supply-chain
+# practices such as pinned dependencies, branch protection, token permissions
+# and code review. Findings go to code scanning, and the results are published
+# to Scorecard's API, where anyone can read them. Weekly, on demand, and when
+# branch protection changes; the checks are about the repo's settings and
+# history more than any one commit, so a week-old score is current enough.
+#
+# Publishing has rules the API checks before it accepts results (see
+# scorecard-action's README): no write permissions or env at the workflow
+# level, and only checkout, upload-artifact, upload-sarif and scorecard-action
+# in this job. Nothing else goes in this file.
+on:
+  branch_protection_rule:
+  schedule:
+    - cron: '17 4 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  analysis:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    # what scorecard-action documents for a public repo, which it reads through
+    # the API
+    permissions:
+      security-events: write # upload the findings to code scanning
+      id-token: write # prove to Scorecard's API which workflow made the results
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: ossf/scorecard-action@fa7117db83c52d787ae5a89f350999701505d78e # v2.5.0
+        with:
+          results_file: results.sarif
+          results_format: sarif
+          publish_results: true
+      - uses: github/codeql-action/upload-sarif@6f2ac81f5cd81fe351a197ba0b00d91d03cd2aee # v4.39.0
+        with:
+          sarif_file: results.sarif
