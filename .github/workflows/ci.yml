@@ -55,7 +55,7 @@ jobs:
               - '.github/workflows/ci.yml'
             aliases: [*shared, 'aliases/**']
             core: [*shared, 'core/**', 'fetchindex/**', 'parsefiles/**', 'fixtures/**']
-            fetchindex: [*shared, 'fetchindex/**']
+            fetchindex: [*shared, 'fetchindex/**', 'fixtures/**']
             fixtures: [*shared, 'fixtures/**']
             newest: [*shared, 'newest/**', 'core/**', 'fetchindex/**', 'parsefiles/**', 'fixtures/**']
             oldest: [*shared, 'oldest/**', 'core/**', 'fetchindex/**', 'parsefiles/**', 'fixtures/**']
