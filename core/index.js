@@ -2,7 +2,7 @@ const { DateTime } = require('luxon');
 const semver = require('semver');
 const parsefiles = require('@nodevu/parsefiles');
 const optionsParser = require('./util/prod/optionsParser');
-const versionFetcher = require('./util/prod/versions');
+const versionFetcher = require('@nodevu/fetchindex');
 const scheduleFetcher = require('./util/prod/schedule');
 
 /**

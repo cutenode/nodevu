@@ -54,16 +54,16 @@ jobs:
               - 'package-lock.json'
               - '.github/workflows/ci.yml'
             aliases: [*shared, 'aliases/**']
-            core: [*shared, 'core/**', 'parsefiles/**', 'fixtures/**']
+            core: [*shared, 'core/**', 'fetchindex/**', 'parsefiles/**', 'fixtures/**']
             fetchindex: [*shared, 'fetchindex/**']
             fixtures: [*shared, 'fixtures/**']
-            newest: [*shared, 'newest/**', 'core/**', 'parsefiles/**', 'fixtures/**']
-            oldest: [*shared, 'oldest/**', 'core/**', 'parsefiles/**', 'fixtures/**']
+            newest: [*shared, 'newest/**', 'core/**', 'fetchindex/**', 'parsefiles/**', 'fixtures/**']
+            oldest: [*shared, 'oldest/**', 'core/**', 'fetchindex/**', 'parsefiles/**', 'fixtures/**']
             opt: [*shared, 'opt/**']
             parsefiles: [*shared, 'parsefiles/**', 'fixtures/**']
-            ranges: [*shared, 'ranges/**', 'core/**', 'aliases/**', 'parsefiles/**', 'fixtures/**']
-            static: [*shared, 'static/**', 'core/**', 'parsefiles/**', 'fixtures/**']
-            translate: [*shared, 'translate/**', 'ranges/**', 'core/**', 'aliases/**', 'parsefiles/**', 'fixtures/**']
+            ranges: [*shared, 'ranges/**', 'core/**', 'aliases/**', 'fetchindex/**', 'parsefiles/**', 'fixtures/**']
+            static: [*shared, 'static/**', 'core/**', 'fetchindex/**', 'parsefiles/**', 'fixtures/**']
+            translate: [*shared, 'translate/**', 'ranges/**', 'core/**', 'aliases/**', 'fetchindex/**', 'parsefiles/**', 'fixtures/**']
             # the site shows core's version, which every release bumps
             docs: [*shared, 'docs/**', 'doc-kit.config.mjs', 'core/package.json', '.github/workflows/docs.yml']
             workflows: ['.github/**']
