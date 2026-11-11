@@ -20,7 +20,7 @@ Each export is a plain object, keyed by release line like core's result:
 ```js
 const { default: data, support } = require('@nodevu/static');
 
-console.log(support.v20.codename); // 'Iron'
+support.v20.codename; //=> 'Iron'
 ```
 
 ## `static.default`

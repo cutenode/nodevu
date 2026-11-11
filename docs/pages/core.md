@@ -23,7 +23,7 @@ const nodevu = require('@nodevu/core');
 
 const data = await nodevu();
 
-console.log(data.v20.support.codename); // 'Iron'
+data.v20.support.codename; //=> 'Iron'
 ```
 
 ## `nodevu([options])`

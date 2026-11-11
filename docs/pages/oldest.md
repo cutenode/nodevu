@@ -17,8 +17,8 @@ Pass it the name of a release line:
 ```js
 const { lts, security } = require('@nodevu/oldest');
 
-await lts('v16'); // '16.13.0'
-await security('v16'); // '16.4.1'
+await lts('v16'); //=> '16.13.0'
+await security('v16'); //=> '16.4.1'
 ```
 
 Every function fetches fresh data through [`@nodevu/core`](core.md), and
