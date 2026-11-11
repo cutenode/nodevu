@@ -1,10 +1,11 @@
 export = core;
+export type Fetch = import('@nodevu/fetchindex').Fetch;
 export type Options = {
     /**
      * The `fetch` implementation to request the
      * data with. Defaults to `globalThis.fetch`.
      */
-    fetch?: typeof fetch;
+    fetch?: Fetch;
     /**
      * An ISO 8601 date to work
      * out each release line's phase against. Defaults to now.
@@ -120,8 +121,13 @@ export type ReleaseLine = {
 };
 export type Data = Record<string, ReleaseLine>;
 /**
+ * The part of `fetch` core uses, which `@nodevu/fetchindex` defines.
+ *
+ * @typedef {import('@nodevu/fetchindex').Fetch} Fetch
+ */
+/**
  * @typedef {object} Options
- * @property {typeof fetch} [fetch] The `fetch` implementation to request the
+ * @property {Fetch} [fetch] The `fetch` implementation to request the
  *   data with. Defaults to `globalThis.fetch`.
  * @property {string | import('luxon').DateTime} [now] An ISO 8601 date to work
  *   out each release line's phase against. Defaults to now.

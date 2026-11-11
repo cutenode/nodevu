@@ -6,11 +6,11 @@ async function writeSupport() {
 	/** @type {Record<string, import('@nodevu/core').Support | undefined>} */
 	const support = {};
 
-	for await (const version of Object.keys(data)) {
+	for (const version of Object.keys(data)) {
 		support[version] = data[version].support;
 	}
 
-	write('./static/data/support.json', support);
+	await write('./static/data/support.json', support);
 }
 
 writeSupport();

@@ -24,8 +24,8 @@ describe('translate', () => {
 
 	it('should not let a caller change what later calls return', async () => {
 		// Arrange
-		// @ts-expect-error: the types make the result read-only, and this checks a
-		// caller that ignores them
+		// @ts-expect-error: the types only allow the term's own aliases, and this
+		// checks a caller that adds another
 		(await translate('lts')).push('eol');
 
 		// Act

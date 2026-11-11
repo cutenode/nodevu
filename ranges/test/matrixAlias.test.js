@@ -96,7 +96,7 @@ describe('data should exist as it is defined when calling multiple aliases', asy
 			true,
 		);
 
-		// check that lts/maintenance does not exist
+		// check that lts/latest does not exist
 		assert.deepStrictEqual(data['lts/latest'], undefined);
 	});
 
@@ -214,54 +214,7 @@ describe('data should exist as it is defined when calling multiple aliases', asy
 			true,
 		);
 
-		// check lts/latest values
-		assert.deepStrictEqual(
-			Array.isArray(data['lts/maintenance'].versions),
-			true,
-		);
-		assert.deepStrictEqual(data['lts/maintenance'].versions.length > 0, true);
-		assert.deepStrictEqual(
-			data['lts/maintenance'].versions.every((version) =>
-				versionPattern.test(version),
-			),
-			true,
-		);
-
-		// ensure nothing else exists
-		assert.deepStrictEqual(data.all, undefined);
-		assert.deepStrictEqual(data['lts/latest'], undefined);
-		assert.deepStrictEqual(data.eol, undefined);
-	});
-
-	it('should pass the "supported" translation ("current", "lts/active", and "lts/maintenance")', async () => {
-		const data = await ranges(
-			['current', 'lts/active', 'lts/maintenance'],
-			at(),
-		);
-
-		assert.ok(data.current);
-		assert.ok(data['lts/active']);
-		assert.ok(data['lts/maintenance']);
-
-		// check current values
-		assert.deepStrictEqual(Array.isArray(data.current.versions), true);
-		assert.deepStrictEqual(data.current.versions.length > 0, true);
-		assert.deepStrictEqual(
-			data.current.versions.every((version) => versionPattern.test(version)),
-			true,
-		);
-
-		// check lts/active values
-		assert.deepStrictEqual(Array.isArray(data['lts/active'].versions), true);
-		assert.deepStrictEqual(data['lts/active'].versions.length > 0, true);
-		assert.deepStrictEqual(
-			data['lts/active'].versions.every((version) =>
-				versionPattern.test(version),
-			),
-			true,
-		);
-
-		// check lts/latest values
+		// check lts/maintenance values
 		assert.deepStrictEqual(
 			Array.isArray(data['lts/maintenance'].versions),
 			true,
@@ -308,7 +261,7 @@ describe('data should exist as it is defined when calling multiple aliases', asy
 			true,
 		);
 
-		// check lts/latest values
+		// check lts/maintenance values
 		assert.deepStrictEqual(
 			Array.isArray(data['lts/maintenance'].versions),
 			true,

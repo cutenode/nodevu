@@ -12,7 +12,7 @@
  */
 
 /**
- * @param {import('./optionsParser').ParsedOptions} options
+ * @param {{ fetch: import('../../index').Fetch, urls: { schedule: string } }} options
  * @returns {Promise<Schedule>}
  */
 async function schedule(options) {
@@ -27,7 +27,8 @@ async function schedule(options) {
 		throw new Error(`Fetching ${url} failed: ${raw.status} ${raw.statusText}`);
 	}
 
-	const schedule = await raw.json();
+	// schedule.json is keyed by release line
+	const schedule = /** @type {Schedule} */ (await raw.json());
 
 	return schedule;
 }

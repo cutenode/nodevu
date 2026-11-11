@@ -59,6 +59,7 @@
 		"publint": "0.3.25",
 		"sirv-cli": "3.0.1",
 		"typescript": "7.0.2",
+		"undici": "8.12.4",
 		"yaml": "2.9.1"
 	},
 	"overrides": {

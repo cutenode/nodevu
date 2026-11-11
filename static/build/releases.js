@@ -6,11 +6,11 @@ async function writeReleases() {
 	/** @type {Record<string, import('@nodevu/core').ReleaseLine['releases']>} */
 	const releases = {};
 
-	for await (const version of Object.keys(data)) {
+	for (const version of Object.keys(data)) {
 		releases[version] = data[version].releases;
 	}
 
-	write('./static/data/releases.json', releases);
+	await write('./static/data/releases.json', releases);
 }
 
 writeReleases();

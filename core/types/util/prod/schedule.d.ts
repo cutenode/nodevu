@@ -20,7 +20,12 @@ export type Schedule = Record<string, {
     codename?: string;
 }>;
 /**
- * @param {import('./optionsParser').ParsedOptions} options
+ * @param {{ fetch: import('../../index').Fetch, urls: { schedule: string } }} options
  * @returns {Promise<Schedule>}
  */
-declare function schedule(options: import('./optionsParser').ParsedOptions): Promise<Schedule>;
+declare function schedule(options: {
+    fetch: import('../../index').Fetch;
+    urls: {
+        schedule: string;
+    };
+}): Promise<Schedule>;

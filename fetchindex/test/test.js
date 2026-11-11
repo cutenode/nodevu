@@ -1,12 +1,14 @@
 const { deepStrictEqual, match, ok, rejects } = require('node:assert');
 const { describe, it } = require('node:test');
 
-// undici's fetch works as the global one, but its types don't overlap with
-// it: its Request has members the global one lacks, and its Headers
-// iterators lack the global ones' Symbol.dispose
-const undiciFetch = /** @type {typeof fetch} */ (
-	/** @type {unknown} */ (require('undici').fetch)
-);
+const {
+	fetch: undiciFetch,
+	MockAgent,
+	setGlobalDispatcher,
+} = require('undici');
+const { at } = require('@nodevu/fixtures');
+const indexSnapshot = require('@nodevu/fixtures/data/index.json');
+const now = require('@nodevu/fixtures/data/now.json');
 
 const fetchindex = require('../index');
 
@@ -41,24 +43,36 @@ function check(data) {
 	deepStrictEqual([true, false].includes(data[0].security), true);
 }
 
-// set up options object that would normally be passed to the module
-const options = {
-	fetch: globalThis.fetch,
-	urls: {
-		index: 'https://nodejs.org/dist/index.json',
-	},
-};
+const url = 'https://nodejs.org/dist/index.json';
 
-describe('under normal condiditons, versions should work', async () => {
-	it('should work with default options', async () => {
-		const data = await fetchindex(options);
+// undici's fetch goes through this mock instead of the network: it serves
+// each intercept() once and refuses any other request
+const agent = new MockAgent();
+
+agent.disableNetConnect();
+
+setGlobalDispatcher(agent);
+
+describe('under normal conditions, versions should work', async () => {
+	it('should work with default options', async (t) => {
+		const fetch = t.mock.method(globalThis, 'fetch', at(now).fetch);
+
+		const data = await fetchindex({
+			fetch: globalThis.fetch,
+			urls: { index: url },
+		});
+
 		check(data);
+		deepStrictEqual(requested(fetch), [url]);
 	});
 
 	it('should work with Undici fetch', async () => {
-		options.fetch = undiciFetch;
-		const data = await fetchindex(options);
+		intercept();
+
+		const data = await fetchindex({ fetch: undiciFetch, urls: { index: url } });
+
 		check(data);
+		agent.assertNoPendingInterceptors();
 	});
 });
 
@@ -81,4 +95,18 @@ describe('fetchindex', async () => {
 
 async function notFound() {
 	return new Response('Not Found', { status: 404, statusText: 'Not Found' });
+}
+
+// the URLs a mocked `fetch` was called with
+/** @param {import('node:test').Mock<typeof globalThis.fetch>} mock */
+function requested(mock) {
+	return mock.mock.calls.map((call) => call.arguments[0]);
+}
+
+// serves the index.json snapshot to undici's fetch once
+function intercept() {
+	agent
+		.get('https://nodejs.org')
+		.intercept({ path: '/dist/index.json' })
+		.reply(200, indexSnapshot);
 }
