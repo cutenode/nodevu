@@ -1,6 +1,6 @@
 const assert = require('node:assert');
 const { execFile } = require('node:child_process');
-const { mkdir, mkdtemp, readFile } = require('node:fs/promises');
+const { mkdir, mkdtemp, readFile, rm } = require('node:fs/promises');
 const { tmpdir } = require('node:os');
 const { join } = require('node:path');
 const { describe, it } = require('node:test');
@@ -65,6 +65,26 @@ describe('build:support', async () => {
 	});
 });
 
+describe('build', async () => {
+	it('should exit non-zero when it cannot write its output', async () => {
+		/** @type {Build[]} */
+		const builds = ['default', 'releases', 'security', 'support'];
+
+		for (const name of builds) {
+			// Arrange
+			// no data/ directory to write into
+			const cwd = await buildDirectory();
+			await rm(join(cwd, 'data'), { recursive: true });
+
+			// Act
+			const result = execBuild(name, cwd);
+
+			// Assert
+			await assert.rejects(result, { code: 1 }, name);
+		}
+	});
+});
+
 // Helpers
 
 // what @nodevu/core returns for its snapshot data at the time it was taken
@@ -88,21 +108,40 @@ function toJSON(data) {
 	return JSON.parse(JSON.stringify(data));
 }
 
-// runs a build script the way `npm run build -w static` does, from a copy of
-// static/, with the snapshot data served instead of nodejs.org and the
-// clock stopped at the time the snapshot was taken. returns what it wrote.
-/** @param {'default' | 'releases' | 'security' | 'support'} name */
+/** @typedef {'default' | 'releases' | 'security' | 'support'} Build */
+
+// runs a build script in a copy of static/ and returns what it wrote
+/** @param {Build} name */
 async function runBuild(name) {
+	const cwd = await buildDirectory();
+	await execBuild(name, cwd);
+
+	return JSON.parse(await readFile(join(cwd, 'data', `${name}.json`), 'utf8'));
+}
+
+// a directory laid out like static/, for the build scripts to write into
+async function buildDirectory() {
 	const cwd = join(await mkdtemp(join(tmpdir(), 'nodevu-')), 'static');
 	await mkdir(join(cwd, 'data'), { recursive: true });
 
+	return cwd;
+}
+
+// runs a build script the way `npm run build -w static` does, from `cwd`,
+// with the snapshot data served instead of nodejs.org and the clock stopped
+// at the time the snapshot was taken
+/**
+ * @param {Build} name
+ * @param {string} cwd
+ */
+function execBuild(name, cwd) {
 	const setup = [
 		// core reads the time through luxon, which calls Date.now()
 		`Date.now = () => ${Date.parse(now)};`,
 		`globalThis.fetch = require(${JSON.stringify(require.resolve('@nodevu/fixtures'))}).at(${JSON.stringify(now)}).fetch;`,
 	].join(' ');
 
-	await promisify(execFile)(
+	return promisify(execFile)(
 		process.execPath,
 		[
 			'-e',
@@ -110,6 +149,4 @@ async function runBuild(name) {
 		],
 		{ cwd },
 	);
-
-	return JSON.parse(await readFile(join(cwd, 'data', `${name}.json`), 'utf8'));
 }
