@@ -13,7 +13,7 @@ npm install @nodevu/core
 Then ask it about any release line:
 
 ```js
-const nodevu = require('@nodevu/core');
+import nodevu from '@nodevu/core';
 
 const data = await nodevu();
 

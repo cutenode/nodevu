@@ -10,6 +10,7 @@ import parsefiles, { type ParsedFile } from '@nodevu/parsefiles';
 import ranges, { type Range } from '@nodevu/ranges';
 import nodevuStatic from '@nodevu/static';
 import translate from '@nodevu/translate';
+import { fetch as undiciFetch } from 'undici';
 
 export async function check(): Promise<void> {
 	const data: Data = await core({ now: '2025-09-01' });
@@ -29,6 +30,9 @@ export async function check(): Promise<void> {
 	const all: Alias[] = aliases;
 	const supported = await ranges(await translate('supported'));
 	const current: Range | undefined = supported.current;
+	// a copy the caller can change
+	const copy: Alias[] = await translate('lts');
+	copy.push('eol');
 	// @ts-expect-error not an alias
 	await ranges('stable');
 	// @ts-expect-error not a package support term
@@ -39,4 +43,16 @@ export async function check(): Promise<void> {
 	const offline: Data = nodevuStatic.default;
 
 	console.log(phase, major, lts, security, all, current, file, index, offline);
+}
+
+// each fetch option takes undici's fetch as well as the global one
+export async function fetchOption(): Promise<void> {
+	const urls = { index: 'https://nodejs.org/dist/index.json' };
+
+	await core({ fetch: undiciFetch });
+	await core({ fetch: globalThis.fetch });
+	await fetchindex(opt({ fetch: undiciFetch }));
+	await fetchindex(opt({ fetch: globalThis.fetch }));
+	await fetchindex({ fetch: undiciFetch, urls });
+	await fetchindex({ fetch: globalThis.fetch, urls });
 }

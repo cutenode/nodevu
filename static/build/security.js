@@ -6,11 +6,11 @@ async function writeSecurity() {
 	/** @type {Record<string, import('@nodevu/core').Security>} */
 	const security = {};
 
-	for await (const version of Object.keys(data)) {
+	for (const version of Object.keys(data)) {
 		security[version] = data[version].security;
 	}
 
-	write('./static/data/security.json', security);
+	await write('./static/data/security.json', security);
 }
 
 writeSecurity();

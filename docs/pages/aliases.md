@@ -18,7 +18,7 @@ The module exports an array of them:
 ```js
 const aliases = require('@nodevu/aliases');
 
-aliases.includes('lts/active'); // true
+aliases.includes('lts/active'); //=> true
 ```
 
 ## `aliases`

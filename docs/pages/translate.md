@@ -16,8 +16,8 @@ to the aliases [`@nodevu/ranges`](ranges.md) takes.
 Pass the result straight to `ranges()`:
 
 ```js
-const ranges = require('@nodevu/ranges');
-const translate = require('@nodevu/translate');
+import ranges from '@nodevu/ranges';
+import translate from '@nodevu/translate';
 
 const supported = await ranges(await translate('supported'));
 ```

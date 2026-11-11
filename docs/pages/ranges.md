@@ -17,11 +17,15 @@ npm install @nodevu/ranges
 Ask for one range, several, or all of them:
 
 ```js
-const ranges = require('@nodevu/ranges');
+import ranges from '@nodevu/ranges';
 
 const data = await ranges(['current', 'lts/active']);
 
-console.log(data.current.newest);
+console.log(data['lts/active'].newest);
+
+// a range with no releases is left out, like `current` from when a line goes
+// LTS in October until the next one comes out in April
+console.log(data.current?.newest);
 ```
 
 ## `ranges([filter[, options]])`
@@ -38,6 +42,8 @@ Rejects with an {Error} when `filter` holds an unknown alias, or is neither a
 string nor an array.
 
 ```js
+import ranges from '@nodevu/ranges';
+
 const data = await ranges('alpha', { now: '2026-12-15' });
 ```
 

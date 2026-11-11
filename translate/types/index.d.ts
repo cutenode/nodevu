@@ -12,6 +12,6 @@ declare const translations: {
  *
  * @template {keyof typeof translations} Term
  * @param {Term} legacyName The term, such as `'supported'`.
- * @returns {Promise<(typeof translations)[Term]>}
+ * @returns {Promise<Array<(typeof translations)[Term][number]>>}
  */
-declare function translate<Term extends keyof typeof translations>(legacyName: Term): Promise<(typeof translations)[Term]>;
+declare function translate<Term extends keyof typeof translations>(legacyName: Term): Promise<Array<(typeof translations)[Term][number]>>;

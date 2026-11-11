@@ -21,13 +21,12 @@ Pass it an identifier and the version it belongs to:
 ```js
 const parsefiles = require('@nodevu/parsefiles');
 
-parsefiles('linux-x64', '17.6.0');
-// {
-//   id: 'linux-x64',
-//   files: ['node-v17.6.0-linux-x64.tar.gz', 'node-v17.6.0-linux-x64.tar.xz'],
-//   type: 'linux',
-//   architecture: 'x64',
-// }
+const linux = parsefiles('linux-x64', '17.6.0');
+
+linux.id; //=> 'linux-x64'
+linux.files; //=> ['node-v17.6.0-linux-x64.tar.gz', 'node-v17.6.0-linux-x64.tar.xz']
+linux.type; //=> 'linux'
+linux.architecture; //=> 'x64'
 ```
 
 ## `parsefiles(file, version)`

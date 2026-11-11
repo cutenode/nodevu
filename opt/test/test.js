@@ -4,12 +4,7 @@ const { readFileSync } = require('node:fs');
 const { describe, it } = require('node:test');
 const fc = require('fast-check');
 
-// undici's fetch works as the global one, but its types don't overlap with
-// it: its Request has members the global one lacks, and its Headers
-// iterators lack the global ones' Symbol.dispose
-const undiciFetch = /** @type {typeof fetch} */ (
-	/** @type {unknown} */ (require('undici').fetch)
-);
+const { fetch: undiciFetch } = require('undici');
 
 const { DateTime } = require('luxon');
 const opt = require('../index');

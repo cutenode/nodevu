@@ -1,6 +1,6 @@
 const assert = require('node:assert');
 const { execFile } = require('node:child_process');
-const { mkdir, mkdtemp, readFile } = require('node:fs/promises');
+const { mkdir, mkdtemp, readFile, readdir } = require('node:fs/promises');
 const { tmpdir } = require('node:os');
 const { join } = require('node:path');
 const { describe, it } = require('node:test');
@@ -29,6 +29,32 @@ describe('test:update:static', async () => {
 			},
 			{ index, schedule },
 		);
+	});
+
+	it('should save nothing when a download fails', async () => {
+		// Arrange
+		const cwd = await snapshotDirectory();
+		const undici = JSON.stringify(require.resolve('undici'));
+
+		// Act
+		const run = runScript(
+			'updateStaticData.js',
+			[
+				`const { MockAgent, setGlobalDispatcher } = require(${undici});`,
+				'const agent = new MockAgent();',
+				'agent.disableNetConnect();',
+				'setGlobalDispatcher(agent);',
+				"agent.get('https://nodejs.org').intercept({ path: '/dist/index.json' }).reply(503, { error: 'unavailable' });",
+			].join(' '),
+			cwd,
+		);
+
+		// Assert
+		await assert.rejects(run, {
+			code: 1,
+			stderr: /Fetching https:\/\/nodejs\.org\/dist\/index\.json failed: 503/,
+		});
+		assert.deepStrictEqual(await readdir(join(cwd, 'data')), []);
 	});
 });
 
