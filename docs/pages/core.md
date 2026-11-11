@@ -19,7 +19,7 @@ npm install @nodevu/core
 Then call it for the data:
 
 ```js
-const nodevu = require('@nodevu/core');
+import nodevu from '@nodevu/core';
 
 const data = await nodevu();
 
