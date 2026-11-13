@@ -15,7 +15,7 @@
 	"v26": {
 		"codename": "Lithium",
 		"lts": {
-			"newest": "26.13.0",
+			"newest": "26.13.1",
 			"oldest": "26.13.0"
 		},
 		"phases": {
@@ -41,7 +41,7 @@
 	"v24": {
 		"codename": "Krypton",
 		"lts": {
-			"newest": "24.22.2",
+			"newest": "24.22.3",
 			"oldest": "24.11.0"
 		},
 		"phases": {
@@ -67,7 +67,7 @@
 	"v22": {
 		"codename": "Jod",
 		"lts": {
-			"newest": "22.23.4",
+			"newest": "22.23.5",
 			"oldest": "22.11.0"
 		},
 		"phases": {
