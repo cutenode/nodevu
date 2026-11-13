@@ -50,7 +50,7 @@
 		"@doc-kit/generator-react": "0.5.0",
 		"@docov/cli": "0.1.1",
 		"@lavamoat/harden": "0.8.1",
-		"@oxlint/plugins": "1.89.0",
+		"@oxlint/plugins": "1.91.0",
 		"@types/node": "26.6.6",
 		"@types/semver": "7.8.0",
 		"knip": "6.44.1",
