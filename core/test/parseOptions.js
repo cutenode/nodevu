@@ -1,8 +1,11 @@
 const { deepStrictEqual, ok } = require('node:assert');
 const { describe, it } = require('node:test');
+const fc = require('fast-check');
 const { fetch: undiciFetch } = require('undici');
 const { DateTime } = require('luxon');
 const parseOptions = require('../util/prod/optionsParser');
+
+const defaults = parseOptions();
 
 describe('the parseOptions module should return all correct defaults', async () => {
 	it('should return the default date', async () => {
@@ -63,5 +66,49 @@ describe('the parseOptions module should still work when defaults are changed', 
 		});
 
 		deepStrictEqual(defaultParsedOptions.urls.schedule, 'https://example.com');
+	});
+});
+
+describe('the parseOptions module should keep every option it is given', async () => {
+	it('should take each option that is set, and the default for the rest', async () => {
+		// an empty string counts as unset, so it falls back too
+		const option = (/** @type {fc.Arbitrary<unknown>} */ value) =>
+			fc.option(fc.oneof(value, fc.constant('')), { nil: undefined });
+
+		await fc.assert(
+			fc.property(
+				fc.record(
+					{
+						fetch: option(fc.func(fc.anything())),
+						now: option(fc.oneof(fc.string(), fc.constant(DateTime.now()))),
+						urls: fc.option(
+							fc.record(
+								{ index: option(fc.webUrl()), schedule: option(fc.webUrl()) },
+								{ requiredKeys: [] },
+							),
+							{ nil: undefined },
+						),
+					},
+					{ requiredKeys: [] },
+				),
+				(options) => {
+					const parsed = parseOptions(
+						/** @type {import('../index').Options} */ (options),
+					);
+
+					deepStrictEqual(parsed.fetch, options.fetch || defaults.fetch);
+					deepStrictEqual(parsed.urls, {
+						index: options.urls?.index || defaults.urls.index,
+						schedule: options.urls?.schedule || defaults.urls.schedule,
+					});
+
+					if (options.now) {
+						deepStrictEqual(parsed.now, options.now);
+					} else {
+						ok(parsed.now instanceof DateTime);
+					}
+				},
+			),
+		);
 	});
 });
