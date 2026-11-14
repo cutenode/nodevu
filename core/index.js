@@ -106,7 +106,8 @@ const scheduleFetcher = require('./util/prod/schedule');
 
 /**
  * Fetches the Node.js release index and release schedule and merges them into
- * one object keyed by release line.
+ * one object keyed by release line. Rejects when `now` isn't a date, or when
+ * the index has a version semver can't read.
  *
  * @param {Options} [options]
  * @returns {Promise<Data>}
@@ -116,6 +117,13 @@ async function core(options) {
 	const parsedOptions = optionsParser(options);
 
 	const now = DateTime.fromISO(String(parsedOptions.now));
+
+	// an unreadable now would quietly leave every line without a phase
+	if (!now.isValid) {
+		throw new Error(
+			`now isn't an ISO 8601 date: ${JSON.stringify(String(parsedOptions.now))}`,
+		);
+	}
 
 	// collect and configure our data sources
 	const versions = await versionFetcher(parsedOptions);
@@ -128,17 +136,26 @@ async function core(options) {
 	for (const version of versions.keys()) {
 		// keep the pre-release identifiers, otherwise every Alpha release (like
 		// `v27.0.0-alpha.0.0.0`) would be coerced into `v27.0.0`
-		// every version in index.json parses, so this is never null
-		const versionSemver = /** @type {import('semver').SemVer} */ (
-			semver.coerce(versions[version].version, {
-				includePrerelease: true,
-			})
-		);
+		const versionSemver = semver.coerce(versions[version].version, {
+			includePrerelease: true,
+		});
+
+		if (!versionSemver) {
+			throw new Error(
+				`${parsedOptions.urls.index} has a version semver can't read: ${JSON.stringify(versions[version].version)}`,
+			);
+		}
 
 		const name =
 			versionSemver.major !== 0
 				? `v${versionSemver.major}`
 				: `v${versionSemver.major}.${versionSemver.minor}`;
+
+		// index.json lists releases newest first, so the first entry for a
+		// version wins over a later one that coerces to it, like `1.0.0`
+		if (data[name]?.releases[`v${versionSemver.version}`]) {
+			continue;
+		}
 
 		// define the shape of the object we're going to use
 		if (!data[name]) {
