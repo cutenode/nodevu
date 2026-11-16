@@ -25,6 +25,10 @@ updates:
       prefix-development: chore
       include: scope
     groups:
+      # doc-kit's packages share @doc-kit/core's configuration, so they move together: bumped
+      # alone, one nests a second core that never gets configured, and the docs build fails
+      doc-kit:
+        patterns: ['@doc-kit/*']
       # one PR per dependency, however many packages use it
       npm:
         group-by: dependency-name
