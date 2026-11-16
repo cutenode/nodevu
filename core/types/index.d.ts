@@ -211,7 +211,8 @@ export type Data = Record<string, ReleaseLine>;
  */
 /**
  * Fetches the Node.js release index and release schedule and merges them into
- * one object keyed by release line.
+ * one object keyed by release line. Rejects when `now` isn't a date, or when
+ * the index has a version semver can't read.
  *
  * @param {Options} [options]
  * @returns {Promise<Data>}

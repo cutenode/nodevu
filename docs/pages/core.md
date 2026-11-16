@@ -43,6 +43,9 @@ data.v20.support.codename; //=> 'Iron'
   release line, newest first, such as `v22`, or `v0.10` for the `0.x` lines. Each value is
   described in [Release lines](#release-lines).
 
+It rejects when `now` isn't an ISO 8601 date or `DateTime`, or when the index
+has a version semver can't read.
+
 This is the module's only export. The result is large: every release Node.js
 has published, with its dependencies and files. To read it without a network
 request, use [`@nodevu/static`](static.md).
@@ -57,7 +60,8 @@ when the release schedule lists the line.
 - Type: {Object}
 
 Every release in the line, newest first, keyed by version, such as `v17.6.0`.
-Each value is described in [Releases](#releases).
+Each value is described in [Releases](#releases). When the index lists a
+version twice, the first entry wins.
 
 ### `line.support`
 
