@@ -124,6 +124,51 @@ describe('parseFilename', () => {
 			),
 		);
 	});
+
+	it('should keep the shape of its result for any id, known or not', async () => {
+		await fc.assert(
+			fc.property(
+				fc.oneof(realIdArbitrary(), fc.string()),
+				versionArbitrary(),
+				(id, version) => {
+					// Arrange
+					const types = [
+						'aix',
+						'headers',
+						'linux',
+						'macos',
+						'source',
+						'sunos',
+						'windows',
+						undefined,
+					];
+
+					const architectures = [
+						'x86',
+						'x64',
+						'arm64',
+						'armv7l',
+						'armv6l',
+						'power',
+						'z',
+						undefined,
+					];
+
+					// Act
+					const result = parseFilename(id, version);
+
+					// Assert
+					assert.strictEqual(result.id, id);
+					assert.ok(result.files.length > 0);
+					assert.ok(types.includes(result.type), String(result.type));
+					assert.ok(
+						architectures.includes(result.architecture),
+						String(result.architecture),
+					);
+				},
+			),
+		);
+	});
 });
 
 // Helpers
