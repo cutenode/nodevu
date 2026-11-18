@@ -29,7 +29,8 @@ async function oldest(name, type, options) {
  *
  * @param {string} name The release line, such as `'v16'`.
  * @param {import('@nodevu/core').Options} [options] Passed to `@nodevu/core`.
- * @returns {Promise<string | undefined>}
+ * @returns {Promise<string | undefined>} The version without its `v`, or
+ *   `undefined` when the line has no LTS release.
  */
 async function lts(name, options) {
 	return await oldest(name, 'lts', options);
@@ -40,7 +41,8 @@ async function lts(name, options) {
  *
  * @param {string} name The release line, such as `'v16'`.
  * @param {import('@nodevu/core').Options} [options] Passed to `@nodevu/core`.
- * @returns {Promise<string | undefined>}
+ * @returns {Promise<string | undefined>} The version without its `v`, or
+ *   `undefined` when the line has no security release.
  */
 async function security(name, options) {
 	return await oldest(name, 'security', options);

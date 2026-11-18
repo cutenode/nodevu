@@ -9,9 +9,8 @@ const staticIndex = require('./data/index.json');
 const staticSchedule = require('./data/schedule.json');
 
 /**
- * Mocks the network for a test: the default and `https://bnb.im` index.json
- * and schedule.json URLs serve the snapshots, and any other request
- * fails.
+ * Mocks the network for a test. The default and `https://bnb.im` index.json
+ * and schedule.json URLs serve the snapshots, and any other request fails.
  */
 function beforeEachTemplate() {
 	// this fixes a bug in Node.js - it should be fixed _eventually_ and can be removed: https://github.com/nodejs/undici/issues/1248

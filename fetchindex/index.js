@@ -30,7 +30,7 @@
 /**
  * Fetches the Node.js release index.
  *
- * @param {object} options
+ * @param {object} options The `fetch` implementation and the URL to use.
  * @param {Fetch} options.fetch The `fetch` implementation to use.
  * @param {{ index: string }} options.urls The full URL of the index.
  * @returns {Promise<IndexRelease[]>} Every release, newest first.

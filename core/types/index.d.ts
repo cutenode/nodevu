@@ -214,7 +214,8 @@ export type Data = Record<string, ReleaseLine>;
  * one object keyed by release line. Rejects when `now` isn't a date, or when
  * the index has a version semver can't read.
  *
- * @param {Options} [options]
- * @returns {Promise<Data>}
+ * @param {Options} [options] Where to fetch the data from, and the date to
+ *   work out each release line's phase on.
+ * @returns {Promise<Data>} Every release line, keyed by name.
  */
 declare function core(options?: Options): Promise<Data>;

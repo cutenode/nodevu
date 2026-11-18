@@ -29,7 +29,8 @@ const { DateTime } = require('luxon');
  * left out.
  *
  * @param {{ fetch?: Fetch, now?: string | DateTime, urls?: { index?: string, schedule?: string } }} [inputOptions]
- * @returns {Options}
+ *   The caller's options.
+ * @returns {Options} The options, each one set.
  */
 function opt(inputOptions) {
 	// set up our defaults

@@ -48,7 +48,7 @@
 		"@arethetypeswrong/cli": "0.18.5",
 		"@doc-kit/cli": "1.1.1",
 		"@doc-kit/generator-react": "0.5.3",
-		"@docov/cli": "0.1.1",
+		"@docov/cli": "0.2.1",
 		"@lavamoat/harden": "0.8.1",
 		"@oxlint/plugins": "1.93.0",
 		"@types/node": "26.6.6",

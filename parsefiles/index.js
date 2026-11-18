@@ -9,12 +9,12 @@
  */
 
 /**
- * Parses an identifier from the `files` of a release in the Node.js release
- * index into the file names it stands for, its platform, and its architecture.
+ * Parses an identifier from a release's `files` in the Node.js release index.
  *
  * @param {string} file An identifier, such as `'win-x64-msi'`.
  * @param {string} version The release's version, without its `v`.
- * @returns {ParsedFile}
+ * @returns {ParsedFile} The file names the identifier stands for, and its
+ *   platform and architecture.
  */
 function parseFilename(file, version) {
 	/** @type {ParsedFile} */

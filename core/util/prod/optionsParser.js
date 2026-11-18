@@ -12,8 +12,10 @@ const { DateTime } = require('luxon');
 // this is particularly useful for tests so we can reduce variables
 // and ensure that our test suite is able to be consistent.
 /**
- * @param {import('../../index').Options} [options]
- * @returns {ParsedOptions}
+ * Fills in a default for each option the caller left out.
+ *
+ * @param {import('../../index').Options} [options] The caller's options.
+ * @returns {ParsedOptions} The options, each one set.
  */
 function parseOptions(options) {
 	// set up our defaults
