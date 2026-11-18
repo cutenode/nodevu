@@ -109,8 +109,9 @@ const scheduleFetcher = require('./util/prod/schedule');
  * one object keyed by release line. Rejects when `now` isn't a date, or when
  * the index has a version semver can't read.
  *
- * @param {Options} [options]
- * @returns {Promise<Data>}
+ * @param {Options} [options] Where to fetch the data from, and the date to
+ *   work out each release line's phase on.
+ * @returns {Promise<Data>} Every release line, keyed by name.
  */
 async function core(options) {
 	// parse our user's options and set up our fetch/DateTime implementations

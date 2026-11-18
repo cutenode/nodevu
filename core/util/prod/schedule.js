@@ -12,8 +12,11 @@
  */
 
 /**
+ * Fetches the Node.js release schedule.
+ *
  * @param {{ fetch: import('../../index').Fetch, urls: { schedule: string } }} options
- * @returns {Promise<Schedule>}
+ *   The `fetch` implementation to use, and the full URL of the schedule.
+ * @returns {Promise<Schedule>} The schedule, keyed by release line.
  */
 async function schedule(options) {
 	// parse our options and set up fetch if a custom fetch is passed

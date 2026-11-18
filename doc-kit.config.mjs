@@ -19,7 +19,11 @@ const description =
 
 // doc-kit deep-merges this with its defaults, so `global` can leave out what
 // they fill in. its own types only describe the merged result
-/** @satisfies {Omit<Partial<Configuration>, 'global'> & { global?: Partial<GlobalConfiguration> }} */
+/**
+ * How doc-kit builds the docs site from docs/pages.
+ *
+ * @satisfies {Omit<Partial<Configuration>, 'global'> & { global?: Partial<GlobalConfiguration> }}
+ */
 export default {
 	target: ['html', 'orama-db', 'json', 'llms-txt', 'sitemap'],
 

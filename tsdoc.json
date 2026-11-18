@@ -1,0 +1,11 @@
+{
+	"$schema": "https://developer.microsoft.com/json-schemas/tsdoc/v0/tsdoc.schema.json",
+	"tagDefinitions": [
+		{ "tagName": "@import", "syntaxKind": "block", "allowMultiple": true },
+		{ "tagName": "@property", "syntaxKind": "block", "allowMultiple": true },
+		{ "tagName": "@satisfies", "syntaxKind": "block" },
+		{ "tagName": "@template", "syntaxKind": "block", "allowMultiple": true },
+		{ "tagName": "@type", "syntaxKind": "block" },
+		{ "tagName": "@typedef", "syntaxKind": "block" }
+	]
+}

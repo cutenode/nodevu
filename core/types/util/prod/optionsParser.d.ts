@@ -15,7 +15,9 @@ export type ParsedOptions = {
  * @property {{ index: string, schedule: string }} urls
  */
 /**
- * @param {import('../../index').Options} [options]
- * @returns {ParsedOptions}
+ * Fills in a default for each option the caller left out.
+ *
+ * @param {import('../../index').Options} [options] The caller's options.
+ * @returns {ParsedOptions} The options, each one set.
  */
 declare function parseOptions(options?: import('../../index').Options): ParsedOptions;

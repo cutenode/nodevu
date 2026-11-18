@@ -16,7 +16,8 @@ declare function newest(name: string, type: 'lts' | 'security', options?: import
  *
  * @param {string} name The release line, such as `'v16'`.
  * @param {import('@nodevu/core').Options} [options] Passed to `@nodevu/core`.
- * @returns {Promise<string | undefined>}
+ * @returns {Promise<string | undefined>} The version without its `v`, or
+ *   `undefined` when the line has no LTS release.
  */
 declare function lts(name: string, options?: import('@nodevu/core').Options): Promise<string | undefined>;
 /**
@@ -24,6 +25,7 @@ declare function lts(name: string, options?: import('@nodevu/core').Options): Pr
  *
  * @param {string} name The release line, such as `'v16'`.
  * @param {import('@nodevu/core').Options} [options] Passed to `@nodevu/core`.
- * @returns {Promise<string | undefined>}
+ * @returns {Promise<string | undefined>} The version without its `v`, or
+ *   `undefined` when the line has no security release.
  */
 declare function security(name: string, options?: import('@nodevu/core').Options): Promise<string | undefined>;

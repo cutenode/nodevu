@@ -13,7 +13,8 @@ const translations = /** @type {const} */ ({
  *
  * @template {keyof typeof translations} Term
  * @param {Term} legacyName The term, such as `'supported'`.
- * @returns {Promise<Array<(typeof translations)[Term][number]>>}
+ * @returns {Promise<Array<(typeof translations)[Term][number]>>} The aliases
+ *   the term covers, newest first.
  */
 async function translate(legacyName) {
 	// an own-property check, so names like `toString` don't resolve to
