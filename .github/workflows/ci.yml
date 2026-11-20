@@ -100,7 +100,7 @@ jobs:
           persist-credentials: false
       # _typos.toml lists the words it shouldn't flag
       - name: Check spelling
-        uses: crate-ci/typos@4c8b7f51ca60df14e3c5ca82770dfbbe6c3dae85 # v1.52.0
+        uses: crate-ci/typos@276087d9a4f06398b3e04825487805e2d7375888 # v1.52.2
       # relative links and anchors only; the weekly docs build checks the rest
       - name: Check links
         uses: lycheeverse/lychee-action@e7477775783ea5526144ba13e8db5eec57747ce8 # v2.9.0
