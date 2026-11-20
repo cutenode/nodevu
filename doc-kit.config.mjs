@@ -1,3 +1,13 @@
+/**
+ * @file The doc-kit config that builds nodevu.dev from the Markdown in docs/pages.
+ *
+ * @example
+ * ```js
+ * // `npm run docs` runs `doc-kit generate`, which loads this file by name
+ * import config from './doc-kit.config.mjs';
+ * ```
+ */
+
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
@@ -6,10 +16,34 @@ const { version } = JSON.parse(
 	readFileSync(join(import.meta.dirname, 'core', 'package.json'), 'utf8'),
 );
 
+/**
+ * The GitHub repo the site's edit links and repository link point at.
+ *
+ * @example
+ * ```js
+ * `https://github.com/${repository}`; // 'https://github.com/cutenode/nodevu'
+ * ```
+ */
 const repository = 'cutenode/nodevu';
 
+/**
+ * The published site's base URL, which the sitemap's, llms.txt's and absolute links' URLs start with.
+ *
+ * @example
+ * ```js
+ * `${baseURL}/core`; // 'https://nodevu.dev/core'
+ * ```
+ */
 const baseURL = 'https://nodevu.dev';
 
+/**
+ * The site's summary for search results and link previews, in its `description` and `og:description` meta tags.
+ *
+ * @example
+ * ```js
+ * description.startsWith('nodevu collects'); // true
+ * ```
+ */
 const description =
 	'nodevu collects, merges, and reasons about Node.js versions: release lines, LTS and security releases, support phases, and downloadable files.';
 
@@ -21,6 +55,14 @@ const description =
 // they fill in. its own types only describe the merged result
 /**
  * How doc-kit builds the docs site from docs/pages.
+ *
+ * @public
+ * @example
+ * ```js
+ * import config from './doc-kit.config.mjs';
+ *
+ * config.global.baseURL; // 'https://nodevu.dev'
+ * ```
  *
  * @satisfies {Omit<Partial<Configuration>, 'global'> & { global?: Partial<GlobalConfiguration> }}
  */

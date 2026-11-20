@@ -1,5 +1,5 @@
 {
-	"$schema": "https://raw.githubusercontent.com/cutenode/docov/v0.2.1/docov.schema.json",
+	"$schema": "https://raw.githubusercontent.com/cutenode/docov/v0.2.2/docov.schema.json",
 	"exclude": [
 		"**/test/**",
 		// generated from the JSDoc by `npm run types`, and TypeScript 7 leaves
@@ -8,7 +8,24 @@
 		// vendored oxlint plugin
 		"tools/oxlint/anti-slop/**",
 	],
+	// every module-level declaration, exported or not, with the members of
+	// classes, object types and tagged object literals, globals and CommonJS
+	// members, and @typedef and @callback blocks as items of their own
+	"scope": "all",
+	"exports": { "cjs": true, "esm": true, "globals": true },
+	"members": "all",
+	"commonjsMembers": true,
+	"virtual": true,
+	"fileDocs": "require",
+	// no package has a docov config of its own yet; this picks one up if it does
+	"nested": true,
 	"threshold": 100,
+	"completeThreshold": 100,
+	"examplesThreshold": 100,
+	"typesThreshold": 100,
+	"releaseTagsThreshold": 100,
+	"maxUndocumented": 0,
+	"reportUnusedIgnores": true,
 	"requireDescription": true,
 	// defines the JSDoc tags nodevu uses, so tsdoc-tags only flags unknown ones
 	"tsdocConfig": "tsdoc.json",
@@ -20,15 +37,17 @@
 		"require-param": "error",
 		"require-returns": "error",
 		"require-template": "error",
+		"require-throws": "error",
 		"require-yields": "error",
 		"summary-sentence": "error",
 		"tsdoc-code": "error",
 		"tsdoc-inline-tags": "error",
+		"tsdoc-links": "error",
 		"tsdoc-tags": "error",
 		"valid-link": "error",
-		// tsdoc-escapes, tsdoc-html, tsdoc-links and tsdoc-params stay off: they
-		// hold blocks to TSDoc's grammar, which has no place for the JSDoc
-		// {type}s `npm run types` builds the types from. require-throws stays off
-		// while it counts a throw in an async function, which rejects instead
+		// tsdoc-escapes, tsdoc-html and tsdoc-params stay off: they hold blocks
+		// to TSDoc's grammar, which has no place for the JSDoc {type}s `npm run
+		// types` builds the types from, or for JSDoc's [optional] and dotted
+		// @param names. They can go on once docov can skip those
 	},
 }

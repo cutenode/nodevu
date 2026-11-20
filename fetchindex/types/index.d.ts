@@ -1,13 +1,15 @@
 /**
- * The part of `fetch` fetchindex uses: a GET of a URL whose JSON it reads. Any
- * `fetch` with this shape fits, such as `globalThis.fetch` or undici's.
+ * @file Fetches the Node.js release index, the list of every Node.js release.
  *
- * @typedef {(url: string) => Promise<{
- *   ok: boolean,
- *   status: number,
- *   statusText: string,
- *   json: () => Promise<unknown>,
- * }>} Fetch
+ * @example
+ * ```js
+ * const fetchindex = require('@nodevu/fetchindex');
+ *
+ * const releases = await fetchindex({
+ *   fetch: globalThis.fetch,
+ *   urls: { index: 'https://nodejs.org/dist/index.json' },
+ * });
+ * ```
  */
 export = versions;
 export type Fetch = (url: string) => Promise<{
@@ -21,7 +23,14 @@ export type IndexRelease = {
      * Such as `'v17.6.0'`.
      */
     version: string;
+    /**
+     * The release date, such as `'2022-02-22'`.
+     */
     date: string;
+    /**
+     * The identifiers of the files the release ships,
+     * such as `'linux-x64'`.
+     */
     files: string[];
     npm?: string;
     v8?: string;
@@ -36,12 +45,45 @@ export type IndexRelease = {
     security: boolean;
 };
 /**
+ * The part of `fetch` fetchindex uses: a GET of a URL whose JSON it reads. Any
+ * `fetch` with this shape fits, such as `globalThis.fetch` or undici's.
+ *
+ * @public
+ * @example
+ * ```js
+ * const { fetch } = require('undici');
+ *
+ * const releases = await fetchindex({
+ *   fetch,
+ *   urls: { index: 'https://nodejs.org/dist/index.json' },
+ * });
+ * ```
+ *
+ * @typedef {(url: string) => Promise<{
+ *   ok: boolean,
+ *   status: number,
+ *   statusText: string,
+ *   json: () => Promise<unknown>,
+ * }>} Fetch
+ */
+/**
  * A release as the Node.js release index lists it.
+ *
+ * @public
+ * @example
+ * ```js
+ * const [newest] = await fetchindex({
+ *   fetch: globalThis.fetch,
+ *   urls: { index: 'https://nodejs.org/dist/index.json' },
+ * });
+ * newest.files.includes('linux-x64'); // true
+ * ```
  *
  * @typedef {object} IndexRelease
  * @property {string} version Such as `'v17.6.0'`.
- * @property {string} date
- * @property {string[]} files
+ * @property {string} date The release date, such as `'2022-02-22'`.
+ * @property {string[]} files The identifiers of the files the release ships,
+ *   such as `'linux-x64'`.
  * @property {string} [npm]
  * @property {string} [v8]
  * @property {string} [uv]
@@ -52,7 +94,17 @@ export type IndexRelease = {
  * @property {boolean} security
  */
 /**
- * Fetches the Node.js release index.
+ * Fetches the Node.js release index. Rejects when the response isn't OK.
+ *
+ * @public
+ * @example
+ * ```js
+ * const releases = await fetchindex({
+ *   fetch: globalThis.fetch,
+ *   urls: { index: 'https://nodejs.org/dist/index.json' },
+ * });
+ * releases.at(-1).version; // 'v0.1.14'
+ * ```
  *
  * @param {object} options The `fetch` implementation and the URL to use.
  * @param {Fetch} options.fetch The `fetch` implementation to use.

@@ -1,10 +1,33 @@
+/**
+ * @file Fills in the defaults for the options `@nodevu/core` takes.
+ *
+ * @example
+ * ```js
+ * const optionsParser = require('./util/prod/optionsParser');
+ *
+ * const parsedOptions = optionsParser({ now: '2025-10-30' });
+ * ```
+ */
+
 const { DateTime } = require('luxon');
 
 /**
+ * Core's options with every default filled in, so nothing downstream checks for a missing one.
+ *
+ * @public
+ * @example
+ * ```js
+ * const { urls } = optionsParser();
+ * urls.index; // 'https://nodejs.org/dist/index.json'
+ * ```
+ *
  * @typedef {object} ParsedOptions
- * @property {import('../../index').Fetch} fetch
- * @property {string | DateTime} now
- * @property {{ index: string, schedule: string }} urls
+ * @property {import('../../index').Fetch} fetch The `fetch` implementation to
+ *   request the data with.
+ * @property {string | DateTime} now The date to work out each release line's
+ *   phase against.
+ * @property {{ index: string, schedule: string }} urls The full URLs of the
+ *   release index and release schedule.
  */
 
 // this function allows us to parse user-passed options.
@@ -13,6 +36,15 @@ const { DateTime } = require('luxon');
 // and ensure that our test suite is able to be consistent.
 /**
  * Fills in a default for each option the caller left out.
+ *
+ * @public
+ * @example
+ * ```js
+ * const parsedOptions = optionsParser({ now: '2025-10-30' });
+ *
+ * parsedOptions.now; // '2025-10-30'
+ * parsedOptions.fetch === globalThis.fetch; // true
+ * ```
  *
  * @param {import('../../index').Options} [options] The caller's options.
  * @returns {ParsedOptions} The options, each one set.
