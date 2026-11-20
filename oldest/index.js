@@ -1,3 +1,12 @@
+/**
+ * @file Finds the oldest LTS or security release of a Node.js release line.
+ *
+ * @example
+ * ```js
+ * const { lts, security } = require('@nodevu/oldest');
+ * ```
+ */
+
 const nodevu = require('@nodevu/core');
 
 /**
@@ -8,6 +17,14 @@ const nodevu = require('@nodevu/core');
  * @param {import('@nodevu/core').Options} [options] Passed to `@nodevu/core`.
  * @returns {Promise<string | undefined>} The version without its `v`, or
  *   `undefined` when the line has no such release.
+ * @public
+ * @example
+ * ```js
+ * const { oldest } = require('@nodevu/oldest');
+ *
+ * await oldest('v16', 'lts'); // '16.13.0'
+ * await oldest('v16', 'security'); // '16.4.1'
+ * ```
  */
 async function oldest(name, type, options) {
 	const data = await nodevu(options);
@@ -31,6 +48,14 @@ async function oldest(name, type, options) {
  * @param {import('@nodevu/core').Options} [options] Passed to `@nodevu/core`.
  * @returns {Promise<string | undefined>} The version without its `v`, or
  *   `undefined` when the line has no LTS release.
+ * @public
+ * @example
+ * ```js
+ * const { lts } = require('@nodevu/oldest');
+ *
+ * await lts('v16'); // '16.13.0'
+ * await lts('v25'); // undefined
+ * ```
  */
 async function lts(name, options) {
 	return await oldest(name, 'lts', options);
@@ -43,6 +68,13 @@ async function lts(name, options) {
  * @param {import('@nodevu/core').Options} [options] Passed to `@nodevu/core`.
  * @returns {Promise<string | undefined>} The version without its `v`, or
  *   `undefined` when the line has no security release.
+ * @public
+ * @example
+ * ```js
+ * const { security } = require('@nodevu/oldest');
+ *
+ * await security('v16'); // '16.4.1'
+ * ```
  */
 async function security(name, options) {
 	return await oldest(name, 'security', options);

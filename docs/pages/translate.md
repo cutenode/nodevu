@@ -22,9 +22,9 @@ import translate from '@nodevu/translate';
 const supported = await ranges(await translate('supported'));
 ```
 
-## `translate(alias)`
+## `translate(legacyName)`
 
-- `alias` {string} A package support term.
+- `legacyName` {string} A package support term.
 - Returns: {Promise<string[]>} Fulfills with the aliases it covers.
 
 Rejects with an {Error} for any other term. The terms translate to:
