@@ -1,16 +1,44 @@
+/**
+ * @file nodevu's own oxlint rules, loaded through `jsPlugins` in .oxlintrc.json.
+ *
+ * @example
+ * ```js
+ * import plugin from './tools/oxlint/nodevu/index.mjs';
+ * ```
+ */
+
 import { existsSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 
 import { definePlugin, defineRule } from '@oxlint/plugins';
 
-/** @type {Map<string, string>} */
+/**
+ * The package folder `packageDir` found for each path, so each folder's package.json is looked for once.
+ *
+ * @example
+ * ```js
+ * // with the repo at /repo
+ * packageDir('/repo/ranges/test');
+ *
+ * packageDirs.get('/repo/ranges/test'); // '/repo/ranges'
+ * ```
+ *
+ * @type {Map<string, string>}
+ */
 const packageDirs = new Map();
 
 /**
  * The folder of the package `path` is in: the nearest one holding a
  * package.json, which is a workspace or the repo root.
- * @param {string} path
- * @returns {string}
+ *
+ * @param {string} path An absolute path to a folder.
+ * @returns {string} The package's folder, or the filesystem root when no folder above has a package.json.
+ * @example
+ * ```js
+ * // with the repo at /repo
+ * packageDir('/repo/ranges/test'); // '/repo/ranges'
+ * packageDir('/repo/tools/oxlint'); // '/repo'
+ * ```
  */
 function packageDir(path) {
 	const cached = packageDirs.get(path);
@@ -30,8 +58,15 @@ function packageDir(path) {
 /**
  * The module path an argument holds, when it's written out in full. Literals
  * that aren't strings come back as strings that are never relative paths.
- * @param {import('@oxlint/plugins').ESTree.Node | null | undefined} node
- * @returns {string | null}
+ *
+ * @param {import('@oxlint/plugins').ESTree.Node | null | undefined} node The argument, if there is one.
+ * @returns {string | null} The path, or `null` when it's built at runtime.
+ * @example
+ * ```js
+ * // for require('../index') and require(`../${name}`)
+ * staticPath(node); // '../index'
+ * staticPath(templateNode); // null
+ * ```
  */
 function staticPath(node) {
 	if (node?.type === 'Literal') {
@@ -46,9 +81,16 @@ function staticPath(node) {
 }
 
 /**
- * Whether `callee` is `require` or `require.resolve`.
- * @param {import('@oxlint/plugins').ESTree.Node} callee
- * @returns {boolean}
+ * Whether a call's `callee` is `require` or `require.resolve`, the calls that take a module path.
+ *
+ * @param {import('@oxlint/plugins').ESTree.Node} callee The function a call expression calls.
+ * @returns {boolean} `true` for `require` and `require.resolve`.
+ * @example
+ * ```js
+ * // for require.resolve('../index') and require.cache
+ * isRequire(resolveCall.callee); // true
+ * isRequire(cacheCall.callee); // false
+ * ```
  */
 function isRequire(callee) {
 	if (callee.type === 'Identifier') {
@@ -65,6 +107,16 @@ function isRequire(callee) {
 	);
 }
 
+/**
+ * Reports relative imports and requires that reach into another package's folder.
+ *
+ * @example
+ * ```js
+ * // in ranges/test/test.js
+ * require('../index'); // fine, ranges/index.js
+ * require('../../core'); // reported: depend on @nodevu/core instead
+ * ```
+ */
 const noCrossPackagePaths = defineRule({
 	meta: {
 		type: 'problem',
@@ -111,7 +163,20 @@ const noCrossPackagePaths = defineRule({
 	},
 });
 
-/** nodevu's own oxlint rules. */
+/**
+ * nodevu's oxlint plugin, which holds the `no-cross-package-paths` rule.
+ *
+ * @public
+ * @example
+ * ```js
+ * // .oxlintrc.json
+ * // "jsPlugins": [{ "name": "nodevu", "specifier": "./tools/oxlint/nodevu/index.mjs" }],
+ * // "rules": { "nodevu/no-cross-package-paths": "error" }
+ * import plugin from './tools/oxlint/nodevu/index.mjs';
+ *
+ * Object.keys(plugin.rules); // ['no-cross-package-paths']
+ * ```
+ */
 export default definePlugin({
 	meta: { name: 'nodevu' },
 	rules: { 'no-cross-package-paths': noCrossPackagePaths },

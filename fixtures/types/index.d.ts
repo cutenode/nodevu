@@ -1,3 +1,11 @@
+/**
+ * @file Options that point the nodevu packages at the snapshot data, for tests.
+ *
+ * @example
+ * ```js
+ * const { at } = require('@nodevu/fixtures');
+ * ```
+ */
 declare const _exports: {
     at: typeof at;
 };
@@ -19,6 +27,16 @@ export = _exports;
  *   index.json and schedule.json to serve. Defaults to the snapshots.
  * @returns {{ now: string, fetch: typeof fetch }} The `now` and `fetch`
  *   options.
+ * @public
+ * @example
+ * ```js
+ * const nodevu = require('@nodevu/core');
+ * const { at } = require('@nodevu/fixtures');
+ *
+ * const data = await nodevu(at('2025-09-01'));
+ *
+ * data.v22.support.phases.current; // 'lts'
+ * ```
  */
 declare function at(now?: string, data?: {
     index: {

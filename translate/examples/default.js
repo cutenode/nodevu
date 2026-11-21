@@ -1,6 +1,27 @@
+/**
+ * @file Prints the ranges each package support term translates to.
+ *
+ * @example
+ * ```js
+ * // from the repo root, same as `node translate/examples/default.js`
+ * require('./translate/examples/default.js');
+ * ```
+ */
+
 const ranges = require('@nodevu/ranges');
 const translate = require('../index'); // would normally be "const translate = require('@nodevu/translate')" in your code
 
+/**
+ * Works out the ranges of every package support term, one `@nodevu/ranges`
+ * call per term.
+ *
+ * @returns {Promise<Record<Parameters<typeof translate>[0], Awaited<ReturnType<typeof ranges>>>>}
+ *   The ranges, keyed by term.
+ * @example
+ * ```js
+ * const { supported } = await getTranslatedData();
+ * ```
+ */
 async function getTranslatedData() {
 	// translation for the 'current' Package Support term
 	const translatedCurrent = await ranges(await translate('current'));

@@ -1,3 +1,15 @@
+/**
+ * @file Fetches the Node.js release index and schedule and merges them into one object keyed by release line.
+ *
+ * @example
+ * ```js
+ * const core = require('@nodevu/core');
+ *
+ * const data = await core();
+ * data.v20.support.codename; // 'Iron'
+ * ```
+ */
+
 const { DateTime } = require('luxon');
 const semver = require('semver');
 const parsefiles = require('@nodevu/parsefiles');
@@ -8,26 +20,63 @@ const scheduleFetcher = require('./util/prod/schedule');
 /**
  * The part of `fetch` core uses, which `@nodevu/fetchindex` defines.
  *
+ * @public
+ * @example
+ * ```js
+ * const { fetch } = require('undici');
+ *
+ * const data = await core({ fetch });
+ * ```
+ *
  * @typedef {import('@nodevu/fetchindex').Fetch} Fetch
  */
 
 /**
+ * What `core` takes: where to fetch the data from, and the date to work out phases on.
+ *
+ * @public
+ * @example
+ * ```js
+ * const data = await core({
+ *   now: '2025-10-30',
+ *   urls: { schedule: 'https://example.com/schedule.json' },
+ * });
+ * ```
+ *
  * @typedef {object} Options
  * @property {Fetch} [fetch] The `fetch` implementation to request the
  *   data with. Defaults to `globalThis.fetch`.
  * @property {string | import('luxon').DateTime} [now] An ISO 8601 date to work
  *   out each release line's phase against. Defaults to now.
- * @property {object} [urls]
+ * @property {object} [urls] The URLs to fetch the data from. Each defaults to
+ *   the one nodejs.org or the nodejs/Release repo publishes.
  * @property {string} [urls.index] The full URL of the release index.
  * @property {string} [urls.schedule] The full URL of the release schedule.
  */
 
 /**
+ * A stage of a release line's life, in the order a line goes through them.
+ *
+ * @public
+ * @example
+ * ```js
+ * const data = await core({ now: '2025-10-30' });
+ * data.v20.support.phases.current; // 'maintenance'
+ * ```
+ *
  * @typedef {'alpha' | 'start' | 'lts' | 'maintenance' | 'end'} Phase
  */
 
 /**
  * The start date of each phase of a release line, such as `'2021-04-20'`.
+ *
+ * @public
+ * @example
+ * ```js
+ * const data = await core();
+ * data.v20.support.phases.dates;
+ * // { start: '2023-04-18', lts: '2023-10-24', maintenance: '2024-10-22', end: '2026-04-30' }
+ * ```
  *
  * @typedef {object} PhaseDates
  * @property {string} [alpha]
@@ -38,25 +87,52 @@ const scheduleFetcher = require('./util/prod/schedule');
  */
 
 /**
+ * A release line's codename, LTS range, and phase dates from the release schedule.
+ *
+ * @public
+ * @example
+ * ```js
+ * const data = await core({ now: '2025-10-30' });
+ * data.v20.support.codename; // 'Iron'
+ * data.v20.support.lts.oldest; // '20.9.0'
+ * ```
+ *
  * @typedef {object} Support
  * @property {string} [codename] The LTS codename, such as `'Iron'`.
  * @property {{ newest?: string, oldest?: string }} [lts] The newest and first
  *   releases flagged as LTS.
- * @property {object} phases
- * @property {PhaseDates} phases.dates
+ * @property {object} phases The line's phase dates and the phase it's in.
+ * @property {PhaseDates} phases.dates The start date of each phase.
  * @property {Phase | Record<string, never>} phases.current The phase the line
  *   is in on `now`, or an empty object when none has started yet.
  */
 
 /**
+ * The security releases of a release line.
+ *
+ * @public
+ * @example
+ * ```js
+ * const data = await core();
+ * data.v20.security.all.includes(data.v20.security.newest); // true
+ * ```
+ *
  * @typedef {object} Security
  * @property {string[]} all Every security release in the line, newest first.
- * @property {string} [newest]
- * @property {string} [oldest]
+ * @property {string} [newest] The newest security release, if the line has one.
+ * @property {string} [oldest] The first security release, if the line has one.
  */
 
 /**
  * The files of one identifier from a release's `files`.
+ *
+ * @public
+ * @example
+ * ```js
+ * const data = await core();
+ * data.v20.releases['v20.19.5'].files.links.linux[0];
+ * // { id: 'linux-arm64', files: ['node-v20.19.5-linux-arm64.tar.gz', 'node-v20.19.5-linux-arm64.tar.xz'], architecture: 'arm64' }
+ * ```
  *
  * @typedef {object} FileLink
  * @property {string} id The identifier, such as `'linux-x64'`.
@@ -65,8 +141,20 @@ const scheduleFetcher = require('./util/prod/schedule');
  */
 
 /**
+ * One Node.js release: its version, date, bundled dependencies, files, and LTS and security flags.
+ *
+ * @public
+ * @example
+ * ```js
+ * const data = await core();
+ * const release = data.v20.releases['v20.19.5'];
+ *
+ * release.dependencies.npm; // '10.8.2'
+ * release.lts.isLts; // true
+ * ```
+ *
  * @typedef {object} Release
- * @property {object} semver
+ * @property {object} semver The parts of the version.
  * @property {string} semver.raw The version without its `v`.
  * @property {number} semver.major
  * @property {number} semver.minor
@@ -80,26 +168,43 @@ const scheduleFetcher = require('./util/prod/schedule');
  * @property {string} [dependencies.uv]
  * @property {string} [dependencies.zlib]
  * @property {string} [dependencies.openssl]
- * @property {object} files
+ * @property {object} files The files the release ships.
  * @property {string[]} files.available The identifiers the index lists.
  * @property {Record<string, FileLink[]>} files.links The files of each
  *   identifier, grouped by type, such as `linux` or `windows`.
- * @property {{ isLts: boolean }} lts
- * @property {{ isAlpha: boolean }} alpha
- * @property {{ isSecurity: boolean }} security
+ * @property {{ isLts: boolean }} lts Whether the release is an LTS release.
+ * @property {{ isAlpha: boolean }} alpha Whether the release is an Alpha release.
+ * @property {{ isSecurity: boolean }} security Whether the release is a
+ *   security release.
  */
 
 /**
+ * A major release line (or minor, before `v1`): its releases, support, and security releases.
+ *
+ * @public
+ * @example
+ * ```js
+ * const data = await core();
+ * Object.keys(data.v20.releases)[0]; // the newest v20 release, such as 'v20.19.5'
+ * ```
+ *
  * @typedef {object} ReleaseLine
  * @property {Record<string, Release>} releases Every release in the line,
  *   newest first, keyed by version, such as `v17.6.0`.
  * @property {Support} [support] Only present when the release schedule has a
  *   start date for the line.
- * @property {Security} security
+ * @property {Security} security The line's security releases.
  */
 
 /**
  * Every release line, newest first, keyed by name, such as `v22` or `v0.10`.
+ *
+ * @public
+ * @example
+ * ```js
+ * const data = await core();
+ * Object.keys(data).at(-1); // 'v0.1'
+ * ```
  *
  * @typedef {Record<string, ReleaseLine>} Data
  */
@@ -108,6 +213,15 @@ const scheduleFetcher = require('./util/prod/schedule');
  * Fetches the Node.js release index and release schedule and merges them into
  * one object keyed by release line. Rejects when `now` isn't a date, or when
  * the index has a version semver can't read.
+ *
+ * @public
+ * @example
+ * ```js
+ * const core = require('@nodevu/core');
+ *
+ * const data = await core({ now: '2025-10-30' });
+ * data.v22.support.phases.current; // 'maintenance'
+ * ```
  *
  * @param {Options} [options] Where to fetch the data from, and the date to
  *   work out each release line's phase on.
@@ -346,9 +460,23 @@ async function core(options) {
 }
 
 /**
- * @param {import('luxon').DateTime} now
- * @param {PhaseDates} [dates]
- * @returns {Phase | undefined}
+ * Works out which phase a release line is in on `now`: the last one whose start date isn't after it.
+ *
+ * @example
+ * ```js
+ * determineCurrentReleasePhase(DateTime.fromISO('2025-10-30'), {
+ *   start: '2023-04-18',
+ *   lts: '2023-10-24',
+ *   maintenance: '2024-10-22',
+ *   end: '2026-04-30',
+ * }); // 'maintenance'
+ * ```
+ *
+ * @param {import('luxon').DateTime} now The date to compare the phase dates to.
+ * @param {PhaseDates} [dates] The start date of each phase. A missing one
+ *   never counts as started.
+ * @returns {Phase | undefined} The current phase, or `undefined` when none
+ *   has started yet.
  */
 function determineCurrentReleasePhase(now, dates = {}) {
 	// here we figure out if the dates for each release line passed is in the past or future
@@ -399,15 +527,20 @@ function determineCurrentReleasePhase(now, dates = {}) {
 	return result;
 }
 
-// super hacky tool to convert our weird DateTime tooling into a boolean
-// specifically consumes the following:
-//
-// DateTime.fromISO(DATE).diffNow().toMillis()
-//
-// where DATE is your date value
 /**
- * @param {number} number
- * @returns {boolean | undefined}
+ * Reads the milliseconds from a date to now, as `DateTime#diff` gives them, as whether the date has passed.
+ *
+ * @example
+ * ```js
+ * isInPast(DateTime.fromISO('2023-04-18').diff(DateTime.now()).toMillis()); // true
+ * isInPast(0); // true
+ * isInPast(1); // false
+ * isInPast(NaN); // undefined, from an invalid date
+ * ```
+ *
+ * @param {number} number The date minus now, in milliseconds.
+ * @returns {boolean | undefined} `true` when the date is now or earlier,
+ *   `false` when it's later, and `undefined` when `number` is `NaN`.
  */
 function isInPast(number) {
 	const sign = Math.sign(number);

@@ -1,4 +1,22 @@
-// ordered from most recent coverage to oldest coverage
+/**
+ * @file Translates the terms of the Node.js package support document to the
+ *   aliases `@nodevu/ranges` takes.
+ *
+ * @example
+ * ```js
+ * const translate = require('@nodevu/translate');
+ * ```
+ */
+
+/**
+ * The aliases each package support term covers, ordered from the most recent
+ * coverage to the oldest.
+ *
+ * @example
+ * ```js
+ * translations.lts; // ['lts/active', 'lts/maintenance']
+ * ```
+ */
 const translations = /** @type {const} */ ({
 	current: ['current'],
 	lts_latest: ['lts/latest'],
@@ -15,6 +33,16 @@ const translations = /** @type {const} */ ({
  * @param {Term} legacyName The term, such as `'supported'`.
  * @returns {Promise<Array<(typeof translations)[Term][number]>>} The aliases
  *   the term covers, newest first.
+ * @public
+ * @example
+ * ```js
+ * const ranges = require('@nodevu/ranges');
+ * const translate = require('@nodevu/translate');
+ *
+ * await translate('supported'); // ['current', 'lts/active', 'lts/maintenance']
+ *
+ * const supported = await ranges(await translate('supported'));
+ * ```
  */
 async function translate(legacyName) {
 	// an own-property check, so names like `toString` don't resolve to
