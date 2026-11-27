@@ -100,7 +100,7 @@ jobs:
           persist-credentials: false
       # _typos.toml lists the words it shouldn't flag
       - name: Check spelling
-        uses: crate-ci/typos@4c8b7f51ca60df14e3c5ca82770dfbbe6c3dae85 # v1.52.0
+        uses: crate-ci/typos@276087d9a4f06398b3e04825487805e2d7375888 # v1.52.2
       # relative links and anchors only; the weekly docs build checks the rest
       - name: Check links
         uses: lycheeverse/lychee-action@e7477775783ea5526144ba13e8db5eec57747ce8 # v2.9.0
@@ -240,7 +240,7 @@ jobs:
       pull-requests: write
     steps:
       - name: Review the dependency changes
-        uses: actions/dependency-review-action@a1d282b36b6f3519aa1f3fc636f609c47dddb294 # v5.0.0
+        uses: actions/dependency-review-action@bbc44d14a204704ccc493733616cd1e93a0321ec # v5.0.1
         with:
           # an advisory of any severity fails, in what ships (the runtime scope,
           # which the licence check reads too) and not the dev tooling
