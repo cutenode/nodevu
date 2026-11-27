@@ -23,13 +23,13 @@ jobs:
       # runs on a PR opened with GITHUB_TOKEN wait for someone to approve them;
       # runs on an app token's PR start on their own
       - id: app-token
-        uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510 # v3.3.0
+        uses: actions/create-github-app-token@f418cff399f7aef4c2f0ad47e25ca7a6abbdd6fc # v3.4.0
         with:
           client-id: ${{ vars.CI_APP_CLIENT_ID }}
           private-key: ${{ secrets.CI_APP_PRIVATE_KEY }}
           permission-contents: write # push the `release/vX.Y.Z` branch and delete superseded ones
           permission-pull-requests: write # create a release PR, update its body, close superseded PRs
-      - uses: danielroe/uppt/pr@6c1a9b480b0f02a3f535dedaf1a113f590aa56f2 # v0.6.12
+      - uses: danielroe/uppt/pr@2c9a289359311b9661cc99886a71121209b89d17 # v0.6.14
         with:
           token: ${{ steps.app-token.outputs.token }}
           packages: |
@@ -63,7 +63,7 @@ jobs:
       contents: write # push the `vX.Y.Z` tag and create the GitHub release
       actions: write # `gh workflow run release.yml --ref vX.Y.Z` chained dispatch
     steps:
-      - uses: danielroe/uppt/release@6c1a9b480b0f02a3f535dedaf1a113f590aa56f2 # v0.6.12
+      - uses: danielroe/uppt/release@2c9a289359311b9661cc99886a71121209b89d17 # v0.6.14
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           packages: |
@@ -101,7 +101,7 @@ jobs:
           node-version: 24
           package-manager-cache: false
       - id: pack
-        uses: danielroe/uppt/pack@6c1a9b480b0f02a3f535dedaf1a113f590aa56f2 # v0.6.12
+        uses: danielroe/uppt/pack@2c9a289359311b9661cc99886a71121209b89d17 # v0.6.14
         with:
           install: false
           packages: |
@@ -133,6 +133,6 @@ jobs:
       id-token: write # OIDC claim for npm trusted publisher
     environment: npm # must match the trusted-publisher entry on npmjs.com
     steps:
-      - uses: danielroe/uppt/publish@6c1a9b480b0f02a3f535dedaf1a113f590aa56f2 # v0.6.12
+      - uses: danielroe/uppt/publish@2c9a289359311b9661cc99886a71121209b89d17 # v0.6.14
         with:
           files: ${{ needs.pack.outputs.files }}
