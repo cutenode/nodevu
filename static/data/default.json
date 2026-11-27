@@ -1,6 +1,176 @@
 {
 	"v27": {
 		"releases": {
+			"v27.0.0-alpha.0.2.0": {
+				"semver": {
+					"raw": "27.0.0-alpha.0.2.0",
+					"major": 27,
+					"minor": 0,
+					"patch": 0,
+					"line": "v27"
+				},
+				"releaseDate": "2026-11-25",
+				"modules": {
+					"version": "153"
+				},
+				"dependencies": {
+					"npm": "12.2.3",
+					"v8": "15.6.75.60",
+					"uv": "1.52.1",
+					"zlib": "1.4",
+					"openssl": "4.1.0"
+				},
+				"files": {
+					"available": [
+						"aix-ppc64",
+						"headers",
+						"linux-arm64",
+						"linux-ppc64le",
+						"linux-s390x",
+						"linux-x64",
+						"linux-x64-musl",
+						"osx-arm64-tar",
+						"osx-x64-pkg",
+						"src",
+						"win-arm64-7z",
+						"win-arm64-zip",
+						"win-x64-7z",
+						"win-x64-exe",
+						"win-x64-msi",
+						"win-x64-zip"
+					],
+					"links": {
+						"aix": [
+							{
+								"id": "aix-ppc64",
+								"files": [
+									"node-v27.0.0-alpha.0.2.0-aix-ppc64.tar.gz",
+									"node-v27.0.0-alpha.0.2.0-aix-ppc64.tar.xz"
+								],
+								"architecture": "power"
+							}
+						],
+						"headers": [
+							{
+								"id": "headers",
+								"files": [
+									"node-v27.0.0-alpha.0.2.0-headers.tar.gz",
+									"node-v27.0.0-alpha.0.2.0-headers.tar.xz"
+								]
+							}
+						],
+						"linux": [
+							{
+								"id": "linux-arm64",
+								"files": [
+									"node-v27.0.0-alpha.0.2.0-linux-arm64.tar.gz",
+									"node-v27.0.0-alpha.0.2.0-linux-arm64.tar.xz"
+								],
+								"architecture": "arm64"
+							},
+							{
+								"id": "linux-ppc64le",
+								"files": [
+									"node-v27.0.0-alpha.0.2.0-linux-ppc64le.tar.gz",
+									"node-v27.0.0-alpha.0.2.0-linux-ppc64le.tar.xz"
+								],
+								"architecture": "power"
+							},
+							{
+								"id": "linux-s390x",
+								"files": [
+									"node-v27.0.0-alpha.0.2.0-linux-s390x.tar.gz",
+									"node-v27.0.0-alpha.0.2.0-linux-s390x.tar.xz"
+								],
+								"architecture": "z"
+							},
+							{
+								"id": "linux-x64",
+								"files": [
+									"node-v27.0.0-alpha.0.2.0-linux-x64.tar.gz",
+									"node-v27.0.0-alpha.0.2.0-linux-x64.tar.xz"
+								],
+								"architecture": "x64"
+							},
+							{
+								"id": "linux-x64-musl",
+								"files": [
+									"node-v27.0.0-alpha.0.2.0-linux-x64-musl.tar.gz",
+									"node-v27.0.0-alpha.0.2.0-linux-x64-musl.tar.xz"
+								],
+								"architecture": "x64"
+							}
+						],
+						"macos": [
+							{
+								"id": "osx-arm64-tar",
+								"files": ["node-v27.0.0-alpha.0.2.0-darwin-arm64.tar.gz"],
+								"architecture": "arm64"
+							},
+							{
+								"id": "osx-x64-pkg",
+								"files": ["node-v27.0.0-alpha.0.2.0.pkg"],
+								"architecture": "x64"
+							}
+						],
+						"source": [
+							{
+								"id": "src",
+								"files": [
+									"node-v27.0.0-alpha.0.2.0.tar.gz",
+									"node-v27.0.0-alpha.0.2.0.tar.xz"
+								]
+							}
+						],
+						"windows": [
+							{
+								"id": "win-arm64-7z",
+								"files": ["node-v27.0.0-alpha.0.2.0-win-arm64.7z"],
+								"architecture": "arm64"
+							},
+							{
+								"id": "win-arm64-zip",
+								"files": ["node-v27.0.0-alpha.0.2.0-win-arm64.zip"],
+								"architecture": "arm64"
+							},
+							{
+								"id": "win-x64-7z",
+								"files": ["node-v27.0.0-alpha.0.2.0-win-x64.7z"],
+								"architecture": "x64"
+							},
+							{
+								"id": "win-x64-exe",
+								"files": [
+									"win-x64/node.exe",
+									"win-x64/node.lib",
+									"win-x64/node_pdb.7z",
+									"win-x64/node_pdb.zip"
+								],
+								"architecture": "x64"
+							},
+							{
+								"id": "win-x64-msi",
+								"files": ["node-v27.0.0-alpha.0.2.0-x64.msi"],
+								"architecture": "x64"
+							},
+							{
+								"id": "win-x64-zip",
+								"files": ["node-v27.0.0-alpha.0.2.0-win-x64.zip"],
+								"architecture": "x64"
+							}
+						]
+					}
+				},
+				"lts": {
+					"isLts": false
+				},
+				"alpha": {
+					"isAlpha": true
+				},
+				"security": {
+					"isSecurity": false
+				}
+			},
 			"v27.0.0-alpha.0.1.1": {
 				"semver": {
 					"raw": "27.0.0-alpha.0.1.1",
